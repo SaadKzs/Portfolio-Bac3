@@ -1,429 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Bac 3 – 60h (Soft skills + IT)</title>
-  <meta name="description" content="Portfolio Bac 3 – suivi des 60h (10h soft skills, 50h informatique) avec pièces justificatives et calcul automatique du plafond de 10h par formation." />
-  <!-- Tailwind CSS CDN -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Portfolio Bac3 – React</title>
+  <meta name="description" content="Portfolio Bac3 (60h) en React, un seul fichier, hébergeable sur GitHub Pages. LocalStorage + export/import JSON, impression PDF, plafonds d'heures.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b1020;--card:#0f172a;--muted:#94a3b8;--accent:#22d3ee}
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:linear-gradient(180deg,#0b1020,#0b1020 40%,#0e1326);color:#e5e7eb}
-    .glass{background:rgba(15,23,42,.7);backdrop-filter:blur(8px);border:1px solid rgba(148,163,184,.15)}
+    :root{--bg:#0b1020;--card:#0f172a;--muted:#94a3b8;--accent:#06b6d4}
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.10),transparent 40%),radial-gradient(1200px 600px at 110% 10%,rgba(34,211,238,.08),transparent 40%),#0b1020;color:#e5e7eb}
+    .glass{background:rgba(15,23,42,.75);backdrop-filter:blur(8px);border:1px solid rgba(148,163,184,.15)}
     .chip{border:1px solid rgba(148,163,184,.2)}
     .ring-accent{box-shadow:0 0 0 3px rgba(34,211,238,.25)}
+    .btn{border:1px solid rgba(34,211,238,.2)}
     @media print{.no-print{display:none!important} .print\:block{display:block!important}}
   </style>
+  <!-- React CDN + Babel (pour JSX dans un seul fichier) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body class="min-h-screen">
-  <header class="sticky top-0 z-40 glass">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
-      <div class="w-9 h-9 rounded-2xl bg-cyan-300/20 grid place-items-center text-cyan-300 font-bold">B3</div>
-      <div>
-        <h1 class="text-xl font-semibold">Portfolio Bac 3</h1>
-        <p class="text-sm text-slate-400">Objectif: <span class="font-semibold">60h</span> • <span class="text-cyan-300">10h</span> soft skills • <span class="text-cyan-300">50h</span> informatique</p>
-      </div>
-      <div class="ml-auto flex gap-2 no-print">
-        <button id="btnExport" class="px-3 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200 text-sm">Exporter JSON</button>
-        <label class="px-3 py-2 rounded-xl bg-slate-700/50 hover:bg-slate-700/70 border border-slate-600/50 text-slate-200 text-sm cursor-pointer">
-          Importer JSON
-          <input id="importFile" type="file" accept="application/json" class="hidden" />
-        </label>
-        <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-slate-700/50 hover:bg-slate-700/70 border border-slate-600/50 text-slate-200 text-sm">Imprimer / PDF</button>
-      </div>
-    </div>
-  </header>
+<body>
+  <div id="root"></div>
 
-  <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
-    <!-- HERO / PRESENTATION -->
-    <section class="grid md:grid-cols-[1.2fr,1fr] gap-6">
-      <div class="glass rounded-3xl p-6">
-        <h2 class="text-lg font-semibold mb-4">À propos</h2>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div>
-            <label class="text-xs uppercase tracking-wide text-slate-400">Nom</label>
-            <input id="studentName" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="Votre nom complet" />
-          </div>
-          <div>
-            <label class="text-xs uppercase tracking-wide text-slate-400">Email</label>
-            <input id="studentEmail" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="prenom.nom@exemple.be" />
-          </div>
-          <div>
-            <label class="text-xs uppercase tracking-wide text-slate-400">Établissement</label>
-            <input id="studentSchool" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="EPHEC – TI" />
-          </div>
-          <div>
-            <label class="text-xs uppercase tracking-wide text-slate-400">Année</label>
-            <input id="studentYear" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="Bac 3 – 2025" />
-          </div>
-        </div>
-        <label class="block mt-4 text-xs uppercase tracking-wide text-slate-400">Résumé</label>
-        <textarea id="studentSummary" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" rows="3" placeholder="Quelques lignes sur vos objectifs, votre projet pro, et ce que couvrent vos 60h..."></textarea>
-      </div>
+  <script type="text/babel">
+    const {useState, useMemo, useEffect, useRef} = React;
 
-      <div class="glass rounded-3xl p-6">
-        <h2 class="text-lg font-semibold">Progression</h2>
-        <p class="text-sm text-slate-400 mb-3">Le calcul respecte le plafond: <span class="font-semibold">une formation >10h ne compte que 10h</span>.</p>
-        <div class="space-y-3">
-          <div>
-            <div class="flex justify-between text-sm"><span>Soft skills</span><span id="softCount">0 / 10h</span></div>
-            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div id="softBar" class="h-2 bg-cyan-400" style="width:0%"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-sm"><span>Informatique</span><span id="techCount">0 / 50h</span></div>
-            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div id="techBar" class="h-2 bg-cyan-400" style="width:0%"></div></div>
-          </div>
-          <div class="pt-1 text-sm" id="totalInfo">Total comptabilisé: 0 / 60h</div>
-          <div id="warnings" class="text-amber-300 text-sm"></div>
-        </div>
-      </div>
-    </section>
+    const STORAGE_KEY = 'b3_portfolio_react_v1';
 
-    <!-- ADD ENTRY FORM -->
-    <section class="glass rounded-3xl p-6 no-print">
-      <h2 class="text-lg font-semibold mb-4">Ajouter une activité</h2>
-      <form id="entryForm" class="grid md:grid-cols-4 gap-4">
-        <div class="md:col-span-2">
-          <label class="text-xs uppercase tracking-wide text-slate-400">Titre de l’activité</label>
-          <input name="title" required class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="Ex: Atelier prise de parole / Développement d’une API" />
-        </div>
-        <div>
-          <label class="text-xs uppercase tracking-wide text-slate-400">Catégorie</label>
-          <select name="category" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2">
-            <option value="soft">Soft skills</option>
-            <option value="tech">Informatique</option>
-          </select>
-        </div>
-        <div>
-          <label class="text-xs uppercase tracking-wide text-slate-400">Type</label>
-          <select name="type" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2">
-            <option value="training">Formation</option>
-            <option value="project">Projet</option>
-            <option value="event">Événement</option>
-            <option value="volunteering">Bénévolat</option>
-            <option value="other">Autre</option>
-          </select>
-        </div>
-        <div> 
-          <label class="text-xs uppercase tracking-wide text-slate-400">Heures réelles</label>
-          <input type="number" min="0" step="0.5" name="hours" required class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="Ex: 2" />
-        </div>
-        <div>
-          <label class="text-xs uppercase tracking-wide text-slate-400">Date</label>
-          <input type="date" name="date" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" />
-        </div>
-        <div class="md:col-span-2">
-          <label class="text-xs uppercase tracking-wide text-slate-400">Description</label>
-          <input name="description" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="Ce que vous avez fait / appris" />
-        </div>
-        <div class="md:col-span-3">
-          <label class="text-xs uppercase tracking-wide text-slate-400">Preuves (liens séparés par des virgules)</label>
-          <input name="links" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" placeholder="GitHub, certificats, vidéos, slides..." />
-        </div>
-        <div class="flex items-end">
-          <button class="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">Ajouter</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- FILTERS -->
-    <section class="no-print flex flex-wrap gap-2">
-      <button data-filter="all" class="filter-btn chip px-3 py-1 rounded-full text-sm">Tout</button>
-      <button data-filter="soft" class="filter-btn chip px-3 py-1 rounded-full text-sm">Soft skills</button>
-      <button data-filter="tech" class="filter-btn chip px-3 py-1 rounded-full text-sm">Informatique</button>
-      <button data-filter="training" class="filter-btn chip px-3 py-1 rounded-full text-sm">Formations</button>
-      <button data-filter="project" class="filter-btn chip px-3 py-1 rounded-full text-sm">Projets</button>
-      <button data-filter="event" class="filter-btn chip px-3 py-1 rounded-full text-sm">Événements</button>
-      <button data-filter="volunteering" class="filter-btn chip px-3 py-1 rounded-full text-sm">Bénévolat</button>
-    </section>
-
-    <!-- ENTRIES LIST -->
-    <section id="entries" class="grid md:grid-cols-2 gap-4"></section>
-
-    <!-- SUMMARY TABLE -->
-    <section class="glass rounded-3xl p-6">
-      <h2 class="text-lg font-semibold mb-4">Tableau récapitulatif</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead class="text-slate-300">
-            <tr>
-              <th class="text-left py-2">Titre</th>
-              <th class="text-left">Catégorie</th>
-              <th class="text-left">Type</th>
-              <th class="text-right">Heures réelles</th>
-              <th class="text-right">Heures comptées</th>
-              <th class="text-left">Date</th>
-            </tr>
-          </thead>
-          <tbody id="summaryRows"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="text-center text-slate-500 pb-10">
-      <p>Fait avec ♥ pour le portfolio Bac 3 — Thème GitHub Pages statique (HTML/JS) — Imprimez en PDF pour remise.</p>
-    </footer>
-  </main>
-
-  <script>
-    // --------- Data Model ---------
-    const STORAGE_KEY = 'b3_portfolio_v1';
-
-    /** @type {{meta:{name:string,email:string,school:string,year:string,summary:string}, items:Array<{id:string,title:string,category:'soft'|'tech',type:'training'|'project'|'event'|'volunteering'|'other',hours:number,date?:string,description?:string,links?:string[]}>}} */
-    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || {
-      meta:{name:'',email:'',school:'',year:'',summary:''},
-      items:[
-        // Exemples (supprimez-les quand vous avez vos vraies activités)
-        {id:crypto.randomUUID(), title:'Atelier prise de parole', category:'soft', type:'training', hours:6, date:'2025-03-15', description:'Gestion du trac, posture, voix', links:[]},
-        {id:crypto.randomUUID(), title:'Projet MERN – PowerTrack', category:'tech', type:'project', hours:18, date:'2025-04-19', description:'Backend Express + WebSocket, MongoDB, dashboard React', links:['https://github.com/user/powertrack']},
-        {id:crypto.randomUUID(), title:'Formation Udemy – Docker & DevOps (25h)', category:'tech', type:'training', hours:25, date:'2025-05-01', description:'CI/CD, Docker Compose, Nginx, TLS', links:['https://certificate.example']}
-      ]
+    const defaultState = {
+      meta: {name:'', email:'', school:'EPHEC – TI', year:'Bac 3 – 2025', summary:''},
+      items: []
     };
 
-    // --------- Helpers ---------
-    const el = sel => document.querySelector(sel);
-    const els = sel => [...document.querySelectorAll(sel)];
+    const capCounted = (item) => item.type === 'training' ? Math.min(item.hours, 10) : item.hours;
 
-    function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-
-    function hoursCounted(item){
-      // Règle: pour les formations, max 10h comptabilisées
-      if(item.type === 'training') return Math.min(item.hours, 10);
-      return item.hours;
+    function usePortfolio(){
+      const [data, setData] = useState(()=>{
+        try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState; }catch{ return defaultState; }
+      });
+      useEffect(()=>{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }, [data]);
+      return [data, setData];
     }
 
-    function computeTotals(){
-      let soft=0, tech=0;
-      for(const it of state.items){
-        const counted = hoursCounted(it);
-        if(it.category==='soft') soft += counted; else tech += counted;
+    function Progress({soft, tech}){
+      const total = soft + tech;
+      return (
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between text-sm"><span>Soft skills</span><span>{soft} / 10h</span></div>
+            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, soft/10*100)+"%"}}/></div>
+          </div>
+          <div>
+            <div className="flex justify-between text-sm"><span>Informatique</span><span>{tech} / 50h</span></div>
+            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, tech/50*100)+"%"}}/></div>
+          </div>
+          <div className="text-sm">Total comptabilisé: {total} / 60h</div>
+        </div>
+      );
+    }
+
+    function Modal({open, onClose, title, children}){
+      if(!open) return null;
+      return (
+        <div className="fixed inset-0 z-50 grid place-items-center">
+          <div className="absolute inset-0 bg-black/40" onClick={onClose}/>
+          <div className="relative glass rounded-2xl p-5 w-[min(680px,92vw)]">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-semibold">{title}</h3>
+              <button className="px-3 py-1 rounded-lg bg-slate-700 hover:bg-slate-600" onClick={onClose}>✕</button>
+            </div>
+            {children}
+          </div>
+        </div>
+      );
+    }
+
+    function App(){
+      const [data, setData] = usePortfolio();
+      const [filter, setFilter] = useState('all');
+      const [openForm, setOpenForm] = useState(false);
+      const [editId, setEditId] = useState(null);
+
+      const itemsSorted = useMemo(()=> data.items.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')), [data.items]);
+
+      const totals = useMemo(()=>{
+        let soft=0, tech=0; 
+        for(const it of data.items){
+          const c = capCounted(it);
+          if(it.category==='soft') soft+=c; else tech+=c;
+        }
+        soft = Math.round(soft*2)/2; tech = Math.round(tech*2)/2;
+        return {soft, tech};
+      }, [data.items]);
+
+      const warnings = useMemo(()=>{
+        const arr=[]; const total = totals.soft + totals.tech;
+        if(totals.soft>10) arr.push('Soft skills > 10h : le surplus ne comptera pas.');
+        if(totals.tech>50) arr.push('Informatique > 50h : le surplus ne comptera pas.');
+        if(total<60) arr.push(`Il manque ${Math.round((60-total)*2)/2}h pour atteindre 60h.`);
+        if(total>60) arr.push(`Vous dépassez 60h (seules 60h seront comptées).`);
+        return arr;
+      }, [totals]);
+
+      function onSaveItem(item){
+        setData(s=>{
+          const items = s.items.slice();
+          if(item.id){
+            const idx = items.findIndex(i=>i.id===item.id);
+            if(idx>-1) items[idx]=item;
+          } else {
+            item.id = crypto.randomUUID();
+            items.push(item);
+          }
+          return {...s, items};
+        });
+        setOpenForm(false); setEditId(null);
       }
-      return {soft, tech, total: soft+tech};
-    }
 
-    function formatHours(h){
-      return (Math.round(h*2)/2).toLocaleString('fr-BE', {minimumFractionDigits: (h%1?1:0)});
-    }
+      function onDelete(id){
+        setData(s=>({...s, items: s.items.filter(i=>i.id!==id)}));
+      }
 
-    function setProgress(){
-      const {soft,tech,total} = computeTotals();
-      el('#softCount').textContent = `${formatHours(soft)} / 10h`;
-      el('#techCount').textContent = `${formatHours(tech)} / 50h`;
-      el('#totalInfo').textContent = `Total comptabilisé: ${formatHours(total)} / 60h`;
-      el('#softBar').style.width = Math.min(100, soft/10*100) + '%';
-      el('#techBar').style.width = Math.min(100, tech/50*100) + '%';
+      function onExport(){
+        const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href=url; a.download='portfolio_bac3.json'; a.click(); URL.revokeObjectURL(url);
+      }
 
-      const warns = [];
-      if(soft>10) warns.push('Vous avez dépassé 10h en soft skills (le surplus ne comptera pas).');
-      if(tech>50) warns.push('Vous avez dépassé 50h en informatique (le surplus ne comptera pas).');
-      if(total<60) warns.push(`Il manque ${formatHours(60-total)}h pour atteindre 60h.`);
-      if(total>60) warns.push(`Vous dépassez 60h (ok, mais only 60h seront comptées).`);
-      el('#warnings').innerHTML = warns.map(w=>`• ${w}`).join('<br>');
-    }
+      function onImport(e){
+        const file = e.target.files?.[0]; if(!file) return;
+        const rd = new FileReader();
+        rd.onload = () => { try{ setData(JSON.parse(rd.result)); } catch(err){ alert('Fichier invalide'); } };
+        rd.readAsText(file);
+        e.target.value='';
+      }
 
-    function badge(text){
-      return `<span class="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">${text}</span>`;
-    }
+      function onPrint(){ window.print(); }
 
-    function renderEntries(filter='all'){
-      const wrap = el('#entries');
-      wrap.innerHTML = '';
-      const items = state.items
-        .slice()
-        .sort((a,b)=> (b.date||'').localeCompare(a.date||''));
-
-      for(const item of items){
-        const counted = hoursCounted(item);
-        const show = (
-          filter==='all' ||
-          filter===item.category ||
-          filter===item.type
-        );
-        if(!show) continue;
-
-        const card = document.createElement('article');
-        card.className = 'glass rounded-3xl p-5 space-y-3';
-        card.innerHTML = `
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-2xl bg-cyan-300/20 grid place-items-center text-cyan-300 font-bold">${item.category==='soft'?'S':'IT'}</div>
-            <div class="flex-1">
-              <h3 class="font-semibold text-lg">${escapeHtml(item.title)}</h3>
-              <div class="flex flex-wrap gap-2 mt-1">
-                ${badge(item.category==='soft'?'Soft skills':'Informatique')}
-                ${badge(item.type.charAt(0).toUpperCase()+item.type.slice(1))}
-                ${badge(`${formatHours(item.hours)}h réelles`)}
-                ${badge(`${formatHours(counted)}h comptées`)}
-                ${item.date? badge(new Date(item.date).toLocaleDateString('fr-BE')):''}
+      return (
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <header className="sticky top-0 z-40 glass rounded-2xl px-4 py-3 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-cyan-400/20 grid place-items-center text-cyan-300 font-extrabold">B3</div>
+              <div>
+                <h1 className="text-xl font-semibold">Portfolio Bac 3</h1>
+                <p className="text-xs text-slate-400">Objectif: 60h — <span className="text-cyan-300">10h</span> soft • <span className="text-cyan-300">50h</span> IT</p>
+              </div>
+              <div className="ml-auto flex gap-2 no-print">
+                <button className="btn px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30" onClick={()=>{setOpenForm(true); setEditId(null);}}>+ Ajouter</button>
+                <button className="btn px-3 py-1.5 rounded-xl" onClick={onExport}>Exporter JSON</button>
+                <label className="btn px-3 py-1.5 rounded-xl cursor-pointer">Importer JSON
+                  <input type="file" accept="application/json" className="hidden" onChange={onImport}/>
+                </label>
+                <button className="btn px-3 py-1.5 rounded-xl" onClick={onPrint}>Imprimer / PDF</button>
               </div>
             </div>
-            <div class="no-print flex gap-2">
-              <button class="px-2 py-1 rounded-lg bg-slate-700/60 hover:bg-slate-700 text-xs" data-edit="${item.id}">Éditer</button>
-              <button class="px-2 py-1 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-200 text-xs" data-del="${item.id}">Suppr</button>
+          </header>
+
+          <section className="grid md:grid-cols-[1.1fr,1fr] gap-6">
+            <div className="glass rounded-2xl p-5">
+              <h2 className="text-lg font-semibold mb-3">À propos</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <TextField label="Nom" value={data.meta.name} onChange={v=>setData(s=>({...s, meta:{...s.meta, name:v}}))}/>
+                <TextField label="Email" value={data.meta.email} onChange={v=>setData(s=>({...s, meta:{...s.meta, email:v}}))}/>
+                <TextField label="Établissement" value={data.meta.school} onChange={v=>setData(s=>({...s, meta:{...s.meta, school:v}}))}/>
+                <TextField label="Année" value={data.meta.year} onChange={v=>setData(s=>({...s, meta:{...s.meta, year:v}}))}/>
+              </div>
+              <TextArea className="mt-3" label="Résumé" rows={3} value={data.meta.summary} onChange={v=>setData(s=>({...s, meta:{...s.meta, summary:v}}))}/>
+            </div>
+
+            <div className="glass rounded-2xl p-5">
+              <h2 className="text-lg font-semibold mb-3">Progression</h2>
+              <Progress soft={totals.soft} tech={totals.tech}/>
+              {warnings.length>0 && (
+                <div className="mt-3 text-amber-300 text-sm space-y-1">
+                  {warnings.map((w,i)=>(<div key={i}>• {w}</div>))}
+                </div>
+              )}
+            </div>
+          </section>
+
+          <section className="no-print mt-4 flex flex-wrap gap-2">
+            {['all','soft','tech','training','project','event','volunteering','other'].map(k=> (
+              <button key={k} onClick={()=>setFilter(k)} className={`chip px-3 py-1 rounded-full text-sm ${filter===k?'bg-cyan-500/20':''}`}>{k==='all'?'Tout':k}</button>
+            ))}
+          </section>
+
+          <section className="grid md:grid-cols-2 gap-4 mt-4">
+            {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).map(it => (
+              <Card key={it.id}
+                item={it}
+                onEdit={()=>{setEditId(it.id); setOpenForm(true);}}
+                onDelete={()=>onDelete(it.id)}
+              />
+            ))}
+            {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).length===0 && (
+              <div className="text-slate-400">Aucune activité. Ajoute ta première entrée avec « + Ajouter ».</div>
+            )}
+          </section>
+
+          <section className="glass rounded-2xl p-5 mt-6">
+            <h2 className="text-lg font-semibold mb-2">Tableau récapitulatif</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="text-slate-300">
+                  <tr>
+                    <th className="text-left py-2">Titre</th>
+                    <th className="text-left">Catégorie</th>
+                    <th className="text-left">Type</th>
+                    <th className="text-right">Heures réelles</th>
+                    <th className="text-right">Heures comptées</th>
+                    <th className="text-left">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {itemsSorted.map(it=> (
+                    <tr key={it.id} className="border-t border-slate-700/50">
+                      <td className="py-2">{it.title}</td>
+                      <td>{it.category==='soft'?'Soft':'IT'}</td>
+                      <td>{it.type}</td>
+                      <td className="text-right">{it.hours}</td>
+                      <td className="text-right">{capCounted(it)}</td>
+                      <td>{it.date? new Date(it.date).toLocaleDateString('fr-BE'):''}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <footer className="text-center text-slate-500 py-10">Fait avec ♥ — Version React (CDN) — Export JSON & Impression PDF.</footer>
+
+          <Modal open={openForm} onClose={()=>{setOpenForm(false); setEditId(null);}} title={editId? 'Modifier une activité':'Ajouter une activité'}>
+            <EntryForm
+              item={data.items.find(i=>i.id===editId)}
+              onSave={onSaveItem}
+            />
+          </Modal>
+        </div>
+      );
+    }
+
+    function TextField({label, value, onChange, className=''}){
+      return (
+        <div className={className}>
+          <label className="text-xs uppercase tracking-wide text-slate-400">{label}</label>
+          <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2"
+                 value={value||''} onChange={e=>onChange(e.target.value)} />
+        </div>
+      );
+    }
+
+    function TextArea({label, value, onChange, rows=3, className=''}){
+      return (
+        <div className={className}>
+          <label className="text-xs uppercase tracking-wide text-slate-400">{label}</label>
+          <textarea rows={rows} className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2"
+                 value={value||''} onChange={e=>onChange(e.target.value)} />
+        </div>
+      );
+    }
+
+    function Card({item, onEdit, onDelete}){
+      return (
+        <article className="glass rounded-2xl p-5 space-y-3">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-cyan-300/20 grid place-items-center text-cyan-300 font-bold">{item.category==='soft'?'S':'IT'}</div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg">{item.title}</h3>
+              <div className="flex flex-wrap gap-2 mt-1">
+                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.category==='soft'?'Soft skills':'Informatique'}</span>
+                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.type}</span>
+                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.hours}h réelles</span>
+                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{capCounted(item)}h comptées</span>
+                {item.date && (<span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{new Date(item.date).toLocaleDateString('fr-BE')}</span>)}
+              </div>
+            </div>
+            <div className="no-print flex gap-2">
+              <button className="px-2 py-1 rounded-lg bg-slate-700/60 hover:bg-slate-700 text-xs" onClick={onEdit}>Éditer</button>
+              <button className="px-2 py-1 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-200 text-xs" onClick={onDelete}>Suppr</button>
             </div>
           </div>
-          ${item.description? `<p class="text-slate-300">${escapeHtml(item.description)}</p>`:''}
-          ${Array.isArray(item.links) && item.links.length? `<div class="flex flex-wrap gap-2">${item.links.map(l=>`<a class='underline text-cyan-300' href='${escapeAttr(l)}' target='_blank' rel='noopener'>Preuve</a>`).join('')}</div>`:''}
-        `;
-        wrap.appendChild(card);
+          {item.description && (<p className="text-slate-300">{item.description}</p>)}
+          {Array.isArray(item.links) && item.links.length>0 && (
+            <div className="flex flex-wrap gap-2">
+              {item.links.map((l,idx)=> (<a key={idx} href={l} target="_blank" rel="noopener" className="underline text-cyan-300">Preuve</a>))}
+            </div>
+          )}
+        </article>
+      );
+    }
+
+    function EntryForm({item, onSave}){
+      const [title, setTitle] = useState(item?.title||'');
+      const [category, setCategory] = useState(item?.category||'soft');
+      const [type, setType] = useState(item?.type||'training');
+      const [hours, setHours] = useState(item?.hours||0);
+      const [date, setDate] = useState(item?.date||'');
+      const [description, setDescription] = useState(item?.description||'');
+      const [links, setLinks] = useState(item?.links?.join(', ')||'');
+
+      function handleSubmit(e){
+        e.preventDefault();
+        const obj = { id:item?.id, title, category, type, hours: Number(hours)||0, date, description, links: links.split(',').map(s=>s.trim()).filter(Boolean)};
+        onSave(obj);
       }
 
-      // wire edit/delete
-      wrap.querySelectorAll('[data-del]').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          const id = btn.getAttribute('data-del');
-          const idx = state.items.findIndex(i=>i.id===id);
-          if(idx>-1){ state.items.splice(idx,1); save(); setProgress(); renderEntries(currentFilter); renderSummary(); }
-        });
-      });
+      const counted = capCounted({type, hours: Number(hours)||0});
 
-      wrap.querySelectorAll('[data-edit]').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-          const id = btn.getAttribute('data-edit');
-          const it = state.items.find(i=>i.id===id);
-          if(!it) return;
-          // Preload form
-          const f = el('#entryForm');
-          f.title.value = it.title;
-          f.category.value = it.category;
-          f.type.value = it.type;
-          f.hours.value = it.hours;
-          f.date.value = it.date||'';
-          f.description.value = it.description||'';
-          f.links.value = (it.links||[]).join(', ');
-          f.setAttribute('data-editing', id);
-          f.querySelector('button').textContent = 'Mettre à jour';
-          f.classList.add('ring-accent');
-          f.scrollIntoView({behavior:'smooth', block:'center'});
-        });
-      });
+      return (
+        <form className="grid md:grid-cols-4 gap-4" onSubmit={handleSubmit}>
+          <div className="md:col-span-2"><TextField label="Titre de l’activité" value={title} onChange={setTitle}/></div>
+          <div>
+            <label className="text-xs uppercase tracking-wide text-slate-400">Catégorie</label>
+            <select className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={category} onChange={e=>setCategory(e.target.value)}>
+              <option value="soft">Soft skills</option>
+              <option value="tech">Informatique</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-wide text-slate-400">Type</label>
+            <select className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={type} onChange={e=>setType(e.target.value)}>
+              <option value="training">Formation</option>
+              <option value="project">Projet</option>
+              <option value="event">Événement</option>
+              <option value="volunteering">Bénévolat</option>
+              <option value="other">Autre</option>
+            </select>
+          </div>
+          <div>
+            <TextField label={`Heures réelles${type==='training' ? ' (plafond 10h)': ''}`} value={hours} onChange={setHours}/>
+          </div>
+          <div>
+            <label className="text-xs uppercase tracking-wide text-slate-400">Date</label>
+            <input type="date" className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={date} onChange={e=>setDate(e.target.value)}/>
+          </div>
+          <div className="md:col-span-2"><TextField label="Description" value={description} onChange={setDescription}/></div>
+          <div className="md:col-span-4"><TextField label="Preuves (liens séparés par des virgules)" value={links} onChange={setLinks}/></div>
+
+          <div className="md:col-span-3 text-sm text-slate-400">Heures comptées: <span className="text-cyan-300 font-semibold">{counted}h</span></div>
+          <div className="md:col-span-1 flex items-end justify-end">
+            <button className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">{item? 'Mettre à jour':'Ajouter'}</button>
+          </div>
+        </form>
+      );
     }
 
-    function renderSummary(){
-      const body = el('#summaryRows');
-      body.innerHTML = '';
-      const items = state.items.slice().sort((a,b)=> (a.title.localeCompare(b.title)));
-      for(const it of items){
-        const tr = document.createElement('tr');
-        tr.className = 'border-t border-slate-700/50';
-        tr.innerHTML = `
-          <td class="py-2">${escapeHtml(it.title)}</td>
-          <td>${it.category==='soft'?'Soft':'IT'}</td>
-          <td>${it.type}</td>
-          <td class="text-right">${formatHours(it.hours)}</td>
-          <td class="text-right">${formatHours(hoursCounted(it))}</td>
-          <td>${it.date? new Date(it.date).toLocaleDateString('fr-BE'):''}</td>
-        `;
-        body.appendChild(tr);
-      }
-    }
-
-    // --------- Form & Filters ---------
-    const form = el('#entryForm');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const data = new FormData(form);
-      const entry = {
-        id: form.getAttribute('data-editing') || crypto.randomUUID(),
-        title: (data.get('title')||'').toString().trim(),
-        category: data.get('category'),
-        type: data.get('type'),
-        hours: Number(data.get('hours'))||0,
-        date: (data.get('date')||'').toString(),
-        description: (data.get('description')||'').toString().trim(),
-        links: (data.get('links')||'').toString().split(',').map(s=>s.trim()).filter(Boolean)
-      };
-
-      const editingId = form.getAttribute('data-editing');
-      if(editingId){
-        const idx = state.items.findIndex(i=>i.id===editingId);
-        if(idx>-1) state.items[idx] = entry;
-        form.removeAttribute('data-editing');
-        form.querySelector('button').textContent = 'Ajouter';
-        form.classList.remove('ring-accent');
-      } else {
-        state.items.push(entry);
-      }
-
-      save();
-      setProgress();
-      renderEntries(currentFilter);
-      renderSummary();
-      form.reset();
-    });
-
-    let currentFilter = 'all';
-    els('.filter-btn').forEach(b=>{
-      b.addEventListener('click',()=>{
-        currentFilter = b.getAttribute('data-filter');
-        renderEntries(currentFilter);
-        els('.filter-btn').forEach(x=>x.classList.remove('bg-cyan-500/20'));
-        b.classList.add('bg-cyan-500/20');
-      })
-    });
-
-    // --------- Meta (About) ---------
-    function syncMetaInputs(){
-      el('#studentName').value = state.meta.name||'';
-      el('#studentEmail').value = state.meta.email||'';
-      el('#studentSchool').value = state.meta.school||'';
-      el('#studentYear').value = state.meta.year||'';
-      el('#studentSummary').value = state.meta.summary||'';
-    }
-
-    ['studentName','studentEmail','studentSchool','studentYear','studentSummary'].forEach(id=>{
-      el('#'+id).addEventListener('input', ()=>{
-        state.meta.name = el('#studentName').value.trim();
-        state.meta.email = el('#studentEmail').value.trim();
-        state.meta.school = el('#studentSchool').value.trim();
-        state.meta.year = el('#studentYear').value.trim();
-        state.meta.summary = el('#studentSummary').value.trim();
-        save();
-      });
-    });
-
-    // --------- Export / Import ---------
-    el('#btnExport').addEventListener('click',()=>{
-      const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'portfolio_bac3.json'; a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    el('#importFile').addEventListener('change', (e)=>{
-      const file = e.target.files?.[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        try{
-          const data = JSON.parse(reader.result);
-          if(!data || !data.items) throw new Error('Fichier invalide');
-          state.meta = data.meta||{}; state.items = data.items||[];
-          save(); syncMetaInputs(); setProgress(); renderEntries(currentFilter); renderSummary();
-        }catch(err){ alert('Erreur à l\'import: '+err.message); }
-      };
-      reader.readAsText(file);
-      e.target.value='';
-    });
-
-    // --------- Security helpers ---------
-    function escapeHtml(str=''){
-      return str.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    }
-    function escapeAttr(str=''){
-      return str.replace(/["']/g, c => ({'"':'&quot;','\'':'&#39;'}[c]));
-    }
-
-    // --------- Init ---------
-    syncMetaInputs();
-    setProgress();
-    renderEntries('all');
-    renderSummary();
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>);
   </script>
 </body>
 </html>
