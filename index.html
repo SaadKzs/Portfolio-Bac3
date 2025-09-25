@@ -25,14 +25,12 @@
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <!-- Framer Motion UMD pour animations -->
-  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
 </head>
 <body>
   <div id="root"></div>
 
   <script type="text/babel">
     const {useState, useMemo, useEffect} = React;
-    const { motion, AnimatePresence } = window.framerMotion || {};
 
     const STORAGE_KEY = 'b3_portfolio_modern_v1';
 
@@ -115,11 +113,12 @@
       return (
         <div className="max-w-6xl mx-auto px-4 py-6">
           <Navbar route={route} setRoute={setRoute}/>
-          <AnimatePresence mode="wait">
-            {route==='home' && <PageHome key="home" data={data} setData={setData}/>} 
-            {route==='cv' && <PageCV key="cv" data={data}/>} 
+          <div className="fade-in">
+            {route==='home' && <PageHome key="home" data={data} setData={setData}/>}
+            {route==='cv' && <PageCV key="cv" data={data}/>}
             {route==='contact' && <PageContact key="contact" data={data}/>}
-          </AnimatePresence>
+          </div>
+
           <footer className="text-center text-slate-500 py-10">React + Tailwind + Framer Motion — Données préremplies — GitHub Pages.</footer>
         </div>
       );
@@ -170,15 +169,9 @@
       function onDelete(id){ setData(s=>({...s, items: s.items.filter(i=>i.id!==id)})); }
 
       return (
-        <motion.div
-          initial={{opacity:0, y:12}}
-          animate={{opacity:1, y:0}}
-          exit={{opacity:0, y:-12}}
-          transition={{duration:.35}}
-          className="space-y-6"
-        >
+        <div className="fade-in">
           <section className="grid md:grid-cols-[1.2fr,1fr] gap-6">
-            <motion.div className="glass rounded-2xl p-6" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.05}}>
+           <div className="fade-in">
               <h2 className="text-lg font-semibold mb-3">À propos</h2>
               {/* Infos FIXES (non éditables) */}
               <div className="grid sm:grid-cols-2 gap-4">
@@ -196,7 +189,7 @@
               </div>
             </motion.div>
 
-            <motion.div className="glass rounded-2xl p-6" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.1}}>
+           <div className="fade-in">
               <h2 className="text-lg font-semibold mb-3">Progression</h2>
               <Progress soft={totals.soft} tech={totals.tech}/>
               {warnings.length>0 && (<div className="mt-3 text-amber-300 text-sm space-y-1">{warnings.map((w,i)=>(<div key={i}>• {w}</div>))}</div>)}
@@ -215,7 +208,7 @@
           <section className="grid md:grid-cols-2 gap-4">
             <AnimatePresence>
               {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).map(it => (
-                <motion.div key={it.id} initial={{opacity:0, y:8}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-8}}>
+                <div className="fade-in">
                   <Card item={it} onEdit={()=>{setEditId(it.id); setOpenForm(true);}} onDelete={()=>onDelete(it.id)} />
                 </motion.div>
               ))}
@@ -388,7 +381,7 @@
     function PageCV({data}){
       const {cv, meta} = data;
       return (
-        <motion.div initial={{opacity:0, y:12}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-12}} transition={{duration:.35}} className="grid lg:grid-cols-2 gap-6">
+       <div className="fade-in">
           <section className="glass rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-1">{meta.name}</h2>
             <p className="text-slate-400">{meta.summary}</p>
@@ -453,7 +446,7 @@
       }
 
       return (
-        <motion.div initial={{opacity:0, y:12}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-12}} transition={{duration:.35}} className="grid lg:grid-cols-2 gap-6">
+         <div className="fade-in">
           <section className="glass rounded-2xl p-6">
             <h2 className="text-lg font-semibold mb-3">Écrivez‑moi</h2>
             <form className="grid gap-3" onSubmit={handleSubmit}>
