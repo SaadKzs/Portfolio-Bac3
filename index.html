@@ -3,71 +3,72 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Portfolio Bac3 – React</title>
-  <meta name="description" content="Portfolio Bac3 (60h) en React, 1 fichier. LocalStorage + export/import JSON, impression PDF, plafonds d'heures, CV & Contact.">
+  <title>Portfolio Saad – Bac3</title>
+  <meta name="description" content="Portfolio Bac 3 (60h) – Accueil, CV, Contact. React + Tailwind + animations. Données préremplies, suivi heures avec plafonds.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0b1020;--muted:#94a3b8;--accent:#06b6d4}
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.10),transparent 40%),radial-gradient(1200px 600px at 110% 10%,rgba(34,211,238,.08),transparent 40%),#0b1020;color:#e5e7eb}
-    .glass{background:rgba(15,23,42,.75);backdrop-filter:blur(8px);border:1px solid rgba(148,163,184,.15)}
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:radial-gradient(1100px 600px at -10% -10%,rgba(34,211,238,.10),transparent 40%),radial-gradient(1000px 500px at 110% 10%,rgba(34,211,238,.08),transparent 40%),#0b1020;color:#e5e7eb}
+    .glass{background:rgba(15,23,42,.75);backdrop-filter:blur(10px);border:1px solid rgba(148,163,184,.15)}
     .chip{border:1px solid rgba(148,163,184,.2)}
-    .ring-accent{box-shadow:0 0 0 3px rgba(34,211,238,.25)}
-    .btn{border:1px solid rgba(34,211,238,.2)}
+    .btn{border:1px solid rgba(34,211,238,.25)}
     .link{color:#7dd3fc}
-    @media (prefers-color-scheme: light){ html,body{background:#f6f7fb;color:#0f172a} .glass{background:rgba(255,255,255,.8);border:1px solid rgba(2,6,23,.08)} .chip{border-color:rgba(2,6,23,.08)} }
+    .grad{background: linear-gradient(135deg,#22d3ee33,#a78bfa33);}
+    @media (prefers-color-scheme: light){ html,body{background:#f6f7fb;color:#0f172a} .glass{background:rgba(255,255,255,.85);border:1px solid rgba(2,6,23,.08)} .chip{border-color:rgba(2,6,23,.08)} }
     @media print{.no-print{display:none!important} .print\:block{display:block!important}}
   </style>
   <!-- React CDN + Babel (pour JSX dans un seul fichier) -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Framer Motion UMD pour animations -->
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
 </head>
 <body>
   <div id="root"></div>
 
   <script type="text/babel">
     const {useState, useMemo, useEffect} = React;
+    const { motion, AnimatePresence } = window.framerMotion || {};
 
-    const STORAGE_KEY = 'b3_portfolio_react_v2';
+    const STORAGE_KEY = 'b3_portfolio_modern_v1';
 
-    const defaultState = {
+    const preset = {
       meta: {
         name:'Zebiri Saad',
         email:'saadzebiri65@gmail.com',
-        school:'EPHEC – Technologie de l\'Informatique',
+        school:"EPHEC – Technologie de l'Informatique",
         year:'Bac 3 – 2025',
-        summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
-      },
-      social: {
+        summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer.",
         phone:'0471 87 49 10',
         linkedin:'https://www.linkedin.com',
         location:'Bruxelles'
       },
       cv: {
         skills:[
-          'Cisco / Packet Tracer','Linux basics','Administration Systèmes & Réseaux',
-          'Docker, DNS, HTTP/HTTPS, Mail services','Web MERN (Mongo, Express, React, Node)',
+          'Cisco / Packet Tracer','Linux basics','Admin Systèmes & Réseaux',
+          'Docker, DNS, HTTP/HTTPS, Mail','Web MERN (Mongo/Express/React/Node)',
           'IoT & intégration soft/hard','Python, C, C++, JS, HTML/CSS','Git & GitHub'
+        ],
+        experience:[
+          {title:'IT Support Practice – EPHEC', period:'2023–2024', details:'Diagnostic pannes logicielles & matérielles (Windows/Linux).'},
+          {title:'Network Basics Project – EPHEC', period:'2023–2025', details:'Config routeurs/switches, adressage IP, troubleshooting.'},
+          {title:'Group IT Project – EPHEC', period:'2023–2025', details:'Gestion de projet, présentation de solution (ex: multiprise connectée).'},
+          {title:'Personal Tech Support', period:'2023–Maintenant', details:'Assistance famille/amis : installs, réseau, bugs quotidiens.'}
+        ],
+        education:[
+          {title:'Bachelier TI', place:'EPHEC – Bruxelles', period:'2023–…'},
+          {title:'MOOC Python', place:'OpenClassrooms', period:'2022'},
+          {title:'CESS', place:'Lycée Daschbeck – Bruxelles', period:'2021'}
         ],
         languages:[
           {name:'Français', level:'Courant'},
           {name:'Arabe', level:'Courant'},
           {name:'Anglais', level:'B2'},
           {name:'Néerlandais', level:'Bases'}
-        ],
-        experience:[
-          {title:'IT Support Practice – EPHEC', period:'2023–2024', details:'Diagnostic de pannes logicielles & matérielles (Windows/Linux).'},
-          {title:'Network Basics Project – EPHEC', period:'2023–2025', details:'Config routeurs/switches, adressage IP, troubleshooting.'},
-          {title:'Group IT Project – EPHEC', period:'2023–2025', details:'Gestion de projet, présentation de solution (ex: multiprise connectée).'},
-          {title:'Personal Tech Support', period:'2023–Maintenant', details:'Assistance famille/amis : install systèmes, réseau, problèmes quotidiens.'}
-        ],
-        education:[
-          {title:"Bachelier TI", place:'EPHEC – Bruxelles', period:'2023–…'},
-          {title:'MOOC Python', place:'OpenClassrooms', period:'2022'},
-          {title:'CESS', place:'Lycée Daschbeck – Bruxelles', period:'2021'}
         ]
       },
       items: []
@@ -75,83 +76,61 @@
 
     const capCounted = (item) => item.type === 'training' ? Math.min(item.hours, 10) : item.hours;
 
-    function usePortfolio(){
+    function useData(){
       const [data, setData] = useState(()=>{
-        try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState; }catch{ return defaultState; }
+        try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || preset; }catch{ return preset; }
       });
       useEffect(()=>{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }, [data]);
       return [data, setData];
     }
 
-    function Progress({soft, tech}){
-      const total = soft + tech;
+    function Navbar({route,setRoute}){
       return (
-        <div className="space-y-3">
-          <div>
-            <div className="flex justify-between text-sm"><span>Soft skills</span><span>{soft} / 10h</span></div>
-            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, soft/10*100)+"%"}}/></div>
-          </div>
-          <div>
-            <div className="flex justify-between text-sm"><span>Informatique</span><span>{tech} / 50h</span></div>
-            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, tech/50*100)+"%"}}/></div>
-          </div>
-          <div className="text-sm">Total comptabilisé: {total} / 60h</div>
-        </div>
-      );
-    }
-
-    function Modal({open, onClose, title, children}){
-      if(!open) return null;
-      return (
-        <div className="fixed inset-0 z-50 grid place-items-center">
-          <div className="absolute inset-0 bg-black/40" onClick={onClose}/>
-          <div className="relative glass rounded-2xl p-5 w-[min(680px,92vw)]">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <button className="px-3 py-1 rounded-lg bg-slate-700 hover:bg-slate-600" onClick={onClose}>✕</button>
-            </div>
-            {children}
-          </div>
-        </div>
-      );
-    }
-
-    function Navbar({tab,setTab,onExport,onImport,onPrint}){
-      return (
-        <header className="sticky top-0 z-40 glass rounded-2xl px-4 py-3 mb-6">
+        <div className="sticky top-0 z-40 glass rounded-2xl px-4 py-3 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-cyan-400/20 grid place-items-center text-cyan-300 font-extrabold">B3</div>
+            <div className="w-10 h-10 rounded-2xl grad grid place-items-center text-cyan-200 font-extrabold">SZ</div>
             <div>
-              <h1 className="text-xl font-semibold">Portfolio Bac 3</h1>
-              <p className="text-xs text-slate-400">Objectif: 60h — <span className="text-cyan-300">10h</span> soft • <span className="text-cyan-300">50h</span> IT</p>
+              <h1 className="text-xl font-semibold">Portfolio Saad</h1>
+              <p className="text-xs text-slate-400">Bac 3 — Objectif 60h (10h Soft • 50h IT)</p>
             </div>
             <nav className="ml-6 flex gap-2">
-              {['portfolio','cv'].map(k=> (
-                <button key={k} onClick={()=>setTab(k)} className={`chip px-3 py-1 rounded-full text-sm ${tab===k?'bg-cyan-500/20':''}`}>{k==='portfolio'?'Portfolio':'CV & Contact'}</button>
+              {[
+                {k:'home', label:'Accueil'},
+                {k:'cv', label:'CV'},
+                {k:'contact', label:'Contact'}
+              ].map(t=> (
+                <button key={t.k} onClick={()=>setRoute(t.k)} className={`chip px-3 py-1 rounded-full text-sm hover:bg-cyan-500/20 transition ${route===t.k?'bg-cyan-500/20':''}`}>{t.label}</button>
               ))}
             </nav>
-            <div className="ml-auto flex gap-2 no-print">
-              {tab==='portfolio' && (
-                <>
-                  <button className="btn px-3 py-1.5 rounded-xl" onClick={onExport}>Exporter JSON</button>
-                  <label className="btn px-3 py-1.5 rounded-xl cursor-pointer">Importer JSON
-                    <input type="file" accept="application/json" className="hidden" onChange={onImport}/>
-                  </label>
-                  <button className="btn px-3 py-1.5 rounded-xl" onClick={onPrint}>Imprimer / PDF</button>
-                </>
-              )}
-            </div>
+            <div className="ml-auto text-sm text-slate-400 hidden sm:block">{new Date().getFullYear()}</div>
           </div>
-        </header>
+        </div>
       )
     }
 
     function App(){
-      const [data, setData] = usePortfolio();
+      const [data, setData] = useData();
+      const [route, setRoute] = useState('home');
+
+      return (
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <Navbar route={route} setRoute={setRoute}/>
+          <AnimatePresence mode="wait">
+            {route==='home' && <PageHome key="home" data={data} setData={setData}/>} 
+            {route==='cv' && <PageCV key="cv" data={data}/>} 
+            {route==='contact' && <PageContact key="contact" data={data}/>}
+          </AnimatePresence>
+          <footer className="text-center text-slate-500 py-10">React + Tailwind + Framer Motion — Données préremplies — GitHub Pages.</footer>
+        </div>
+      );
+    }
+
+    // ————————— PAGE ACCUEIL (portfolio 60h) —————————
+    function PageHome({data, setData}){
+      const { meta } = data;
       const [filter, setFilter] = useState('all');
       const [openForm, setOpenForm] = useState(false);
       const [editId, setEditId] = useState(null);
-      const [tab, setTab] = useState('portfolio');
 
       const itemsSorted = useMemo(()=> data.items.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')), [data.items]);
 
@@ -162,11 +141,11 @@
           if(it.category==='soft') soft+=c; else tech+=c;
         }
         soft = Math.round(soft*2)/2; tech = Math.round(tech*2)/2;
-        return {soft, tech};
+        return {soft, tech, total: soft+tech};
       }, [data.items]);
 
       const warnings = useMemo(()=>{
-        const arr=[]; const total = totals.soft + totals.tech;
+        const arr=[]; const total = totals.total;
         if(totals.soft>10) arr.push('Soft skills > 10h : le surplus ne comptera pas.');
         if(totals.tech>50) arr.push('Informatique > 50h : le surplus ne comptera pas.');
         if(total<60) arr.push(`Il manque ${Math.round((60-total)*2)/2}h pour atteindre 60h.`);
@@ -188,127 +167,133 @@
         });
         setOpenForm(false); setEditId(null);
       }
-
       function onDelete(id){ setData(s=>({...s, items: s.items.filter(i=>i.id!==id)})); }
-      function onExport(){ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='portfolio_bac3.json'; a.click(); URL.revokeObjectURL(url); }
-      function onImport(e){ const f=e.target.files?.[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ try{ setData(JSON.parse(rd.result)); }catch{ alert('Fichier invalide'); } }; rd.readAsText(f); e.target.value=''; }
-      function onPrint(){ window.print(); }
 
       return (
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <Navbar tab={tab} setTab={setTab} onExport={onExport} onImport={onImport} onPrint={onPrint}/>
+        <motion.div
+          initial={{opacity:0, y:12}}
+          animate={{opacity:1, y:0}}
+          exit={{opacity:0, y:-12}}
+          transition={{duration:.35}}
+          className="space-y-6"
+        >
+          <section className="grid md:grid-cols-[1.2fr,1fr] gap-6">
+            <motion.div className="glass rounded-2xl p-6" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.05}}>
+              <h2 className="text-lg font-semibold mb-3">À propos</h2>
+              {/* Infos FIXES (non éditables) */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Field label="Nom" value={meta.name}/>
+                <Field label="Email" value={meta.email} link={`mailto:${meta.email}`}/>
+                <Field label="Établissement" value={meta.school}/>
+                <Field label="Année" value={meta.year}/>
+              </div>
+              <div className="mt-3 text-slate-300">{meta.summary}</div>
+              <div className="flex flex-wrap gap-3 mt-3 text-sm text-slate-300">
+                <span className="chip px-3 py-1 rounded-full">📍 {meta.location}</span>
+                <a className="chip px-3 py-1 rounded-full link" href={`mailto:${meta.email}`}>✉️ {meta.email}</a>
+                <a className="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 {meta.phone}</a>
+                <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
+              </div>
+            </motion.div>
 
-          {tab==='portfolio' ? (
-            <>
-              <section className="grid md:grid-cols-[1.1fr,1fr] gap-6">
-                <div className="glass rounded-2xl p-5">
-                  <h2 className="text-lg font-semibold mb-3">À propos</h2>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <TextField label="Nom" value={data.meta.name} onChange={v=>setData(s=>({...s, meta:{...s.meta, name:v}}))}/>
-                    <TextField label="Email" value={data.meta.email} onChange={v=>setData(s=>({...s, meta:{...s.meta, email:v}}))}/>
-                    <TextField label="Établissement" value={data.meta.school} onChange={v=>setData(s=>({...s, meta:{...s.meta, school:v}}))}/>
-                    <TextField label="Année" value={data.meta.year} onChange={v=>setData(s=>({...s, meta:{...s.meta, year:v}}))}/>
-                  </div>
-                  <TextArea className="mt-3" label="Résumé" rows={3} value={data.meta.summary} onChange={v=>setData(s=>({...s, meta:{...s.meta, summary:v}}))}/>
-                  <div className="flex flex-wrap gap-3 mt-3 text-sm text-slate-300">
-                    <span className="chip px-3 py-1 rounded-full">📍 {data.social.location}</span>
-                    <a className="chip px-3 py-1 rounded-full link" href={`mailto:${data.meta.email}`}>✉️ {data.meta.email}</a>
-                    <a className="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 {data.social.phone}</a>
-                    <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={data.social.linkedin}>🔗 LinkedIn</a>
-                  </div>
-                </div>
+            <motion.div className="glass rounded-2xl p-6" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:.1}}>
+              <h2 className="text-lg font-semibold mb-3">Progression</h2>
+              <Progress soft={totals.soft} tech={totals.tech}/>
+              {warnings.length>0 && (<div className="mt-3 text-amber-300 text-sm space-y-1">{warnings.map((w,i)=>(<div key={i}>• {w}</div>))}</div>)}
+              <div className="mt-4">
+                <button className="btn px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 transition" onClick={()=>{setOpenForm(true); setEditId(null);}}>+ Ajouter une activité</button>
+              </div>
+            </motion.div>
+          </section>
 
-                <div className="glass rounded-2xl p-5">
-                  <h2 className="text-lg font-semibold mb-3">Progression</h2>
-                  <Progress soft={totals.soft} tech={totals.tech}/>
-                  {warnings.length>0 && (<div className="mt-3 text-amber-300 text-sm space-y-1">{warnings.map((w,i)=>(<div key={i}>• {w}</div>))}</div>)}
-                  <div className="mt-4 no-print">
-                    <button className="btn px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30" onClick={()=>{setOpenForm(true); setEditId(null);}}>+ Ajouter une activité</button>
-                  </div>
-                </div>
-              </section>
+          <section className="no-print mt-1 flex flex-wrap gap-2">
+            {['all','soft','tech','training','project','event','volunteering','other'].map(k=> (
+              <button key={k} onClick={()=>setFilter(k)} className={`chip px-3 py-1 rounded-full text-sm hover:bg-cyan-500/20 transition`}>{k==='all'?'Tout':k}</button>
+            ))}
+          </section>
 
-              <section className="no-print mt-4 flex flex-wrap gap-2">
-                {['all','soft','tech','training','project','event','volunteering','other'].map(k=> (
-                  <button key={k} onClick={()=>setFilter(k)} className={`chip px-3 py-1 rounded-full text-sm ${filter===k?'bg-cyan-500/20':''}`}>{k==='all'?'Tout':k}</button>
-                ))}
-              </section>
+          <section className="grid md:grid-cols-2 gap-4">
+            <AnimatePresence>
+              {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).map(it => (
+                <motion.div key={it.id} initial={{opacity:0, y:8}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-8}}>
+                  <Card item={it} onEdit={()=>{setEditId(it.id); setOpenForm(true);}} onDelete={()=>onDelete(it.id)} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+            {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).length===0 && (
+              <div className="text-slate-400">Aucune activité. Ajoute ta première entrée avec « + Ajouter une activité ».</div>
+            )}
+          </section>
 
-              <section className="grid md:grid-cols-2 gap-4 mt-4">
-                {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).map(it => (
-                  <Card key={it.id} item={it} onEdit={()=>{setEditId(it.id); setOpenForm(true);}} onDelete={()=>onDelete(it.id)} />
-                ))}
-                {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).length===0 && (
-                  <div className="text-slate-400">Aucune activité. Ajoute ta première entrée avec « + Ajouter une activité ».</div>
-                )}
-              </section>
+          <section className="glass rounded-2xl p-6">
+            <h2 className="text-lg font-semibold mb-2">Tableau récapitulatif</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="text-slate-300">
+                  <tr>
+                    <th className="text-left py-2">Titre</th>
+                    <th className="text-left">Catégorie</th>
+                    <th className="text-left">Type</th>
+                    <th className="text-right">Heures réelles</th>
+                    <th className="text-right">Heures comptées</th>
+                    <th className="text-left">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {itemsSorted.map(it=> (
+                    <tr key={it.id} className="border-t border-slate-700/50">
+                      <td className="py-2">{it.title}</td>
+                      <td>{it.category==='soft'?'Soft':'IT'}</td>
+                      <td>{it.type}</td>
+                      <td className="text-right">{it.hours}</td>
+                      <td className="text-right">{capCounted(it)}</td>
+                      <td>{it.date? new Date(it.date).toLocaleDateString('fr-BE'):''}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-              <section className="glass rounded-2xl p-5 mt-6">
-                <h2 className="text-lg font-semibold mb-2">Tableau récapitulatif</h2>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead className="text-slate-300">
-                      <tr>
-                        <th className="text-left py-2">Titre</th>
-                        <th className="text-left">Catégorie</th>
-                        <th className="text-left">Type</th>
-                        <th className="text-right">Heures réelles</th>
-                        <th className="text-right">Heures comptées</th>
-                        <th className="text-left">Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {itemsSorted.map(it=> (
-                        <tr key={it.id} className="border-t border-slate-700/50">
-                          <td className="py-2">{it.title}</td>
-                          <td>{it.category==='soft'?'Soft':'IT'}</td>
-                          <td>{it.type}</td>
-                          <td className="text-right">{it.hours}</td>
-                          <td className="text-right">{capCounted(it)}</td>
-                          <td>{it.date? new Date(it.date).toLocaleDateString('fr-BE'):''}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
+          <Modal open={openForm} onClose={()=>{setOpenForm(false); setEditId(null);}} title={editId? 'Modifier une activité':'Ajouter une activité'}>
+            <EntryForm item={data.items.find(i=>i.id===editId)} onSave={onSaveItem} />
+          </Modal>
+        </motion.div>
+      );
+    }
 
-              <Modal open={openForm} onClose={()=>{setOpenForm(false); setEditId(null);}} title={editId? 'Modifier une activité':'Ajouter une activité'}>
-                <EntryForm item={data.items.find(i=>i.id===editId)} onSave={onSaveItem} />
-              </Modal>
-            </>
-          ) : (
-            <CVAndContact data={data} />
-          )}
-
-          <footer className="text-center text-slate-500 py-10">Fait avec ♥ — React (CDN) — Export JSON & Impression PDF — CV & Contact intégrés.</footer>
+    function Field({label, value, link}){
+      const content = link ? <a className="underline link" href={link}>{value}</a> : <span>{value}</span>;
+      return (
+        <div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
+          <div className="mt-1 text-slate-200">{content}</div>
         </div>
       );
     }
 
-    function TextField({label, value, onChange, className=''}){
+    function Progress({soft, tech}){
+      const total = soft + tech;
       return (
-        <div className={className}>
-          <label className="text-xs uppercase tracking-wide text-slate-400">{label}</label>
-          <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value||''} onChange={e=>onChange(e.target.value)} />
-        </div>
-      );
-    }
-
-    function TextArea({label, value, onChange, rows=3, className=''}){
-      return (
-        <div className={className}>
-          <label className="text-xs uppercase tracking-wide text-slate-400">{label}</label>
-          <textarea rows={rows} className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value||''} onChange={e=>onChange(e.target.value)} />
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between text-sm"><span>Soft skills</span><span>{soft} / 10h</span></div>
+            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, soft/10*100)+"%"}}/></div>
+          </div>
+          <div>
+            <div className="flex justify-between text-sm"><span>Informatique</span><span>{tech} / 50h</span></div>
+            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, tech/50*100)+"%"}}/></div>
+          </div>
+          <div className="text-sm">Total comptabilisé: {total} / 60h</div>
         </div>
       );
     }
 
     function Card({item, onEdit, onDelete}){
       return (
-        <article className="glass rounded-2xl p-5 space-y-3">
+        <article className="glass rounded-2xl p-5 space-y-3 hover:translate-y-[-2px] hover:shadow-xl transition">
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-cyan-300/20 grid place-items-center text-cyan-300 font-bold">{item.category==='soft'?'S':'IT'}</div>
+            <div className="w-10 h-10 rounded-2xl grad grid place-items-center text-cyan-200 font-bold">{item.category==='soft'?'S':'IT'}</div>
             <div className="flex-1">
               <h3 className="font-semibold text-lg">{item.title}</h3>
               <div className="flex flex-wrap gap-2 mt-1">
@@ -327,7 +312,7 @@
           {item.description && (<p className="text-slate-300">{item.description}</p>)}
           {Array.isArray(item.links) && item.links.length>0 && (
             <div className="flex flex-wrap gap-2">
-              {item.links.map((l,idx)=> (<a key={idx} href={l} target="_blank" rel="noopener" className="underline text-cyan-300">Preuve</a>))}
+              {item.links.map((l,idx)=> (<a key={idx} href={l} target="_blank" rel="noopener" className="underline link">Preuve</a>))}
             </div>
           )}
         </article>
@@ -353,7 +338,10 @@
 
       return (
         <form className="grid md:grid-cols-4 gap-4" onSubmit={handleSubmit}>
-          <div className="md:col-span-2"><TextField label="Titre de l’activité" value={title} onChange={setTitle}/></div>
+          <div className="md:col-span-2">
+            <label className="text-xs uppercase tracking-wide text-slate-400">Titre de l’activité</label>
+            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={title} onChange={e=>setTitle(e.target.value)} />
+          </div>
           <div>
             <label className="text-xs uppercase tracking-wide text-slate-400">Catégorie</label>
             <select className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={category} onChange={e=>setCategory(e.target.value)}>
@@ -371,13 +359,22 @@
               <option value="other">Autre</option>
             </select>
           </div>
-          <div><TextField label={`Heures réelles${type==='training' ? ' (plafond 10h)': ''}`} value={hours} onChange={setHours}/></div>
+          <div>
+            <label className="text-xs uppercase tracking-wide text-slate-400">Heures réelles {type==='training' ? '(plafond 10h)' : ''}</label>
+            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={hours} onChange={e=>setHours(e.target.value)} />
+          </div>
           <div>
             <label className="text-xs uppercase tracking-wide text-slate-400">Date</label>
             <input type="date" className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={date} onChange={e=>setDate(e.target.value)}/>
           </div>
-          <div className="md:col-span-2"><TextField label="Description" value={description} onChange={setDescription}/></div>
-          <div className="md:col-span-4"><TextField label="Preuves (liens séparés par des virgules)" value={links} onChange={setLinks}/></div>
+          <div className="md:col-span-2">
+            <label className="text-xs uppercase tracking-wide text-slate-400">Description</label>
+            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={description} onChange={e=>setDescription(e.target.value)} />
+          </div>
+          <div className="md:col-span-4">
+            <label className="text-xs uppercase tracking-wide text-slate-400">Preuves (liens séparés par des virgules)</label>
+            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={links} onChange={e=>setLinks(e.target.value)} />
+          </div>
 
           <div className="md:col-span-3 text-sm text-slate-400">Heures comptées: <span className="text-cyan-300 font-semibold">{counted}h</span></div>
           <div className="md:col-span-1 flex items-end justify-end">
@@ -387,55 +384,63 @@
       );
     }
 
-    function CVAndContact({data}){
+    // ————————— PAGE CV —————————
+    function PageCV({data}){
+      const {cv, meta} = data;
       return (
-        <div className="grid lg:grid-cols-2 gap-6">
-          <section className="glass rounded-2xl p-5">
-            <h2 className="text-lg font-semibold mb-3">Mon CV</h2>
-            <div className="space-y-5">
-              <div>
-                <h3 className="font-semibold mb-2">Compétences</h3>
-                <ul className="grid sm:grid-cols-2 gap-2 text-sm list-disc list-inside text-slate-300">
-                  {data.cv.skills.map((s,i)=>(<li key={i}>{s}</li>))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Expériences</h3>
-                <ul className="space-y-2 text-sm">
-                  {data.cv.experience.map((e,i)=> (
-                    <li key={i} className="chip rounded-xl px-3 py-2">
-                      <div className="font-medium">{e.title} <span className="text-slate-400">• {e.period}</span></div>
-                      <div className="text-slate-300">{e.details}</div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Éducation</h3>
-                <ul className="space-y-2 text-sm">
-                  {data.cv.education.map((e,i)=> (
-                    <li key={i} className="chip rounded-xl px-3 py-2">
-                      <div className="font-medium">{e.title}</div>
-                      <div className="text-slate-300">{e.place} • {e.period}</div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Langues</h3>
-                <div className="flex flex-wrap gap-2 text-sm">
-                  {data.cv.languages.map((l,i)=>(<span key={i} className="chip px-3 py-1 rounded-full">{l.name} — {l.level}</span>))}
-                </div>
-              </div>
+        <motion.div initial={{opacity:0, y:12}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-12}} transition={{duration:.35}} className="grid lg:grid-cols-2 gap-6">
+          <section className="glass rounded-2xl p-6">
+            <h2 className="text-lg font-semibold mb-1">{meta.name}</h2>
+            <p className="text-slate-400">{meta.summary}</p>
+            <div className="flex flex-wrap gap-2 mt-3 text-sm">
+              <span className="chip px-3 py-1 rounded-full">📍 {meta.location}</span>
+              <a className="chip px-3 py-1 rounded-full link" href={`mailto:${meta.email}`}>✉️ {meta.email}</a>
+              <a className="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 {meta.phone}</a>
+              <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
+            </div>
+
+            <h3 className="mt-6 font-semibold">Compétences</h3>
+            <ul className="grid sm:grid-cols-2 gap-2 text-sm list-disc list-inside text-slate-300 mt-2">
+              {cv.skills.map((s,i)=>(<li key={i}>{s}</li>))}
+            </ul>
+
+            <h3 className="mt-6 font-semibold">Langues</h3>
+            <div className="flex flex-wrap gap-2 text-sm mt-2">
+              {cv.languages.map((l,i)=>(<span key={i} className="chip px-3 py-1 rounded-full">{l.name} — {l.level}</span>))}
             </div>
           </section>
 
-          <ContactForm to={data.meta.email} phone={data.social.phone} linkedin={data.social.linkedin} />
-        </div>
-      )
+          <section className="space-y-6">
+            <div className="glass rounded-2xl p-6">
+              <h3 className="font-semibold mb-2">Expériences</h3>
+              <ul className="space-y-2 text-sm">
+                {cv.experience.map((e,i)=> (
+                  <li key={i} className="chip rounded-xl px-3 py-2">
+                    <div className="font-medium">{e.title} <span className="text-slate-400">• {e.period}</span></div>
+                    <div className="text-slate-300">{e.details}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass rounded-2xl p-6">
+              <h3 className="font-semibold mb-2">Éducation</h3>
+              <ul className="space-y-2 text-sm">
+                {cv.education.map((e,i)=> (
+                  <li key={i} className="chip rounded-xl px-3 py-2">
+                    <div className="font-medium">{e.title}</div>
+                    <div className="text-slate-300">{e.place} • {e.period}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </motion.div>
+      );
     }
 
-    function ContactForm({to, phone, linkedin}){
+    // ————————— PAGE CONTACT —————————
+    function PageContact({data}){
+      const {meta} = data;
       const [name,setName]=useState('');
       const [email,setEmail]=useState('');
       const [msg,setMsg]=useState('');
@@ -444,25 +449,54 @@
         e.preventDefault();
         const subject = encodeURIComponent('Contact depuis le portfolio');
         const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${meta.email}?subject=${subject}&body=${body}`;
       }
 
       return (
-        <section className="glass rounded-2xl p-5">
-          <h2 className="text-lg font-semibold mb-3">Contact</h2>
-          <form className="grid gap-3" onSubmit={handleSubmit}>
-            <TextField label="Votre nom" value={name} onChange={setName}/>
-            <TextField label="Votre email" value={email} onChange={setEmail}/>
-            <TextArea label="Message" rows={5} value={msg} onChange={setMsg}/>
-            <div className="flex items-center gap-2">
-              <button className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">Envoyer ✉️</button>
-              <a className="chip px-3 py-1 rounded-full link" href={`tel:+32471874910`}>📞 Appeler</a>
-              <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={linkedin}>🔗 LinkedIn</a>
-            </div>
-            <p className="text-xs text-slate-400">Astuce : si l’email ne s’ouvre pas automatiquement, copiez l’adresse {to} et envoyez votre message depuis votre boîte mail.</p>
-          </form>
-        </section>
-      )
+        <motion.div initial={{opacity:0, y:12}} animate={{opacity:1, y:0}} exit={{opacity:0, y:-12}} transition={{duration:.35}} className="grid lg:grid-cols-2 gap-6">
+          <section className="glass rounded-2xl p-6">
+            <h2 className="text-lg font-semibold mb-3">Écrivez‑moi</h2>
+            <form className="grid gap-3" onSubmit={handleSubmit}>
+              <LabeledInput label="Votre nom" value={name} onChange={setName}/>
+              <LabeledInput label="Votre email" value={email} onChange={setEmail}/>
+              <LabeledTextarea label="Message" value={msg} onChange={setMsg}/>
+              <div className="flex items-center gap-2">
+                <button className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">Envoyer ✉️</button>
+                <a className="chip px-3 py-1 rounded-full link" href={`tel:+32471874910`}>📞 Appeler</a>
+                <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
+              </div>
+              <p className="text-xs text-slate-400">Si l’email ne s’ouvre pas automatiquement, copiez l’adresse {meta.email} dans votre messagerie.</p>
+            </form>
+          </section>
+
+          <section className="glass rounded-2xl p-6">
+            <h2 className="text-lg font-semibold mb-3">Coordonnées</h2>
+            <ul className="space-y-2 text-sm">
+              <li className="chip rounded-xl px-3 py-2">📍 {meta.location}</li>
+              <li className="chip rounded-xl px-3 py-2">✉️ <a className="underline link" href={`mailto:${meta.email}`}>{meta.email}</a></li>
+              <li className="chip rounded-xl px-3 py-2">📞 <a className="underline link" href="tel:+32471874910">{meta.phone}</a></li>
+              <li className="chip rounded-xl px-3 py-2">🔗 <a className="underline link" target="_blank" rel="noopener" href={meta.linkedin}>LinkedIn</a></li>
+            </ul>
+          </section>
+        </motion.div>
+      );
+    }
+
+    function LabeledInput({label, value, onChange}){
+      return (
+        <div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
+          <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value} onChange={e=>onChange(e.target.value)} />
+        </div>
+      );
+    }
+    function LabeledTextarea({label, value, onChange}){
+      return (
+        <div>
+          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
+          <textarea rows="6" className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value} onChange={e=>onChange(e.target.value)} />
+        </div>
+      );
     }
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
