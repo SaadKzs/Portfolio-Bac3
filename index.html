@@ -3,276 +3,188 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Saad – Bac3</title>
-  <meta name="description" content="Portfolio Bac3 – Accueil, CV, Contact. Design épuré, infos figées, synthèse des heures.">
+  <title>Saad – Portfolio Bac3</title>
+  <meta name="description" content="Portfolio Bac3 – Nouvelle maquette ultra épurée, 3 pages, infos figées.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
   <style>
-  /* =====================
-     THEME: "Aurora NeoGlass"
-     (juste CSS – rien d'autre à changer)
-     ===================== */
-  :root{
-    --bg:#0a1224;         /* fond profond */
-    --fg:#e6efff;         /* texte clair */
-    --muted:#8aa0c8;      /* texte secondaire */
-    --card:#0f1933cc;     /* cartes translucides */
-    --stroke:#2a3a5f;     /* bordures */
-    --accent:#7dd3fc;     /* cyan */
-    --accent-2:#a78bfa;   /* violet */
-    --accent-3:#34d399;   /* vert */
-  }
-
-  /* --------- Layout de base --------- */
-  html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
-  body{min-height:100vh;background:
-      radial-gradient(900px 500px at -10% -20%, rgba(125,211,252,.15), transparent 60%),
-      radial-gradient(900px 500px at 110% 0%, rgba(167,139,250,.15), transparent 60%),
-      var(--bg);
-    color:var(--fg);
-    letter-spacing:.01em;
-  }
-
-  /* Liens et focus */
-  a{color:var(--fg); text-decoration-color:rgba(125,211,252,.5); text-underline-offset:3px}
-  a:hover{color:#fff; text-decoration-color:var(--accent)}
-  :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:10px}
-
-  /* Header translucide */
-  header{background:linear-gradient(180deg, rgba(10,18,36,.7), rgba(10,18,36,.3));
-         backdrop-filter:blur(10px); border-bottom:1px solid rgba(138,160,200,.18)}
-  header .w-9{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0a1224}
-  header a:hover{background:rgba(138,160,200,.12)}
-
-  /* Cartes (neo-glass) */
-  .card{background:var(--card); border:1px solid rgba(138,160,200,.18); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .card:hover{transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.32); transition:transform .25s ease, box-shadow .25s ease}
-
-  /* Texte secondaire + séparateurs */
-  .muted{color:var(--muted)}
-  .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(138,160,200,.25), transparent)}
-
-  /* Pills / badges minimalistes */
-  .pill, .px-2\.5{border:1px solid rgba(138,160,200,.25); background:rgba(138,160,200,.08)}
-
-  /* Titres section avec filet dégradé */
-  h2, h3{letter-spacing:-.01em}
-  .section-title{position:relative; padding-bottom:8px;}
-  .section-title::after{content:""; position:absolute; left:0; bottom:0; height:2px; width:72px; border-radius:999px;
-    background:linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3))}
-
-  /* Barres de progression (dégradé animé) */
-  .bar{height:8px; background:rgba(138,160,200,.2); border-radius:999px; overflow:hidden}
-  .bar>span{display:block; height:100%;
-            background:linear-gradient(90deg, var(--accent), var(--accent-2));
-            background-size:200% 100%; animation:slide 4s linear infinite}
-  @keyframes slide{to{background-position:100% 0}}
-
-  /* Tableau allégé */
-  table{border-collapse:collapse}
-  thead{color:var(--muted)}
-  tbody tr{border-top:1px solid rgba(138,160,200,.18)}
-  tbody tr:hover{background:rgba(125,211,252,.06)}
-
-  /* Champs formulaires */
-  input, textarea{background:rgba(255,255,255,.02); border:1px solid rgba(138,160,200,.25); color:var(--fg);
-                  border-radius:12px; padding:10px}
-  input::placeholder, textarea::placeholder{color:rgba(138,160,200,.65)}
-
-  /* Boutons */
-  button{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0a1224;
-         border:none; border-radius:12px; padding:.6rem 1rem; font-weight:600}
-  button:hover{filter:brightness(1.05)}
-
-  /* Mode clair automatique (garde un style chic) */
-  @media (prefers-color-scheme: light){
-    :root{--bg:#f6f8ff; --fg:#0b1020; --muted:#6b7280}
-    body{background:
-      radial-gradient(800px 420px at -10% -10%, rgba(34,197,94,.12), transparent 55%),
-      radial-gradient(760px 420px at 110% 0%, rgba(59,130,246,.10), transparent 55%),
-      var(--bg);
-    }
-    header{background:rgba(255,255,255,.7); border-bottom:1px solid #e5e7eb}
-    .card{background:rgba(255,255,255,.8); border:1px solid #e5e7eb; box-shadow:0 10px 30px rgba(2,6,23,.06)}
-    .pill, .px-2\.5{background:#f4f7ff; border-color:#e5e7eb}
-    .bar{background:#eef2ff}
-    tbody tr:hover{background:#f8fafc}
-    button{color:white}
-  }
-
-  /* Apparitions douces */
-  @keyframes fadeIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)}}
-  .fade-in{animation:fadeIn .35s ease both}
-</style>
+    /* ======== THEME "PaperSky" — look radicalement différent ======== */
+    :root{ --ink:#0c1325; --muted:#6b7280; --bg:#f8fafc; --paper:#ffffff; --line:#e5e7eb; --accent:#0ea5e9 }
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; color:var(--ink); background:var(--bg)}
+    .paper{background:var(--paper); border:1px solid var(--line); border-radius:20px}
+    .muted{color:var(--muted)}
+    .headline{font-family:Fraunces, serif; letter-spacing:-.02em}
+    .btn{border:1px solid var(--ink); border-radius:999px; padding:.55rem 1rem; font-weight:600}
+    .btn:hover{background:var(--ink); color:white}
+    .rule{height:1px; background:linear-gradient(90deg,transparent,var(--line),transparent)}
+    .dash{border:1px dashed var(--line)}
+    /* Animations sobres */
+    @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+    .rise{animation:rise .4s ease both}
+    /* Dark opt-in */
+    @media (prefers-color-scheme: dark){ :root{--ink:#eef2ff; --muted:#94a3b8; --bg:#0b1020; --paper:#0e1529; --line:#1f2a44} .btn{border-color:#eef2ff} }
+  </style>
 </head>
-<body class="min-h-full">
-  <!-- NAVBAR -->
-  <header class="bg-white/80 backdrop-blur border-b border-slate-200 sticky top-0 z-40 dark:bg-[#0e1529]/80 dark:border-[#1f2a44]">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-slate-900 text-white grid place-items-center text-xs font-extrabold dark:bg-white dark:text-slate-900">SZ</div>
-      <div class="leading-tight">
-        <h1 class="text-base font-semibold">Portfolio Saad</h1>
-        <p class="text-xs muted">Bac 3 — 60h (10h Soft • 50h IT)</p>
-      </div>
-      <nav class="ml-6 flex gap-1 text-sm">
-        <a href="#home" class="px-3 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111a34]">Accueil</a>
-        <a href="#cv" class="px-3 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111a34]">CV</a>
-        <a href="#contact" class="px-3 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111a34]">Contact</a>
-      </nav>
-      <span class="ml-auto text-xs muted" id="year"></span>
-    </div>
-  </header>
+<body class="h-full">
 
-  <main class="max-w-5xl mx-auto px-4 py-8 space-y-10">
-    <!-- ACCUEIL -->
-    <section id="home" class="space-y-8 fade-in">
-      <div class="grid md:grid-cols-[1.4fr,1fr] gap-6 items-stretch">
-        <div class="card">
-          <h2 class="text-lg font-semibold">À propos</h2>
-          <p class="mt-2" id="summary"></p>
-          <div class="grid sm:grid-cols-2 gap-3 mt-4 text-sm">
-            <div><div class="muted">Nom</div><div class="mt-0.5">Zebiri Saad</div></div>
-            <div><div class="muted">Email</div><div class="mt-0.5"><a class="underline" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a></div></div>
-            <div><div class="muted">Établissement</div><div class="mt-0.5">EPHEC – TI</div></div>
-            <div><div class="muted">Année</div><div class="mt-0.5">Bac 3 – 2025</div></div>
+  <!-- LAYOUT: Sidebar fixe + contenu pages -->
+  <div class="max-w-6xl mx-auto px-4 lg:px-6 py-6 lg:grid lg:grid-cols-[280px,1fr] gap-8">
+    <!-- Sidebar -->
+    <aside class="space-y-6">
+      <div class="paper p-5 rise">
+        <div class="text-sm muted">Portfolio</div>
+        <h1 class="headline text-3xl mt-1">Zebiri Saad</h1>
+        <p class="mt-3 text-sm">Bac 3 — EPHEC</p>
+        <div class="rule my-4"></div>
+        <nav class="flex lg:flex-col gap-2 text-sm">
+          <a href="#home" class="btn">Accueil</a>
+          <a href="#cv" class="btn">CV</a>
+          <a href="#contact" class="btn">Contact</a>
+        </nav>
+      </div>
+      <div class="paper p-5 rise">
+        <div class="text-sm muted">Coordonnées</div>
+        <ul class="mt-2 text-sm space-y-1">
+          <li>📍 Bruxelles</li>
+          <li>✉️ <a class="underline" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a></li>
+          <li>📞 <a class="underline" href="tel:+32471874910">0471 87 49 10</a></li>
+          <li>🔗 <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="text-xs muted">© <span id="year"></span> — PaperSky</div>
+    </aside>
+
+    <!-- Pages -->
+    <section class="space-y-8">
+      <!-- HOME -->
+      <div id="home" class="space-y-8">
+        <!-- Hero très aéré -->
+        <header class="paper p-8 lg:p-12 rise">
+          <p class="uppercase tracking-wide text-xs muted">À propos</p>
+          <h2 class="headline text-4xl lg:text-5xl mt-2">Construire, apprendre, sécuriser.</h2>
+          <p id="summary" class="mt-5 max-w-3xl leading-relaxed text-[15.5px]"></p>
+          <div class="rule my-6"></div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+            <div class="dash rounded-xl p-3"><div class="muted">Établissement</div><div class="mt-1">EPHEC – Technologie de l'Informatique</div></div>
+            <div class="dash rounded-xl p-3"><div class="muted">Année</div><div class="mt-1">Bac 3 – 2025</div></div>
+            <div class="dash rounded-xl p-3"><div class="muted">Objectif</div><div class="mt-1">Stage Réseaux/Cybersécurité</div></div>
           </div>
-          <div class="flex flex-wrap gap-2 mt-4 text-sm">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]">📍 Bruxelles</span>
-            <a class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]" href="tel:+32471874910">📞 0471 87 49 10</a>
-            <a class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+        </header>
+
+        <!-- Progression + Règles -->
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="paper p-6 rise">
+            <h3 class="text-lg font-semibold">Progression heures</h3>
+            <div id="progress" class="mt-4 space-y-4"></div>
+            <div id="warnings" class="text-xs muted mt-2"></div>
+          </div>
+          <div class="paper p-6 rise">
+            <h3 class="text-lg font-semibold">Règles</h3>
+            <ul class="mt-3 space-y-1 text-sm">
+              <li>• 10h <b>max/thème</b> (soft inclus)</li>
+              <li>• Une <b>formation</b> compte max 10h, même si > 10h réelles</li>
+              <li>• Cible totale : <b>60h</b> (10h soft + 50h IT)</li>
+            </ul>
           </div>
         </div>
-        <div class="card">
-          <h3 class="text-lg font-semibold">Progression</h3>
-          <div id="progress" class="mt-3"></div>
-          <div id="warnings" class="text-xs muted mt-2"></div>
+
+        <!-- Synthèse par thèmes -->
+        <div class="paper p-6 rise">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">Synthèse par thème</h3>
+            <span class="text-xs muted">Lecture seule</span>
+          </div>
+          <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+        </div>
+
+        <!-- Tableau -->
+        <div class="paper p-6 rise">
+          <h3 class="text-lg font-semibold mb-2">Récapitulatif détaillé</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm" id="summaryTable">
+              <thead class="muted">
+                <tr>
+                  <th class="text-left py-2">Thème</th>
+                  <th class="text-left">Activité</th>
+                  <th class="text-left">Type</th>
+                  <th class="text-right">Réelles</th>
+                  <th class="text-right">Comptées</th>
+                  <th class="text-left">Date</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card">
-          <h3 class="font-semibold">Projet professionnel</h3>
-          <p class="mt-2 muted">Stage en réseaux/cybersécurité ➜ admin réseau ➜ ingénieur sécurité. Intérêt pour l’automatisation (Python) & l’IA appliquée à la détection d’incidents.</p>
-        </div>
-        <div class="card">
-          <h3 class="font-semibold">Points forts</h3>
-          <ul class="mt-2 space-y-1 text-sm">
-            <li>Curiosité technique et autonomie</li>
-            <li>Esprit d’équipe et communication</li>
-            <li>Pédagogie (vulgarisation)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="font-semibold">Axes d’amélioration</h3>
-          <ul class="mt-2 space-y-1 text-sm">
-            <li>Gestion du temps et priorisation</li>
-            <li>Néerlandais (consolidation)</li>
-            <li>Rigueur documentaire</li>
-          </ul>
+      <!-- CV -->
+      <div id="cv" class="hidden space-y-8">
+        <div class="paper p-8 rise">
+          <h2 class="headline text-3xl">CV</h2>
+          <p id="cvSummary" class="mt-3 max-w-3xl leading-relaxed"></p>
+          <div class="rule my-6"></div>
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-lg font-semibold">Compétences</h3>
+              <ul id="skills" class="grid sm:grid-cols-2 gap-2 mt-2 text-sm"></ul>
+              <div class="rule my-6"></div>
+              <h3 class="text-lg font-semibold">Langues</h3>
+              <div id="languages" class="flex flex-wrap gap-2 mt-2 text-sm"></div>
+            </div>
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-semibold">Expériences</h3>
+                <ul id="xp" class="mt-2 space-y-2 text-sm"></ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold">Éducation</h3>
+                <ul id="edu" class="mt-2 space-y-2 text-sm"></ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold">Synthèse des activités par thème</h3>
-          <div class="text-xs muted">Max 10h/thème • Formation plafonnée à 10h</div>
-        </div>
-        <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
-      </div>
-
-      <div class="card">
-        <h3 class="text-lg font-semibold mb-2">Tableau récapitulatif</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm" id="summaryTable">
-            <thead class="muted">
-              <tr>
-                <th class="text-left py-2">Thème</th>
-                <th class="text-left">Activité</th>
-                <th class="text-left">Type</th>
-                <th class="text-right">Heures réelles</th>
-                <th class="text-right">Heures comptées</th>
-                <th class="text-left">Date</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+      <!-- CONTACT -->
+      <div id="contact" class="hidden space-y-8">
+        <div class="paper p-8 rise">
+          <h2 class="headline text-3xl">Contact</h2>
+          <p class="muted mt-2">Écrivez‑moi via le formulaire ci‑dessous ou utilisez un des raccourcis.</p>
+          <div class="grid lg:grid-cols-2 gap-8 mt-6">
+            <form id="contactForm" class="space-y-3">
+              <div>
+                <div class="text-xs muted">Votre nom</div>
+                <input name="name" class="w-full mt-1" required />
+              </div>
+              <div>
+                <div class="text-xs muted">Votre email</div>
+                <input type="email" name="email" class="w-full mt-1" required />
+              </div>
+              <div>
+                <div class="text-xs muted">Message</div>
+                <textarea name="msg" rows="6" class="w-full mt-1" required></textarea>
+              </div>
+              <button>Envoyer</button>
+            </form>
+            <div class="space-y-3 text-sm">
+              <a class="btn inline-block" href="tel:+32471874910">📞 Appeler</a>
+              <a class="btn inline-block" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+              <div class="rule my-4"></div>
+              <div class="muted text-xs">Si l’email ne s’ouvre pas, envoyez à <span class="underline">saadzebiri65@gmail.com</span>.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- CV -->
-    <section id="cv" class="space-y-6 hidden fade-in">
-      <div class="grid lg:grid-cols-2 gap-6">
-        <div class="card">
-          <h2 class="text-lg font-semibold">CV</h2>
-          <p class="mt-2 muted" id="cvSummary"></p>
-          <div class="divider my-4"></div>
-          <h3 class="font-semibold">Compétences</h3>
-          <ul id="skills" class="grid sm:grid-cols-2 gap-2 mt-2 text-sm"></ul>
-          <div class="divider my-4"></div>
-          <h3 class="font-semibold">Langues</h3>
-          <div id="languages" class="flex flex-wrap gap-2 mt-2 text-sm"></div>
-        </div>
-        <div class="space-y-6">
-          <div class="card">
-            <h3 class="font-semibold mb-2">Expériences</h3>
-            <ul id="xp" class="space-y-2 text-sm"></ul>
-          </div>
-          <div class="card">
-            <h3 class="font-semibold mb-2">Éducation</h3>
-            <ul id="edu" class="space-y-2 text-sm"></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="space-y-6 hidden fade-in">
-      <div class="grid lg:grid-cols-2 gap-6">
-        <div class="card">
-          <h2 class="text-lg font-semibold">Contact</h2>
-          <form class="grid gap-3 mt-3" id="contactForm">
-            <div>
-              <div class="text-xs muted">Votre nom</div>
-              <input name="name" class="w-full mt-1 rounded-lg bg-white border border-slate-200 px-3 py-2 dark:bg-[#0e1529] dark:border-[#1f2a44]" required />
-            </div>
-            <div>
-              <div class="text-xs muted">Votre email</div>
-              <input name="email" type="email" class="w-full mt-1 rounded-lg bg-white border border-slate-200 px-3 py-2 dark:bg-[#0e1529] dark:border-[#1f2a44]" required />
-            </div>
-            <div>
-              <div class="text-xs muted">Message</div>
-              <textarea name="msg" rows="6" class="w-full mt-1 rounded-lg bg-white border border-slate-200 px-3 py-2 dark:bg-[#0e1529] dark:border-[#1f2a44]" required></textarea>
-            </div>
-            <div class="flex items-center gap-2">
-              <button class="px-4 py-2 rounded-lg bg-slate-900 text-white hover:opacity-90 dark:bg-white dark:text-slate-900">Envoyer</button>
-              <a class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]" href="tel:+32471874910">📞 Appeler</a>
-              <a class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
-            </div>
-            <p class="text-xs muted">Si l’email ne s’ouvre pas, envoyez à <span class="underline">saadzebiri65@gmail.com</span>.</p>
-          </form>
-        </div>
-        <div class="card">
-          <h3 class="font-semibold mb-2">Coordonnées</h3>
-          <ul class="space-y-2 text-sm">
-            <li>📍 Bruxelles</li>
-            <li>✉️ <a class="underline" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a></li>
-            <li>📞 <a class="underline" href="tel:+32471874910">0471 87 49 10</a></li>
-            <li>🔗 <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="max-w-5xl mx-auto px-4 pb-10 text-xs muted">Design épuré — Données figées — Règles heures intégrées — GitHub Pages.</footer>
+  </div>
 
   <script>
-    // Données figées
+    // ===== Données figées =====
     const DATA = {
-      meta:{ summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer." },
+      meta:{summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."},
       cv:{
         skills:['Cisco / Packet Tracer','Linux basics','Admin Systèmes & Réseaux','Docker, DNS, HTTP/HTTPS, Mail','Web MERN (Mongo/Express/React/Node)','IoT & intégration soft/hard','Python, C, C++, JS, HTML/CSS','Git & GitHub'],
         experience:[
@@ -286,12 +198,7 @@
           {title:'MOOC Python', place:'OpenClassrooms', period:'2022'},
           {title:'CESS', place:'Lycée Daschbeck – Bruxelles', period:'2021'}
         ],
-        languages:[
-          {name:'Français', level:'Courant'},
-          {name:'Arabe', level:'Courant'},
-          {name:'Anglais', level:'B2'},
-          {name:'Néerlandais', level:'Bases'}
-        ]
+        languages:[{name:'Français',level:'Courant'},{name:'Arabe',level:'Courant'},{name:'Anglais',level:'B2'},{name:'Néerlandais',level:'Bases'}]
       },
       themes:[
         {id:'network', name:'Réseaux', type:'tech'},
@@ -302,120 +209,67 @@
         {id:'project', name:'Gestion de projet', type:'soft'}
       ],
       activities:[
-        // À compléter progressivement (lecture seule). Exemples :
+        // Exemple d’ajouts (lecture seule) :
         // {theme:'network', title:'Packet Tracer – switching', kind:'training', hours:12, date:'2025-02-10'},
         // {theme:'communication', title:'Pitch projet EPHEC', kind:'event', hours:4, date:'2025-03-05'},
       ]
     };
 
-    // Helpers
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('summary').textContent = DATA.meta.summary;
-    document.getElementById('cvSummary').textContent = DATA.meta.summary;
+    // ===== Helpers =====
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('summary').textContent=DATA.meta.summary;
+    document.getElementById('cvSummary').textContent=DATA.meta.summary;
 
     // Remplissage CV
-    document.getElementById('skills').innerHTML = DATA.cv.skills.map(s=>`<li>${s}</li>`).join('');
-    document.getElementById('languages').innerHTML = DATA.cv.languages.map(l=>`<span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#111a34]">${l.name} — ${l.level}</span>`).join('');
-    document.getElementById('xp').innerHTML = DATA.cv.experience.map(e=>`<li class="border border-slate-200 dark:border-[#1f2a44] rounded-lg p-2.5"><div class="font-medium">${e.title} <span class="muted">• ${e.period}</span></div><div class="muted">${e.details}</div></li>`).join('');
-    document.getElementById('edu').innerHTML = DATA.cv.education.map(e=>`<li class="border border-slate-200 dark:border-[#1f2a44] rounded-lg p-2.5"><div class="font-medium">${e.title}</div><div class="muted">${e.place} • ${e.period}</div></li>`).join('');
+    skills.innerHTML = DATA.cv.skills.map(s=>`<li class="dash rounded-xl p-2.5">${s}</li>`).join('');
+    languages.innerHTML = DATA.cv.languages.map(l=>`<span class="dash rounded-xl px-2.5 py-1">${l.name} — ${l.level}</span>`).join('');
+    xp.innerHTML = DATA.cv.experience.map(e=>`<li class="dash rounded-xl p-2.5"><div class="font-medium">${e.title} <span class="muted">• ${e.period}</span></div><div class="muted">${e.details}</div></li>`).join('');
+    edu.innerHTML = DATA.cv.education.map(e=>`<li class="dash rounded-xl p-2.5"><div class="font-medium">${e.title}</div><div class="muted">${e.place} • ${e.period}</div></li>`).join('');
 
-    // Règles heures
-    function countedActivityHours(a){ let h=a.hours||0; if(a.kind==='training') h=Math.min(h,10); return h; }
+    // Calculs heures
+    const countedActivityHours=a=> (a.kind==='training'? Math.min(a.hours||0,10): (a.hours||0));
     function aggregate(){
-      const themeTotals = Object.fromEntries(DATA.themes.map(t=>[t.id,0]));
+      const themeTotals=Object.fromEntries(DATA.themes.map(t=>[t.id,0]));
       const rows=[];
       for(const a of DATA.activities){
-        const counted = countedActivityHours(a);
-        const newThemeTotal = Math.min(10, themeTotals[a.theme] + counted);
-        const added = newThemeTotal - themeTotals[a.theme];
-        themeTotals[a.theme] = newThemeTotal;
-        rows.push({a, counted, countedAfterTheme: added});
+        const counted=countedActivityHours(a);
+        const newTotal=Math.min(10, themeTotals[a.theme]+counted);
+        const added=newTotal-themeTotals[a.theme];
+        themeTotals[a.theme]=newTotal;
+        rows.push({a,counted,added});
       }
-      const soft = DATA.themes.filter(t=>t.type==='soft').reduce((s,t)=>s+themeTotals[t.id],0);
-      const tech = DATA.themes.filter(t=>t.type==='tech').reduce((s,t)=>s+themeTotals[t.id],0);
-      return {themeTotals, soft, tech, rows};
+      const soft=DATA.themes.filter(t=>t.type==='soft').reduce((s,t)=>s+themeTotals[t.id],0);
+      const tech=DATA.themes.filter(t=>t.type==='tech').reduce((s,t)=>s+themeTotals[t.id],0);
+      return {themeTotals,soft,tech,rows};
     }
-
     function renderProgress(){
-      const {soft, tech} = aggregate();
-      const total = soft + tech;
-      const softPct = Math.min(100, (soft/10)*100);
-      const techPct = Math.min(100, (tech/50)*100);
-      document.getElementById('progress').innerHTML = `
-        <div class="space-y-3">
-          <div>
-            <div class="flex justify-between text-xs muted"><span>Soft skills</span><span>${soft} / 10h</span></div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden dark:bg-[#111a34]"><div class="h-2 bg-slate-900 dark:bg-white" style="width:${softPct}%"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs muted"><span>Informatique</span><span>${tech} / 50h</span></div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden dark:bg-[#111a34]"><div class="h-2 bg-slate-900 dark:bg-white" style="width:${techPct}%"></div></div>
-          </div>
-          <div class="text-xs muted">Total comptabilisé: ${total} / 60h</div>
-        </div>`;
-      const warn=[]; if(soft>10) warn.push('Soft > 10h (plafonné)'); if(tech>50) warn.push('IT > 50h (plafonné)'); if(total<60) warn.push(`${60-total}h restantes`);
-      document.getElementById('warnings').textContent = warn.join(' • ');
+      const {soft,tech}=aggregate(); const total=soft+tech;
+      const bar=(label,val,max)=>`<div><div class="flex justify-between text-xs muted"><span>${label}</span><span>${val} / ${max}h</span></div><div class="bar bg-[#e5e7eb] h-2 rounded-full overflow-hidden mt-1"><span style="width:${Math.min(100,(val/max)*100)}%; background:linear-gradient(90deg,#0ea5e9,#6366f1)"></span></div></div>`;
+      progress.innerHTML=[bar('Soft skills',soft,10),bar('Informatique',tech,50),`<div class="text-xs muted">Total comptabilisé : ${total} / 60h</div>`].join('');
+      const warn=[]; if(soft>10) warn.push('Soft > 10h'); if(tech>50) warn.push('IT > 50h'); if(total<60) warn.push(`${60-total}h restantes`); warnings.textContent=warn.join(' • ');
     }
-
     function renderThemes(){
-      const {themeTotals} = aggregate();
-      const grid = document.getElementById('themesGrid');
-      grid.innerHTML = DATA.themes.map(t=>{
-        const pct = Math.min(100,(themeTotals[t.id]/10)*100);
-        const acts = DATA.activities.filter(a=>a.theme===t.id);
-        return `
-          <div class="border border-slate-200 dark:border-[#1f2a44] rounded-lg p-3">
-            <div class="flex items-center justify-between">
-              <div class="font-semibold">${t.name}</div>
-              <div class="text-xs muted">${themeTotals[t.id]} / 10h</div>
-            </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-2 dark:bg-[#111a34]"><div class="h-1.5 bg-slate-900 dark:bg-white" style="width:${pct}%"></div></div>
-            <ul class="mt-2 space-y-1 text-sm">${acts.map(a=>{
-              const counted = countedActivityHours(a);
-              return `<li class="flex justify-between gap-2"><span>• ${a.title}</span><span class="muted">${a.hours}h → ${Math.min(counted,10)}h</span></li>`;
-            }).join('') || '<li class="muted">— à compléter —</li>'}
-            </ul>
-          </div>`
+      const {themeTotals}=aggregate(); const actsByTheme={}; DATA.activities.forEach(a=>{(actsByTheme[a.theme]??=[]).push(a)})
+      themesGrid.innerHTML=DATA.themes.map(t=>{
+        const pct=Math.min(100,(themeTotals[t.id]/10)*100);
+        const acts=(actsByTheme[t.id]||[]).map(a=>`<li class="flex justify-between"><span>• ${a.title}</span><span class="muted">${a.hours}h → ${Math.min(countedActivityHours(a),10)}h</span></li>`).join('')||'<li class="muted">— à compléter —</li>';
+        return `<div class="dash rounded-xl p-3"><div class="flex justify-between"><b>${t.name}</b><span class="text-xs muted">${themeTotals[t.id]} / 10h</span></div><div class="bar bg-[#e5e7eb] h-1.5 rounded-full overflow-hidden mt-2"><span style="width:${pct}%; background:linear-gradient(90deg,#0ea5e9,#22c55e)"></span></div><ul class="mt-2 text-sm space-y-1">${acts}</ul></div>`
       }).join('');
     }
-
     function renderTable(){
-      const {rows} = aggregate();
-      const themeById = Object.fromEntries(DATA.themes.map(t=>[t.id,t.name]));
-      const tbody = document.querySelector('#summaryTable tbody');
-      tbody.innerHTML = rows.map(({a, counted})=>`
-        <tr class="border-t border-slate-200 dark:border-[#1f2a44]">
-          <td class="py-2">${themeById[a.theme]}</td>
-          <td>${a.title}</td>
-          <td>${a.kind}</td>
-          <td class="text-right">${a.hours}</td>
-          <td class="text-right">${counted}</td>
-          <td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td>
-        </tr>`).join('');
+      const {rows}=aggregate(); const nameById=Object.fromEntries(DATA.themes.map(t=>[t.id,t.name]));
+      document.querySelector('#summaryTable tbody').innerHTML=rows.map(({a,counted})=>`<tr style="border-top:1px solid var(--line)"><td class="py-2">${nameById[a.theme]}</td><td>${a.title}</td><td>${a.kind}</td><td class="text-right">${a.hours}</td><td class="text-right">${counted}</td><td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td></tr>`).join('');
     }
 
-    function router(){
-      const hash = location.hash.replace('#','') || 'home';
-      for(const id of ['home','cv','contact']){
-        document.getElementById(id).classList.toggle('hidden', id!==hash);
-      }
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
+    // Router simple (pages diff.)
+    function route(){ const h=(location.hash||'#home'); ['home','cv','contact'].forEach(id=>document.getElementById(id).classList.toggle('hidden','#'+id!==h)); window.scrollTo({top:0,behavior:'smooth'}); }
+    window.addEventListener('hashchange',route);
 
-    document.getElementById('contactForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const f = new FormData(e.target);
-      const subject = encodeURIComponent('Contact depuis le portfolio');
-      const body = encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`);
-      location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
-    });
+    // Formulaire contact → mailto
+    contactForm.addEventListener('submit',e=>{ e.preventDefault(); const f=new FormData(e.target); const subject=encodeURIComponent('Contact depuis le portfolio'); const body=encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`); location.href=`mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`; });
 
-    // Initial render
-    renderProgress();
-    renderThemes();
-    renderTable();
-    router();
-    window.addEventListener('hashchange', router);
+    // Init
+    renderProgress(); renderThemes(); renderTable(); route();
   </script>
 </body>
 </html>
