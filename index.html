@@ -1,56 +1,212 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio Saad – Bac3</title>
-  <meta name="description" content="Portfolio Bac 3 (60h) – Accueil, CV, Contact. React + Tailwind + animations. Données préremplies, suivi heures avec plafonds.">
+  <meta name="description" content="Portfolio Bac3 (60h) – Accueil, CV, Contact. Données figées, synthèse par thèmes, animations légères.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b1020;--muted:#94a3b8;--accent:#06b6d4}
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:radial-gradient(1100px 600px at -10% -10%,rgba(34,211,238,.10),transparent 40%),radial-gradient(1000px 500px at 110% 10%,rgba(34,211,238,.08),transparent 40%),#0b1020;color:#e5e7eb}
+    /* Base */
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:#0b1020;color:#e5e7eb}
+    .grad{background: radial-gradient(700px 400px at -10% -10%,rgba(34,211,238,.10),transparent 60%),radial-gradient(700px 400px at 110% 0%,rgba(168,85,247,.10),transparent 60%),#0b1020}
     .glass{background:rgba(15,23,42,.75);backdrop-filter:blur(10px);border:1px solid rgba(148,163,184,.15)}
     .chip{border:1px solid rgba(148,163,184,.2)}
-    .btn{border:1px solid rgba(34,211,238,.25)}
     .link{color:#7dd3fc}
-    .grad{background: linear-gradient(135deg,#22d3ee33,#a78bfa33);}
+    .btn{border:1px solid rgba(34,211,238,.25)}
     @media (prefers-color-scheme: light){ html,body{background:#f6f7fb;color:#0f172a} .glass{background:rgba(255,255,255,.85);border:1px solid rgba(2,6,23,.08)} .chip{border-color:rgba(2,6,23,.08)} }
-    @media print{.no-print{display:none!important} .print\:block{display:block!important}}
+    /* Animations */
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .float{animation:float 6s ease-in-out infinite}
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
   </style>
-  <!-- React CDN + Babel (pour JSX dans un seul fichier) -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- Framer Motion UMD pour animations -->
 </head>
-<body>
-  <div id="root"></div>
+<body class="grad min-h-screen">
 
-  <script type="text/babel">
-    const {useState, useMemo, useEffect} = React;
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 bg-black/30 backdrop-blur border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-2xl bg-cyan-400/20 grid place-items-center text-cyan-300 font-extrabold">SZ</div>
+      <div>
+        <h1 class="text-xl font-semibold">Portfolio Saad</h1>
+        <p class="text-xs text-slate-400">Bac 3 — Objectif 60h (10h Soft • 50h IT)</p>
+      </div>
+      <nav class="ml-6 flex gap-2 text-sm">
+        <a href="#home" class="chip px-3 py-1 rounded-full hover:bg-cyan-500/20">Accueil</a>
+        <a href="#cv" class="chip px-3 py-1 rounded-full hover:bg-cyan-500/20">CV</a>
+        <a href="#contact" class="chip px-3 py-1 rounded-full hover:bg-cyan-500/20">Contact</a>
+      </nav>
+      <span class="ml-auto text-sm text-slate-400 hidden sm:block" id="year"></span>
+    </div>
+  </header>
 
-    const STORAGE_KEY = 'b3_portfolio_modern_v1';
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+    <!-- ACCUEIL -->
+    <section id="home" class="space-y-8">
+      <div class="grid md:grid-cols-[1.2fr,1fr] gap-6 items-stretch reveal">
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400/30 to-fuchsia-400/30 grid place-items-center text-cyan-200 font-extrabold float">SZ</div>
+            <div>
+              <h2 class="text-2xl font-semibold">Zebiri Saad</h2>
+              <p class="text-slate-400">Étudiant en 3e Bac TI (EPHEC) — Réseau, Cybersécurité & IA</p>
+            </div>
+          </div>
+          <p class="mt-4 text-slate-200" id="summary"></p>
+          <div class="flex flex-wrap gap-3 mt-4 text-sm text-slate-300">
+            <span class="chip px-3 py-1 rounded-full">📍 Bruxelles</span>
+            <a class="chip px-3 py-1 rounded-full link" href="mailto:saadzebiri65@gmail.com">✉️ saadzebiri65@gmail.com</a>
+            <a class="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 0471 87 49 10</a>
+            <a class="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-lg font-semibold mb-3">Progression</h3>
+          <div id="progress"></div>
+          <div class="text-slate-400 text-sm mt-2" id="warnings"></div>
+        </div>
+      </div>
 
-    const preset = {
-      meta: {
-        name:'Zebiri Saad',
-        email:'saadzebiri65@gmail.com',
-        school:"EPHEC – Technologie de l'Informatique",
-        year:'Bac 3 – 2025',
-        summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer.",
-        phone:'0471 87 49 10',
-        linkedin:'https://www.linkedin.com',
-        location:'Bruxelles'
+      <!-- Projet pro + Points forts/faibles -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 reveal">
+          <h3 class="font-semibold mb-2">Projet professionnel</h3>
+          <p class="text-slate-300">Décrocher un stage en <b>réseaux/cybersécurité</b>, évoluer vers un rôle d’administrateur réseau, puis ingénieur sécurité. Intérêt pour l’automatisation (Python) et l’IA appliquée à la détection d’incidents.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 reveal">
+          <h3 class="font-semibold mb-2">Points forts</h3>
+          <ul class="list-disc list-inside text-slate-300 space-y-1">
+            <li>Curiosité technique et autonomie</li>
+            <li>Esprit d’équipe et communication</li>
+            <li>Capacité à expliquer simplement</li>
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-6 reveal">
+          <h3 class="font-semibold mb-2">Points à améliorer</h3>
+          <ul class="list-disc list-inside text-slate-300 space-y-1">
+            <li>Gestion du temps et priorisation</li>
+            <li>Néerlandais (consolidation)</li>
+            <li>Rigueur documentaire</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Thèmes + Activités (lecture seule) -->
+      <div class="glass rounded-2xl p-6 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Synthèse des activités par thème</h3>
+          <div class="text-sm text-slate-400">Règles : max <b>10h</b> par thème, formations plafonnées à <b>10h</b>.</div>
+        </div>
+        <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+      </div>
+
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="text-lg font-semibold mb-2">Tableau récapitulatif</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" id="summaryTable">
+            <thead class="text-slate-300">
+              <tr>
+                <th class="text-left py-2">Thème</th>
+                <th class="text-left">Activité</th>
+                <th class="text-left">Type</th>
+                <th class="text-right">Heures réelles</th>
+                <th class="text-right">Heures comptées</th>
+                <th class="text-left">Date</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="space-y-6 hidden">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6 reveal">
+          <h2 class="text-lg font-semibold mb-1">Zebiri Saad</h2>
+          <p class="text-slate-400" id="cvSummary"></p>
+          <div class="flex flex-wrap gap-2 mt-3 text-sm">
+            <span class="chip px-3 py-1 rounded-full">📍 Bruxelles</span>
+            <a class="chip px-3 py-1 rounded-full link" href="mailto:saadzebiri65@gmail.com">✉️ saadzebiri65@gmail.com</a>
+            <a class="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 0471 87 49 10</a>
+            <a class="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+          </div>
+
+          <h3 class="mt-6 font-semibold">Compétences</h3>
+          <ul id="skills" class="grid sm:grid-cols-2 gap-2 text-sm list-disc list-inside text-slate-300 mt-2"></ul>
+
+          <h3 class="mt-6 font-semibold">Langues</h3>
+          <div id="languages" class="flex flex-wrap gap-2 text-sm mt-2"></div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="glass rounded-2xl p-6 reveal">
+            <h3 class="font-semibold mb-2">Expériences</h3>
+            <ul id="xp" class="space-y-2 text-sm"></ul>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal">
+            <h3 class="font-semibold mb-2">Éducation</h3>
+            <ul id="edu" class="space-y-2 text-sm"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="space-y-6 hidden">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-6 reveal">
+          <h2 class="text-lg font-semibold mb-3">Écrivez‑moi</h2>
+          <form class="grid gap-3" id="contactForm">
+            <div>
+              <div class="text-xs uppercase tracking-wide text-slate-400">Votre nom</div>
+              <input name="name" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" required />
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wide text-slate-400">Votre email</div>
+              <input name="email" type="email" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" required />
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wide text-slate-400">Message</div>
+              <textarea name="msg" rows="6" class="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" required></textarea>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">Envoyer ✉️</button>
+              <a class="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 Appeler</a>
+              <a class="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+            </div>
+            <p class="text-xs text-slate-400">Astuce : s’il ne s’ouvre pas, copiez l’adresse <span class="underline">saadzebiri65@gmail.com</span> dans votre messagerie.</p>
+          </form>
+        </div>
+        <div class="glass rounded-2xl p-6 reveal">
+          <h2 class="text-lg font-semibold mb-3">Coordonnées</h2>
+          <ul class="space-y-2 text-sm">
+            <li class="chip rounded-xl px-3 py-2">📍 Bruxelles</li>
+            <li class="chip rounded-xl px-3 py-2">✉️ <a class="underline link" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a></li>
+            <li class="chip rounded-xl px-3 py-2">📞 <a class="underline link" href="tel:+32471874910">0471 87 49 10</a></li>
+            <li class="chip rounded-xl px-3 py-2">🔗 <a class="underline link" target="_blank" rel="noopener" href="https://www.linkedin.com">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-slate-500 py-10">Site statique (lecture seule) — Règles: 10h max / thème, formation plafonnée à 10h — Déployé sur GitHub Pages.</footer>
+
+  <script>
+    // ——— Données figées ———
+    const DATA = {
+      meta:{
+        summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
       },
-      cv: {
-        skills:[
-          'Cisco / Packet Tracer','Linux basics','Admin Systèmes & Réseaux',
-          'Docker, DNS, HTTP/HTTPS, Mail','Web MERN (Mongo/Express/React/Node)',
-          'IoT & intégration soft/hard','Python, C, C++, JS, HTML/CSS','Git & GitHub'
-        ],
+      cv:{
+        skills:['Cisco / Packet Tracer','Linux basics','Admin Systèmes & Réseaux','Docker, DNS, HTTP/HTTPS, Mail','Web MERN (Mongo/Express/React/Node)','IoT & intégration soft/hard','Python, C, C++, JS, HTML/CSS','Git & GitHub'],
         experience:[
           {title:'IT Support Practice – EPHEC', period:'2023–2024', details:'Diagnostic pannes logicielles & matérielles (Windows/Linux).'},
           {title:'Network Basics Project – EPHEC', period:'2023–2025', details:'Config routeurs/switches, adressage IP, troubleshooting.'},
@@ -69,431 +225,138 @@
           {name:'Néerlandais', level:'Bases'}
         ]
       },
-      items: []
+      themes:[
+        {id:'network', name:'Réseaux', type:'tech'},
+        {id:'security', name:'Cybersécurité', type:'tech'},
+        {id:'web', name:'Web / MERN', type:'tech'},
+        {id:'iot', name:'IoT', type:'tech'},
+        {id:'communication', name:'Communication', type:'soft'},
+        {id:'project', name:'Gestion de projet', type:'soft'}
+      ],
+      activities:[
+        // ➜ On ajoutera ici tes vraies activités progressivement (lecture seule)
+        // Exemple comment remplir (supprimer ensuite ces exemples) :
+        // {theme:'network', title:'Packet Tracer labs', kind:'training', hours:12, date:'2025-01-20', note:'Switching & routing de base'},
+        // {theme:'communication', title:'Atelier prise de parole', kind:'event', hours:4, date:'2025-02-10', note:'Pitch projet EPHEC'},
+      ]
     };
 
-    const capCounted = (item) => item.type === 'training' ? Math.min(item.hours, 10) : item.hours;
+    // ——— Helpers ———
+    const yearEl = document.getElementById('year'); yearEl.textContent = new Date().getFullYear();
+    document.getElementById('summary').textContent = DATA.meta.summary; 
+    document.getElementById('cvSummary').textContent = DATA.meta.summary;
 
-    function useData(){
-      const [data, setData] = useState(()=>{
-        try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || preset; }catch{ return preset; }
-      });
-      useEffect(()=>{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }, [data]);
-      return [data, setData];
-    }
+    // CV lists
+    document.getElementById('skills').innerHTML = DATA.cv.skills.map(s=>`<li>${s}</li>`).join('');
+    document.getElementById('languages').innerHTML = DATA.cv.languages.map(l=>`<span class="chip px-3 py-1 rounded-full">${l.name} — ${l.level}</span>`).join('');
+    document.getElementById('xp').innerHTML = DATA.cv.experience.map(e=>`<li class="chip rounded-xl px-3 py-2"><div class="font-medium">${e.title} <span class="text-slate-400">• ${e.period}</span></div><div class="text-slate-300">${e.details}</div></li>`).join('');
+    document.getElementById('edu').innerHTML = DATA.cv.education.map(e=>`<li class="chip rounded-xl px-3 py-2"><div class="font-medium">${e.title}</div><div class="text-slate-300">${e.place} • ${e.period}</div></li>`).join('');
 
-    function Navbar({route,setRoute}){
-      return (
-        <div className="sticky top-0 z-40 glass rounded-2xl px-4 py-3 mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl grad grid place-items-center text-cyan-200 font-extrabold">SZ</div>
-            <div>
-              <h1 className="text-xl font-semibold">Portfolio Saad</h1>
-              <p className="text-xs text-slate-400">Bac 3 — Objectif 60h (10h Soft • 50h IT)</p>
-            </div>
-            <nav className="ml-6 flex gap-2">
-              {[
-                {k:'home', label:'Accueil'},
-                {k:'cv', label:'CV'},
-                {k:'contact', label:'Contact'}
-              ].map(t=> (
-                <button key={t.k} onClick={()=>setRoute(t.k)} className={`chip px-3 py-1 rounded-full text-sm hover:bg-cyan-500/20 transition ${route===t.k?'bg-cyan-500/20':''}`}>{t.label}</button>
-              ))}
-            </nav>
-            <div className="ml-auto text-sm text-slate-400 hidden sm:block">{new Date().getFullYear()}</div>
-          </div>
-        </div>
-      )
-    }
-
-    function App(){
-      const [data, setData] = useData();
-      const [route, setRoute] = useState('home');
-
-      return (
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <Navbar route={route} setRoute={setRoute}/>
-          <div className="fade-in">
-            {route==='home' && <PageHome key="home" data={data} setData={setData}/>}
-            {route==='cv' && <PageCV key="cv" data={data}/>}
-            {route==='contact' && <PageContact key="contact" data={data}/>}
-          </div>
-
-          <footer className="text-center text-slate-500 py-10">React + Tailwind + Framer Motion — Données préremplies — GitHub Pages.</footer>
-        </div>
-      );
-    }
-
-    // ————————— PAGE ACCUEIL (portfolio 60h) —————————
-    function PageHome({data, setData}){
-      const { meta } = data;
-      const [filter, setFilter] = useState('all');
-      const [openForm, setOpenForm] = useState(false);
-      const [editId, setEditId] = useState(null);
-
-      const itemsSorted = useMemo(()=> data.items.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')), [data.items]);
-
-      const totals = useMemo(()=>{
-        let soft=0, tech=0; 
-        for(const it of data.items){
-          const c = capCounted(it);
-          if(it.category==='soft') soft+=c; else tech+=c;
-        }
-        soft = Math.round(soft*2)/2; tech = Math.round(tech*2)/2;
-        return {soft, tech, total: soft+tech};
-      }, [data.items]);
-
-      const warnings = useMemo(()=>{
-        const arr=[]; const total = totals.total;
-        if(totals.soft>10) arr.push('Soft skills > 10h : le surplus ne comptera pas.');
-        if(totals.tech>50) arr.push('Informatique > 50h : le surplus ne comptera pas.');
-        if(total<60) arr.push(`Il manque ${Math.round((60-total)*2)/2}h pour atteindre 60h.`);
-        if(total>60) arr.push(`Vous dépassez 60h (seules 60h seront comptées).`);
-        return arr;
-      }, [totals]);
-
-      function onSaveItem(item){
-        setData(s=>{
-          const items = s.items.slice();
-          if(item.id){
-            const idx = items.findIndex(i=>i.id===item.id);
-            if(idx>-1) items[idx]=item;
-          } else {
-            item.id = crypto.randomUUID();
-            items.push(item);
-          }
-          return {...s, items};
-        });
-        setOpenForm(false); setEditId(null);
+    // Calcul heures (plafonds : 10h par formation + 10h par thème)
+    function countedActivityHours(a){ let h=a.hours||0; if(a.kind==='training') h=Math.min(h,10); return h; }
+    function aggregate(){
+      const themeTotals = Object.fromEntries(DATA.themes.map(t=>[t.id,0]));
+      const rows=[];
+      for(const a of DATA.activities){
+        const counted = countedActivityHours(a);
+        const newThemeTotal = Math.min(10, themeTotals[a.theme] + counted);
+        const added = newThemeTotal - themeTotals[a.theme];
+        themeTotals[a.theme] = newThemeTotal;
+        rows.push({a, counted, countedAfterTheme: added});
       }
-      function onDelete(id){ setData(s=>({...s, items: s.items.filter(i=>i.id!==id)})); }
-
-      return (
-        <div className="fade-in">
-          <section className="grid md:grid-cols-[1.2fr,1fr] gap-6">
-           <div className="fade-in">
-              <h2 className="text-lg font-semibold mb-3">À propos</h2>
-              {/* Infos FIXES (non éditables) */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Field label="Nom" value={meta.name}/>
-                <Field label="Email" value={meta.email} link={`mailto:${meta.email}`}/>
-                <Field label="Établissement" value={meta.school}/>
-                <Field label="Année" value={meta.year}/>
-              </div>
-              <div className="mt-3 text-slate-300">{meta.summary}</div>
-              <div className="flex flex-wrap gap-3 mt-3 text-sm text-slate-300">
-                <span className="chip px-3 py-1 rounded-full">📍 {meta.location}</span>
-                <a className="chip px-3 py-1 rounded-full link" href={`mailto:${meta.email}`}>✉️ {meta.email}</a>
-                <a className="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 {meta.phone}</a>
-                <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
-              </div>
-            </motion.div>
-
-           <div className="fade-in">
-              <h2 className="text-lg font-semibold mb-3">Progression</h2>
-              <Progress soft={totals.soft} tech={totals.tech}/>
-              {warnings.length>0 && (<div className="mt-3 text-amber-300 text-sm space-y-1">{warnings.map((w,i)=>(<div key={i}>• {w}</div>))}</div>)}
-              <div className="mt-4">
-                <button className="btn px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 transition" onClick={()=>{setOpenForm(true); setEditId(null);}}>+ Ajouter une activité</button>
-              </div>
-            </motion.div>
-          </section>
-
-          <section className="no-print mt-1 flex flex-wrap gap-2">
-            {['all','soft','tech','training','project','event','volunteering','other'].map(k=> (
-              <button key={k} onClick={()=>setFilter(k)} className={`chip px-3 py-1 rounded-full text-sm hover:bg-cyan-500/20 transition`}>{k==='all'?'Tout':k}</button>
-            ))}
-          </section>
-
-          <section className="grid md:grid-cols-2 gap-4">
-            <AnimatePresence>
-              {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).map(it => (
-                <div className="fade-in">
-                  <Card item={it} onEdit={()=>{setEditId(it.id); setOpenForm(true);}} onDelete={()=>onDelete(it.id)} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            {itemsSorted.filter(it=> filter==='all'|| filter===it.category || filter===it.type).length===0 && (
-              <div className="text-slate-400">Aucune activité. Ajoute ta première entrée avec « + Ajouter une activité ».</div>
-            )}
-          </section>
-
-          <section className="glass rounded-2xl p-6">
-            <h2 className="text-lg font-semibold mb-2">Tableau récapitulatif</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="text-slate-300">
-                  <tr>
-                    <th className="text-left py-2">Titre</th>
-                    <th className="text-left">Catégorie</th>
-                    <th className="text-left">Type</th>
-                    <th className="text-right">Heures réelles</th>
-                    <th className="text-right">Heures comptées</th>
-                    <th className="text-left">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {itemsSorted.map(it=> (
-                    <tr key={it.id} className="border-t border-slate-700/50">
-                      <td className="py-2">{it.title}</td>
-                      <td>{it.category==='soft'?'Soft':'IT'}</td>
-                      <td>{it.type}</td>
-                      <td className="text-right">{it.hours}</td>
-                      <td className="text-right">{capCounted(it)}</td>
-                      <td>{it.date? new Date(it.date).toLocaleDateString('fr-BE'):''}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <Modal open={openForm} onClose={()=>{setOpenForm(false); setEditId(null);}} title={editId? 'Modifier une activité':'Ajouter une activité'}>
-            <EntryForm item={data.items.find(i=>i.id===editId)} onSave={onSaveItem} />
-          </Modal>
-        </motion.div>
-      );
+      const soft = DATA.themes.filter(t=>t.type==='soft').reduce((s,t)=>s+themeTotals[t.id],0);
+      const tech = DATA.themes.filter(t=>t.type==='tech').reduce((s,t)=>s+themeTotals[t.id],0);
+      return {themeTotals, soft, tech, rows};
     }
 
-    function Field({label, value, link}){
-      const content = link ? <a className="underline link" href={link}>{value}</a> : <span>{value}</span>;
-      return (
-        <div>
-          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
-          <div className="mt-1 text-slate-200">{content}</div>
-        </div>
-      );
-    }
-
-    function Progress({soft, tech}){
+    function renderProgress(){
+      const {soft, tech} = aggregate();
       const total = soft + tech;
-      return (
-        <div className="space-y-3">
+      const softPct = Math.min(100, (soft/10)*100);
+      const techPct = Math.min(100, (tech/50)*100);
+      document.getElementById('progress').innerHTML = `
+        <div class="space-y-3">
           <div>
-            <div className="flex justify-between text-sm"><span>Soft skills</span><span>{soft} / 10h</span></div>
-            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, soft/10*100)+"%"}}/></div>
+            <div class="flex justify-between text-sm"><span>Soft skills</span><span>${soft} / 10h</span></div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-2 bg-cyan-400" style="width:${softPct}%"></div></div>
           </div>
           <div>
-            <div className="flex justify-between text-sm"><span>Informatique</span><span>{tech} / 50h</span></div>
-            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div className="h-2 bg-cyan-400" style={{width: Math.min(100, tech/50*100)+"%"}}/></div>
+            <div class="flex justify-between text-sm"><span>Informatique</span><span>${tech} / 50h</span></div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-2 bg-cyan-400" style="width:${techPct}%"></div></div>
           </div>
-          <div className="text-sm">Total comptabilisé: {total} / 60h</div>
-        </div>
-      );
+          <div class="text-sm">Total comptabilisé: ${total} / 60h</div>
+        </div>`;
+      const warn=[]; if(soft>10) warn.push('Soft skills > 10h (plafonné)'); if(tech>50) warn.push('Informatique > 50h (plafonné)'); if(total<60) warn.push(`Il manque ${Math.max(0,60-total)}h pour atteindre 60h.`);
+      document.getElementById('warnings').textContent = warn.join(' • ');
     }
 
-    function Card({item, onEdit, onDelete}){
-      return (
-        <article className="glass rounded-2xl p-5 space-y-3 hover:translate-y-[-2px] hover:shadow-xl transition">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-2xl grad grid place-items-center text-cyan-200 font-bold">{item.category==='soft'?'S':'IT'}</div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-lg">{item.title}</h3>
-              <div className="flex flex-wrap gap-2 mt-1">
-                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.category==='soft'?'Soft skills':'Informatique'}</span>
-                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.type}</span>
-                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{item.hours}h réelles</span>
-                <span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{capCounted(item)}h comptées</span>
-                {item.date && (<span className="chip inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs text-slate-300">{new Date(item.date).toLocaleDateString('fr-BE')}</span>)}
-              </div>
+    function renderThemes(){
+      const {themeTotals} = aggregate();
+      const byId = Object.fromEntries(DATA.themes.map(t=>[t.id,t]));
+      const grid = document.getElementById('themesGrid');
+      grid.innerHTML = DATA.themes.map(t=>{
+        const pct = Math.min(100,(themeTotals[t.id]/10)*100);
+        const acts = DATA.activities.filter(a=>a.theme===t.id);
+        return `
+          <div class="rounded-xl p-4 border border-white/10 bg-slate-900/40">
+            <div class="flex items-center justify-between">
+              <div class="font-semibold">${t.name} ${t.type==='soft'?'<span class="text-xs text-slate-400">(soft)</span>':''}</div>
+              <div class="text-sm text-slate-300">${themeTotals[t.id]} / 10h</div>
             </div>
-            <div className="no-print flex gap-2">
-              <button className="px-2 py-1 rounded-lg bg-slate-700/60 hover:bg-slate-700 text-xs" onClick={onEdit}>Éditer</button>
-              <button className="px-2 py-1 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-200 text-xs" onClick={onDelete}>Suppr</button>
-            </div>
-          </div>
-          {item.description && (<p className="text-slate-300">{item.description}</p>)}
-          {Array.isArray(item.links) && item.links.length>0 && (
-            <div className="flex flex-wrap gap-2">
-              {item.links.map((l,idx)=> (<a key={idx} href={l} target="_blank" rel="noopener" className="underline link">Preuve</a>))}
-            </div>
-          )}
-        </article>
-      );
-    }
-
-    function EntryForm({item, onSave}){
-      const [title, setTitle] = useState(item?.title||'');
-      const [category, setCategory] = useState(item?.category||'soft');
-      const [type, setType] = useState(item?.type||'training');
-      const [hours, setHours] = useState(item?.hours||0);
-      const [date, setDate] = useState(item?.date||'');
-      const [description, setDescription] = useState(item?.description||'');
-      const [links, setLinks] = useState(item?.links?.join(', ')||'');
-
-      function handleSubmit(e){
-        e.preventDefault();
-        const obj = { id:item?.id, title, category, type, hours: Number(hours)||0, date, description, links: links.split(',').map(s=>s.trim()).filter(Boolean)};
-        onSave(obj);
-      }
-
-      const counted = capCounted({type, hours: Number(hours)||0});
-
-      return (
-        <form className="grid md:grid-cols-4 gap-4" onSubmit={handleSubmit}>
-          <div className="md:col-span-2">
-            <label className="text-xs uppercase tracking-wide text-slate-400">Titre de l’activité</label>
-            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={title} onChange={e=>setTitle(e.target.value)} />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wide text-slate-400">Catégorie</label>
-            <select className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={category} onChange={e=>setCategory(e.target.value)}>
-              <option value="soft">Soft skills</option>
-              <option value="tech">Informatique</option>
-            </select>
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wide text-slate-400">Type</label>
-            <select className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={type} onChange={e=>setType(e.target.value)}>
-              <option value="training">Formation</option>
-              <option value="project">Projet</option>
-              <option value="event">Événement</option>
-              <option value="volunteering">Bénévolat</option>
-              <option value="other">Autre</option>
-            </select>
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wide text-slate-400">Heures réelles {type==='training' ? '(plafond 10h)' : ''}</label>
-            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={hours} onChange={e=>setHours(e.target.value)} />
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wide text-slate-400">Date</label>
-            <input type="date" className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={date} onChange={e=>setDate(e.target.value)}/>
-          </div>
-          <div className="md:col-span-2">
-            <label className="text-xs uppercase tracking-wide text-slate-400">Description</label>
-            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={description} onChange={e=>setDescription(e.target.value)} />
-          </div>
-          <div className="md:col-span-4">
-            <label className="text-xs uppercase tracking-wide text-slate-400">Preuves (liens séparés par des virgules)</label>
-            <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={links} onChange={e=>setLinks(e.target.value)} />
-          </div>
-
-          <div className="md:col-span-3 text-sm text-slate-400">Heures comptées: <span className="text-cyan-300 font-semibold">{counted}h</span></div>
-          <div className="md:col-span-1 flex items-end justify-end">
-            <button className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">{item? 'Mettre à jour':'Ajouter'}</button>
-          </div>
-        </form>
-      );
-    }
-
-    // ————————— PAGE CV —————————
-    function PageCV({data}){
-      const {cv, meta} = data;
-      return (
-       <div className="fade-in">
-          <section className="glass rounded-2xl p-6">
-            <h2 className="text-lg font-semibold mb-1">{meta.name}</h2>
-            <p className="text-slate-400">{meta.summary}</p>
-            <div className="flex flex-wrap gap-2 mt-3 text-sm">
-              <span className="chip px-3 py-1 rounded-full">📍 {meta.location}</span>
-              <a className="chip px-3 py-1 rounded-full link" href={`mailto:${meta.email}`}>✉️ {meta.email}</a>
-              <a className="chip px-3 py-1 rounded-full link" href="tel:+32471874910">📞 {meta.phone}</a>
-              <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
-            </div>
-
-            <h3 className="mt-6 font-semibold">Compétences</h3>
-            <ul className="grid sm:grid-cols-2 gap-2 text-sm list-disc list-inside text-slate-300 mt-2">
-              {cv.skills.map((s,i)=>(<li key={i}>{s}</li>))}
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mt-2"><div class="h-2 bg-cyan-400" style="width:${pct}%"></div></div>
+            <ul class="mt-3 space-y-1 text-sm">${acts.map(a=>{
+              const counted = countedActivityHours(a);
+              return `<li class="text-slate-300 flex justify-between gap-2"><span>• ${a.title}</span><span class="text-slate-400">${a.hours}h → ${Math.min(counted,10)}h</span></li>`;
+            }).join('') || '<li class="text-slate-500">— à compléter —</li>'}
             </ul>
-
-            <h3 className="mt-6 font-semibold">Langues</h3>
-            <div className="flex flex-wrap gap-2 text-sm mt-2">
-              {cv.languages.map((l,i)=>(<span key={i} className="chip px-3 py-1 rounded-full">{l.name} — {l.level}</span>))}
-            </div>
-          </section>
-
-          <section className="space-y-6">
-            <div className="glass rounded-2xl p-6">
-              <h3 className="font-semibold mb-2">Expériences</h3>
-              <ul className="space-y-2 text-sm">
-                {cv.experience.map((e,i)=> (
-                  <li key={i} className="chip rounded-xl px-3 py-2">
-                    <div className="font-medium">{e.title} <span className="text-slate-400">• {e.period}</span></div>
-                    <div className="text-slate-300">{e.details}</div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="glass rounded-2xl p-6">
-              <h3 className="font-semibold mb-2">Éducation</h3>
-              <ul className="space-y-2 text-sm">
-                {cv.education.map((e,i)=> (
-                  <li key={i} className="chip rounded-xl px-3 py-2">
-                    <div className="font-medium">{e.title}</div>
-                    <div className="text-slate-300">{e.place} • {e.period}</div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </motion.div>
-      );
+          </div>`
+      }).join('');
     }
 
-    // ————————— PAGE CONTACT —————————
-    function PageContact({data}){
-      const {meta} = data;
-      const [name,setName]=useState('');
-      const [email,setEmail]=useState('');
-      const [msg,setMsg]=useState('');
+    function renderTable(){
+      const {rows} = aggregate();
+      const themeById = Object.fromEntries(DATA.themes.map(t=>[t.id,t.name]));
+      const tbody = document.querySelector('#summaryTable tbody');
+      tbody.innerHTML = rows.map(({a, counted})=>`
+        <tr class="border-t border-slate-700/50">
+          <td class="py-2">${themeById[a.theme]}</td>
+          <td>${a.title}</td>
+          <td>${a.kind}</td>
+          <td class="text-right">${a.hours}</td>
+          <td class="text-right">${counted}</td>
+          <td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td>
+        </tr>`).join('');
+    }
 
-      function handleSubmit(e){
-        e.preventDefault();
-        const subject = encodeURIComponent('Contact depuis le portfolio');
-        const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-        window.location.href = `mailto:${meta.email}?subject=${subject}&body=${body}`;
+    function router(){
+      const hash = location.hash.replace('#','') || 'home';
+      for(const id of ['home','cv','contact']){
+        document.getElementById(id).classList.toggle('hidden', id!==hash);
       }
-
-      return (
-         <div className="fade-in">
-          <section className="glass rounded-2xl p-6">
-            <h2 className="text-lg font-semibold mb-3">Écrivez‑moi</h2>
-            <form className="grid gap-3" onSubmit={handleSubmit}>
-              <LabeledInput label="Votre nom" value={name} onChange={setName}/>
-              <LabeledInput label="Votre email" value={email} onChange={setEmail}/>
-              <LabeledTextarea label="Message" value={msg} onChange={setMsg}/>
-              <div className="flex items-center gap-2">
-                <button className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200">Envoyer ✉️</button>
-                <a className="chip px-3 py-1 rounded-full link" href={`tel:+32471874910`}>📞 Appeler</a>
-                <a className="chip px-3 py-1 rounded-full link" target="_blank" rel="noopener" href={meta.linkedin}>🔗 LinkedIn</a>
-              </div>
-              <p className="text-xs text-slate-400">Si l’email ne s’ouvre pas automatiquement, copiez l’adresse {meta.email} dans votre messagerie.</p>
-            </form>
-          </section>
-
-          <section className="glass rounded-2xl p-6">
-            <h2 className="text-lg font-semibold mb-3">Coordonnées</h2>
-            <ul className="space-y-2 text-sm">
-              <li className="chip rounded-xl px-3 py-2">📍 {meta.location}</li>
-              <li className="chip rounded-xl px-3 py-2">✉️ <a className="underline link" href={`mailto:${meta.email}`}>{meta.email}</a></li>
-              <li className="chip rounded-xl px-3 py-2">📞 <a className="underline link" href="tel:+32471874910">{meta.phone}</a></li>
-              <li className="chip rounded-xl px-3 py-2">🔗 <a className="underline link" target="_blank" rel="noopener" href={meta.linkedin}>LinkedIn</a></li>
-            </ul>
-          </section>
-        </motion.div>
-      );
+      window.scrollTo({top:0, behavior:'smooth'});
     }
 
-    function LabeledInput({label, value, onChange}){
-      return (
-        <div>
-          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
-          <input className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value} onChange={e=>onChange(e.target.value)} />
-        </div>
-      );
-    }
-    function LabeledTextarea({label, value, onChange}){
-      return (
-        <div>
-          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
-          <textarea rows="6" className="w-full mt-1 rounded-xl bg-slate-800/60 border border-slate-700 px-3 py-2" value={value} onChange={e=>onChange(e.target.value)} />
-        </div>
-      );
-    }
+    // Intersection animations
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App/>);
+    // Contact form → mailto
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const subject = encodeURIComponent('Contact depuis le portfolio');
+      const body = encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`);
+      location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // Initial render
+    renderProgress();
+    renderThemes();
+    renderTable();
+    router();
+    window.addEventListener('hashchange', router);
   </script>
 </body>
 </html>
