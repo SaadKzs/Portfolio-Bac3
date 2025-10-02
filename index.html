@@ -4,182 +4,236 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Saad – Portfolio Bac3</title>
-  <meta name="description" content="Portfolio Bac3 – Nouvelle maquette ultra épurée, 3 pages, infos figées.">
+  <meta name="description" content="Portfolio Bac3 – LumenWave UI : animations fluides, 3 pages, infos figées, responsive.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
   <style>
-    /* ======== THEME "PaperSky" — look radicalement différent ======== */
-    :root{ --ink:#0c1325; --muted:#6b7280; --bg:#f8fafc; --paper:#ffffff; --line:#e5e7eb; --accent:#0ea5e9 }
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; color:var(--ink); background:var(--bg)}
-    .paper{background:var(--paper); border:1px solid var(--line); border-radius:20px}
+    /* ============================
+       THEME: LumenWave (neo‑gradient)
+       — couleurs vives, animations douces
+       ============================ */
+    :root{
+      --bg:#0b1020; --fg:#e8eefc; --muted:#9fb0d7;
+      --card:#0f172acc; --stroke:#24314d; --ring:rgba(99,102,241,.35);
+      --c1:#60a5fa; --c2:#a78bfa; --c3:#34d399; --c4:#22d3ee;
+    }
+    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; background:var(--bg); color:var(--fg)}
+    .brand{font-family:Outfit,Inter,sans-serif}
+
+    /* Gradient animé plein écran */
+    .bg-aurora{position:fixed; inset:0; z-index:-1; background:radial-gradient(1200px 600px at 10% -10%,rgba(96,165,250,.12),transparent 45%),radial-gradient(1100px 600px at 110% 10%,rgba(167,139,250,.12),transparent 45%),radial-gradient(900px 480px at 50% 110%,rgba(34,211,238,.10),transparent 55%), var(--bg)}
+    .blob{position:absolute; filter:blur(40px); opacity:.35; mix-blend:screen}
+    .blob1{width:480px; height:480px; background:conic-gradient(from 0deg,var(--c4),var(--c2),var(--c1)); left:-120px; top:-120px; animation:orbit 18s linear infinite}
+    .blob2{width:380px; height:380px; background:conic-gradient(from 90deg,var(--c3),var(--c4),var(--c2)); right:-100px; top:10%; animation:orbit 22s linear infinite reverse}
+    .blob3{width:420px; height:420px; background:conic-gradient(from 45deg,var(--c1),var(--c3),var(--c4)); left:35%; bottom:-160px; animation:float 14s ease-in-out infinite}
+    @keyframes orbit{to{transform:rotate(360deg)}}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+
+    /* Cartes, séparateurs, focus */
+    .card{background:var(--card); border:1px solid rgba(158,173,211,.18); border-radius:18px; padding:18px; box-shadow:0 12px 32px rgba(0,0,0,.35)}
     .muted{color:var(--muted)}
-    .headline{font-family:Fraunces, serif; letter-spacing:-.02em}
-    .btn{border:1px solid var(--ink); border-radius:999px; padding:.55rem 1rem; font-weight:600}
-    .btn:hover{background:var(--ink); color:white}
-    .rule{height:1px; background:linear-gradient(90deg,transparent,var(--line),transparent)}
-    .dash{border:1px dashed var(--line)}
-    /* Animations sobres */
-    @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
-    .rise{animation:rise .4s ease both}
-    /* Dark opt-in */
-    @media (prefers-color-scheme: dark){ :root{--ink:#eef2ff; --muted:#94a3b8; --bg:#0b1020; --paper:#0e1529; --line:#1f2a44} .btn{border-color:#eef2ff} }
+    .rule{height:1px; background:linear-gradient(90deg,transparent,rgba(158,173,211,.28),transparent)}
+    .ring{box-shadow:0 0 0 3px var(--ring)}
+
+    /* Barre de progression animée */
+    .bar{height:8px; background:rgba(158,173,211,.18); border-radius:999px; overflow:hidden}
+    .bar>span{display:block; height:100%; background:linear-gradient(90deg,var(--c4),var(--c2)); background-size:200% 100%; animation:slide 4s linear infinite}
+    @keyframes slide{to{background-position:100% 0}}
+
+    /* Apparitions */
+    @keyframes pop{from{opacity:0; transform:translateY(10px) scale(.98)} to{opacity:1; transform:translateY(0) scale(1)}}
+    .pop{animation:pop .45s ease both}
+
+    /* Top nav pill */
+    .pill{border:1px solid rgba(158,173,211,.22); border-radius:999px; padding:.45rem .9rem; backdrop-filter:blur(6px)}
+    .pill.active{background:linear-gradient(90deg,rgba(96,165,250,.18),rgba(167,139,250,.18));}
+
+    /* Inputs / buttons */
+    input, textarea{background:rgba(255,255,255,.03); border:1px solid rgba(158,173,211,.25); color:var(--fg); border-radius:12px; padding:10px}
+    input::placeholder, textarea::placeholder{color:#9fb0d7aa}
+    .btn{background:linear-gradient(135deg,var(--c4),var(--c2)); color:#071021; border:none; border-radius:12px; padding:.65rem 1rem; font-weight:700}
+    .btn:hover{filter:brightness(1.06)}
+
+    /* Mobile bottom nav */
+    .bottom-nav{position:sticky; bottom:8px; background:rgba(15,23,42,.6); border:1px solid rgba(158,173,211,.22); border-radius:14px; backdrop-filter:blur(10px)}
   </style>
 </head>
-<body class="h-full">
+<body class="min-h-full">
+  <!-- BACKGROUND -->
+  <div class="bg-aurora" aria-hidden="true">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
 
-  <!-- LAYOUT: Sidebar fixe + contenu pages -->
-  <div class="max-w-6xl mx-auto px-4 lg:px-6 py-6 lg:grid lg:grid-cols-[280px,1fr] gap-8">
-    <!-- Sidebar -->
-    <aside class="space-y-6">
-      <div class="paper p-5 rise">
-        <div class="text-sm muted">Portfolio</div>
-        <h1 class="headline text-3xl mt-1">Zebiri Saad</h1>
-        <p class="mt-3 text-sm">Bac 3 — EPHEC</p>
-        <div class="rule my-4"></div>
-        <nav class="flex lg:flex-col gap-2 text-sm">
-          <a href="#home" class="btn">Accueil</a>
-          <a href="#cv" class="btn">CV</a>
-          <a href="#contact" class="btn">Contact</a>
-        </nav>
+  <!-- TOP NAV -->
+  <header class="sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 pt-5 pb-3 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[var(--c4)] to-[var(--c2)] text-slate-900 brand font-extrabold">SZ</div>
+      <div>
+        <div class="brand tracking-tight text-lg">Portfolio Saad</div>
+        <div class="text-xs muted">Bac 3 — 60h (10h Soft • 50h IT)</div>
       </div>
-      <div class="paper p-5 rise">
-        <div class="text-sm muted">Coordonnées</div>
-        <ul class="mt-2 text-sm space-y-1">
-          <li>📍 Bruxelles</li>
-          <li>✉️ <a class="underline" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a></li>
-          <li>📞 <a class="underline" href="tel:+32471874910">0471 87 49 10</a></li>
-          <li>🔗 <a class="underline" target="_blank" rel="noopener" href="https://www.linkedin.com">LinkedIn</a></li>
-        </ul>
-      </div>
-      <div class="text-xs muted">© <span id="year"></span> — PaperSky</div>
-    </aside>
+      <nav class="ml-auto hidden sm:flex gap-1" id="topnav">
+        <a data-goto="#home" class="pill">Accueil</a>
+        <a data-goto="#cv" class="pill">CV</a>
+        <a data-goto="#contact" class="pill">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Pages -->
-    <section class="space-y-8">
-      <!-- HOME -->
-      <div id="home" class="space-y-8">
-        <!-- Hero très aéré -->
-        <header class="paper p-8 lg:p-12 rise">
+  <!-- MOBILE NAV -->
+  <div class="sm:hidden max-w-6xl mx-auto px-4">
+    <div class="bottom-nav flex justify-center gap-2 px-2 py-2">
+      <a data-goto="#home" class="pill">Accueil</a>
+      <a data-goto="#cv" class="pill">CV</a>
+      <a data-goto="#contact" class="pill">Contact</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-10">
+    <!-- HOME -->
+    <section id="home" class="space-y-8">
+      <div class="grid lg:grid-cols-[1.25fr,1fr] gap-6 items-stretch">
+        <div class="card pop">
           <p class="uppercase tracking-wide text-xs muted">À propos</p>
-          <h2 class="headline text-4xl lg:text-5xl mt-2">Construire, apprendre, sécuriser.</h2>
-          <p id="summary" class="mt-5 max-w-3xl leading-relaxed text-[15.5px]"></p>
-          <div class="rule my-6"></div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
-            <div class="dash rounded-xl p-3"><div class="muted">Établissement</div><div class="mt-1">EPHEC – Technologie de l'Informatique</div></div>
-            <div class="dash rounded-xl p-3"><div class="muted">Année</div><div class="mt-1">Bac 3 – 2025</div></div>
-            <div class="dash rounded-xl p-3"><div class="muted">Objectif</div><div class="mt-1">Stage Réseaux/Cybersécurité</div></div>
+          <h1 class="brand text-3xl sm:text-4xl mt-1">Construire, apprendre, sécuriser.</h1>
+          <p id="summary" class="mt-3 leading-relaxed text-[15.5px]"></p>
+          <div class="rule my-5"></div>
+          <div class="grid sm:grid-cols-2 gap-3 text-sm">
+            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Établissement</div><div class="mt-1">EPHEC – Technologie de l'Informatique</div></div>
+            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Année</div><div class="mt-1">Bac 3 – 2025</div></div>
+            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Objectif</div><div class="mt-1">Stage Réseaux/Cybersécurité</div></div>
+            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Localisation</div><div class="mt-1">Bruxelles</div></div>
           </div>
-        </header>
+          <div class="flex flex-wrap gap-2 mt-4 text-sm">
+            <a class="pill" href="mailto:saadzebiri65@gmail.com">✉️ saadzebiri65@gmail.com</a>
+            <a class="pill" href="tel:+32471874910">📞 0471 87 49 10</a>
+            <a class="pill" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+          </div>
+        </div>
+        <div class="card pop" style="animation-delay:.05s">
+          <h3 class="text-lg font-semibold">Progression</h3>
+          <div id="progress" class="mt-3"></div>
+          <div id="warnings" class="text-xs muted mt-2"></div>
+        </div>
+      </div>
 
-        <!-- Progression + Règles -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card pop" style="animation-delay:.06s">
+          <h3 class="text-lg font-semibold">Projet pro</h3>
+          <p class="muted mt-2">Stage en réseaux/cybersécurité → administrateur réseau → ingénieur sécurité. Intérêt pour l’automatisation (Python) et l’IA appliquée à la détection d’incidents.</p>
+        </div>
+        <div class="card pop" style="animation-delay:.08s">
+          <h3 class="text-lg font-semibold">Forces</h3>
+          <ul class="mt-2 space-y-1 text-sm">
+            <li>Curiosité technique, autonomie</li>
+            <li>Esprit d’équipe, communication</li>
+            <li>Pédagogie / vulgarisation</li>
+          </ul>
+        </div>
+        <div class="card pop" style="animation-delay:.1s">
+          <h3 class="text-lg font-semibold">À améliorer</h3>
+          <ul class="mt-2 space-y-1 text-sm">
+            <li>Gestion du temps, priorisation</li>
+            <li>Néerlandais (consolidation)</li>
+            <li>Rigueur documentaire</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card pop" style="animation-delay:.12s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Synthèse des activités par thème</h3>
+          <div class="text-xs muted">Lecture seule — max 10h/thème</div>
+        </div>
+        <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+      </div>
+
+      <div class="card pop" style="animation-delay:.14s">
+        <h3 class="text-lg font-semibold mb-2">Récapitulatif détaillé</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm" id="summaryTable">
+            <thead class="muted">
+              <tr>
+                <th class="text-left py-2">Thème</th>
+                <th class="text-left">Activité</th>
+                <th class="text-left">Type</th>
+                <th class="text-right">Réelles</th>
+                <th class="text-right">Comptées</th>
+                <th class="text-left">Date</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="hidden space-y-8">
+      <div class="card pop">
+        <h2 class="brand text-2xl">CV</h2>
+        <p id="cvSummary" class="muted mt-1"></p>
+        <div class="rule my-5"></div>
         <div class="grid lg:grid-cols-2 gap-6">
-          <div class="paper p-6 rise">
-            <h3 class="text-lg font-semibold">Progression heures</h3>
-            <div id="progress" class="mt-4 space-y-4"></div>
-            <div id="warnings" class="text-xs muted mt-2"></div>
+          <div>
+            <h3 class="text-lg font-semibold">Compétences</h3>
+            <ul id="skills" class="grid sm:grid-cols-2 gap-2 mt-2 text-sm"></ul>
+            <div class="rule my-5"></div>
+            <h3 class="text-lg font-semibold">Langues</h3>
+            <div id="languages" class="flex flex-wrap gap-2 mt-2 text-sm"></div>
           </div>
-          <div class="paper p-6 rise">
-            <h3 class="text-lg font-semibold">Règles</h3>
-            <ul class="mt-3 space-y-1 text-sm">
-              <li>• 10h <b>max/thème</b> (soft inclus)</li>
-              <li>• Une <b>formation</b> compte max 10h, même si > 10h réelles</li>
-              <li>• Cible totale : <b>60h</b> (10h soft + 50h IT)</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Synthèse par thèmes -->
-        <div class="paper p-6 rise">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-semibold">Synthèse par thème</h3>
-            <span class="text-xs muted">Lecture seule</span>
-          </div>
-          <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
-        </div>
-
-        <!-- Tableau -->
-        <div class="paper p-6 rise">
-          <h3 class="text-lg font-semibold mb-2">Récapitulatif détaillé</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm" id="summaryTable">
-              <thead class="muted">
-                <tr>
-                  <th class="text-left py-2">Thème</th>
-                  <th class="text-left">Activité</th>
-                  <th class="text-left">Type</th>
-                  <th class="text-right">Réelles</th>
-                  <th class="text-right">Comptées</th>
-                  <th class="text-left">Date</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- CV -->
-      <div id="cv" class="hidden space-y-8">
-        <div class="paper p-8 rise">
-          <h2 class="headline text-3xl">CV</h2>
-          <p id="cvSummary" class="mt-3 max-w-3xl leading-relaxed"></p>
-          <div class="rule my-6"></div>
-          <div class="grid lg:grid-cols-2 gap-6">
+          <div class="space-y-6">
             <div>
-              <h3 class="text-lg font-semibold">Compétences</h3>
-              <ul id="skills" class="grid sm:grid-cols-2 gap-2 mt-2 text-sm"></ul>
-              <div class="rule my-6"></div>
-              <h3 class="text-lg font-semibold">Langues</h3>
-              <div id="languages" class="flex flex-wrap gap-2 mt-2 text-sm"></div>
+              <h3 class="text-lg font-semibold">Expériences</h3>
+              <ul id="xp" class="mt-2 space-y-2 text-sm"></ul>
             </div>
-            <div class="space-y-6">
-              <div>
-                <h3 class="text-lg font-semibold">Expériences</h3>
-                <ul id="xp" class="mt-2 space-y-2 text-sm"></ul>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold">Éducation</h3>
-                <ul id="edu" class="mt-2 space-y-2 text-sm"></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONTACT -->
-      <div id="contact" class="hidden space-y-8">
-        <div class="paper p-8 rise">
-          <h2 class="headline text-3xl">Contact</h2>
-          <p class="muted mt-2">Écrivez‑moi via le formulaire ci‑dessous ou utilisez un des raccourcis.</p>
-          <div class="grid lg:grid-cols-2 gap-8 mt-6">
-            <form id="contactForm" class="space-y-3">
-              <div>
-                <div class="text-xs muted">Votre nom</div>
-                <input name="name" class="w-full mt-1" required />
-              </div>
-              <div>
-                <div class="text-xs muted">Votre email</div>
-                <input type="email" name="email" class="w-full mt-1" required />
-              </div>
-              <div>
-                <div class="text-xs muted">Message</div>
-                <textarea name="msg" rows="6" class="w-full mt-1" required></textarea>
-              </div>
-              <button>Envoyer</button>
-            </form>
-            <div class="space-y-3 text-sm">
-              <a class="btn inline-block" href="tel:+32471874910">📞 Appeler</a>
-              <a class="btn inline-block" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
-              <div class="rule my-4"></div>
-              <div class="muted text-xs">Si l’email ne s’ouvre pas, envoyez à <span class="underline">saadzebiri65@gmail.com</span>.</div>
+            <div>
+              <h3 class="text-lg font-semibold">Éducation</h3>
+              <ul id="edu" class="mt-2 space-y-2 text-sm"></ul>
             </div>
           </div>
         </div>
       </div>
     </section>
-  </div>
+
+    <!-- CONTACT -->
+    <section id="contact" class="hidden space-y-8">
+      <div class="card pop">
+        <h2 class="brand text-2xl">Contact</h2>
+        <p class="muted mt-1">Écrivez‑moi via le formulaire ou utilisez un raccourci.</p>
+        <div class="grid lg:grid-cols-2 gap-8 mt-4">
+          <form id="contactForm" class="space-y-3">
+            <div>
+              <div class="text-xs muted">Votre nom</div>
+              <input name="name" class="w-full mt-1" required />
+            </div>
+            <div>
+              <div class="text-xs muted">Votre email</div>
+              <input type="email" name="email" class="w-full mt-1" required />
+            </div>
+            <div>
+              <div class="text-xs muted">Message</div>
+              <textarea name="msg" rows="6" class="w-full mt-1" required></textarea>
+            </div>
+            <button class="btn">Envoyer ✉️</button>
+          </form>
+          <div class="space-y-3 text-sm">
+            <a class="pill inline-block" href="tel:+32471874910">📞 Appeler</a>
+            <a class="pill inline-block" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
+            <div class="rule my-4"></div>
+            <div class="muted text-xs">Si l’email ne s’ouvre pas, envoyez à <span class="underline">saadzebiri65@gmail.com</span>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-4 pb-10 text-xs muted">LumenWave UI — Infos figées — Règles heures intégrées — Responsive.</footer>
 
   <script>
     // ===== Données figées =====
@@ -209,24 +263,20 @@
         {id:'project', name:'Gestion de projet', type:'soft'}
       ],
       activities:[
-        // Exemple d’ajouts (lecture seule) :
+        // À compléter progressivement (lecture seule)
         // {theme:'network', title:'Packet Tracer – switching', kind:'training', hours:12, date:'2025-02-10'},
         // {theme:'communication', title:'Pitch projet EPHEC', kind:'event', hours:4, date:'2025-03-05'},
       ]
     };
 
-    // ===== Helpers =====
-    document.getElementById('year').textContent=new Date().getFullYear();
-    document.getElementById('summary').textContent=DATA.meta.summary;
-    document.getElementById('cvSummary').textContent=DATA.meta.summary;
+    // Helpers remplissage
+    summary.textContent = DATA.meta.summary; cvSummary.textContent = DATA.meta.summary;
+    skills.innerHTML = DATA.cv.skills.map(s=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5">${s}</li>`).join('');
+    languages.innerHTML = DATA.cv.languages.map(l=>`<span class="pill">${l.name} — ${l.level}</span>`).join('');
+    xp.innerHTML = DATA.cv.experience.map(e=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5"><div class="font-medium">${e.title} <span class="muted">• ${e.period}</span></div><div class="muted">${e.details}</div></li>`).join('');
+    edu.innerHTML = DATA.cv.education.map(e=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5"><div class="font-medium">${e.title}</div><div class="muted">${e.place} • ${e.period}</div></li>`).join('');
 
-    // Remplissage CV
-    skills.innerHTML = DATA.cv.skills.map(s=>`<li class="dash rounded-xl p-2.5">${s}</li>`).join('');
-    languages.innerHTML = DATA.cv.languages.map(l=>`<span class="dash rounded-xl px-2.5 py-1">${l.name} — ${l.level}</span>`).join('');
-    xp.innerHTML = DATA.cv.experience.map(e=>`<li class="dash rounded-xl p-2.5"><div class="font-medium">${e.title} <span class="muted">• ${e.period}</span></div><div class="muted">${e.details}</div></li>`).join('');
-    edu.innerHTML = DATA.cv.education.map(e=>`<li class="dash rounded-xl p-2.5"><div class="font-medium">${e.title}</div><div class="muted">${e.place} • ${e.period}</div></li>`).join('');
-
-    // Calculs heures
+    // Règles & calcul heures
     const countedActivityHours=a=> (a.kind==='training'? Math.min(a.hours||0,10): (a.hours||0));
     function aggregate(){
       const themeTotals=Object.fromEntries(DATA.themes.map(t=>[t.id,0]));
@@ -235,8 +285,7 @@
         const counted=countedActivityHours(a);
         const newTotal=Math.min(10, themeTotals[a.theme]+counted);
         const added=newTotal-themeTotals[a.theme];
-        themeTotals[a.theme]=newTotal;
-        rows.push({a,counted,added});
+        themeTotals[a.theme]=newTotal; rows.push({a,counted,added});
       }
       const soft=DATA.themes.filter(t=>t.type==='soft').reduce((s,t)=>s+themeTotals[t.id],0);
       const tech=DATA.themes.filter(t=>t.type==='tech').reduce((s,t)=>s+themeTotals[t.id],0);
@@ -244,7 +293,7 @@
     }
     function renderProgress(){
       const {soft,tech}=aggregate(); const total=soft+tech;
-      const bar=(label,val,max)=>`<div><div class="flex justify-between text-xs muted"><span>${label}</span><span>${val} / ${max}h</span></div><div class="bar bg-[#e5e7eb] h-2 rounded-full overflow-hidden mt-1"><span style="width:${Math.min(100,(val/max)*100)}%; background:linear-gradient(90deg,#0ea5e9,#6366f1)"></span></div></div>`;
+      const bar=(label,val,max)=>`<div><div class="flex justify-between text-xs muted"><span>${label}</span><span>${val} / ${max}h</span></div><div class="bar rounded-full overflow-hidden mt-1"><span style="width:${Math.min(100,(val/max)*100)}%"></span></div></div>`;
       progress.innerHTML=[bar('Soft skills',soft,10),bar('Informatique',tech,50),`<div class="text-xs muted">Total comptabilisé : ${total} / 60h</div>`].join('');
       const warn=[]; if(soft>10) warn.push('Soft > 10h'); if(tech>50) warn.push('IT > 50h'); if(total<60) warn.push(`${60-total}h restantes`); warnings.textContent=warn.join(' • ');
     }
@@ -253,19 +302,25 @@
       themesGrid.innerHTML=DATA.themes.map(t=>{
         const pct=Math.min(100,(themeTotals[t.id]/10)*100);
         const acts=(actsByTheme[t.id]||[]).map(a=>`<li class="flex justify-between"><span>• ${a.title}</span><span class="muted">${a.hours}h → ${Math.min(countedActivityHours(a),10)}h</span></li>`).join('')||'<li class="muted">— à compléter —</li>';
-        return `<div class="dash rounded-xl p-3"><div class="flex justify-between"><b>${t.name}</b><span class="text-xs muted">${themeTotals[t.id]} / 10h</span></div><div class="bar bg-[#e5e7eb] h-1.5 rounded-full overflow-hidden mt-2"><span style="width:${pct}%; background:linear-gradient(90deg,#0ea5e9,#22c55e)"></span></div><ul class="mt-2 text-sm space-y-1">${acts}</ul></div>`
+        return `<div class="border border-[var(--stroke)] rounded-xl p-3"><div class="flex justify-between"><b>${t.name}</b><span class="text-xs muted">${themeTotals[t.id]} / 10h</span></div><div class="bar h-1.5 rounded-full overflow-hidden mt-2"><span style="width:${pct}%"></span></div><ul class="mt-2 text-sm space-y-1">${acts}</ul></div>`
       }).join('');
     }
     function renderTable(){
       const {rows}=aggregate(); const nameById=Object.fromEntries(DATA.themes.map(t=>[t.id,t.name]));
-      document.querySelector('#summaryTable tbody').innerHTML=rows.map(({a,counted})=>`<tr style="border-top:1px solid var(--line)"><td class="py-2">${nameById[a.theme]}</td><td>${a.title}</td><td>${a.kind}</td><td class="text-right">${a.hours}</td><td class="text-right">${counted}</td><td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td></tr>`).join('');
+      document.querySelector('#summaryTable tbody').innerHTML=rows.map(({a,counted})=>`<tr style="border-top:1px solid rgba(158,173,211,.18)"><td class="py-2">${nameById[a.theme]}</td><td>${a.title}</td><td>${a.kind}</td><td class="text-right">${a.hours}</td><td class="text-right">${counted}</td><td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td></tr>`).join('');
     }
 
-    // Router simple (pages diff.)
-    function route(){ const h=(location.hash||'#home'); ['home','cv','contact'].forEach(id=>document.getElementById(id).classList.toggle('hidden','#'+id!==h)); window.scrollTo({top:0,behavior:'smooth'}); }
-    window.addEventListener('hashchange',route);
+    // Router + nav states
+    function go(hash){ location.hash = hash; }
+    function route(){
+      const h=(location.hash||'#home'); ['home','cv','contact'].forEach(id=>document.getElementById(id).classList.toggle('hidden','#'+id!==h));
+      document.querySelectorAll('[data-goto]').forEach(a=> a.classList.toggle('active', a.getAttribute('data-goto')===h));
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    document.querySelectorAll('[data-goto]').forEach(a=> a.addEventListener('click',e=>{e.preventDefault(); go(a.getAttribute('data-goto'));}));
+    window.addEventListener('hashchange', route);
 
-    // Formulaire contact → mailto
+    // Contact → mailto
     contactForm.addEventListener('submit',e=>{ e.preventDefault(); const f=new FormData(e.target); const subject=encodeURIComponent('Contact depuis le portfolio'); const body=encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`); location.href=`mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`; });
 
     // Init
