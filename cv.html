@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV – Saad Zebiri</title>
+  <meta name="description" content="CV de Saad Zebiri – Étudiant en Technologie de l'Informatique à l'EPHEC">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen">
+
+  <!-- Floating particles -->
+  <div id="particles"></div>
+
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-10">
+    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
+      
+      <!-- Sidebar -->
+      <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
+        
+        <!-- Profile Card -->
+        <div class="glass-card p-7 slide-in-left">
+          <div class="text-xs font-semibold text-blue-400 mb-3 tracking-widest mono">// PORTFOLIO</div>
+          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
+          <p class="text-slate-400 text-sm mb-5">Bac 3 – EPHEC Brussels</p>
+          
+          <div class="divider my-5"></div>
+          
+          <nav>
+            <a href="index.html" class="nav-link">
+              <span class="text-xl">🏠</span>
+              <span>Accueil</span>
+            </a>
+            <a href="cv.html" class="nav-link">
+              <span class="text-xl">📄</span>
+              <span>CV</span>
+            </a>
+            <a href="contact.html" class="nav-link">
+              <span class="text-xl">✉️</span>
+              <span>Contact</span>
+            </a>
+          </nav>
+        </div>
+        
+        <!-- Contact Card -->
+        <div class="glass-card p-6 slide-in-left" style="animation-delay: 0.2s;">
+          <div class="text-xs font-semibold text-blue-400 mb-4 tracking-widest mono">// COORDONNÉES</div>
+          <div class="space-y-2 text-sm">
+            <div class="info-card">
+              <span class="text-xl">📍</span>
+              <span>Bruxelles</span>
+            </div>
+            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
+              <span class="text-xl">✉️</span>
+              <span class="truncate">saadzebiri65@gmail.com</span>
+            </a>
+            <a href="tel:+32471874910" class="info-card">
+              <span class="text-xl">📞</span>
+              <span>0471 87 49 10</span>
+            </a>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="info-card">
+              <span class="text-xl">🔗</span>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-xs text-center text-slate-600 mono">© <span id="year"></span> Zebiri Saad</div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="space-y-8 mt-8 lg:mt-0">
+        
+        <!-- CV Header -->
+        <div class="glass-card p-10 fade-in">
+          <h2 class="text-4xl font-bold gradient-text mb-5">Curriculum Vitae</h2>
+          <p id="cvSummary" class="text-lg text-slate-300 leading-relaxed"></p>
+          
+          <div class="divider"></div>
+          
+          <div class="grid sm:grid-cols-3 gap-5">
+            <div class="glass-card p-5 text-center">
+              <div class="text-3xl mb-2">🎓</div>
+              <div class="text-xs text-slate-500 mb-1">Formation</div>
+              <div class="font-semibold text-blue-400">Bac 3 TI</div>
+            </div>
+            <div class="glass-card p-5 text-center">
+              <div class="text-3xl mb-2">📍</div>
+              <div class="text-xs text-slate-500 mb-1">Localisation</div>
+              <div class="font-semibold text-blue-400">Bruxelles</div>
+            </div>
+            <div class="glass-card p-5 text-center">
+              <div class="text-3xl mb-2">💼</div>
+              <div class="text-xs text-slate-500 mb-1">Disponibilité</div>
+              <div class="font-semibold text-blue-400">Stage 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compétences & Langues -->
+        <div class="grid lg:grid-cols-2 gap-6">
+          
+          <!-- Compétences -->
+          <div class="glass-card p-7 fade-in">
+            <div class="section-header">
+              <span class="section-icon">💻</span>
+              <h3 class="text-xl font-bold">Compétences techniques</h3>
+            </div>
+            <div id="skills" class="flex flex-wrap gap-3"></div>
+          </div>
+          
+          <!-- Langues -->
+          <div class="glass-card p-7 fade-in">
+            <div class="section-header">
+              <span class="section-icon">🌍</span>
+              <h3 class="text-xl font-bold">Langues</h3>
+            </div>
+            <div id="languages" class="flex flex-wrap gap-3"></div>
+          </div>
+          
+        </div>
+
+        <!-- Expériences -->
+        <div class="glass-card p-8 fade-in">
+          <div class="section-header">
+            <span class="section-icon">🚀</span>
+            <h3 class="text-2xl font-bold">Expériences</h3>
+          </div>
+          <div id="xp" class="space-y-4"></div>
+        </div>
+
+        <!-- Éducation -->
+        <div class="glass-card p-8 fade-in">
+          <div class="section-header">
+            <span class="section-icon">🎓</span>
+            <h3 class="text-2xl font-bold">Formation & Éducation</h3>
+          </div>
+          <div id="edu" class="space-y-4"></div>
+        </div>
+
+        <!-- Points forts (optionnel sur le CV) -->
+        <div class="glass-card p-8 fade-in">
+          <div class="section-header">
+            <span class="section-icon">⭐</span>
+            <h3 class="text-2xl font-bold">Points forts</h3>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent border-l-2 border-blue-400">
+              <span class="text-2xl">🎯</span>
+              <div>
+                <div class="font-semibold mb-1">Autonomie</div>
+                <div class="text-sm text-slate-400">Capable de gérer des projets de manière indépendante</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-indigo-500/10 to-transparent border-l-2 border-indigo-400">
+              <span class="text-2xl">💬</span>
+              <div>
+                <div class="font-semibold mb-1">Communication</div>
+                <div class="text-sm text-slate-400">Excellente capacité à expliquer des concepts techniques</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
+              <span class="text-2xl">🔧</span>
+              <div>
+                <div class="font-semibold mb-1">Résolution de problèmes</div>
+                <div class="text-sm text-slate-400">Approche méthodique du troubleshooting</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
+              <span class="text-2xl">🧠</span>
+              <div>
+                <div class="font-semibold mb-1">Curiosité technique</div>
+                <div class="text-sm text-slate-400">Passion pour l'apprentissage continu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="glass-card p-8 fade-in text-center">
+          <h3 class="text-2xl font-bold mb-4">Intéressé par mon profil ?</h3>
+          <p class="text-slate-300 mb-6">N'hésitez pas à me contacter pour discuter d'opportunités de stage ou de collaboration.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="contact.html" class="btn-primary">
+              <span>✉️ Me contacter</span>
+            </a>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="btn-primary">
+              <span>🔗 LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
