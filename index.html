@@ -8,183 +8,389 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #6366f1;
-      --secondary: #8b5cf6;
-      --accent: #06b6d4;
-      --success: #10b981;
-      --warning: #f59e0b;
-    }
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     html, body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: linear-gradient(135deg, #1a1f3a 0%, #2d2a4a 50%, #1f2937 100%);
-      color: #f1f5f9;
+      font-family: 'Sora', -apple-system, sans-serif;
+      background: #0a0e27;
+      color: #e0e7ff;
       overflow-x: hidden;
     }
     
-    /* Smooth animated background with floating orbs */
+    /* Animated gradient mesh background */
     body::before {
       content: '';
       position: fixed;
-      width: 300%;
-      height: 300%;
-      top: -100%;
-      left: -100%;
+      inset: 0;
       z-index: -2;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 70% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 35%);
-      animation: slowDrift 40s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 0% 0%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 0%, rgba(78, 205, 196, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(255, 195, 113, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 0% 100%, rgba(199, 121, 208, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(130, 204, 221, 0.08) 0%, transparent 50%);
+      filter: blur(80px);
+      animation: meshMove 30s ease-in-out infinite;
     }
     
-    @keyframes slowDrift {
-      0% { 
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      100% { 
-        transform: translate(-5%, 5%) rotate(3deg) scale(1.1);
-      }
+    @keyframes meshMove {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      33% { transform: scale(1.1) rotate(2deg); }
+      66% { transform: scale(0.95) rotate(-2deg); }
     }
     
-    /* Additional ambient glow layer */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: 
-        radial-gradient(ellipse at 10% 10%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 90%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-      animation: gentlePulse 20s ease-in-out infinite;
-    }
-    
-    @keyframes gentlePulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 0.8; }
-    }
-    
-    /* Subtle grid */
+    /* Floating particles */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
       z-index: -1;
       background-image: 
-        linear-gradient(rgba(99, 102, 241, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.5;
+        radial-gradient(circle at 20% 30%, rgba(255, 107, 107, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(78, 205, 196, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(255, 195, 113, 0.02) 1px, transparent 1px);
+      background-size: 100px 100px, 150px 150px, 200px 200px;
+      animation: float 40s linear infinite;
     }
     
-    /* Glass cards */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100px); }
+    }
+    
+    /* Premium glass cards */
     .glass-card {
-      background: rgba(30, 41, 59, 0.4);
-      backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(148, 163, 184, 0.1);
-      border-radius: 20px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(30px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 70%
+      );
+      transform: rotate(45deg);
+      transition: all 0.6s;
+    }
+    
+    .glass-card:hover::before {
+      transform: rotate(45deg) translate(30%, 30%);
     }
     
     .glass-card:hover {
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
-      transform: translateY(-4px);
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(130, 204, 221, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
     
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+    /* Hero gradient text */
+    .hero-gradient {
+      background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #ffc371 50%, #c779d0 75%, #82ccdd 100%);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradientFlow 8s ease infinite;
     }
     
-    /* Modern buttons */
-    .modern-btn {
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Premium button */
+    .premium-btn {
       position: relative;
-      padding: 12px 28px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
       border: none;
-      border-radius: 10px;
+      border-radius: 16px;
       color: white;
       font-weight: 600;
       cursor: pointer;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       display: inline-block;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
     }
     
-    .modern-btn::before {
+    .premium-btn::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
     }
     
-    .modern-btn:hover::before {
-      left: 100%;
+    .premium-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
     
-    .modern-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    .premium-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 10px 40px rgba(255, 107, 107, 0.5),
+        0 0 60px rgba(78, 205, 196, 0.3);
     }
     
-    /* Progress bars */
+    .premium-btn span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Animated progress bars */
     .progress-container {
       position: relative;
-      height: 10px;
-      background: rgba(148, 163, 184, 0.1);
+      height: 14px;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 999px;
       overflow: hidden;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
     }
     
     .progress-fill {
       height: 100%;
       border-radius: 999px;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      overflow: hidden;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 
+        0 0 20px currentColor,
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
     
     .progress-fill::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      animation: shimmer 2s infinite;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: progressShine 2.5s infinite;
     }
     
-    @keyframes shimmer {
+    @keyframes progressShine {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(200%); }
     }
     
+    /* Premium tags */
+    .premium-tag {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15));
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+      backdrop-filter: blur(10px);
+    }
+    
+    .premium-tag:hover {
+      transform: translateY(-4px) scale(1.05);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 
+        0 8px 25px rgba(255, 107, 107, 0.2),
+        0 0 40px rgba(78, 205, 196, 0.2);
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.25), rgba(78, 205, 196, 0.25));
+    }
+    
+    /* Navigation links */
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      color: rgba(224, 231, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 0;
+      background: linear-gradient(180deg, #ff6b6b, #4ecdc4);
+      border-radius: 2px;
+      transition: height 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      transform: translateX(8px);
+    }
+    
+    .nav-link:hover::before {
+      height: 60%;
+    }
+    
+    .nav-link.active {
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15));
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .nav-link.active::before {
+      height: 80%;
+    }
+    
+    /* Input fields */
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #4ecdc4;
+      box-shadow: 
+        0 0 0 4px rgba(78, 205, 196, 0.1),
+        0 0 30px rgba(78, 205, 196, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    input::placeholder, textarea::placeholder {
+      color: rgba(224, 231, 255, 0.3);
+    }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    
+    th {
+      text-align: left;
+      padding: 16px 14px;
+      font-weight: 600;
+      color: #ffc371;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid rgba(255, 195, 113, 0.2);
+    }
+    
+    td {
+      padding: 16px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    tr {
+      transition: all 0.3s ease;
+    }
+    
+    tr:hover td {
+      background: linear-gradient(90deg, rgba(255, 107, 107, 0.05), rgba(78, 205, 196, 0.05));
+    }
+    
+    /* Info cards */
+    .info-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .info-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateX(8px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 20px rgba(78, 205, 196, 0.2);
+    }
+    
+    /* Placeholder sections */
+    .placeholder-section {
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(78, 205, 196, 0.05));
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      text-align: center;
+    }
+    
+    .placeholder-icon {
+      font-size: 56px;
+      margin-bottom: 16px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    .placeholder-title {
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    
+    .placeholder-hint {
+      font-size: 14px;
+      color: rgba(224, 231, 255, 0.5);
+      font-family: 'Space Mono', monospace;
+      line-height: 1.6;
+    }
+    
     /* Fade in animations */
     .fade-in {
-      animation: fadeInUp 0.6s ease-out backwards;
+      animation: fadeInUp 0.8s ease-out backwards;
     }
     
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -199,149 +405,21 @@
     .fade-in:nth-child(5) { animation-delay: 0.5s; }
     .fade-in:nth-child(6) { animation-delay: 0.6s; }
     
-    /* Skill tags */
-    .skill-tag {
-      display: inline-block;
-      padding: 8px 18px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.2);
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-    
-    .skill-tag:hover {
-      background: rgba(99, 102, 241, 0.2);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-    }
-    
-    /* Nav links */
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 10px;
-      color: rgba(241, 245, 249, 0.6);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    
-    .nav-link:hover {
-      background: rgba(99, 102, 241, 0.1);
-      color: white;
-      transform: translateX(4px);
-    }
-    
-    .nav-link.active {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
-      color: white;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-    }
-    
-    /* Input fields */
-    input, textarea {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(30, 41, 59, 0.4);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 10px;
-      color: white;
-      font-family: inherit;
-      transition: all 0.3s ease;
-    }
-    
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-      background: rgba(30, 41, 59, 0.6);
-    }
-    
-    input::placeholder, textarea::placeholder {
-      color: rgba(148, 163, 184, 0.5);
-    }
-    
-    /* Table styles */
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-    
-    th {
-      text-align: left;
-      padding: 14px 12px;
-      font-weight: 600;
-      color: var(--primary);
       font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid rgba(99, 102, 241, 0.2);
-    }
-    
-    td {
-      padding: 14px 12px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.05);
-    }
-    
-    tr:hover td {
-      background: rgba(99, 102, 241, 0.05);
-    }
-    
-    /* Info cards */
-    .info-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      background: rgba(99, 102, 241, 0.05);
-      border: 1px solid rgba(148, 163, 184, 0.1);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-    
-    .info-card:hover {
-      border-color: rgba(99, 102, 241, 0.3);
-      transform: translateX(4px);
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
-    }
-    
-    /* Placeholder sections */
-    .placeholder-section {
-      padding: 32px;
-      background: rgba(99, 102, 241, 0.05);
-      border: 2px dashed rgba(99, 102, 241, 0.3);
-      border-radius: 16px;
-      text-align: center;
-    }
-    
-    .placeholder-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      opacity: 0.5;
-    }
-    
-    .placeholder-title {
-      font-size: 20px;
       font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-    
-    .placeholder-hint {
-      font-size: 14px;
-      color: rgba(148, 163, 184, 0.7);
-      font-family: 'JetBrains Mono', monospace;
+      backdrop-filter: blur(10px);
     }
     
     /* Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
     
     ::-webkit-scrollbar-track {
@@ -349,67 +427,58 @@
     }
     
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--primary), var(--secondary));
-      border-radius: 4px;
+      background: linear-gradient(180deg, #ff6b6b, #4ecdc4);
+      border-radius: 5px;
     }
     
-    /* Badge */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #4ecdc4, #ffc371);
     }
     
-    .badge-primary {
-      background: rgba(99, 102, 241, 0.15);
-      color: #a5b4fc;
-      border: 1px solid rgba(99, 102, 241, 0.3);
+    /* Glow effect on hover */
+    .glow-on-hover {
+      transition: filter 0.3s ease;
     }
     
-    .badge-success {
-      background: rgba(16, 185, 129, 0.15);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+    .glow-on-hover:hover {
+      filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.5));
     }
     
-    .badge-warning {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fcd34d;
-      border: 1px solid rgba(245, 158, 11, 0.3);
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      margin: 48px 0;
     }
   </style>
 </head>
 <body class="min-h-screen">
 
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
-    <div class="lg:grid lg:grid-cols-[300px,1fr] gap-8">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-10">
+    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-10">
       
       <!-- Sidebar -->
       <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
         
         <!-- Profile Card -->
-        <div class="glass-card p-6 fade-in">
-          <div class="text-xs font-mono text-indigo-400 mb-3 tracking-wide">// PORTFOLIO</div>
-          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
-          <p class="text-slate-400 mb-4">Bac 3 – EPHEC Brussels</p>
+        <div class="glass-card p-7 fade-in">
+          <div class="text-xs font-mono text-yellow-300/80 mb-3 tracking-widest">// PORTFOLIO_2025</div>
+          <h1 class="text-4xl font-bold hero-gradient mb-3 leading-tight">Zebiri Saad</h1>
+          <p class="text-slate-300 mb-5 text-sm">Bac 3 – EPHEC Brussels</p>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-4"></div>
+          <div class="section-divider my-5"></div>
           
           <nav class="space-y-2">
             <a href="#home" class="nav-link active" data-page="home">
-              <span class="text-lg">🏠</span>
+              <span class="text-xl">🏠</span>
               <span>Accueil</span>
             </a>
             <a href="#cv" class="nav-link" data-page="cv">
-              <span class="text-lg">📄</span>
+              <span class="text-xl">📄</span>
               <span>CV</span>
             </a>
             <a href="#contact" class="nav-link" data-page="contact">
-              <span class="text-lg">✉️</span>
+              <span class="text-xl">✉️</span>
               <span>Contact</span>
             </a>
           </nav>
@@ -417,275 +486,61 @@
         
         <!-- Contact Card -->
         <div class="glass-card p-6 fade-in">
-          <div class="text-xs font-mono text-indigo-400 mb-4 tracking-wide">// COORDONNÉES</div>
+          <div class="text-xs font-mono text-yellow-300/80 mb-4 tracking-widest">// COORDONNÉES</div>
           <div class="space-y-2">
             <div class="info-card">
-              <span class="text-xl">📍</span>
+              <span class="text-2xl">📍</span>
               <span class="text-sm">Bruxelles</span>
-            </div>
-            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
-              <span class="text-xl">✉️</span>
-              <span class="text-sm">saadzebiri65@gmail.com</span>
-            </a>
-            <a href="tel:+32471874910" class="info-card">
-              <span class="text-xl">📞</span>
-              <span class="text-sm">0471 87 49 10</span>
-            </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="info-card">
-              <span class="text-xl">🔗</span>
-              <span class="text-sm">LinkedIn</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="text-xs text-center text-slate-600 font-mono">© <span id="year"></span> Zebiri Saad</div>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="space-y-8">
-        
-        <!-- HOME PAGE -->
-        <div id="home" class="space-y-8">
-          
-          <!-- Hero Section -->
-          <section class="glass-card p-8 lg:p-12 fade-in">
-            <div class="text-xs font-mono text-indigo-400 mb-4 tracking-wide">// À_PROPOS</div>
-            <h2 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Construire, apprendre,<br/>
-              <span class="gradient-text">sécuriser.</span>
-            </h2>
-            <p id="summary" class="text-lg text-slate-300 leading-relaxed max-w-3xl mb-8"></p>
-            
-            <div class="grid sm:grid-cols-3 gap-4">
-              <div class="glass-card p-4 flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-                <div>
-                  <div class="text-xs text-slate-400">Établissement</div>
-                  <div class="font-semibold text-sm mt-0.5">EPHEC – TI</div>
-                </div>
-              </div>
-              <div class="glass-card p-4 flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                <div>
-                  <div class="text-xs text-slate-400">Année</div>
-                  <div class="font-semibold text-sm mt-0.5">Bac 3 – 2025</div>
-                </div>
-              </div>
-              <div class="glass-card p-4 flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-cyan-500"></div>
-                <div>
-                  <div class="text-xs text-slate-400">Objectif</div>
-                  <div class="font-semibold text-sm mt-0.5">Stage Réseaux</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- ========== SECTION PROJET PROFESSIONNEL (À COMPLÉTER) ========== -->
-          <section class="glass-card p-8 fade-in">
-            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span class="text-2xl">🎯</span>
-              <span>Projet professionnel</span>
-            </h3>
-            
-            <!-- TODO: Remplace ce placeholder par ton vrai projet -->
-            <div id="projet-professionnel">
-              <div class="placeholder-section">
-                <div class="placeholder-icon">🚀</div>
-                <div class="placeholder-title">Section à compléter</div>
-                <div class="placeholder-hint">
-                  Ligne 300-350 : Ajoute ton projet professionnel ici<br/>
-                  (stage → admin réseau → ingénieur sécurité)
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- ========== POINTS FORTS & AXES D'AMÉLIORATION (À COMPLÉTER) ========== -->
-          <div class="grid lg:grid-cols-2 gap-6">
-            <div class="glass-card p-6 fade-in">
-              <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                <span class="text-2xl">💪</span>
-                <span>Points forts</span>
-              </h3>
-              
-              <!-- TODO: Remplace par tes vrais points forts -->
-              <div id="points-forts">
-                <div class="placeholder-section">
-                  <div class="placeholder-icon">✨</div>
-                  <div class="placeholder-title">À compléter</div>
-                  <div class="placeholder-hint">
-                    Ligne 360-380 : Tes qualités<br/>
-                    (autonomie, communication, vulgarisation...)
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="glass-card p-6 fade-in">
-              <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                <span class="text-2xl">📈</span>
-                <span>Axes d'amélioration</span>
-              </h3>
-              
-              <!-- TODO: Remplace par tes axes d'amélioration -->
-              <div id="axes-amelioration">
-                <div class="placeholder-section">
-                  <div class="placeholder-icon">🎯</div>
-                  <div class="placeholder-title">À compléter</div>
-                  <div class="placeholder-hint">
-                    Ligne 390-410 : Tes pistes de progression<br/>
-                    (gestion du temps, néerlandais, rigueur...)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Progress & Rules -->
-          <div class="grid lg:grid-cols-2 gap-6">
-            
-            <!-- Progress Card -->
-            <div class="glass-card p-6 fade-in">
-              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="text-2xl">📊</span>
-                <span>Progression heures</span>
-              </h3>
-              <div id="progress" class="space-y-5"></div>
-              <div id="warnings" class="text-sm text-yellow-400 mt-4 font-mono"></div>
-            </div>
-            
-            <!-- Rules Card -->
-            <div class="glass-card p-6 fade-in">
-              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="text-2xl">📋</span>
-                <span>Règles</span>
-              </h3>
-              <div class="space-y-3 text-sm text-slate-300">
-                <div class="flex items-start gap-2">
-                  <span class="text-indigo-400">•</span>
-                  <span>10h <strong class="text-white">max/thème</strong> (soft inclus)</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-indigo-400">•</span>
-                  <span>Une <strong class="text-white">formation</strong> compte max 10h, même si &gt; 10h réelles</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-indigo-400">•</span>
-                  <span>Cible totale : <strong class="text-white">60h</strong> (10h soft + 50h IT)</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="text-indigo-400">•</span>
-                  <span>Au moins <strong class="text-white">6 thèmes différents</strong></span>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-
-          <!-- Themes Grid -->
-          <div class="glass-card p-6 fade-in">
-            <div class="flex items-center justify-between mb-6">
-              <h3 class="text-xl font-bold flex items-center gap-2">
-                <span class="text-2xl">🎯</span>
-                <span>Synthèse par thème</span>
-              </h3>
-              <span class="text-xs font-mono text-cyan-400">// 6 thèmes requis</span>
-            </div>
-            <div id="themesGrid" class="grid md:grid-cols-2 gap-4"></div>
-          </div>
-
-          <!-- ========== SECTION PREUVES/PHOTOS (À COMPLÉTER) ========== -->
-          <div class="glass-card p-6 fade-in">
-            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="text-2xl">📸</span>
-              <span>Preuves de participation</span>
-            </h3>
-            
-            <!-- TODO: Ajoute tes photos, tickets, diplômes ici -->
-            <div id="preuves-section">
-              <div class="placeholder-section">
-                <div class="placeholder-icon">📷</div>
-                <div class="placeholder-title">Photos et documents à ajouter</div>
-                <div class="placeholder-hint">
-                  Ligne 490-550 : Ajoute tes photos, tickets d'entrée,<br/>
-                  inscriptions validées, diplômes, attestations...<br/>
-                  Utilise &lt;img src="..."&gt; pour les images
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Detailed Table -->
-          <div class="glass-card p-6 fade-in">
-            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="text-2xl">📑</span>
-              <span>Récapitulatif détaillé</span>
-            </h3>
-            <div class="overflow-x-auto">
-              <table id="summaryTable">
-                <thead>
-                  <tr>
-                    <th>Thème</th>
-                    <th>Activité</th>
-                    <th>Type</th>
-                    <th class="text-right">Réelles</th>
-                    <th class="text-right">Comptées</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
             </div>
           </div>
           
         </div>
 
         <!-- CV PAGE -->
-        <div id="cv" class="hidden space-y-8">
-          <div class="glass-card p-8 fade-in">
-            <h2 class="text-3xl font-bold gradient-text mb-4">Curriculum Vitae</h2>
-            <p id="cvSummary" class="text-slate-300 leading-relaxed max-w-3xl mb-8"></p>
+        <div id="cv" class="hidden space-y-10">
+          <div class="glass-card p-10 fade-in">
+            <h2 class="text-4xl font-bold hero-gradient mb-6">Curriculum Vitae</h2>
+            <p id="cvSummary" class="text-slate-300 leading-relaxed max-w-3xl mb-10"></p>
             
-            <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-8"></div>
+            <div class="section-divider"></div>
             
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-2 gap-10">
               
               <!-- Skills & Languages -->
-              <div class="space-y-8">
+              <div class="space-y-10">
                 <div>
-                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="text-2xl">💻</span>
+                  <h3 class="text-2xl font-bold mb-5 flex items-center gap-3">
+                    <span class="text-3xl">💻</span>
                     <span>Compétences</span>
                   </h3>
-                  <div id="skills" class="flex flex-wrap gap-2"></div>
+                  <div id="skills" class="flex flex-wrap gap-3"></div>
                 </div>
                 
                 <div>
-                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="text-2xl">🌍</span>
+                  <h3 class="text-2xl font-bold mb-5 flex items-center gap-3">
+                    <span class="text-3xl">🌍</span>
                     <span>Langues</span>
                   </h3>
-                  <div id="languages" class="flex flex-wrap gap-2"></div>
+                  <div id="languages" class="flex flex-wrap gap-3"></div>
                 </div>
               </div>
               
               <!-- Experience & Education -->
-              <div class="space-y-8">
+              <div class="space-y-10">
                 <div>
-                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="text-2xl">🚀</span>
+                  <h3 class="text-2xl font-bold mb-5 flex items-center gap-3">
+                    <span class="text-3xl">🚀</span>
                     <span>Expériences</span>
                   </h3>
-                  <div id="xp" class="space-y-3"></div>
+                  <div id="xp" class="space-y-4"></div>
                 </div>
                 
                 <div>
-                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="text-2xl">🎓</span>
+                  <h3 class="text-2xl font-bold mb-5 flex items-center gap-3">
+                    <span class="text-3xl">🎓</span>
                     <span>Éducation</span>
                   </h3>
-                  <div id="edu" class="space-y-3"></div>
+                  <div id="edu" class="space-y-4"></div>
                 </div>
               </div>
               
@@ -694,15 +549,15 @@
         </div>
 
         <!-- CONTACT PAGE -->
-        <div id="contact" class="hidden space-y-8">
-          <div class="glass-card p-8 fade-in">
-            <h2 class="text-3xl font-bold gradient-text mb-4">Contact</h2>
-            <p class="text-slate-300 mb-8">Écrivez-moi via le formulaire ci-dessous ou utilisez un des raccourcis.</p>
+        <div id="contact" class="hidden space-y-10">
+          <div class="glass-card p-10 fade-in">
+            <h2 class="text-4xl font-bold hero-gradient mb-6">Contact</h2>
+            <p class="text-slate-300 mb-10">Écrivez-moi via le formulaire ci-dessous ou utilisez un des raccourcis.</p>
             
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid lg:grid-cols-2 gap-10">
               
               <!-- Contact Form -->
-              <form id="contactForm" class="space-y-4">
+              <form id="contactForm" class="space-y-5">
                 <div>
                   <label class="block text-sm font-medium mb-2 text-slate-400">Votre nom</label>
                   <input name="name" required placeholder="Jean Dupont" />
@@ -715,25 +570,25 @@
                   <label class="block text-sm font-medium mb-2 text-slate-400">Message</label>
                   <textarea name="msg" rows="6" required placeholder="Votre message..."></textarea>
                 </div>
-                <button type="submit" class="modern-btn w-full">
-                  <span class="relative z-10">Envoyer le message</span>
+                <button type="submit" class="premium-btn w-full">
+                  <span>Envoyer le message</span>
                 </button>
               </form>
               
               <!-- Quick Links -->
-              <div class="space-y-4">
-                <a class="modern-btn block text-center" href="tel:+32471874910">
-                  <span class="relative z-10">📞 Appeler maintenant</span>
+              <div class="space-y-5">
+                <a class="premium-btn block text-center" href="tel:+32471874910">
+                  <span>📞 Appeler maintenant</span>
                 </a>
-                <a class="modern-btn block text-center" target="_blank" rel="noopener" href="https://www.linkedin.com">
-                  <span class="relative z-10">🔗 Voir LinkedIn</span>
+                <a class="premium-btn block text-center" target="_blank" rel="noopener" href="https://www.linkedin.com">
+                  <span>🔗 Voir LinkedIn</span>
                 </a>
                 
-                <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-6"></div>
+                <div class="section-divider"></div>
                 
-                <div class="glass-card p-4 text-sm text-slate-400">
+                <div class="glass-card p-5 text-sm text-slate-400">
                   <p class="mb-2">💡 Si l'email ne s'ouvre pas automatiquement :</p>
-                  <p class="text-indigo-400 font-mono">saadzebiri65@gmail.com</p>
+                  <p class="text-teal-300 font-mono">saadzebiri65@gmail.com</p>
                 </div>
               </div>
               
@@ -755,7 +610,6 @@
         summary: "Étudiant en 3e Bac TI à l'EPHEC, passionné par le réseau, la cybersécurité et l'IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
       },
       
-      // ========== SECTION CV ==========
       cv: {
         skills: [
           'Cisco / Packet Tracer', 
@@ -802,96 +656,62 @@
         ]
       },
       
-      // ========== THÈMES (6 minimum requis) ==========
       themes: [
-        {id: 'network', name: 'Réseaux', type: 'tech', color: '#6366f1'},
-        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#8b5cf6'},
-        {id: 'web', name: 'Web / MERN', type: 'tech', color: '#06b6d4'},
-        {id: 'iot', name: 'IoT', type: 'tech', color: '#10b981'},
-        {id: 'communication', name: 'Communication', type: 'soft', color: '#f59e0b'},
-        {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ef4444'}
+        {id: 'network', name: 'Réseaux', type: 'tech', color: '#ff6b6b'},
+        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#4ecdc4'},
+        {id: 'web', name: 'Web / MERN', type: 'tech', color: '#ffc371'},
+        {id: 'iot', name: 'IoT', type: 'tech', color: '#c779d0'},
+        {id: 'communication', name: 'Communication', type: 'soft', color: '#82ccdd'},
+        {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ff9a76'}
       ],
       
-      // ========== ACTIVITÉS (À COMPLÉTER) ==========
-      // Ajoute tes activités ici avec le format suivant :
       activities: [
         // EXEMPLES - DÉCOMMENTE ET MODIFIE :
-        // 
         // {
-        //   theme: 'network',              // ID du thème
-        //   title: 'Formation Cisco CCNA', // Nom de l'activité
-        //   kind: 'training',              // Type: 'training', 'event', 'conference', 'hackathon', etc.
-        //   hours: 25,                     // Heures réelles
-        //   date: '2025-02-15'            // Date au format YYYY-MM-DD
-        // },
-        // {
-        //   theme: 'security',
-        //   title: 'Workshop CTF Cybersécurité',
-        //   kind: 'event',
-        //   hours: 6,
-        //   date: '2025-03-10'
-        // },
-        // {
-        //   theme: 'communication',
-        //   title: 'Présentation projet EPHEC',
-        //   kind: 'event',
-        //   hours: 4,
-        //   date: '2025-03-20'
+        //   theme: 'network',
+        //   title: 'Formation Cisco CCNA',
+        //   kind: 'training',
+        //   hours: 25,
+        //   date: '2025-02-15'
         // },
       ]
     };
 
-    // ========================================================================
-    // 📝 CONTENU À PERSONNALISER - REMPLACE LES PLACEHOLDERS
-    // ========================================================================
-
-    // Une fois prêt, remplace les placeholders par ton contenu réel :
-    // Cherche les lignes 300-350 pour le projet professionnel
-    // Cherche les lignes 360-380 pour les points forts
-    // Cherche les lignes 390-410 pour les axes d'amélioration
-    // Cherche les lignes 490-550 pour ajouter tes photos/preuves
-
-    // ========================================================================
-    // ⚙️ CODE FONCTIONNEL - PAS BESOIN DE MODIFIER EN DESSOUS
-    // ========================================================================
-
-    // Initialize basic info
+    // Initialize
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('summary').textContent = DATA.meta.summary;
     document.getElementById('cvSummary').textContent = DATA.meta.summary;
 
-    // Populate CV sections
+    // Populate CV
     skills.innerHTML = DATA.cv.skills.map(s => 
-      `<span class="skill-tag">${s}</span>`
+      `<span class="premium-tag">${s}</span>`
     ).join('');
     
     languages.innerHTML = DATA.cv.languages.map(l => 
-      `<span class="skill-tag">${l.name} – ${l.level}</span>`
+      `<span class="premium-tag">${l.name} – ${l.level}</span>`
     ).join('');
     
     xp.innerHTML = DATA.cv.experience.map(e => `
-      <div class="glass-card p-4">
+      <div class="glass-card p-5 glow-on-hover">
         <div class="font-semibold text-lg">${e.title}</div>
-        <div class="text-sm text-indigo-400 mt-1 font-mono">${e.period}</div>
-        <div class="text-sm text-slate-400 mt-2">${e.details}</div>
+        <div class="text-sm text-yellow-300 mt-1 font-mono">${e.period}</div>
+        <div class="text-sm text-slate-400 mt-3">${e.details}</div>
       </div>
     `).join('');
     
     edu.innerHTML = DATA.cv.education.map(e => `
-      <div class="glass-card p-4">
+      <div class="glass-card p-5 glow-on-hover">
         <div class="font-semibold text-lg">${e.title}</div>
-        <div class="text-sm text-cyan-400 mt-1">${e.place}</div>
+        <div class="text-sm text-teal-300 mt-1">${e.place}</div>
         <div class="text-sm text-slate-400 mt-1 font-mono">${e.period}</div>
       </div>
     `).join('');
 
-    // Calculate hours with rules
+    // Calculate hours
     const countedActivityHours = a => {
-      // Formations: max 10h même si plus d'heures réelles
       if (a.kind === 'training') {
         return Math.min(a.hours || 0, 10);
       }
-      // Autres activités: comptées normalement
       return a.hours || 0;
     };
     
@@ -901,7 +721,6 @@
       
       for (const a of DATA.activities) {
         const counted = countedActivityHours(a);
-        // Max 10h par thème
         const newTotal = Math.min(10, themeTotals[a.theme] + counted);
         const added = newTotal - themeTotals[a.theme];
         themeTotals[a.theme] = newTotal;
@@ -925,22 +744,22 @@
       
       const bar = (label, val, max, color) => `
         <div>
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-slate-400">${label}</span>
-            <span class="font-bold font-mono">${val} / ${max}h</span>
+          <div class="flex justify-between text-sm mb-3">
+            <span class="text-slate-300">${label}</span>
+            <span class="font-bold font-mono text-lg">${val} / ${max}h</span>
           </div>
           <div class="progress-container">
-            <div class="progress-fill" style="width: ${Math.min(100, (val / max) * 100)}%; background: ${color};"></div>
+            <div class="progress-fill" style="width: ${Math.min(100, (val / max) * 100)}%; background: ${color}; color: ${color};"></div>
           </div>
         </div>
       `;
       
       progress.innerHTML = [
-        bar('Soft skills', soft, 10, '#f59e0b'),
-        bar('Informatique', tech, 50, '#6366f1'),
-        `<div class="mt-4 p-4 rounded-xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20">
-          <div class="text-sm text-slate-400">Total comptabilisé</div>
-          <div class="text-2xl font-bold gradient-text mt-1">${total} / 60h</div>
+        bar('Soft skills', soft, 10, '#82ccdd'),
+        bar('Informatique', tech, 50, '#ff6b6b'),
+        `<div class="mt-6 p-5 rounded-2xl bg-gradient-to-r from-red-500/10 via-teal-500/10 to-yellow-500/10 border border-white/20">
+          <div class="text-sm text-slate-400 mb-1">Total comptabilisé</div>
+          <div class="text-3xl font-bold hero-gradient">${total} / 60h</div>
         </div>`
       ].join('');
       
@@ -961,22 +780,22 @@
       themesGrid.innerHTML = DATA.themes.map(t => {
         const pct = Math.min(100, (themeTotals[t.id] / 10) * 100);
         const acts = (actsByTheme[t.id] || []).map(a => 
-          `<div class="flex justify-between text-sm py-2 border-b border-slate-700/30">
+          `<div class="flex justify-between text-sm py-2 border-b border-white/5">
             <span class="text-slate-300">• ${a.title}</span>
             <span class="text-slate-500 font-mono text-xs">${a.hours}h → ${Math.min(countedActivityHours(a), 10)}h</span>
           </div>`
         ).join('') || '<div class="text-sm text-slate-500 italic py-2">— à compléter —</div>';
         
         return `
-          <div class="glass-card p-5">
-            <div class="flex justify-between items-center mb-3">
+          <div class="glass-card p-6 glow-on-hover">
+            <div class="flex justify-between items-center mb-4">
               <span class="font-bold text-lg">${t.name}</span>
-              <span class="badge badge-primary" style="background: ${t.color}20; color: ${t.color}; border-color: ${t.color}40;">
+              <span class="badge" style="background: ${t.color}20; color: ${t.color}; border: 1.5px solid ${t.color};">
                 ${themeTotals[t.id]} / 10h
               </span>
             </div>
             <div class="progress-container mb-4">
-              <div class="progress-fill" style="width: ${pct}%; background: ${t.color};"></div>
+              <div class="progress-fill" style="width: ${pct}%; background: ${t.color}; color: ${t.color};"></div>
             </div>
             <div class="space-y-1">${acts}</div>
           </div>
@@ -993,11 +812,11 @@
       if (rows.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-12">
-              <div class="text-5xl mb-4 opacity-30">📊</div>
-              <div class="text-slate-400 text-lg mb-2">Aucune activité enregistrée</div>
+            <td colspan="6" class="text-center py-16">
+              <div class="text-6xl mb-4 opacity-30">📊</div>
+              <div class="text-slate-300 text-xl mb-3">Aucune activité enregistrée</div>
               <div class="text-sm text-slate-500">
-                Ajoute tes activités dans <code class="bg-slate-800 px-2 py-1 rounded">DATA.activities</code> (ligne 700-750)
+                Ajoute tes activités dans <code class="bg-white/5 px-3 py-1 rounded font-mono">DATA.activities</code>
               </div>
             </td>
           </tr>
@@ -1010,18 +829,18 @@
         return `
           <tr>
             <td>
-              <span class="badge" style="background: ${theme.color}15; color: ${theme.color}; border: 1px solid ${theme.color}40;">
+              <span class="badge" style="background: ${theme.color}20; color: ${theme.color}; border: 1px solid ${theme.color};">
                 ${theme.name}
               </span>
             </td>
             <td class="font-medium">${a.title}</td>
             <td>
-              <span class="badge badge-primary" style="font-size: 12px; padding: 4px 12px;">
+              <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 12px;">
                 ${a.kind}
               </span>
             </td>
             <td class="text-right font-mono text-slate-400">${a.hours}h</td>
-            <td class="text-right font-mono font-bold" style="color: ${theme.color};">${counted}h</td>
+            <td class="text-right font-mono font-bold text-lg" style="color: ${theme.color};">${counted}h</td>
             <td class="text-slate-500 font-mono text-sm">
               ${a.date ? new Date(a.date).toLocaleDateString('fr-BE') : '—'}
             </td>
@@ -1030,7 +849,7 @@
       }).join('');
     }
 
-    // Router for navigation
+    // Router
     function route() {
       const hash = (location.hash || '#home').substring(1);
       
@@ -1047,7 +866,7 @@
 
     window.addEventListener('hashchange', route);
 
-    // Contact form handler
+    // Contact form
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
       const f = new FormData(e.target);
@@ -1058,13 +877,13 @@
       location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
     });
 
-    // Initialize everything
+    // Initialize
     renderProgress();
     renderThemes();
     renderTable();
     route();
     
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1076,4 +895,204 @@
     });
   </script>
 </body>
-</html>
+</html>>
+            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
+              <span class="text-2xl">✉️</span>
+              <span class="text-sm">saadzebiri65@gmail.com</span>
+            </a>
+            <a href="tel:+32471874910" class="info-card">
+              <span class="text-2xl">📞</span>
+              <span class="text-sm">0471 87 49 10</span>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="info-card">
+              <span class="text-2xl">🔗</span>
+              <span class="text-sm">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-xs text-center text-slate-500 font-mono">© <span id="year"></span> Zebiri Saad</div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="space-y-10">
+        
+        <!-- HOME PAGE -->
+        <div id="home" class="space-y-10">
+          
+          <!-- Hero Section -->
+          <section class="glass-card p-10 lg:p-14 fade-in">
+            <div class="text-xs font-mono text-yellow-300/80 mb-4 tracking-widest">// À_PROPOS</div>
+            <h2 class="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+              Construire,<br/>
+              apprendre,<br/>
+              <span class="hero-gradient">sécuriser.</span>
+            </h2>
+            <p id="summary" class="text-lg text-slate-300 leading-relaxed max-w-3xl mb-10"></p>
+            
+            <div class="grid sm:grid-cols-3 gap-5">
+              <div class="glass-card p-5 glow-on-hover">
+                <div class="text-xs text-slate-400 mb-2">Établissement</div>
+                <div class="font-semibold text-lg hero-gradient">EPHEC – TI</div>
+              </div>
+              <div class="glass-card p-5 glow-on-hover">
+                <div class="text-xs text-slate-400 mb-2">Année</div>
+                <div class="font-semibold text-lg hero-gradient">Bac 3 – 2025</div>
+              </div>
+              <div class="glass-card p-5 glow-on-hover">
+                <div class="text-xs text-slate-400 mb-2">Objectif</div>
+                <div class="font-semibold text-lg hero-gradient">Stage Réseaux</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Projet Professionnel -->
+          <section class="glass-card p-8 fade-in">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+              <span class="text-3xl">🎯</span>
+              <span>Projet professionnel</span>
+            </h3>
+            
+            <div id="projet-professionnel">
+              <div class="placeholder-section">
+                <div class="placeholder-icon">🚀</div>
+                <div class="placeholder-title">Section à compléter</div>
+                <div class="placeholder-hint">
+                  Ligne 650-700 : Ajoute ton projet professionnel ici<br/>
+                  (stage → admin réseau → ingénieur sécurité)
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Points Forts & Axes d'Amélioration -->
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div class="glass-card p-7 fade-in">
+              <h3 class="text-xl font-bold mb-5 flex items-center gap-3">
+                <span class="text-2xl">💪</span>
+                <span>Points forts</span>
+              </h3>
+              
+              <div id="points-forts">
+                <div class="placeholder-section">
+                  <div class="placeholder-icon">✨</div>
+                  <div class="placeholder-title">À compléter</div>
+                  <div class="placeholder-hint">
+                    Ligne 710-750 : Tes qualités<br/>
+                    (autonomie, communication, vulgarisation...)
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="glass-card p-7 fade-in">
+              <h3 class="text-xl font-bold mb-5 flex items-center gap-3">
+                <span class="text-2xl">📈</span>
+                <span>Axes d'amélioration</span>
+              </h3>
+              
+              <div id="axes-amelioration">
+                <div class="placeholder-section">
+                  <div class="placeholder-icon">🎯</div>
+                  <div class="placeholder-title">À compléter</div>
+                  <div class="placeholder-hint">
+                    Ligne 760-800 : Tes pistes de progression<br/>
+                    (gestion du temps, néerlandais, rigueur...)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress & Rules -->
+          <div class="grid lg:grid-cols-2 gap-6">
+            
+            <div class="glass-card p-7 fade-in">
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-2xl">📊</span>
+                <span>Progression heures</span>
+              </h3>
+              <div id="progress" class="space-y-6"></div>
+              <div id="warnings" class="text-sm text-yellow-300 mt-5 font-mono"></div>
+            </div>
+            
+            <div class="glass-card p-7 fade-in">
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-2xl">📋</span>
+                <span>Règles</span>
+              </h3>
+              <div class="space-y-4 text-sm text-slate-300">
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-red-500/10 to-transparent border-l-2 border-red-400">
+                  <span class="text-red-400 text-lg">→</span>
+                  <span>10h <strong class="text-white">max/thème</strong> (soft inclus)</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-teal-500/10 to-transparent border-l-2 border-teal-400">
+                  <span class="text-teal-400 text-lg">→</span>
+                  <span>Une <strong class="text-white">formation</strong> compte max 10h</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-yellow-500/10 to-transparent border-l-2 border-yellow-400">
+                  <span class="text-yellow-400 text-lg">→</span>
+                  <span>Cible totale : <strong class="text-white">60h</strong> (10h soft + 50h IT)</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
+                  <span class="text-purple-400 text-lg">→</span>
+                  <span>Au moins <strong class="text-white">6 thèmes différents</strong></span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Themes Grid -->
+          <div class="glass-card p-8 fade-in">
+            <div class="flex items-center justify-between mb-7">
+              <h3 class="text-2xl font-bold flex items-center gap-3">
+                <span class="text-3xl">🎯</span>
+                <span>Synthèse par thème</span>
+              </h3>
+              <span class="text-xs font-mono text-cyan-300">// 6 thèmes requis</span>
+            </div>
+            <div id="themesGrid" class="grid md:grid-cols-2 gap-5"></div>
+          </div>
+
+          <!-- Preuves Section -->
+          <div class="glass-card p-8 fade-in">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+              <span class="text-3xl">📸</span>
+              <span>Preuves de participation</span>
+            </h3>
+            
+            <div id="preuves-section">
+              <div class="placeholder-section">
+                <div class="placeholder-icon">📷</div>
+                <div class="placeholder-title">Photos et documents à ajouter</div>
+                <div class="placeholder-hint">
+                  Ligne 850-920 : Ajoute tes photos, tickets d'entrée,<br/>
+                  inscriptions validées, diplômes, attestations...<br/>
+                  Utilise &lt;img src="..."&gt; pour les images
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Table -->
+          <div class="glass-card p-8 fade-in">
+            <h3 class="text-2xl font-bold mb-7 flex items-center gap-3">
+              <span class="text-3xl">📑</span>
+              <span>Récapitulatif détaillé</span>
+            </h3>
+            <div class="overflow-x-auto">
+              <table id="summaryTable">
+                <thead>
+                  <tr>
+                    <th>Thème</th>
+                    <th>Activité</th>
+                    <th>Type</th>
+                    <th class="text-right">Réelles</th>
+                    <th class="text-right">Comptées</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div
