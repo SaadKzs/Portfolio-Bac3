@@ -8,145 +8,90 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --electric-blue: #00d4ff;
-      --cyber-purple: #b537f2;
-      --neon-pink: #ff006e;
-      --matrix-green: #00ff88;
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
     }
     
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     html, body {
-      font-family: 'Outfit', sans-serif;
-      background: #0a0118;
-      color: #ffffff;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e293b 100%);
+      color: #f1f5f9;
       overflow-x: hidden;
     }
     
-    /* Animated Gradient Background */
+    /* Subtle animated background */
     body::before {
       content: '';
       position: fixed;
-      width: 300%;
-      height: 300%;
-      top: -100%;
-      left: -100%;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
       z-index: -2;
       background: 
-        radial-gradient(circle at 25% 25%, rgba(181, 55, 242, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 0, 110, 0.2) 0%, transparent 50%);
-      animation: rotateBg 30s ease-in-out infinite;
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+      animation: gentleFloat 25s ease-in-out infinite;
     }
     
-    @keyframes rotateBg {
-      0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      33% { transform: translate(-5%, 5%) rotate(120deg) scale(1.1); }
-      66% { transform: translate(5%, -5%) rotate(240deg) scale(0.9); }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-3%, 3%) scale(1.05); }
     }
     
-    /* Grid overlay */
+    /* Subtle grid */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
       z-index: -1;
       background-image: 
-        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: gridMove 20s linear infinite;
+        linear-gradient(rgba(99, 102, 241, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.5;
     }
     
-    @keyframes gridMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 50px 50px; }
-    }
-    
-    /* Glass morphism cards */
+    /* Glass cards */
     .glass-card {
-      background: rgba(20, 10, 40, 0.4);
+      background: rgba(30, 41, 59, 0.4);
       backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .glass-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(0, 212, 255, 0.1),
-        transparent
-      );
-      transform: rotate(45deg);
-      animation: shimmer 3s infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .glass-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(0, 212, 255, 0.4);
-      box-shadow: 
-        0 20px 60px rgba(0, 212, 255, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    
-    /* Neon text effects */
-    .neon-text {
-      text-shadow: 
-        0 0 10px rgba(0, 212, 255, 0.8),
-        0 0 20px rgba(0, 212, 255, 0.6),
-        0 0 30px rgba(0, 212, 255, 0.4),
-        0 0 40px rgba(0, 212, 255, 0.2);
-      animation: neonPulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes neonPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+      transform: translateY(-4px);
     }
     
     /* Gradient text */
     .gradient-text {
-      background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-pink));
+      background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      background-size: 200% 200%;
-      animation: gradientShift 3s ease infinite;
     }
     
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    /* Futuristic buttons */
-    .cyber-btn {
+    /* Modern buttons */
+    .modern-btn {
       position: relative;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple));
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       color: white;
       font-weight: 600;
       cursor: pointer;
@@ -156,85 +101,68 @@
       display: inline-block;
     }
     
-    .cyber-btn::before {
+    .modern-btn::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s;
     }
     
-    .cyber-btn:hover::before {
+    .modern-btn:hover::before {
       left: 100%;
     }
     
-    .cyber-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 
-        0 10px 30px rgba(0, 212, 255, 0.5),
-        0 0 50px rgba(181, 55, 242, 0.3);
+    .modern-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
     }
     
-    .cyber-btn:active {
-      transform: translateY(-1px) scale(1.02);
-    }
-    
-    /* Progress bars with glow */
+    /* Progress bars */
     .progress-container {
       position: relative;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.05);
+      height: 10px;
+      background: rgba(148, 163, 184, 0.1);
       border-radius: 999px;
       overflow: hidden;
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     
-    .progress-bar {
+    .progress-fill {
       height: 100%;
       border-radius: 999px;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
-      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 20px currentColor;
+      overflow: hidden;
     }
     
-    .progress-bar::after {
+    .progress-fill::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      animation: progressShine 2s infinite;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
     }
     
-    @keyframes progressShine {
+    @keyframes shimmer {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(200%); }
     }
     
-    /* Floating animation */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    
-    .float {
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    /* Stagger fade-in */
+    /* Fade in animations */
     .fade-in {
-      animation: fadeInUp 0.8s ease-out backwards;
+      animation: fadeInUp 0.6s ease-out backwards;
     }
     
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -252,92 +180,68 @@
     /* Skill tags */
     .skill-tag {
       display: inline-block;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(181, 55, 242, 0.1));
-      border: 1px solid rgba(0, 212, 255, 0.3);
+      padding: 8px 18px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
       border-radius: 999px;
       font-size: 14px;
       font-weight: 500;
       transition: all 0.3s ease;
-      cursor: default;
     }
     
     .skill-tag:hover {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(181, 55, 242, 0.2));
-      border-color: var(--electric-blue);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
     }
     
     /* Nav links */
     .nav-link {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px 20px;
-      border-radius: 12px;
-      color: rgba(255, 255, 255, 0.6);
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      color: rgba(241, 245, 249, 0.6);
       text-decoration: none;
       transition: all 0.3s ease;
       font-weight: 500;
-      position: relative;
-    }
-    
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3px;
-      height: 0;
-      background: linear-gradient(180deg, var(--electric-blue), var(--cyber-purple));
-      border-radius: 2px;
-      transition: height 0.3s ease;
     }
     
     .nav-link:hover {
-      background: rgba(0, 212, 255, 0.1);
+      background: rgba(99, 102, 241, 0.1);
       color: white;
-      transform: translateX(8px);
-    }
-    
-    .nav-link:hover::before {
-      height: 60%;
+      transform: translateX(4px);
     }
     
     .nav-link.active {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(181, 55, 242, 0.2));
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
       color: white;
-      border: 1px solid rgba(0, 212, 255, 0.3);
-    }
-    
-    .nav-link.active::before {
-      height: 80%;
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
     
     /* Input fields */
     input, textarea {
       width: 100%;
-      padding: 14px 18px;
-      background: rgba(20, 10, 40, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+      padding: 12px 16px;
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 10px;
       color: white;
       font-family: inherit;
       transition: all 0.3s ease;
-      font-size: 15px;
     }
     
     input:focus, textarea:focus {
       outline: none;
-      border-color: var(--electric-blue);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1), 0 0 20px rgba(0, 212, 255, 0.2);
-      background: rgba(20, 10, 40, 0.6);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      background: rgba(30, 41, 59, 0.6);
     }
     
     input::placeholder, textarea::placeholder {
-      color: rgba(255, 255, 255, 0.3);
+      color: rgba(148, 163, 184, 0.5);
     }
     
     /* Table styles */
@@ -349,147 +253,141 @@
     
     th {
       text-align: left;
-      padding: 16px 12px;
+      padding: 14px 12px;
       font-weight: 600;
-      color: var(--electric-blue);
+      color: var(--primary);
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid rgba(99, 102, 241, 0.2);
     }
     
     td {
-      padding: 16px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    tr {
-      transition: all 0.3s ease;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.05);
     }
     
     tr:hover td {
-      background: rgba(0, 212, 255, 0.05);
+      background: rgba(99, 102, 241, 0.05);
     }
     
     /* Info cards */
     .info-card {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 16px 20px;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(181, 55, 242, 0.05));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      border-radius: 12px;
       transition: all 0.3s ease;
     }
     
     .info-card:hover {
-      border-color: rgba(0, 212, 255, 0.3);
-      transform: translateX(8px);
-      box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+      border-color: rgba(99, 102, 241, 0.3);
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
     }
     
-    .icon-pulse {
-      display: inline-block;
-      animation: iconPulse 2s ease-in-out infinite;
+    /* Placeholder sections */
+    .placeholder-section {
+      padding: 32px;
+      background: rgba(99, 102, 241, 0.05);
+      border: 2px dashed rgba(99, 102, 241, 0.3);
+      border-radius: 16px;
+      text-align: center;
     }
     
-    @keyframes iconPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    .placeholder-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    
+    .placeholder-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .placeholder-hint {
+      font-size: 14px;
+      color: rgba(148, 163, 184, 0.7);
+      font-family: 'JetBrains Mono', monospace;
     }
     
     /* Scrollbar */
     ::-webkit-scrollbar {
-      width: 10px;
+      width: 8px;
     }
     
     ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.2);
     }
     
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--electric-blue), var(--cyber-purple));
-      border-radius: 5px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      border-radius: 4px;
     }
     
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, var(--cyber-purple), var(--neon-pink));
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
     }
     
-    /* Loading animation */
-    .loading-dots::after {
-      content: '...';
-      animation: dots 1.5s steps(4, end) infinite;
+    .badge-primary {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
     
-    @keyframes dots {
-      0%, 20% { content: '.'; }
-      40% { content: '..'; }
-      60%, 100% { content: '...'; }
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
     
-    /* Theme dots */
-    .theme-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes dotPulse {
-      0%, 100% { 
-        transform: scale(1);
-        box-shadow: 0 0 0 0 currentColor;
-      }
-      50% { 
-        transform: scale(1.2);
-        box-shadow: 0 0 0 8px transparent;
-      }
-    }
-    
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .glass-card:hover {
-        transform: none;
-      }
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }
   </style>
 </head>
 <body class="min-h-screen">
-  
-  <!-- Floating particles -->
-  <div class="fixed inset-0 pointer-events-none" style="z-index: 1;">
-    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-electric-blue rounded-full opacity-60 float" style="animation-delay: 0s; animation-duration: 4s;"></div>
-    <div class="absolute top-3/4 right-1/4 w-3 h-3 bg-cyber-purple rounded-full opacity-40 float" style="animation-delay: 1s; animation-duration: 5s;"></div>
-    <div class="absolute top-1/2 left-3/4 w-2 h-2 bg-neon-pink rounded-full opacity-50 float" style="animation-delay: 2s; animation-duration: 6s;"></div>
-  </div>
 
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 relative" style="z-index: 10;">
-    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+    <div class="lg:grid lg:grid-cols-[300px,1fr] gap-8">
       
       <!-- Sidebar -->
       <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
         
         <!-- Profile Card -->
         <div class="glass-card p-6 fade-in">
-          <div class="text-xs font-mono text-electric-blue mb-3 tracking-wider">// PORTFOLIO_2025</div>
-          <h1 class="text-4xl font-bold gradient-text mb-2">Zebiri Saad</h1>
-          <p class="text-gray-400 mb-4">Bac 3 – EPHEC Brussels</p>
+          <div class="text-xs font-mono text-indigo-400 mb-3 tracking-wide">// PORTFOLIO</div>
+          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
+          <p class="text-slate-400 mb-4">Bac 3 – EPHEC Brussels</p>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-5"></div>
+          <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-4"></div>
           
           <nav class="space-y-2">
             <a href="#home" class="nav-link active" data-page="home">
-              <span class="text-xl icon-pulse">🏠</span>
+              <span class="text-lg">🏠</span>
               <span>Accueil</span>
             </a>
             <a href="#cv" class="nav-link" data-page="cv">
-              <span class="text-xl icon-pulse">📄</span>
+              <span class="text-lg">📄</span>
               <span>CV</span>
             </a>
             <a href="#contact" class="nav-link" data-page="contact">
-              <span class="text-xl icon-pulse">✉️</span>
+              <span class="text-lg">✉️</span>
               <span>Contact</span>
             </a>
           </nav>
@@ -497,28 +395,28 @@
         
         <!-- Contact Card -->
         <div class="glass-card p-6 fade-in">
-          <div class="text-xs font-mono text-electric-blue mb-4 tracking-wider">// COORDONNÉES</div>
-          <div class="space-y-3">
+          <div class="text-xs font-mono text-indigo-400 mb-4 tracking-wide">// COORDONNÉES</div>
+          <div class="space-y-2">
             <div class="info-card">
-              <span class="text-2xl">📍</span>
+              <span class="text-xl">📍</span>
               <span class="text-sm">Bruxelles</span>
             </div>
             <a href="mailto:saadzebiri65@gmail.com" class="info-card">
-              <span class="text-2xl">✉️</span>
+              <span class="text-xl">✉️</span>
               <span class="text-sm">saadzebiri65@gmail.com</span>
             </a>
             <a href="tel:+32471874910" class="info-card">
-              <span class="text-2xl">📞</span>
+              <span class="text-xl">📞</span>
               <span class="text-sm">0471 87 49 10</span>
             </a>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="info-card">
-              <span class="text-2xl">🔗</span>
+              <span class="text-xl">🔗</span>
               <span class="text-sm">LinkedIn</span>
             </a>
           </div>
         </div>
         
-        <div class="text-xs text-center text-gray-600 font-mono">© <span id="year"></span> ZEBIRI_SAAD</div>
+        <div class="text-xs text-center text-slate-600 font-mono">© <span id="year"></span> Zebiri Saad</div>
       </aside>
 
       <!-- Main Content -->
@@ -529,70 +427,134 @@
           
           <!-- Hero Section -->
           <section class="glass-card p-8 lg:p-12 fade-in">
-            <div class="text-xs font-mono text-electric-blue mb-4 tracking-wider">// À_PROPOS</div>
-            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Construire,<br/>
-              apprendre,<br/>
-              <span class="neon-text" style="color: var(--electric-blue);">sécuriser.</span>
+            <div class="text-xs font-mono text-indigo-400 mb-4 tracking-wide">// À_PROPOS</div>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Construire, apprendre,<br/>
+              <span class="gradient-text">sécuriser.</span>
             </h2>
-            <p id="summary" class="text-lg text-gray-300 leading-relaxed max-w-3xl mb-8"></p>
+            <p id="summary" class="text-lg text-slate-300 leading-relaxed max-w-3xl mb-8"></p>
             
             <div class="grid sm:grid-cols-3 gap-4">
-              <div class="glass-card p-5 flex items-center gap-4">
-                <div class="theme-dot" style="background: var(--electric-blue);"></div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
                 <div>
-                  <div class="text-xs text-gray-400">Établissement</div>
-                  <div class="font-semibold text-sm mt-1">EPHEC – TI</div>
+                  <div class="text-xs text-slate-400">Établissement</div>
+                  <div class="font-semibold text-sm mt-0.5">EPHEC – TI</div>
                 </div>
               </div>
-              <div class="glass-card p-5 flex items-center gap-4">
-                <div class="theme-dot" style="background: var(--cyber-purple);"></div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-purple-500"></div>
                 <div>
-                  <div class="text-xs text-gray-400">Année</div>
-                  <div class="font-semibold text-sm mt-1">Bac 3 – 2025</div>
+                  <div class="text-xs text-slate-400">Année</div>
+                  <div class="font-semibold text-sm mt-0.5">Bac 3 – 2025</div>
                 </div>
               </div>
-              <div class="glass-card p-5 flex items-center gap-4">
-                <div class="theme-dot" style="background: var(--matrix-green);"></div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-cyan-500"></div>
                 <div>
-                  <div class="text-xs text-gray-400">Objectif</div>
-                  <div class="font-semibold text-sm mt-1">Stage Réseaux</div>
+                  <div class="text-xs text-slate-400">Objectif</div>
+                  <div class="font-semibold text-sm mt-0.5">Stage Réseaux</div>
                 </div>
               </div>
             </div>
           </section>
+
+          <!-- ========== SECTION PROJET PROFESSIONNEL (À COMPLÉTER) ========== -->
+          <section class="glass-card p-8 fade-in">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+              <span class="text-2xl">🎯</span>
+              <span>Projet professionnel</span>
+            </h3>
+            
+            <!-- TODO: Remplace ce placeholder par ton vrai projet -->
+            <div id="projet-professionnel">
+              <div class="placeholder-section">
+                <div class="placeholder-icon">🚀</div>
+                <div class="placeholder-title">Section à compléter</div>
+                <div class="placeholder-hint">
+                  Ligne 300-350 : Ajoute ton projet professionnel ici<br/>
+                  (stage → admin réseau → ingénieur sécurité)
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ========== POINTS FORTS & AXES D'AMÉLIORATION (À COMPLÉTER) ========== -->
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div class="glass-card p-6 fade-in">
+              <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">💪</span>
+                <span>Points forts</span>
+              </h3>
+              
+              <!-- TODO: Remplace par tes vrais points forts -->
+              <div id="points-forts">
+                <div class="placeholder-section">
+                  <div class="placeholder-icon">✨</div>
+                  <div class="placeholder-title">À compléter</div>
+                  <div class="placeholder-hint">
+                    Ligne 360-380 : Tes qualités<br/>
+                    (autonomie, communication, vulgarisation...)
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="glass-card p-6 fade-in">
+              <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="text-2xl">📈</span>
+                <span>Axes d'amélioration</span>
+              </h3>
+              
+              <!-- TODO: Remplace par tes axes d'amélioration -->
+              <div id="axes-amelioration">
+                <div class="placeholder-section">
+                  <div class="placeholder-icon">🎯</div>
+                  <div class="placeholder-title">À compléter</div>
+                  <div class="placeholder-hint">
+                    Ligne 390-410 : Tes pistes de progression<br/>
+                    (gestion du temps, néerlandais, rigueur...)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Progress & Rules -->
           <div class="grid lg:grid-cols-2 gap-6">
             
             <!-- Progress Card -->
             <div class="glass-card p-6 fade-in">
-              <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                <span class="text-3xl icon-pulse">📊</span>
-                <span>Progression</span>
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-2xl">📊</span>
+                <span>Progression heures</span>
               </h3>
-              <div id="progress" class="space-y-6"></div>
+              <div id="progress" class="space-y-5"></div>
               <div id="warnings" class="text-sm text-yellow-400 mt-4 font-mono"></div>
             </div>
             
             <!-- Rules Card -->
             <div class="glass-card p-6 fade-in">
-              <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                <span class="text-3xl icon-pulse">📋</span>
+              <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-2xl">📋</span>
                 <span>Règles</span>
               </h3>
-              <div class="space-y-4">
-                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-electric-blue/5 to-transparent border-l-2 border-electric-blue">
-                  <span class="text-electric-blue text-xl">→</span>
-                  <span class="text-sm text-gray-300">10h <strong class="text-white">max/thème</strong> (soft inclus)</span>
+              <div class="space-y-3 text-sm text-slate-300">
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-400">•</span>
+                  <span>10h <strong class="text-white">max/thème</strong> (soft inclus)</span>
                 </div>
-                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyber-purple/5 to-transparent border-l-2 border-cyber-purple">
-                  <span class="text-cyber-purple text-xl">→</span>
-                  <span class="text-sm text-gray-300">Une <strong class="text-white">formation</strong> compte max 10h</span>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-400">•</span>
+                  <span>Une <strong class="text-white">formation</strong> compte max 10h, même si &gt; 10h réelles</span>
                 </div>
-                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-matrix-green/5 to-transparent border-l-2 border-matrix-green">
-                  <span class="text-matrix-green text-xl">→</span>
-                  <span class="text-sm text-gray-300">Cible totale : <strong class="text-white">60h</strong> (10h soft + 50h IT)</span>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-400">•</span>
+                  <span>Cible totale : <strong class="text-white">60h</strong> (10h soft + 50h IT)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-400">•</span>
+                  <span>Au moins <strong class="text-white">6 thèmes différents</strong></span>
                 </div>
               </div>
             </div>
@@ -602,19 +564,40 @@
           <!-- Themes Grid -->
           <div class="glass-card p-6 fade-in">
             <div class="flex items-center justify-between mb-6">
-              <h3 class="text-2xl font-bold flex items-center gap-3">
-                <span class="text-3xl icon-pulse">🎯</span>
+              <h3 class="text-xl font-bold flex items-center gap-2">
+                <span class="text-2xl">🎯</span>
                 <span>Synthèse par thème</span>
               </h3>
-              <span class="text-xs font-mono text-cyan-400">// READ_ONLY</span>
+              <span class="text-xs font-mono text-cyan-400">// 6 thèmes requis</span>
             </div>
             <div id="themesGrid" class="grid md:grid-cols-2 gap-4"></div>
           </div>
 
+          <!-- ========== SECTION PREUVES/PHOTOS (À COMPLÉTER) ========== -->
+          <div class="glass-card p-6 fade-in">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="text-2xl">📸</span>
+              <span>Preuves de participation</span>
+            </h3>
+            
+            <!-- TODO: Ajoute tes photos, tickets, diplômes ici -->
+            <div id="preuves-section">
+              <div class="placeholder-section">
+                <div class="placeholder-icon">📷</div>
+                <div class="placeholder-title">Photos et documents à ajouter</div>
+                <div class="placeholder-hint">
+                  Ligne 490-550 : Ajoute tes photos, tickets d'entrée,<br/>
+                  inscriptions validées, diplômes, attestations...<br/>
+                  Utilise &lt;img src="..."&gt; pour les images
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Detailed Table -->
           <div class="glass-card p-6 fade-in">
-            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span class="text-3xl icon-pulse">📑</span>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="text-2xl">📑</span>
               <span>Récapitulatif détaillé</span>
             </h3>
             <div class="overflow-x-auto">
@@ -639,48 +622,48 @@
         <!-- CV PAGE -->
         <div id="cv" class="hidden space-y-8">
           <div class="glass-card p-8 fade-in">
-            <h2 class="text-4xl font-bold gradient-text mb-4">Curriculum Vitae</h2>
-            <p id="cvSummary" class="text-gray-300 leading-relaxed max-w-3xl mb-8"></p>
+            <h2 class="text-3xl font-bold gradient-text mb-4">Curriculum Vitae</h2>
+            <p id="cvSummary" class="text-slate-300 leading-relaxed max-w-3xl mb-8"></p>
             
-            <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-8"></div>
+            <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-8"></div>
             
             <div class="grid lg:grid-cols-2 gap-8">
               
               <!-- Skills & Languages -->
               <div class="space-y-8">
                 <div>
-                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span class="text-3xl icon-pulse">💻</span>
+                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-2xl">💻</span>
                     <span>Compétences</span>
                   </h3>
-                  <div id="skills" class="flex flex-wrap gap-3"></div>
+                  <div id="skills" class="flex flex-wrap gap-2"></div>
                 </div>
                 
                 <div>
-                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span class="text-3xl icon-pulse">🌍</span>
+                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🌍</span>
                     <span>Langues</span>
                   </h3>
-                  <div id="languages" class="flex flex-wrap gap-3"></div>
+                  <div id="languages" class="flex flex-wrap gap-2"></div>
                 </div>
               </div>
               
               <!-- Experience & Education -->
               <div class="space-y-8">
                 <div>
-                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span class="text-3xl icon-pulse">🚀</span>
+                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🚀</span>
                     <span>Expériences</span>
                   </h3>
-                  <div id="xp" class="space-y-4"></div>
+                  <div id="xp" class="space-y-3"></div>
                 </div>
                 
                 <div>
-                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                    <span class="text-3xl icon-pulse">🎓</span>
+                  <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-2xl">🎓</span>
                     <span>Éducation</span>
                   </h3>
-                  <div id="edu" class="space-y-4"></div>
+                  <div id="edu" class="space-y-3"></div>
                 </div>
               </div>
               
@@ -691,44 +674,44 @@
         <!-- CONTACT PAGE -->
         <div id="contact" class="hidden space-y-8">
           <div class="glass-card p-8 fade-in">
-            <h2 class="text-4xl font-bold gradient-text mb-4">Contact</h2>
-            <p class="text-gray-300 mb-8">Écrivez-moi via le formulaire ci-dessous ou utilisez un des raccourcis.</p>
+            <h2 class="text-3xl font-bold gradient-text mb-4">Contact</h2>
+            <p class="text-slate-300 mb-8">Écrivez-moi via le formulaire ci-dessous ou utilisez un des raccourcis.</p>
             
             <div class="grid lg:grid-cols-2 gap-8">
               
               <!-- Contact Form -->
-              <form id="contactForm" class="space-y-5">
+              <form id="contactForm" class="space-y-4">
                 <div>
-                  <label class="block text-sm font-medium mb-2 text-gray-400">Votre nom</label>
+                  <label class="block text-sm font-medium mb-2 text-slate-400">Votre nom</label>
                   <input name="name" required placeholder="Jean Dupont" />
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-2 text-gray-400">Votre email</label>
+                  <label class="block text-sm font-medium mb-2 text-slate-400">Votre email</label>
                   <input type="email" name="email" required placeholder="jean@example.com" />
                 </div>
                 <div>
-                  <label class="block text-sm font-medium mb-2 text-gray-400">Message</label>
+                  <label class="block text-sm font-medium mb-2 text-slate-400">Message</label>
                   <textarea name="msg" rows="6" required placeholder="Votre message..."></textarea>
                 </div>
-                <button type="submit" class="cyber-btn w-full">
+                <button type="submit" class="modern-btn w-full">
                   <span class="relative z-10">Envoyer le message</span>
                 </button>
               </form>
               
               <!-- Quick Links -->
               <div class="space-y-4">
-                <a class="cyber-btn block text-center" href="tel:+32471874910">
+                <a class="modern-btn block text-center" href="tel:+32471874910">
                   <span class="relative z-10">📞 Appeler maintenant</span>
                 </a>
-                <a class="cyber-btn block text-center" target="_blank" rel="noopener" href="https://www.linkedin.com">
+                <a class="modern-btn block text-center" target="_blank" rel="noopener" href="https://www.linkedin.com">
                   <span class="relative z-10">🔗 Voir LinkedIn</span>
                 </a>
                 
-                <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-6"></div>
+                <div class="h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent my-6"></div>
                 
-                <div class="glass-card p-4 text-sm text-gray-400">
-                  <p>💡 Si l'email ne s'ouvre pas automatiquement, envoyez à :</p>
-                  <p class="text-electric-blue font-mono mt-2">saadzebiri65@gmail.com</p>
+                <div class="glass-card p-4 text-sm text-slate-400">
+                  <p class="mb-2">💡 Si l'email ne s'ouvre pas automatiquement :</p>
+                  <p class="text-indigo-400 font-mono">saadzebiri65@gmail.com</p>
                 </div>
               </div>
               
@@ -741,67 +724,154 @@
   </div>
 
   <script>
+    // ========================================================================
+    // 🔧 CONFIGURATION DES DONNÉES - MODIFIE ICI TES INFORMATIONS
+    // ========================================================================
+    
     const DATA = {
       meta: {
         summary: "Étudiant en 3e Bac TI à l'EPHEC, passionné par le réseau, la cybersécurité et l'IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
       },
+      
+      // ========== SECTION CV ==========
       cv: {
-        skills: ['Cisco / Packet Tracer', 'Linux basics', 'Admin Systèmes & Réseaux', 'Docker, DNS, HTTP/HTTPS, Mail', 'Web MERN (Mongo/Express/React/Node)', 'IoT & intégration soft/hard', 'Python, C, C++, JS, HTML/CSS', 'Git & GitHub'],
+        skills: [
+          'Cisco / Packet Tracer', 
+          'Linux basics', 
+          'Admin Systèmes & Réseaux', 
+          'Docker, DNS, HTTP/HTTPS, Mail', 
+          'Web MERN (Mongo/Express/React/Node)', 
+          'IoT & intégration soft/hard', 
+          'Python, C, C++, JS, HTML/CSS', 
+          'Git & GitHub'
+        ],
         experience: [
-          {title: 'IT Support Practice – EPHEC', period: '2023–2024', details: 'Diagnostic pannes logicielles & matérielles (Windows/Linux).'},
-          {title: 'Network Basics Project – EPHEC', period: '2023–2025', details: 'Config routeurs/switches, adressage IP, troubleshooting.'},
-          {title: 'Group IT Project – EPHEC', period: '2023–2025', details: 'Gestion de projet, présentation de solution (ex: multiprise connectée).'},
-          {title: 'Personal Tech Support', period: '2023–Maintenant', details: 'Assistance famille/amis : installs, réseau, bugs quotidiens.'}
+          {
+            title: 'IT Support Practice – EPHEC', 
+            period: '2023–2024', 
+            details: 'Diagnostic pannes logicielles & matérielles (Windows/Linux).'
+          },
+          {
+            title: 'Network Basics Project – EPHEC', 
+            period: '2023–2025', 
+            details: 'Config routeurs/switches, adressage IP, troubleshooting.'
+          },
+          {
+            title: 'Group IT Project – EPHEC', 
+            period: '2023–2025', 
+            details: 'Gestion de projet, présentation de solution (ex: multiprise connectée).'
+          },
+          {
+            title: 'Personal Tech Support', 
+            period: '2023–Maintenant', 
+            details: 'Assistance famille/amis : installs, réseau, bugs quotidiens.'
+          }
         ],
         education: [
           {title: 'Bachelier TI', place: 'EPHEC – Bruxelles', period: '2023–…'},
           {title: 'MOOC Python', place: 'OpenClassrooms', period: '2022'},
           {title: 'CESS', place: 'Lycée Daschbeck – Bruxelles', period: '2021'}
         ],
-        languages: [{name: 'Français', level: 'Courant'}, {name: 'Arabe', level: 'Courant'}, {name: 'Anglais', level: 'B2'}, {name: 'Néerlandais', level: 'Bases'}]
+        languages: [
+          {name: 'Français', level: 'Courant'}, 
+          {name: 'Arabe', level: 'Courant'}, 
+          {name: 'Anglais', level: 'B2'}, 
+          {name: 'Néerlandais', level: 'Bases'}
+        ]
       },
+      
+      // ========== THÈMES (6 minimum requis) ==========
       themes: [
-        {id: 'network', name: 'Réseaux', type: 'tech', color: '#00d4ff'},
-        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#b537f2'},
-        {id: 'web', name: 'Web / MERN', type: 'tech', color: '#ff006e'},
-        {id: 'iot', name: 'IoT', type: 'tech', color: '#00ff88'},
-        {id: 'communication', name: 'Communication', type: 'soft', color: '#ffd60a'},
-        {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ff9500'}
+        {id: 'network', name: 'Réseaux', type: 'tech', color: '#6366f1'},
+        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#8b5cf6'},
+        {id: 'web', name: 'Web / MERN', type: 'tech', color: '#06b6d4'},
+        {id: 'iot', name: 'IoT', type: 'tech', color: '#10b981'},
+        {id: 'communication', name: 'Communication', type: 'soft', color: '#f59e0b'},
+        {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ef4444'}
       ],
+      
+      // ========== ACTIVITÉS (À COMPLÉTER) ==========
+      // Ajoute tes activités ici avec le format suivant :
       activities: [
-        // Exemples à ajouter :
-        // {theme: 'network', title: 'Formation Cisco CCNA', kind: 'training', hours: 25, date: '2025-02-15'},
-        // {theme: 'security', title: 'Workshop CTF', kind: 'event', hours: 6, date: '2025-03-10'},
+        // EXEMPLES - DÉCOMMENTE ET MODIFIE :
+        // 
+        // {
+        //   theme: 'network',              // ID du thème
+        //   title: 'Formation Cisco CCNA', // Nom de l'activité
+        //   kind: 'training',              // Type: 'training', 'event', 'conference', 'hackathon', etc.
+        //   hours: 25,                     // Heures réelles
+        //   date: '2025-02-15'            // Date au format YYYY-MM-DD
+        // },
+        // {
+        //   theme: 'security',
+        //   title: 'Workshop CTF Cybersécurité',
+        //   kind: 'event',
+        //   hours: 6,
+        //   date: '2025-03-10'
+        // },
+        // {
+        //   theme: 'communication',
+        //   title: 'Présentation projet EPHEC',
+        //   kind: 'event',
+        //   hours: 4,
+        //   date: '2025-03-20'
+        // },
       ]
     };
 
-    // Initialize
+    // ========================================================================
+    // 📝 CONTENU À PERSONNALISER - REMPLACE LES PLACEHOLDERS
+    // ========================================================================
+
+    // Une fois prêt, remplace les placeholders par ton contenu réel :
+    // Cherche les lignes 300-350 pour le projet professionnel
+    // Cherche les lignes 360-380 pour les points forts
+    // Cherche les lignes 390-410 pour les axes d'amélioration
+    // Cherche les lignes 490-550 pour ajouter tes photos/preuves
+
+    // ========================================================================
+    // ⚙️ CODE FONCTIONNEL - PAS BESOIN DE MODIFIER EN DESSOUS
+    // ========================================================================
+
+    // Initialize basic info
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('summary').textContent = DATA.meta.summary;
     document.getElementById('cvSummary').textContent = DATA.meta.summary;
 
-    // Populate CV
-    skills.innerHTML = DATA.cv.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
-    languages.innerHTML = DATA.cv.languages.map(l => `<span class="skill-tag">${l.name} – ${l.level}</span>`).join('');
+    // Populate CV sections
+    skills.innerHTML = DATA.cv.skills.map(s => 
+      `<span class="skill-tag">${s}</span>`
+    ).join('');
+    
+    languages.innerHTML = DATA.cv.languages.map(l => 
+      `<span class="skill-tag">${l.name} – ${l.level}</span>`
+    ).join('');
     
     xp.innerHTML = DATA.cv.experience.map(e => `
-      <div class="glass-card p-5">
+      <div class="glass-card p-4">
         <div class="font-semibold text-lg">${e.title}</div>
-        <div class="text-sm text-electric-blue mt-1 font-mono">${e.period}</div>
-        <div class="text-sm text-gray-400 mt-3">${e.details}</div>
+        <div class="text-sm text-indigo-400 mt-1 font-mono">${e.period}</div>
+        <div class="text-sm text-slate-400 mt-2">${e.details}</div>
       </div>
     `).join('');
     
     edu.innerHTML = DATA.cv.education.map(e => `
-      <div class="glass-card p-5">
+      <div class="glass-card p-4">
         <div class="font-semibold text-lg">${e.title}</div>
         <div class="text-sm text-cyan-400 mt-1">${e.place}</div>
-        <div class="text-sm text-gray-400 mt-1 font-mono">${e.period}</div>
+        <div class="text-sm text-slate-400 mt-1 font-mono">${e.period}</div>
       </div>
     `).join('');
 
-    // Calculate hours
-    const countedActivityHours = a => (a.kind === 'training' ? Math.min(a.hours || 0, 10) : (a.hours || 0));
+    // Calculate hours with rules
+    const countedActivityHours = a => {
+      // Formations: max 10h même si plus d'heures réelles
+      if (a.kind === 'training') {
+        return Math.min(a.hours || 0, 10);
+      }
+      // Autres activités: comptées normalement
+      return a.hours || 0;
+    };
     
     function aggregate() {
       const themeTotals = Object.fromEntries(DATA.themes.map(t => [t.id, 0]));
@@ -809,14 +879,20 @@
       
       for (const a of DATA.activities) {
         const counted = countedActivityHours(a);
+        // Max 10h par thème
         const newTotal = Math.min(10, themeTotals[a.theme] + counted);
         const added = newTotal - themeTotals[a.theme];
         themeTotals[a.theme] = newTotal;
         rows.push({a, counted, added});
       }
       
-      const soft = DATA.themes.filter(t => t.type === 'soft').reduce((s, t) => s + themeTotals[t.id], 0);
-      const tech = DATA.themes.filter(t => t.type === 'tech').reduce((s, t) => s + themeTotals[t.id], 0);
+      const soft = DATA.themes
+        .filter(t => t.type === 'soft')
+        .reduce((s, t) => s + themeTotals[t.id], 0);
+      
+      const tech = DATA.themes
+        .filter(t => t.type === 'tech')
+        .reduce((s, t) => s + themeTotals[t.id], 0);
       
       return {themeTotals, soft, tech, rows};
     }
@@ -827,22 +903,22 @@
       
       const bar = (label, val, max, color) => `
         <div>
-          <div class="flex justify-between text-sm mb-3">
-            <span class="text-gray-400">${label}</span>
+          <div class="flex justify-between text-sm mb-2">
+            <span class="text-slate-400">${label}</span>
             <span class="font-bold font-mono">${val} / ${max}h</span>
           </div>
           <div class="progress-container">
-            <div class="progress-bar" style="width: ${Math.min(100, (val / max) * 100)}%; background: linear-gradient(90deg, ${color}, ${color}dd); color: ${color};"></div>
+            <div class="progress-fill" style="width: ${Math.min(100, (val / max) * 100)}%; background: ${color};"></div>
           </div>
         </div>
       `;
       
       progress.innerHTML = [
-        bar('Soft skills', soft, 10, '#ffd60a'),
-        bar('Informatique', tech, 50, '#00d4ff'),
-        `<div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-electric-blue/10 to-cyber-purple/10 border border-electric-blue/20">
-          <div class="text-sm text-gray-400">Total comptabilisé</div>
-          <div class="text-3xl font-bold gradient-text mt-1">${total} / 60h</div>
+        bar('Soft skills', soft, 10, '#f59e0b'),
+        bar('Informatique', tech, 50, '#6366f1'),
+        `<div class="mt-4 p-4 rounded-xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20">
+          <div class="text-sm text-slate-400">Total comptabilisé</div>
+          <div class="text-2xl font-bold gradient-text mt-1">${total} / 60h</div>
         </div>`
       ].join('');
       
@@ -863,20 +939,22 @@
       themesGrid.innerHTML = DATA.themes.map(t => {
         const pct = Math.min(100, (themeTotals[t.id] / 10) * 100);
         const acts = (actsByTheme[t.id] || []).map(a => 
-          `<div class="flex justify-between text-sm py-2 border-b border-white/5">
-            <span class="text-gray-300">• ${a.title}</span>
-            <span class="text-gray-500 font-mono text-xs">${a.hours}h → ${Math.min(countedActivityHours(a), 10)}h</span>
+          `<div class="flex justify-between text-sm py-2 border-b border-slate-700/30">
+            <span class="text-slate-300">• ${a.title}</span>
+            <span class="text-slate-500 font-mono text-xs">${a.hours}h → ${Math.min(countedActivityHours(a), 10)}h</span>
           </div>`
-        ).join('') || '<div class="text-sm text-gray-500 italic py-2">— à compléter —</div>';
+        ).join('') || '<div class="text-sm text-slate-500 italic py-2">— à compléter —</div>';
         
         return `
           <div class="glass-card p-5">
             <div class="flex justify-between items-center mb-3">
               <span class="font-bold text-lg">${t.name}</span>
-              <span class="text-xs font-mono px-3 py-1 rounded-full" style="background: ${t.color}20; color: ${t.color}; border: 1px solid ${t.color}40;">${themeTotals[t.id]} / 10h</span>
+              <span class="badge badge-primary" style="background: ${t.color}20; color: ${t.color}; border-color: ${t.color}40;">
+                ${themeTotals[t.id]} / 10h
+              </span>
             </div>
             <div class="progress-container mb-4">
-              <div class="progress-bar" style="width: ${pct}%; background: ${t.color}; color: ${t.color};"></div>
+              <div class="progress-fill" style="width: ${pct}%; background: ${t.color};"></div>
             </div>
             <div class="space-y-1">${acts}</div>
           </div>
@@ -889,13 +967,16 @@
       const themeMap = Object.fromEntries(DATA.themes.map(t => [t.id, t]));
       
       const tbody = document.querySelector('#summaryTable tbody');
+      
       if (rows.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-gray-500">
-              <div class="text-4xl mb-2">📊</div>
-              <div>Aucune activité enregistrée pour le moment</div>
-              <div class="text-sm mt-2">Ajoutez vos activités dans le code source</div>
+            <td colspan="6" class="text-center py-12">
+              <div class="text-5xl mb-4 opacity-30">📊</div>
+              <div class="text-slate-400 text-lg mb-2">Aucune activité enregistrée</div>
+              <div class="text-sm text-slate-500">
+                Ajoute tes activités dans <code class="bg-slate-800 px-2 py-1 rounded">DATA.activities</code> (ligne 700-750)
+              </div>
             </td>
           </tr>
         `;
@@ -907,31 +988,32 @@
         return `
           <tr>
             <td>
-              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium" style="background: ${theme.color}20; color: ${theme.color}; border: 1px solid ${theme.color}40;">
+              <span class="badge" style="background: ${theme.color}15; color: ${theme.color}; border: 1px solid ${theme.color}40;">
                 ${theme.name}
               </span>
             </td>
             <td class="font-medium">${a.title}</td>
             <td>
-              <span class="inline-block px-3 py-1 rounded-full text-xs" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+              <span class="badge badge-primary" style="font-size: 12px; padding: 4px 12px;">
                 ${a.kind}
               </span>
             </td>
-            <td class="text-right font-mono text-gray-400">${a.hours}h</td>
+            <td class="text-right font-mono text-slate-400">${a.hours}h</td>
             <td class="text-right font-mono font-bold" style="color: ${theme.color};">${counted}h</td>
-            <td class="text-gray-500 font-mono text-sm">${a.date ? new Date(a.date).toLocaleDateString('fr-BE') : '—'}</td>
+            <td class="text-slate-500 font-mono text-sm">
+              ${a.date ? new Date(a.date).toLocaleDateString('fr-BE') : '—'}
+            </td>
           </tr>
         `;
       }).join('');
     }
 
-    // Router
+    // Router for navigation
     function route() {
       const hash = (location.hash || '#home').substring(1);
       
       ['home', 'cv', 'contact'].forEach(id => {
-        const el = document.getElementById(id);
-        el.classList.toggle('hidden', id !== hash);
+        document.getElementById(id).classList.toggle('hidden', id !== hash);
       });
       
       document.querySelectorAll('.nav-link').forEach(link => {
@@ -943,12 +1025,14 @@
 
     window.addEventListener('hashchange', route);
 
-    // Contact form
+    // Contact form handler
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
       const f = new FormData(e.target);
       const subject = encodeURIComponent('Contact depuis le portfolio');
-      const body = encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`);
+      const body = encodeURIComponent(
+        `Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`
+      );
       location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
     });
 
@@ -958,7 +1042,7 @@
     renderTable();
     route();
     
-    // Add smooth scroll behavior
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
