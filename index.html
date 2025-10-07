@@ -3,328 +3,971 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saad – Portfolio Bac3</title>
-  <meta name="description" content="Portfolio Bac3 – LumenWave UI : animations fluides, 3 pages, infos figées, responsive.">
+  <title>Saad Zebiri – Portfolio Bac3</title>
+  <meta name="description" content="Portfolio Bac3 – Étudiant en Technologie de l'Informatique">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* ============================
-       THEME: LumenWave (neo‑gradient)
-       — couleurs vives, animations douces
-       ============================ */
-    :root{
-      --bg:#0b1020; --fg:#e8eefc; --muted:#9fb0d7;
-      --card:#0f172acc; --stroke:#24314d; --ring:rgba(99,102,241,.35);
-      --c1:#60a5fa; --c2:#a78bfa; --c3:#34d399; --c4:#22d3ee;
+    :root {
+      --electric-blue: #00d4ff;
+      --cyber-purple: #b537f2;
+      --neon-pink: #ff006e;
+      --matrix-green: #00ff88;
     }
-    html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; background:var(--bg); color:var(--fg)}
-    .brand{font-family:Outfit,Inter,sans-serif}
-
-    /* Gradient animé plein écran */
-    .bg-aurora{position:fixed; inset:0; z-index:-1; background:radial-gradient(1200px 600px at 10% -10%,rgba(96,165,250,.12),transparent 45%),radial-gradient(1100px 600px at 110% 10%,rgba(167,139,250,.12),transparent 45%),radial-gradient(900px 480px at 50% 110%,rgba(34,211,238,.10),transparent 55%), var(--bg)}
-    .blob{position:absolute; filter:blur(40px); opacity:.35; mix-blend:screen}
-    .blob1{width:480px; height:480px; background:conic-gradient(from 0deg,var(--c4),var(--c2),var(--c1)); left:-120px; top:-120px; animation:orbit 18s linear infinite}
-    .blob2{width:380px; height:380px; background:conic-gradient(from 90deg,var(--c3),var(--c4),var(--c2)); right:-100px; top:10%; animation:orbit 22s linear infinite reverse}
-    .blob3{width:420px; height:420px; background:conic-gradient(from 45deg,var(--c1),var(--c3),var(--c4)); left:35%; bottom:-160px; animation:float 14s ease-in-out infinite}
-    @keyframes orbit{to{transform:rotate(360deg)}}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
-
-    /* Cartes, séparateurs, focus */
-    .card{background:var(--card); border:1px solid rgba(158,173,211,.18); border-radius:18px; padding:18px; box-shadow:0 12px 32px rgba(0,0,0,.35)}
-    .muted{color:var(--muted)}
-    .rule{height:1px; background:linear-gradient(90deg,transparent,rgba(158,173,211,.28),transparent)}
-    .ring{box-shadow:0 0 0 3px var(--ring)}
-
-    /* Barre de progression animée */
-    .bar{height:8px; background:rgba(158,173,211,.18); border-radius:999px; overflow:hidden}
-    .bar>span{display:block; height:100%; background:linear-gradient(90deg,var(--c4),var(--c2)); background-size:200% 100%; animation:slide 4s linear infinite}
-    @keyframes slide{to{background-position:100% 0}}
-
-    /* Apparitions */
-    @keyframes pop{from{opacity:0; transform:translateY(10px) scale(.98)} to{opacity:1; transform:translateY(0) scale(1)}}
-    .pop{animation:pop .45s ease both}
-
-    /* Top nav pill */
-    .pill{border:1px solid rgba(158,173,211,.22); border-radius:999px; padding:.45rem .9rem; backdrop-filter:blur(6px)}
-    .pill.active{background:linear-gradient(90deg,rgba(96,165,250,.18),rgba(167,139,250,.18));}
-
-    /* Inputs / buttons */
-    input, textarea{background:rgba(255,255,255,.03); border:1px solid rgba(158,173,211,.25); color:var(--fg); border-radius:12px; padding:10px}
-    input::placeholder, textarea::placeholder{color:#9fb0d7aa}
-    .btn{background:linear-gradient(135deg,var(--c4),var(--c2)); color:#071021; border:none; border-radius:12px; padding:.65rem 1rem; font-weight:700}
-    .btn:hover{filter:brightness(1.06)}
-
-    /* Mobile bottom nav */
-    .bottom-nav{position:sticky; bottom:8px; background:rgba(15,23,42,.6); border:1px solid rgba(158,173,211,.22); border-radius:14px; backdrop-filter:blur(10px)}
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0118;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* Animated Gradient Background */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 300%;
+      height: 300%;
+      top: -100%;
+      left: -100%;
+      z-index: -2;
+      background: 
+        radial-gradient(circle at 25% 25%, rgba(181, 55, 242, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 0, 110, 0.2) 0%, transparent 50%);
+      animation: rotateBg 30s ease-in-out infinite;
+    }
+    
+    @keyframes rotateBg {
+      0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      33% { transform: translate(-5%, 5%) rotate(120deg) scale(1.1); }
+      66% { transform: translate(5%, -5%) rotate(240deg) scale(0.9); }
+    }
+    
+    /* Grid overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+    
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+    
+    /* Glass morphism cards */
+    .glass-card {
+      background: rgba(20, 10, 40, 0.4);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 212, 255, 0.1),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(0, 212, 255, 0.4);
+      box-shadow: 
+        0 20px 60px rgba(0, 212, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Neon text effects */
+    .neon-text {
+      text-shadow: 
+        0 0 10px rgba(0, 212, 255, 0.8),
+        0 0 20px rgba(0, 212, 255, 0.6),
+        0 0 30px rgba(0, 212, 255, 0.4),
+        0 0 40px rgba(0, 212, 255, 0.2);
+      animation: neonPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes neonPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple), var(--neon-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Futuristic buttons */
+    .cyber-btn {
+      position: relative;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--electric-blue), var(--cyber-purple));
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cyber-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .cyber-btn:hover::before {
+      left: 100%;
+    }
+    
+    .cyber-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 10px 30px rgba(0, 212, 255, 0.5),
+        0 0 50px rgba(181, 55, 242, 0.3);
+    }
+    
+    .cyber-btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+    
+    /* Progress bars with glow */
+    .progress-container {
+      position: relative;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .progress-bar {
+      height: 100%;
+      border-radius: 999px;
+      position: relative;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 20px currentColor;
+    }
+    
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: progressShine 2s infinite;
+    }
+    
+    @keyframes progressShine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Stagger fade-in */
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out backwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .fade-in:nth-child(5) { animation-delay: 0.5s; }
+    .fade-in:nth-child(6) { animation-delay: 0.6s; }
+    
+    /* Skill tags */
+    .skill-tag {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(181, 55, 242, 0.1));
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    
+    .skill-tag:hover {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(181, 55, 242, 0.2));
+      border-color: var(--electric-blue);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+    }
+    
+    /* Nav links */
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 0;
+      background: linear-gradient(180deg, var(--electric-blue), var(--cyber-purple));
+      border-radius: 2px;
+      transition: height 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      background: rgba(0, 212, 255, 0.1);
+      color: white;
+      transform: translateX(8px);
+    }
+    
+    .nav-link:hover::before {
+      height: 60%;
+    }
+    
+    .nav-link.active {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(181, 55, 242, 0.2));
+      color: white;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+    
+    .nav-link.active::before {
+      height: 80%;
+    }
+    
+    /* Input fields */
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(20, 10, 40, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1), 0 0 20px rgba(0, 212, 255, 0.2);
+      background: rgba(20, 10, 40, 0.6);
+    }
+    
+    input::placeholder, textarea::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    
+    th {
+      text-align: left;
+      padding: 16px 12px;
+      font-weight: 600;
+      color: var(--electric-blue);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+    }
+    
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    tr {
+      transition: all 0.3s ease;
+    }
+    
+    tr:hover td {
+      background: rgba(0, 212, 255, 0.05);
+    }
+    
+    /* Info cards */
+    .info-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(181, 55, 242, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .info-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateX(8px);
+      box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+    }
+    
+    .icon-pulse {
+      display: inline-block;
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--electric-blue), var(--cyber-purple));
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, var(--cyber-purple), var(--neon-pink));
+    }
+    
+    /* Loading animation */
+    .loading-dots::after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
+    
+    /* Theme dots */
+    .theme-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes dotPulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 currentColor;
+      }
+      50% { 
+        transform: scale(1.2);
+        box-shadow: 0 0 0 8px transparent;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .glass-card:hover {
+        transform: none;
+      }
+    }
   </style>
 </head>
-<body class="min-h-full">
-  <!-- BACKGROUND -->
-  <div class="bg-aurora" aria-hidden="true">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
+<body class="min-h-screen">
+  
+  <!-- Floating particles -->
+  <div class="fixed inset-0 pointer-events-none" style="z-index: 1;">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-electric-blue rounded-full opacity-60 float" style="animation-delay: 0s; animation-duration: 4s;"></div>
+    <div class="absolute top-3/4 right-1/4 w-3 h-3 bg-cyber-purple rounded-full opacity-40 float" style="animation-delay: 1s; animation-duration: 5s;"></div>
+    <div class="absolute top-1/2 left-3/4 w-2 h-2 bg-neon-pink rounded-full opacity-50 float" style="animation-delay: 2s; animation-duration: 6s;"></div>
   </div>
 
-  <!-- TOP NAV -->
-  <header class="sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 pt-5 pb-3 flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[var(--c4)] to-[var(--c2)] text-slate-900 brand font-extrabold">SZ</div>
-      <div>
-        <div class="brand tracking-tight text-lg">Portfolio Saad</div>
-        <div class="text-xs muted">Bac 3 — 60h (10h Soft • 50h IT)</div>
-      </div>
-      <nav class="ml-auto hidden sm:flex gap-1" id="topnav">
-        <a data-goto="#home" class="pill">Accueil</a>
-        <a data-goto="#cv" class="pill">CV</a>
-        <a data-goto="#contact" class="pill">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 relative" style="z-index: 10;">
+    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
+      
+      <!-- Sidebar -->
+      <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
+        
+        <!-- Profile Card -->
+        <div class="glass-card p-6 fade-in">
+          <div class="text-xs font-mono text-electric-blue mb-3 tracking-wider">// PORTFOLIO_2025</div>
+          <h1 class="text-4xl font-bold gradient-text mb-2">Zebiri Saad</h1>
+          <p class="text-gray-400 mb-4">Bac 3 – EPHEC Brussels</p>
+          
+          <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-5"></div>
+          
+          <nav class="space-y-2">
+            <a href="#home" class="nav-link active" data-page="home">
+              <span class="text-xl icon-pulse">🏠</span>
+              <span>Accueil</span>
+            </a>
+            <a href="#cv" class="nav-link" data-page="cv">
+              <span class="text-xl icon-pulse">📄</span>
+              <span>CV</span>
+            </a>
+            <a href="#contact" class="nav-link" data-page="contact">
+              <span class="text-xl icon-pulse">✉️</span>
+              <span>Contact</span>
+            </a>
+          </nav>
+        </div>
+        
+        <!-- Contact Card -->
+        <div class="glass-card p-6 fade-in">
+          <div class="text-xs font-mono text-electric-blue mb-4 tracking-wider">// COORDONNÉES</div>
+          <div class="space-y-3">
+            <div class="info-card">
+              <span class="text-2xl">📍</span>
+              <span class="text-sm">Bruxelles</span>
+            </div>
+            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
+              <span class="text-2xl">✉️</span>
+              <span class="text-sm">saadzebiri65@gmail.com</span>
+            </a>
+            <a href="tel:+32471874910" class="info-card">
+              <span class="text-2xl">📞</span>
+              <span class="text-sm">0471 87 49 10</span>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="info-card">
+              <span class="text-2xl">🔗</span>
+              <span class="text-sm">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-xs text-center text-gray-600 font-mono">© <span id="year"></span> ZEBIRI_SAAD</div>
+      </aside>
 
-  <!-- MOBILE NAV -->
-  <div class="sm:hidden max-w-6xl mx-auto px-4">
-    <div class="bottom-nav flex justify-center gap-2 px-2 py-2">
-      <a data-goto="#home" class="pill">Accueil</a>
-      <a data-goto="#cv" class="pill">CV</a>
-      <a data-goto="#contact" class="pill">Contact</a>
+      <!-- Main Content -->
+      <main class="space-y-8">
+        
+        <!-- HOME PAGE -->
+        <div id="home" class="space-y-8">
+          
+          <!-- Hero Section -->
+          <section class="glass-card p-8 lg:p-12 fade-in">
+            <div class="text-xs font-mono text-electric-blue mb-4 tracking-wider">// À_PROPOS</div>
+            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Construire,<br/>
+              apprendre,<br/>
+              <span class="neon-text" style="color: var(--electric-blue);">sécuriser.</span>
+            </h2>
+            <p id="summary" class="text-lg text-gray-300 leading-relaxed max-w-3xl mb-8"></p>
+            
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div class="glass-card p-5 flex items-center gap-4">
+                <div class="theme-dot" style="background: var(--electric-blue);"></div>
+                <div>
+                  <div class="text-xs text-gray-400">Établissement</div>
+                  <div class="font-semibold text-sm mt-1">EPHEC – TI</div>
+                </div>
+              </div>
+              <div class="glass-card p-5 flex items-center gap-4">
+                <div class="theme-dot" style="background: var(--cyber-purple);"></div>
+                <div>
+                  <div class="text-xs text-gray-400">Année</div>
+                  <div class="font-semibold text-sm mt-1">Bac 3 – 2025</div>
+                </div>
+              </div>
+              <div class="glass-card p-5 flex items-center gap-4">
+                <div class="theme-dot" style="background: var(--matrix-green);"></div>
+                <div>
+                  <div class="text-xs text-gray-400">Objectif</div>
+                  <div class="font-semibold text-sm mt-1">Stage Réseaux</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Progress & Rules -->
+          <div class="grid lg:grid-cols-2 gap-6">
+            
+            <!-- Progress Card -->
+            <div class="glass-card p-6 fade-in">
+              <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-3xl icon-pulse">📊</span>
+                <span>Progression</span>
+              </h3>
+              <div id="progress" class="space-y-6"></div>
+              <div id="warnings" class="text-sm text-yellow-400 mt-4 font-mono"></div>
+            </div>
+            
+            <!-- Rules Card -->
+            <div class="glass-card p-6 fade-in">
+              <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-3xl icon-pulse">📋</span>
+                <span>Règles</span>
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-electric-blue/5 to-transparent border-l-2 border-electric-blue">
+                  <span class="text-electric-blue text-xl">→</span>
+                  <span class="text-sm text-gray-300">10h <strong class="text-white">max/thème</strong> (soft inclus)</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyber-purple/5 to-transparent border-l-2 border-cyber-purple">
+                  <span class="text-cyber-purple text-xl">→</span>
+                  <span class="text-sm text-gray-300">Une <strong class="text-white">formation</strong> compte max 10h</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-matrix-green/5 to-transparent border-l-2 border-matrix-green">
+                  <span class="text-matrix-green text-xl">→</span>
+                  <span class="text-sm text-gray-300">Cible totale : <strong class="text-white">60h</strong> (10h soft + 50h IT)</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- Themes Grid -->
+          <div class="glass-card p-6 fade-in">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-2xl font-bold flex items-center gap-3">
+                <span class="text-3xl icon-pulse">🎯</span>
+                <span>Synthèse par thème</span>
+              </h3>
+              <span class="text-xs font-mono text-cyan-400">// READ_ONLY</span>
+            </div>
+            <div id="themesGrid" class="grid md:grid-cols-2 gap-4"></div>
+          </div>
+
+          <!-- Detailed Table -->
+          <div class="glass-card p-6 fade-in">
+            <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+              <span class="text-3xl icon-pulse">📑</span>
+              <span>Récapitulatif détaillé</span>
+            </h3>
+            <div class="overflow-x-auto">
+              <table id="summaryTable">
+                <thead>
+                  <tr>
+                    <th>Thème</th>
+                    <th>Activité</th>
+                    <th>Type</th>
+                    <th class="text-right">Réelles</th>
+                    <th class="text-right">Comptées</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- CV PAGE -->
+        <div id="cv" class="hidden space-y-8">
+          <div class="glass-card p-8 fade-in">
+            <h2 class="text-4xl font-bold gradient-text mb-4">Curriculum Vitae</h2>
+            <p id="cvSummary" class="text-gray-300 leading-relaxed max-w-3xl mb-8"></p>
+            
+            <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-8"></div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+              
+              <!-- Skills & Languages -->
+              <div class="space-y-8">
+                <div>
+                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl icon-pulse">💻</span>
+                    <span>Compétences</span>
+                  </h3>
+                  <div id="skills" class="flex flex-wrap gap-3"></div>
+                </div>
+                
+                <div>
+                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl icon-pulse">🌍</span>
+                    <span>Langues</span>
+                  </h3>
+                  <div id="languages" class="flex flex-wrap gap-3"></div>
+                </div>
+              </div>
+              
+              <!-- Experience & Education -->
+              <div class="space-y-8">
+                <div>
+                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl icon-pulse">🚀</span>
+                    <span>Expériences</span>
+                  </h3>
+                  <div id="xp" class="space-y-4"></div>
+                </div>
+                
+                <div>
+                  <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl icon-pulse">🎓</span>
+                    <span>Éducation</span>
+                  </h3>
+                  <div id="edu" class="space-y-4"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="hidden space-y-8">
+          <div class="glass-card p-8 fade-in">
+            <h2 class="text-4xl font-bold gradient-text mb-4">Contact</h2>
+            <p class="text-gray-300 mb-8">Écrivez-moi via le formulaire ci-dessous ou utilisez un des raccourcis.</p>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+              
+              <!-- Contact Form -->
+              <form id="contactForm" class="space-y-5">
+                <div>
+                  <label class="block text-sm font-medium mb-2 text-gray-400">Votre nom</label>
+                  <input name="name" required placeholder="Jean Dupont" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2 text-gray-400">Votre email</label>
+                  <input type="email" name="email" required placeholder="jean@example.com" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2 text-gray-400">Message</label>
+                  <textarea name="msg" rows="6" required placeholder="Votre message..."></textarea>
+                </div>
+                <button type="submit" class="cyber-btn w-full">
+                  <span class="relative z-10">Envoyer le message</span>
+                </button>
+              </form>
+              
+              <!-- Quick Links -->
+              <div class="space-y-4">
+                <a class="cyber-btn block text-center" href="tel:+32471874910">
+                  <span class="relative z-10">📞 Appeler maintenant</span>
+                </a>
+                <a class="cyber-btn block text-center" target="_blank" rel="noopener" href="https://www.linkedin.com">
+                  <span class="relative z-10">🔗 Voir LinkedIn</span>
+                </a>
+                
+                <div class="h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent my-6"></div>
+                
+                <div class="glass-card p-4 text-sm text-gray-400">
+                  <p>💡 Si l'email ne s'ouvre pas automatiquement, envoyez à :</p>
+                  <p class="text-electric-blue font-mono mt-2">saadzebiri65@gmail.com</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+      </main>
     </div>
   </div>
-
-  <!-- CONTENT -->
-  <main class="max-w-6xl mx-auto px-4 py-6 space-y-10">
-    <!-- HOME -->
-    <section id="home" class="space-y-8">
-      <div class="grid lg:grid-cols-[1.25fr,1fr] gap-6 items-stretch">
-        <div class="card pop">
-          <p class="uppercase tracking-wide text-xs muted">À propos</p>
-          <h1 class="brand text-3xl sm:text-4xl mt-1">Construire, apprendre, sécuriser.</h1>
-          <p id="summary" class="mt-3 leading-relaxed text-[15.5px]"></p>
-          <div class="rule my-5"></div>
-          <div class="grid sm:grid-cols-2 gap-3 text-sm">
-            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Établissement</div><div class="mt-1">EPHEC – Technologie de l'Informatique</div></div>
-            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Année</div><div class="mt-1">Bac 3 – 2025</div></div>
-            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Objectif</div><div class="mt-1">Stage Réseaux/Cybersécurité</div></div>
-            <div class="border border-[var(--stroke)] rounded-xl p-3"><div class="muted">Localisation</div><div class="mt-1">Bruxelles</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2 mt-4 text-sm">
-            <a class="pill" href="mailto:saadzebiri65@gmail.com">✉️ saadzebiri65@gmail.com</a>
-            <a class="pill" href="tel:+32471874910">📞 0471 87 49 10</a>
-            <a class="pill" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
-          </div>
-        </div>
-        <div class="card pop" style="animation-delay:.05s">
-          <h3 class="text-lg font-semibold">Progression</h3>
-          <div id="progress" class="mt-3"></div>
-          <div id="warnings" class="text-xs muted mt-2"></div>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card pop" style="animation-delay:.06s">
-          <h3 class="text-lg font-semibold">Projet pro</h3>
-          <p class="muted mt-2">Stage en réseaux/cybersécurité → administrateur réseau → ingénieur sécurité. Intérêt pour l’automatisation (Python) et l’IA appliquée à la détection d’incidents.</p>
-        </div>
-        <div class="card pop" style="animation-delay:.08s">
-          <h3 class="text-lg font-semibold">Forces</h3>
-          <ul class="mt-2 space-y-1 text-sm">
-            <li>Curiosité technique, autonomie</li>
-            <li>Esprit d’équipe, communication</li>
-            <li>Pédagogie / vulgarisation</li>
-          </ul>
-        </div>
-        <div class="card pop" style="animation-delay:.1s">
-          <h3 class="text-lg font-semibold">À améliorer</h3>
-          <ul class="mt-2 space-y-1 text-sm">
-            <li>Gestion du temps, priorisation</li>
-            <li>Néerlandais (consolidation)</li>
-            <li>Rigueur documentaire</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card pop" style="animation-delay:.12s">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold">Synthèse des activités par thème</h3>
-          <div class="text-xs muted">Lecture seule — max 10h/thème</div>
-        </div>
-        <div id="themesGrid" class="grid md:grid-cols-2 gap-4 mt-4"></div>
-      </div>
-
-      <div class="card pop" style="animation-delay:.14s">
-        <h3 class="text-lg font-semibold mb-2">Récapitulatif détaillé</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm" id="summaryTable">
-            <thead class="muted">
-              <tr>
-                <th class="text-left py-2">Thème</th>
-                <th class="text-left">Activité</th>
-                <th class="text-left">Type</th>
-                <th class="text-right">Réelles</th>
-                <th class="text-right">Comptées</th>
-                <th class="text-left">Date</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section id="cv" class="hidden space-y-8">
-      <div class="card pop">
-        <h2 class="brand text-2xl">CV</h2>
-        <p id="cvSummary" class="muted mt-1"></p>
-        <div class="rule my-5"></div>
-        <div class="grid lg:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-lg font-semibold">Compétences</h3>
-            <ul id="skills" class="grid sm:grid-cols-2 gap-2 mt-2 text-sm"></ul>
-            <div class="rule my-5"></div>
-            <h3 class="text-lg font-semibold">Langues</h3>
-            <div id="languages" class="flex flex-wrap gap-2 mt-2 text-sm"></div>
-          </div>
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-lg font-semibold">Expériences</h3>
-              <ul id="xp" class="mt-2 space-y-2 text-sm"></ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold">Éducation</h3>
-              <ul id="edu" class="mt-2 space-y-2 text-sm"></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="hidden space-y-8">
-      <div class="card pop">
-        <h2 class="brand text-2xl">Contact</h2>
-        <p class="muted mt-1">Écrivez‑moi via le formulaire ou utilisez un raccourci.</p>
-        <div class="grid lg:grid-cols-2 gap-8 mt-4">
-          <form id="contactForm" class="space-y-3">
-            <div>
-              <div class="text-xs muted">Votre nom</div>
-              <input name="name" class="w-full mt-1" required />
-            </div>
-            <div>
-              <div class="text-xs muted">Votre email</div>
-              <input type="email" name="email" class="w-full mt-1" required />
-            </div>
-            <div>
-              <div class="text-xs muted">Message</div>
-              <textarea name="msg" rows="6" class="w-full mt-1" required></textarea>
-            </div>
-            <button class="btn">Envoyer ✉️</button>
-          </form>
-          <div class="space-y-3 text-sm">
-            <a class="pill inline-block" href="tel:+32471874910">📞 Appeler</a>
-            <a class="pill inline-block" target="_blank" rel="noopener" href="https://www.linkedin.com">🔗 LinkedIn</a>
-            <div class="rule my-4"></div>
-            <div class="muted text-xs">Si l’email ne s’ouvre pas, envoyez à <span class="underline">saadzebiri65@gmail.com</span>.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="max-w-6xl mx-auto px-4 pb-10 text-xs muted">LumenWave UI — Infos figées — Règles heures intégrées — Responsive.</footer>
 
   <script>
-    // ===== Données figées =====
     const DATA = {
-      meta:{summary:"Étudiant en 3e Bac TI à l’EPHEC, passionné par le réseau, la cybersécurité et l’IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."},
-      cv:{
-        skills:['Cisco / Packet Tracer','Linux basics','Admin Systèmes & Réseaux','Docker, DNS, HTTP/HTTPS, Mail','Web MERN (Mongo/Express/React/Node)','IoT & intégration soft/hard','Python, C, C++, JS, HTML/CSS','Git & GitHub'],
-        experience:[
-          {title:'IT Support Practice – EPHEC', period:'2023–2024', details:'Diagnostic pannes logicielles & matérielles (Windows/Linux).'},
-          {title:'Network Basics Project – EPHEC', period:'2023–2025', details:'Config routeurs/switches, adressage IP, troubleshooting.'},
-          {title:'Group IT Project – EPHEC', period:'2023–2025', details:'Gestion de projet, présentation de solution (ex: multiprise connectée).'},
-          {title:'Personal Tech Support', period:'2023–Maintenant', details:'Assistance famille/amis : installs, réseau, bugs quotidiens.'}
-        ],
-        education:[
-          {title:'Bachelier TI', place:'EPHEC – Bruxelles', period:'2023–…'},
-          {title:'MOOC Python', place:'OpenClassrooms', period:'2022'},
-          {title:'CESS', place:'Lycée Daschbeck – Bruxelles', period:'2021'}
-        ],
-        languages:[{name:'Français',level:'Courant'},{name:'Arabe',level:'Courant'},{name:'Anglais',level:'B2'},{name:'Néerlandais',level:'Bases'}]
+      meta: {
+        summary: "Étudiant en 3e Bac TI à l'EPHEC, passionné par le réseau, la cybersécurité et l'IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
       },
-      themes:[
-        {id:'network', name:'Réseaux', type:'tech'},
-        {id:'security', name:'Cybersécurité', type:'tech'},
-        {id:'web', name:'Web / MERN', type:'tech'},
-        {id:'iot', name:'IoT', type:'tech'},
-        {id:'communication', name:'Communication', type:'soft'},
-        {id:'project', name:'Gestion de projet', type:'soft'}
+      cv: {
+        skills: ['Cisco / Packet Tracer', 'Linux basics', 'Admin Systèmes & Réseaux', 'Docker, DNS, HTTP/HTTPS, Mail', 'Web MERN (Mongo/Express/React/Node)', 'IoT & intégration soft/hard', 'Python, C, C++, JS, HTML/CSS', 'Git & GitHub'],
+        experience: [
+          {title: 'IT Support Practice – EPHEC', period: '2023–2024', details: 'Diagnostic pannes logicielles & matérielles (Windows/Linux).'},
+          {title: 'Network Basics Project – EPHEC', period: '2023–2025', details: 'Config routeurs/switches, adressage IP, troubleshooting.'},
+          {title: 'Group IT Project – EPHEC', period: '2023–2025', details: 'Gestion de projet, présentation de solution (ex: multiprise connectée).'},
+          {title: 'Personal Tech Support', period: '2023–Maintenant', details: 'Assistance famille/amis : installs, réseau, bugs quotidiens.'}
+        ],
+        education: [
+          {title: 'Bachelier TI', place: 'EPHEC – Bruxelles', period: '2023–…'},
+          {title: 'MOOC Python', place: 'OpenClassrooms', period: '2022'},
+          {title: 'CESS', place: 'Lycée Daschbeck – Bruxelles', period: '2021'}
+        ],
+        languages: [{name: 'Français', level: 'Courant'}, {name: 'Arabe', level: 'Courant'}, {name: 'Anglais', level: 'B2'}, {name: 'Néerlandais', level: 'Bases'}]
+      },
+      themes: [
+        {id: 'network', name: 'Réseaux', type: 'tech', color: '#00d4ff'},
+        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#b537f2'},
+        {id: 'web', name: 'Web / MERN', type: 'tech', color: '#ff006e'},
+        {id: 'iot', name: 'IoT', type: 'tech', color: '#00ff88'},
+        {id: 'communication', name: 'Communication', type: 'soft', color: '#ffd60a'},
+        {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ff9500'}
       ],
-      activities:[
-        // À compléter progressivement (lecture seule)
-        // {theme:'network', title:'Packet Tracer – switching', kind:'training', hours:12, date:'2025-02-10'},
-        // {theme:'communication', title:'Pitch projet EPHEC', kind:'event', hours:4, date:'2025-03-05'},
+      activities: [
+        // Exemples à ajouter :
+        // {theme: 'network', title: 'Formation Cisco CCNA', kind: 'training', hours: 25, date: '2025-02-15'},
+        // {theme: 'security', title: 'Workshop CTF', kind: 'event', hours: 6, date: '2025-03-10'},
       ]
     };
 
-    // Helpers remplissage
-    summary.textContent = DATA.meta.summary; cvSummary.textContent = DATA.meta.summary;
-    skills.innerHTML = DATA.cv.skills.map(s=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5">${s}</li>`).join('');
-    languages.innerHTML = DATA.cv.languages.map(l=>`<span class="pill">${l.name} — ${l.level}</span>`).join('');
-    xp.innerHTML = DATA.cv.experience.map(e=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5"><div class="font-medium">${e.title} <span class="muted">• ${e.period}</span></div><div class="muted">${e.details}</div></li>`).join('');
-    edu.innerHTML = DATA.cv.education.map(e=>`<li class="border border-[var(--stroke)] rounded-xl p-2.5"><div class="font-medium">${e.title}</div><div class="muted">${e.place} • ${e.period}</div></li>`).join('');
+    // Initialize
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('summary').textContent = DATA.meta.summary;
+    document.getElementById('cvSummary').textContent = DATA.meta.summary;
 
-    // Règles & calcul heures
-    const countedActivityHours=a=> (a.kind==='training'? Math.min(a.hours||0,10): (a.hours||0));
-    function aggregate(){
-      const themeTotals=Object.fromEntries(DATA.themes.map(t=>[t.id,0]));
-      const rows=[];
-      for(const a of DATA.activities){
-        const counted=countedActivityHours(a);
-        const newTotal=Math.min(10, themeTotals[a.theme]+counted);
-        const added=newTotal-themeTotals[a.theme];
-        themeTotals[a.theme]=newTotal; rows.push({a,counted,added});
+    // Populate CV
+    skills.innerHTML = DATA.cv.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
+    languages.innerHTML = DATA.cv.languages.map(l => `<span class="skill-tag">${l.name} – ${l.level}</span>`).join('');
+    
+    xp.innerHTML = DATA.cv.experience.map(e => `
+      <div class="glass-card p-5">
+        <div class="font-semibold text-lg">${e.title}</div>
+        <div class="text-sm text-electric-blue mt-1 font-mono">${e.period}</div>
+        <div class="text-sm text-gray-400 mt-3">${e.details}</div>
+      </div>
+    `).join('');
+    
+    edu.innerHTML = DATA.cv.education.map(e => `
+      <div class="glass-card p-5">
+        <div class="font-semibold text-lg">${e.title}</div>
+        <div class="text-sm text-cyan-400 mt-1">${e.place}</div>
+        <div class="text-sm text-gray-400 mt-1 font-mono">${e.period}</div>
+      </div>
+    `).join('');
+
+    // Calculate hours
+    const countedActivityHours = a => (a.kind === 'training' ? Math.min(a.hours || 0, 10) : (a.hours || 0));
+    
+    function aggregate() {
+      const themeTotals = Object.fromEntries(DATA.themes.map(t => [t.id, 0]));
+      const rows = [];
+      
+      for (const a of DATA.activities) {
+        const counted = countedActivityHours(a);
+        const newTotal = Math.min(10, themeTotals[a.theme] + counted);
+        const added = newTotal - themeTotals[a.theme];
+        themeTotals[a.theme] = newTotal;
+        rows.push({a, counted, added});
       }
-      const soft=DATA.themes.filter(t=>t.type==='soft').reduce((s,t)=>s+themeTotals[t.id],0);
-      const tech=DATA.themes.filter(t=>t.type==='tech').reduce((s,t)=>s+themeTotals[t.id],0);
-      return {themeTotals,soft,tech,rows};
+      
+      const soft = DATA.themes.filter(t => t.type === 'soft').reduce((s, t) => s + themeTotals[t.id], 0);
+      const tech = DATA.themes.filter(t => t.type === 'tech').reduce((s, t) => s + themeTotals[t.id], 0);
+      
+      return {themeTotals, soft, tech, rows};
     }
-    function renderProgress(){
-      const {soft,tech}=aggregate(); const total=soft+tech;
-      const bar=(label,val,max)=>`<div><div class="flex justify-between text-xs muted"><span>${label}</span><span>${val} / ${max}h</span></div><div class="bar rounded-full overflow-hidden mt-1"><span style="width:${Math.min(100,(val/max)*100)}%"></span></div></div>`;
-      progress.innerHTML=[bar('Soft skills',soft,10),bar('Informatique',tech,50),`<div class="text-xs muted">Total comptabilisé : ${total} / 60h</div>`].join('');
-      const warn=[]; if(soft>10) warn.push('Soft > 10h'); if(tech>50) warn.push('IT > 50h'); if(total<60) warn.push(`${60-total}h restantes`); warnings.textContent=warn.join(' • ');
+
+    function renderProgress() {
+      const {soft, tech} = aggregate();
+      const total = soft + tech;
+      
+      const bar = (label, val, max, color) => `
+        <div>
+          <div class="flex justify-between text-sm mb-3">
+            <span class="text-gray-400">${label}</span>
+            <span class="font-bold font-mono">${val} / ${max}h</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: ${Math.min(100, (val / max) * 100)}%; background: linear-gradient(90deg, ${color}, ${color}dd); color: ${color};"></div>
+          </div>
+        </div>
+      `;
+      
+      progress.innerHTML = [
+        bar('Soft skills', soft, 10, '#ffd60a'),
+        bar('Informatique', tech, 50, '#00d4ff'),
+        `<div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-electric-blue/10 to-cyber-purple/10 border border-electric-blue/20">
+          <div class="text-sm text-gray-400">Total comptabilisé</div>
+          <div class="text-3xl font-bold gradient-text mt-1">${total} / 60h</div>
+        </div>`
+      ].join('');
+      
+      const warn = [];
+      if (soft > 10) warn.push('⚠️ Soft > 10h');
+      if (tech > 50) warn.push('⚠️ IT > 50h');
+      if (total < 60) warn.push(`📌 ${60 - total}h restantes`);
+      warnings.textContent = warn.join(' • ');
     }
-    function renderThemes(){
-      const {themeTotals}=aggregate(); const actsByTheme={}; DATA.activities.forEach(a=>{(actsByTheme[a.theme]??=[]).push(a)})
-      themesGrid.innerHTML=DATA.themes.map(t=>{
-        const pct=Math.min(100,(themeTotals[t.id]/10)*100);
-        const acts=(actsByTheme[t.id]||[]).map(a=>`<li class="flex justify-between"><span>• ${a.title}</span><span class="muted">${a.hours}h → ${Math.min(countedActivityHours(a),10)}h</span></li>`).join('')||'<li class="muted">— à compléter —</li>';
-        return `<div class="border border-[var(--stroke)] rounded-xl p-3"><div class="flex justify-between"><b>${t.name}</b><span class="text-xs muted">${themeTotals[t.id]} / 10h</span></div><div class="bar h-1.5 rounded-full overflow-hidden mt-2"><span style="width:${pct}%"></span></div><ul class="mt-2 text-sm space-y-1">${acts}</ul></div>`
+
+    function renderThemes() {
+      const {themeTotals} = aggregate();
+      const actsByTheme = {};
+      DATA.activities.forEach(a => {
+        (actsByTheme[a.theme] ??= []).push(a);
+      });
+      
+      themesGrid.innerHTML = DATA.themes.map(t => {
+        const pct = Math.min(100, (themeTotals[t.id] / 10) * 100);
+        const acts = (actsByTheme[t.id] || []).map(a => 
+          `<div class="flex justify-between text-sm py-2 border-b border-white/5">
+            <span class="text-gray-300">• ${a.title}</span>
+            <span class="text-gray-500 font-mono text-xs">${a.hours}h → ${Math.min(countedActivityHours(a), 10)}h</span>
+          </div>`
+        ).join('') || '<div class="text-sm text-gray-500 italic py-2">— à compléter —</div>';
+        
+        return `
+          <div class="glass-card p-5">
+            <div class="flex justify-between items-center mb-3">
+              <span class="font-bold text-lg">${t.name}</span>
+              <span class="text-xs font-mono px-3 py-1 rounded-full" style="background: ${t.color}20; color: ${t.color}; border: 1px solid ${t.color}40;">${themeTotals[t.id]} / 10h</span>
+            </div>
+            <div class="progress-container mb-4">
+              <div class="progress-bar" style="width: ${pct}%; background: ${t.color}; color: ${t.color};"></div>
+            </div>
+            <div class="space-y-1">${acts}</div>
+          </div>
+        `;
       }).join('');
     }
-    function renderTable(){
-      const {rows}=aggregate(); const nameById=Object.fromEntries(DATA.themes.map(t=>[t.id,t.name]));
-      document.querySelector('#summaryTable tbody').innerHTML=rows.map(({a,counted})=>`<tr style="border-top:1px solid rgba(158,173,211,.18)"><td class="py-2">${nameById[a.theme]}</td><td>${a.title}</td><td>${a.kind}</td><td class="text-right">${a.hours}</td><td class="text-right">${counted}</td><td>${a.date? new Date(a.date).toLocaleDateString('fr-BE'):''}</td></tr>`).join('');
+
+    function renderTable() {
+      const {rows} = aggregate();
+      const themeMap = Object.fromEntries(DATA.themes.map(t => [t.id, t]));
+      
+      const tbody = document.querySelector('#summaryTable tbody');
+      if (rows.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-gray-500">
+              <div class="text-4xl mb-2">📊</div>
+              <div>Aucune activité enregistrée pour le moment</div>
+              <div class="text-sm mt-2">Ajoutez vos activités dans le code source</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      tbody.innerHTML = rows.map(({a, counted}) => {
+        const theme = themeMap[a.theme];
+        return `
+          <tr>
+            <td>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium" style="background: ${theme.color}20; color: ${theme.color}; border: 1px solid ${theme.color}40;">
+                ${theme.name}
+              </span>
+            </td>
+            <td class="font-medium">${a.title}</td>
+            <td>
+              <span class="inline-block px-3 py-1 rounded-full text-xs" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                ${a.kind}
+              </span>
+            </td>
+            <td class="text-right font-mono text-gray-400">${a.hours}h</td>
+            <td class="text-right font-mono font-bold" style="color: ${theme.color};">${counted}h</td>
+            <td class="text-gray-500 font-mono text-sm">${a.date ? new Date(a.date).toLocaleDateString('fr-BE') : '—'}</td>
+          </tr>
+        `;
+      }).join('');
     }
 
-    // Router + nav states
-    function go(hash){ location.hash = hash; }
-    function route(){
-      const h=(location.hash||'#home'); ['home','cv','contact'].forEach(id=>document.getElementById(id).classList.toggle('hidden','#'+id!==h));
-      document.querySelectorAll('[data-goto]').forEach(a=> a.classList.toggle('active', a.getAttribute('data-goto')===h));
-      window.scrollTo({top:0, behavior:'smooth'});
+    // Router
+    function route() {
+      const hash = (location.hash || '#home').substring(1);
+      
+      ['home', 'cv', 'contact'].forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.toggle('hidden', id !== hash);
+      });
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.toggle('active', link.dataset.page === hash);
+      });
+      
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
-    document.querySelectorAll('[data-goto]').forEach(a=> a.addEventListener('click',e=>{e.preventDefault(); go(a.getAttribute('data-goto'));}));
+
     window.addEventListener('hashchange', route);
 
-    // Contact → mailto
-    contactForm.addEventListener('submit',e=>{ e.preventDefault(); const f=new FormData(e.target); const subject=encodeURIComponent('Contact depuis le portfolio'); const body=encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`); location.href=`mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`; });
+    // Contact form
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const subject = encodeURIComponent('Contact depuis le portfolio');
+      const body = encodeURIComponent(`Nom: ${f.get('name')}\nEmail: ${f.get('email')}\n\nMessage:\n${f.get('msg')}`);
+      location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
+    });
 
-    // Init
-    renderProgress(); renderThemes(); renderTable(); route();
+    // Initialize everything
+    renderProgress();
+    renderThemes();
+    renderTable();
+    route();
+    
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+        if (target !== '#') {
+          window.location.hash = target;
+        }
+      });
+    });
   </script>
 </body>
 </html>
