@@ -3,7 +3,7 @@
    ======================================================================== */
 
 const DATA = {
-    // --- CONFIGURATION ---
+    // 1. DÉFINITION DES THÈMES
     themes: [
         { id: 'network', name: 'Réseaux', color: '#3b82f6', type: 'tech' },
         { id: 'security', name: 'Cybersécurité', color: '#8b5cf6', type: 'tech' },
@@ -12,6 +12,8 @@ const DATA = {
         { id: 'communication', name: 'Communication', color: '#f59e0b', type: 'soft' },
         { id: 'project', name: 'Gestion Projet', color: '#ef4444', type: 'soft' }
     ],
+
+    // 2. DÉFINITION DES TYPES
     types: {
         'hackathon': { label: 'Hackathon', emoji: '💻' },
         'training_online': { label: 'Formation en ligne', emoji: '🌐' },
@@ -23,17 +25,19 @@ const DATA = {
         'project': { label: 'Projet', emoji: '🚀' },
         'stage': { label: 'Stage', emoji: '👔' }
     },
-    // --- VOS ACTIVITÉS ---
+
+    // 3. VOS ACTIVITÉS (CORRIGÉES)
     activities: [
         { theme: 'network', title: 'Network Basics Project', type: 'project', hours: 15, date: '2024-05-10' },
         { theme: 'iot', title: 'Smart Mailbox "Boite-alerte"', type: 'hackathon', hours: 20, date: '2024-03-15' },
         { theme: 'security', title: 'Lhoist Security Onboarding', type: 'stage', hours: 8, date: '2025-02-01' },
         { theme: 'web', title: 'Portfolio Development', type: 'project', hours: 12, date: '2025-01-20' },
-        { theme: 'soft', title: 'Presentation Skills', type: 'training_onsite', hours: 4, date: '2024-11-10' },
-        { theme: 'soft', title: 'Communication Workshop', type: 'conference', hours: 8, date: '2024-12-05' }
+        // CORRECTION ICI : 'soft' n'existait pas en ID, j'ai mis 'communication'
+        { theme: 'communication', title: 'Presentation Skills', type: 'training_onsite', hours: 4, date: '2024-11-10' },
+        // CORRECTION ICI : 'soft' n'existait pas en ID, j'ai mis 'communication'
+        { theme: 'communication', title: 'Communication Workshop', type: 'conference', hours: 8, date: '2024-12-05' }
     ]
 };
-
 /* ========================================================================
    1. ANIMATION FOND (PARTICULES)
    ======================================================================== */
@@ -255,7 +259,8 @@ function renderActivities() {
     DATA.themes.forEach(t => themeAccumulator[t.id] = 0);
 
     const cardsHTML = filteredActivities.map((act, index) => {
-        const themeDef = DATA.themes.find(t => t.id === act.theme);
+        // SÉCURITÉ ICI : Si le thème n'est pas trouvé, on utilise un thème par défaut gris
+        const themeDef = DATA.themes.find(t => t.id === act.theme) || { color: '#666', name: 'Inconnu', id: 'unknown' };
         const typeDef = DATA.types[act.type] || { label: act.type, emoji: '📌' };
         
         const hoursCappedByActivity = Math.min(act.hours, 10);
@@ -263,7 +268,11 @@ function renderActivities() {
         const spaceLeftInTheme = 10 - currentThemeTotal;
         const hoursEffectivelyCounted = Math.max(0, Math.min(hoursCappedByActivity, spaceLeftInTheme));
         
-        themeAccumulator[act.theme] += hoursEffectivelyCounted;
+        // On n'ajoute à l'accumulateur que si le thème existe vraiment
+        if (themeAccumulator[act.theme] !== undefined) {
+            themeAccumulator[act.theme] += hoursEffectivelyCounted;
+        }
+
         const isCounted = hoursEffectivelyCounted > 0;
         const opacityClass = isCounted ? '' : 'opacity-60 grayscale-[0.5]';
 
