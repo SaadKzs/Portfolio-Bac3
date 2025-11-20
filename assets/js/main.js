@@ -8,408 +8,192 @@
 // ========================================================================
 
 const DATA = {
-  meta: {
-    summary: "Étudiant en 3e Bac TI à l'EPHEC, passionné par le réseau, la cybersécurité et l'IA. Je construis des projets MERN/IoT et je cherche un stage pour apprendre et contribuer."
-  },
-  
-  cv: {
     skills: [
-      'Cisco / Packet Tracer', 
-      'Linux basics', 
-      'Admin Systèmes & Réseaux', 
-      'Docker, DNS, HTTP/HTTPS, Mail', 
-      'Web MERN (Mongo/Express/React/Node)', 
-      'IoT & intégration soft/hard', 
-      'Python, C, C++, JS, HTML/CSS', 
-      'Git & GitHub'
+        { name: 'Réseaux (Cisco/TCP-IP)', val: 85, color: '#3b82f6' },
+        { name: 'Cybersécurité', val: 75, color: '#8b5cf6' },
+        { name: 'SysAdmin (Linux)', val: 80, color: '#10b981' },
+        { name: 'MERN Stack', val: 70, color: '#06b6d4' }
     ],
-    experience: [
-      {
-        title: 'IT Support Practice – EPHEC', 
-        period: '2023–2024', 
-        details: 'Diagnostic pannes logicielles & matérielles (Windows/Linux).'
-      },
-      {
-        title: 'Network Basics Project – EPHEC', 
-        period: '2023–2025', 
-        details: 'Config routeurs/switches, adressage IP, troubleshooting.'
-      },
-      {
-        title: 'Group IT Project – EPHEC', 
-        period: '2023–2025', 
-        details: 'Gestion de projet, présentation de solution (ex: multiprise connectée).'
-      },
-      {
-        title: 'Personal Tech Support', 
-        period: '2023–Maintenant', 
-        details: 'Assistance famille/amis : installs, réseau, bugs quotidiens.'
-      }
+    themes: [
+        {id: 'network', name: 'Réseaux', type: 'tech', color: '#3b82f6', icon: '📡'},
+        {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#8b5cf6', icon: '🛡️'},
+        {id: 'web', name: 'Dev Web & MERN', type: 'tech', color: '#06b6d4', icon: '🌐'},
+        {id: 'iot', name: 'IoT & Hardware', type: 'tech', color: '#10b981', icon: '📟'},
+        {id: 'communication', name: 'Communication', type: 'soft', color: '#f59e0b', icon: '🗣️'},
+        {id: 'project', name: 'Gestion Projet', type: 'soft', color: '#ef4444', icon: '📅'}
     ],
-    education: [
-      {title: 'Bachelier TI', place: 'EPHEC – Bruxelles', period: '2023–…'},
-      {title: 'MOOC Python', place: 'OpenClassrooms', period: '2022'},
-      {title: 'CESS', place: 'Lycée Daschbeck – Bruxelles', period: '2021'}
-    ],
-    languages: [
-      {name: 'Français', level: 'Courant'}, 
-      {name: 'Arabe', level: 'Courant'}, 
-      {name: 'Anglais', level: 'B2'}, 
-      {name: 'Néerlandais', level: 'Bases'}
+    // ==============================================
+    // 🔽 AJOUTE TES ACTIVITÉS ICI (MAX 60H) 🔽
+    // ==============================================
+    activities: [
+        /* EXEMPLES (A DÉCOMMENTER ET REMPLACER) :
+        {
+            theme: 'network',
+            title: 'Certification Cisco CCNA 1',
+            kind: 'training', // training = max 10h comptées
+            hours: 25,
+            date: '2025-01-10'
+        },
+        {
+            theme: 'security',
+            title: 'Capture The Flag (CTF) - RootMe',
+            kind: 'hackathon',
+            hours: 8,
+            date: '2025-02-20'
+        },
+        */
     ]
-  },
-  
-  themes: [
-    {id: 'network', name: 'Réseaux', type: 'tech', color: '#3b82f6'},
-    {id: 'security', name: 'Cybersécurité', type: 'tech', color: '#8b5cf6'},
-    {id: 'web', name: 'Web / MERN', type: 'tech', color: '#06b6d4'},
-    {id: 'iot', name: 'IoT', type: 'tech', color: '#10b981'},
-    {id: 'communication', name: 'Communication', type: 'soft', color: '#f59e0b'},
-    {id: 'project', name: 'Gestion de projet', type: 'soft', color: '#ef4444'}
-  ],
-  
-  // ========== AJOUTE TES ACTIVITÉS ICI ==========
-  activities: [
-    // Exemples à décommenter et modifier :
-    // 
-    // {
-    //   theme: 'network',
-    //   title: 'Formation Cisco CCNA',
-    //   kind: 'training',
-    //   hours: 25,
-    //   date: '2025-02-15'
-    // },
-    // 
-    // {
-    //   theme: 'security',
-    //   title: 'Workshop CTF Cybersécurité',
-    //   kind: 'event',
-    //   hours: 6,
-    //   date: '2025-03-10'
-    // },
-    // 
-    // {
-    //   theme: 'communication',
-    //   title: 'Présentation projet EPHEC',
-    //   kind: 'event',
-    //   hours: 4,
-    //   date: '2025-03-20'
-    // },
-  ]
 };
 
-// ========================================================================
-// 🎨 ANIMATIONS & PARTICULES
-// ========================================================================
+// --- Calculateur Logic ---
+function calculateHours() {
+    const themeTotals = {};
+    DATA.themes.forEach(t => themeTotals[t.id] = 0);
+    const rows = [];
 
-function createParticles() {
-  const container = document.getElementById('particles');
-  if (!container) return;
-  
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-    particle.style.animationDelay = Math.random() * 5 + 's';
-    particle.style.opacity = Math.random() * 0.5 + 0.1;
-    
-    const style = document.createElement('style');
-    const animName = `floatParticle${i}`;
-    style.textContent = `
-      @keyframes ${animName} {
-        0% {
-          transform: translateY(100vh) translateX(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.3;
-        }
-        90% {
-          opacity: 0.3;
-        }
-        100% {
-          transform: translateY(-100vh) translateX(${Math.random() * 200 - 100}px);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    particle.style.animation = `${animName} ${Math.random() * 20 + 15}s linear infinite`;
-    
-    container.appendChild(particle);
-  }
+    DATA.activities.forEach(act => {
+        // Règle : Max 10h pour une formation ("training")
+        let countable = act.hours;
+        if (act.kind === 'training' && act.hours > 10) countable = 10;
+
+        // Règle : Max 10h par thème au total
+        const currentTotal = themeTotals[act.theme];
+        const spaceLeft = 10 - currentTotal;
+        const actuallyAdded = Math.min(countable, Math.max(0, spaceLeft));
+
+        themeTotals[act.theme] += actuallyAdded;
+
+        rows.push({ ...act, counted: actuallyAdded });
+    });
+
+    const softTotal = DATA.themes.filter(t => t.type === 'soft').reduce((sum, t) => sum + themeTotals[t.id], 0);
+    const techTotal = DATA.themes.filter(t => t.type === 'tech').reduce((sum, t) => sum + themeTotals[t.id], 0);
+
+    return { themeTotals, softTotal, techTotal, rows };
 }
 
-// ========================================================================
-// 📊 CALCUL DES HEURES
-// ========================================================================
-
-const countedActivityHours = a => {
-  // Les formations comptent maximum 10h
-  if (a.kind === 'training') {
-    return Math.min(a.hours || 0, 10);
-  }
-  return a.hours || 0;
-};
-
-function aggregate() {
-  const themeTotals = Object.fromEntries(DATA.themes.map(t => [t.id, 0]));
-  const rows = [];
-  
-  for (const a of DATA.activities) {
-    const counted = countedActivityHours(a);
-    // Maximum 10h par thème
-    const newTotal = Math.min(10, themeTotals[a.theme] + counted);
-    const added = newTotal - themeTotals[a.theme];
-    themeTotals[a.theme] = newTotal;
-    rows.push({a, counted, added});
-  }
-  
-  const soft = DATA.themes
-    .filter(t => t.type === 'soft')
-    .reduce((s, t) => s + themeTotals[t.id], 0);
-  
-  const tech = DATA.themes
-    .filter(t => t.type === 'tech')
-    .reduce((s, t) => s + themeTotals[t.id], 0);
-  
-  return {themeTotals, soft, tech, rows};
-}
-
-// ========================================================================
-// 🖼️ RENDU DES ÉLÉMENTS
-// ========================================================================
-
+// --- Renderers ---
 function renderProgress() {
-  const progressEl = document.getElementById('progress');
-  if (!progressEl) return;
-  
-  const {soft, tech} = aggregate();
-  const total = soft + tech;
-  
-  const bar = (label, val, max, color) => `
-    <div>
-      <div class="flex justify-between text-sm mb-3">
-        <span class="text-slate-300">${label}</span>
-        <span class="font-bold mono">${val} / ${max}h</span>
-      </div>
-      <div class="progress-container">
-        <div class="progress-fill" style="width: ${Math.min(100, (val / max) * 100)}%; background: ${color}; color: ${color};"></div>
-      </div>
-    </div>
-  `;
-  
-  progressEl.innerHTML = [
-    bar('Soft skills', soft, 10, '#f59e0b'),
-    bar('Informatique', tech, 50, '#3b82f6'),
-    `<div class="mt-6 p-5 rounded-xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/30">
-      <div class="text-sm text-slate-400 mb-2">Total comptabilisé</div>
-      <div class="text-3xl font-bold gradient-text">${total} / 60h</div>
-    </div>`
-  ].join('');
-  
-  const warningsEl = document.getElementById('warnings');
-  if (warningsEl) {
-    const warn = [];
-    if (soft > 10) warn.push('⚠️ Soft > 10h');
-    if (tech > 50) warn.push('⚠️ IT > 50h');
-    if (total < 60) warn.push(`📌 ${60 - total}h restantes`);
-    warningsEl.textContent = warn.join(' • ');
-  }
-}
-
-function renderThemes() {
-  const themesGrid = document.getElementById('themesGrid');
-  if (!themesGrid) return;
-  
-  const {themeTotals} = aggregate();
-  const actsByTheme = {};
-  DATA.activities.forEach(a => {
-    (actsByTheme[a.theme] ??= []).push(a);
-  });
-  
-  themesGrid.innerHTML = DATA.themes.map(t => {
-    const pct = Math.min(100, (themeTotals[t.id] / 10) * 100);
-    const acts = (actsByTheme[t.id] || []).map(a => 
-      `<div class="flex justify-between text-sm py-2 border-b border-white/5">
-        <span class="text-slate-300">• ${a.title}</span>
-        <span class="text-slate-500 text-xs mono">${a.hours}h → ${Math.min(countedActivityHours(a), 10)}h</span>
-      </div>`
-    ).join('') || '<div class="text-sm text-slate-500 italic py-2">— à compléter —</div>';
+    const stats = calculateHours();
+    const total = stats.softTotal + stats.techTotal;
     
-    return `
-      <div class="glass-card p-6">
-        <div class="flex justify-between items-center mb-4">
-          <span class="font-bold text-lg">${t.name}</span>
-          <span class="badge" style="background: ${t.color}20; color: ${t.color}; border: 1px solid ${t.color};">
-            ${themeTotals[t.id]} / 10h
-          </span>
-        </div>
-        <div class="progress-container mb-4">
-          <div class="progress-fill" style="width: ${pct}%; background: ${t.color}; color: ${t.color};"></div>
-        </div>
-        <div class="space-y-1">${acts}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-function renderTable() {
-  const tbody = document.querySelector('#summaryTable tbody');
-  if (!tbody) return;
-  
-  const {rows} = aggregate();
-  const themeMap = Object.fromEntries(DATA.themes.map(t => [t.id, t]));
-  
-  if (rows.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="6" class="text-center py-16">
-          <div class="text-6xl mb-4 opacity-20">📊</div>
-          <div class="text-xl mb-3 font-semibold">Aucune activité enregistrée</div>
-          <div class="text-sm text-slate-500">
-            Ajoute tes activités dans <code class="bg-blue-500/10 px-3 py-1 rounded text-blue-400 mono">DATA.activities</code>
-          </div>
-        </td>
-      </tr>
-    `;
-    return;
-  }
-  
-  tbody.innerHTML = rows.map(({a, counted}) => {
-    const theme = themeMap[a.theme];
-    return `
-      <tr>
-        <td>
-          <span class="badge" style="background: ${theme.color}20; color: ${theme.color}; border: 1px solid ${theme.color};">
-            ${theme.name}
-          </span>
-        </td>
-        <td class="font-medium">${a.title}</td>
-        <td>
-          <span class="badge" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 12px;">
-            ${a.kind}
-          </span>
-        </td>
-        <td class="text-right text-slate-400 mono">${a.hours}h</td>
-        <td class="text-right font-bold text-lg mono" style="color: ${theme.color};">${counted}h</td>
-        <td class="text-slate-500 text-sm mono">
-          ${a.date ? new Date(a.date).toLocaleDateString('fr-BE') : '—'}
-        </td>
-      </tr>
-    `;
-  }).join('');
-}
-
-function renderCV() {
-  const skillsEl = document.getElementById('skills');
-  if (skillsEl) {
-    skillsEl.innerHTML = DATA.cv.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
-  }
-  
-  const languagesEl = document.getElementById('languages');
-  if (languagesEl) {
-    languagesEl.innerHTML = DATA.cv.languages.map(l => `<span class="skill-tag">${l.name} – ${l.level}</span>`).join('');
-  }
-  
-  const xpEl = document.getElementById('xp');
-  if (xpEl) {
-    xpEl.innerHTML = DATA.cv.experience.map(e => `
-      <div class="glass-card p-5">
-        <div class="font-semibold text-lg">${e.title}</div>
-        <div class="text-sm text-blue-400 mt-1 mono">${e.period}</div>
-        <div class="text-sm text-slate-400 mt-3">${e.details}</div>
-      </div>
-    `).join('');
-  }
-  
-  const eduEl = document.getElementById('edu');
-  if (eduEl) {
-    eduEl.innerHTML = DATA.cv.education.map(e => `
-      <div class="glass-card p-5">
-        <div class="font-semibold text-lg">${e.title}</div>
-        <div class="text-sm text-cyan-400 mt-1">${e.place}</div>
-        <div class="text-sm text-slate-400 mt-1 mono">${e.period}</div>
-      </div>
-    `).join('');
-  }
-}
-
-// ========================================================================
-// 📧 FORMULAIRE DE CONTACT
-// ========================================================================
-
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-  
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const subject = encodeURIComponent('Contact depuis le portfolio');
-    const body = encodeURIComponent(
-      `Nom: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\nMessage:\n${formData.get('msg')}`
-    );
-    window.location.href = `mailto:saadzebiri65@gmail.com?subject=${subject}&body=${body}`;
-  });
-}
-
-// ========================================================================
-// 🎯 ACTIVE NAVIGATION LINK
-// ========================================================================
-
-function setActiveNavLink() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const linkPage = link.getAttribute('href');
-    if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
+    // Barres globales
+    const globalEl = document.getElementById('global-progress');
+    if(globalEl) {
+        globalEl.innerHTML = `
+            <div class="mb-6">
+                <div class="flex justify-between mb-2 font-mono text-sm">
+                    <span class="text-blue-400">TOTAL SYSTEM LOAD</span>
+                    <span>${total} / 60 HOURS</span>
+                </div>
+                <div class="cyber-progress h-4 bg-slate-900 border border-slate-700">
+                    <div class="cyber-progress-bar bg-gradient-to-r from-blue-600 to-purple-600" style="width: ${(total/60)*100}%"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                     <div class="flex justify-between text-xs mono mb-1 text-slate-400"><span>TECH SKILLS</span><span>${stats.techTotal}/50</span></div>
+                     <div class="cyber-progress"><div class="cyber-progress-bar bg-blue-500" style="width: ${(stats.techTotal/50)*100}%"></div></div>
+                </div>
+                <div>
+                     <div class="flex justify-between text-xs mono mb-1 text-slate-400"><span>SOFT SKILLS</span><span>${stats.softTotal}/10</span></div>
+                     <div class="cyber-progress"><div class="cyber-progress-bar bg-yellow-500" style="width: ${(stats.softTotal/10)*100}%"></div></div>
+                </div>
+            </div>
+        `;
     }
-  });
+
+    // Cartes Thèmes
+    const themesEl = document.getElementById('themes-grid');
+    if(themesEl) {
+        themesEl.innerHTML = DATA.themes.map(theme => {
+            const val = stats.themeTotals[theme.id];
+            const percent = (val / 10) * 100;
+            const isComplete = val >= 10;
+            
+            return `
+            <div class="tech-card p-6 fade-up">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-3xl">${theme.icon}</div>
+                    <div class="mono text-xs px-2 py-1 border ${isComplete ? 'border-green-500 text-green-500' : 'border-slate-600 text-slate-500'} rounded">
+                        ${isComplete ? 'MAX' : 'ACTIVE'}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold mb-1">${theme.name}</h3>
+                <div class="flex justify-between text-sm text-slate-400 mono mb-2">
+                    <span>Capacity</span>
+                    <span>${val} / 10h</span>
+                </div>
+                <div class="cyber-progress bg-black">
+                    <div class="cyber-progress-bar" style="width: ${percent}%; background: ${theme.color}; box-shadow: 0 0 10px ${theme.color}"></div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    // Tableau Recap
+    const tableEl = document.querySelector('#log-table tbody');
+    if(tableEl && stats.rows.length > 0) {
+        tableEl.innerHTML = stats.rows.map(row => `
+            <tr class="border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
+                <td class="py-3 text-blue-400 mono text-sm">[${row.theme.toUpperCase()}]</td>
+                <td class="py-3 font-medium">${row.title}</td>
+                <td class="py-3 text-slate-400 text-sm">${row.kind}</td>
+                <td class="py-3 text-right mono">${row.hours}h</td>
+                <td class="py-3 text-right mono font-bold text-white">${row.counted}h</td>
+                <td class="py-3 text-right text-slate-500 text-sm mono">${row.date || 'N/A'}</td>
+            </tr>
+        `).join('');
+    }
 }
 
-// ========================================================================
-// 🚀 INITIALISATION
-// ========================================================================
+// --- UI Effects ---
+function typeWriter(elementId, text, speed = 50) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    el.innerHTML = '';
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            el.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
 
+function initScrollObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Trigger progress bars if inside
+                const bars = entry.target.querySelectorAll('.cyber-progress-bar');
+                bars.forEach(bar => {
+                    // Force redraw hack for transition
+                    const w = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => bar.style.width = w, 100);
+                });
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+// --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
-  // Année dans le footer
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-  
-  // Résumé
-  const summaryEl = document.getElementById('summary');
-  if (summaryEl) {
-    summaryEl.textContent = DATA.meta.summary;
-  }
-  
-  const cvSummaryEl = document.getElementById('cvSummary');
-  if (cvSummaryEl) {
-    cvSummaryEl.textContent = DATA.meta.summary;
-  }
-  
-  // Créer les particules
-  createParticles();
-  
-  // Rendre les éléments selon la page
-  renderProgress();
-  renderThemes();
-  renderTable();
-  renderCV();
-  
-  // Initialiser le formulaire
-  initContactForm();
-  
-  // Active nav link
-  setActiveNavLink();
-});
+    renderProgress();
+    initScrollObserver();
+    
+    // Typer effect on Hero
+    if(document.getElementById('hero-title')) {
+        typeWriter('hero-subtitle', 'Network Administrator | Cyber Security Student | SysAdmin', 30);
+    }
 
-// Export pour utilisation dans d'autres scripts
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { DATA, aggregate, renderProgress, renderThemes, renderTable };
-}
+    // Update Copyright Year
+    const y = document.getElementById('year');
+    if(y) y.textContent = new Date().getFullYear();
+});

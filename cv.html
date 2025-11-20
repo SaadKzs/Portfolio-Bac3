@@ -1,203 +1,129 @@
 <!doctype html>
-<html lang="fr" class="h-full">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV – Saad Zebiri</title>
-  <meta name="description" content="CV de Saad Zebiri – Étudiant en Technologie de l'Informatique à l'EPHEC">
+  <title>CV | Saad Zebiri</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen">
+  <div class="cyber-grid"></div>
 
-  <!-- Floating particles -->
-  <div id="particles"></div>
-
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-10">
-    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
-      
-      <!-- Sidebar -->
-      <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
-        
-        <!-- Profile Card -->
-        <div class="glass-card p-7 slide-in-left">
-          <div class="text-xs font-semibold text-blue-400 mb-3 tracking-widest mono">// PORTFOLIO</div>
-          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
-          <p class="text-slate-400 text-sm mb-5">Bac 3 – EPHEC Brussels</p>
-          
-          <div class="divider my-5"></div>
-          
-          
-            <a href="index.html" class="nav-link">
-              <span class="text-xl">🏠</span>
-              <span>Accueil</span>
-            </a>
-            <a href="cv.html" class="nav-link">
-              <span class="text-xl">📄</span>
-              <span>CV</span>
-            </a>
-            <a href="contact.html" class="nav-link">
-              <span class="text-xl">✉️</span>
-              <span>Contact</span>
-            </a>
-          
-        </div>
-        
-        <!-- Contact Card -->
-        <div class="glass-card p-6 slide-in-left" style="animation-delay: 0.2s;">
-          <div class="text-xs font-semibold text-blue-400 mb-4 tracking-widest mono">// COORDONNÉES</div>
-          <div class="space-y-2 text-sm">
-            <div class="info-card">
-              <span class="text-xl">📍</span>
-              <span>Bruxelles</span>
-            </div>
-            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
-              <span class="text-xl">✉️</span>
-              <span class="truncate">saadzebiri65@gmail.com</span>
-            </a>
-            <a href="tel:+32471874910" class="info-card">
-              <span class="text-xl">📞</span>
-              <span>0471 87 49 10</span>
-            </a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="info-card">
-              <span class="text-xl">🔗</span>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="text-xs text-center text-slate-600 mono">© <span id="year"></span> Zebiri Saad</div>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="space-y-8 mt-8 lg:mt-0">
-        
-        <!-- CV Header -->
-        <div class="glass-card p-10 fade-in">
-          <h2 class="text-4xl font-bold gradient-text mb-5">Curriculum Vitae</h2>
-          <p id="cvSummary" class="text-lg text-slate-300 leading-relaxed"></p>
-          
-          <div class="divider"></div>
-          
-          <div class="grid sm:grid-cols-3 gap-5">
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">🎓</div>
-              <div class="text-xs text-slate-500 mb-1">Formation</div>
-              <div class="font-semibold text-blue-400">Bac 3 TI</div>
-            </div>
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">📍</div>
-              <div class="text-xs text-slate-500 mb-1">Localisation</div>
-              <div class="font-semibold text-blue-400">Bruxelles</div>
-            </div>
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">💼</div>
-              <div class="text-xs text-slate-500 mb-1">Disponibilité</div>
-              <div class="font-semibold text-blue-400">Stage 2025</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Compétences & Langues -->
-        <div class="grid lg:grid-cols-2 gap-6">
-          
-          <!-- Compétences -->
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">💻</span>
-              <h3 class="text-xl font-bold">Compétences techniques</h3>
-            </div>
-            <div id="skills" class="flex flex-wrap gap-3"></div>
-          </div>
-          
-          <!-- Langues -->
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">🌍</span>
-              <h3 class="text-xl font-bold">Langues</h3>
-            </div>
-            <div id="languages" class="flex flex-wrap gap-3"></div>
-          </div>
-          
-        </div>
-
-        <!-- Expériences -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">🚀</span>
-            <h3 class="text-2xl font-bold">Expériences</h3>
-          </div>
-          <div id="xp" class="space-y-4"></div>
-        </div>
-
-        <!-- Éducation -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">🎓</span>
-            <h3 class="text-2xl font-bold">Formation & Éducation</h3>
-          </div>
-          <div id="edu" class="space-y-4"></div>
-        </div>
-
-        <!-- Points forts (optionnel sur le CV) -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">⭐</span>
-            <h3 class="text-2xl font-bold">Points forts</h3>
-          </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent border-l-2 border-blue-400">
-              <span class="text-2xl">🎯</span>
-              <div>
-                <div class="font-semibold mb-1">Autonomie</div>
-                <div class="text-sm text-slate-400">Capable de gérer des projets de manière indépendante</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-indigo-500/10 to-transparent border-l-2 border-indigo-400">
-              <span class="text-2xl">💬</span>
-              <div>
-                <div class="font-semibold mb-1">Communication</div>
-                <div class="text-sm text-slate-400">Excellente capacité à expliquer des concepts techniques</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
-              <span class="text-2xl">🔧</span>
-              <div>
-                <div class="font-semibold mb-1">Résolution de problèmes</div>
-                <div class="text-sm text-slate-400">Approche méthodique du troubleshooting</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
-              <span class="text-2xl">🧠</span>
-              <div>
-                <div class="font-semibold mb-1">Curiosité technique</div>
-                <div class="text-sm text-slate-400">Passion pour l'apprentissage continu</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="glass-card p-8 fade-in text-center">
-          <h3 class="text-2xl font-bold mb-4">Intéressé par mon profil ?</h3>
-          <p class="text-slate-300 mb-6">N'hésitez pas à me contacter pour discuter d'opportunités de stage ou de collaboration.</p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="contact.html" class="btn-primary">
-              <span>✉️ Me contacter</span>
-            </a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="btn-primary">
-              <span>🔗 LinkedIn</span>
-            </a>
-          </div>
-        </div>
-        
-      </main>
+  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="font-bold text-xl tracking-tighter mono">ZEBIRI<span class="text-blue-500">.SYS</span></div>
+      <div class="flex gap-8 mono text-sm">
+        <a href="index.html" class="nav-item">DASHBOARD</a>
+        <a href="cv.html" class="nav-item active">PROFILE_LOG</a>
+        <a href="contact.html" class="nav-item">UPLINK</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
+  <main class="max-w-5xl mx-auto px-4 pt-32 pb-20">
+    
+    <div class="flex items-center justify-between mb-12 fade-up">
+        <div>
+            <h1 class="text-4xl font-bold glitch-text" data-text="CURRICULUM VITAE">CURRICULUM VITAE</h1>
+            <p class="text-blue-400 mono mt-2">:: CLASSIFIED PERSONNEL FILE</p>
+        </div>
+        <a href="assets/cv.pdf" download class="btn-cyber">Download PDF</a>
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr,300px] gap-8">
+        
+        <div class="space-y-8 fade-up">
+            
+            <section class="tech-card p-8">
+                <h2 class="text-xl font-bold mb-6 border-b border-white/10 pb-2">Experience History</h2>
+                <div class="space-y-8 relative before:absolute before:left-2 before:top-2 before:h-full before:w-[2px] before:bg-slate-800">
+                    
+                    <div class="pl-8 relative">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-blue-500 rounded-full border-4 border-black"></div>
+                        <h3 class="font-bold text-lg">IT Support Practice</h3>
+                        <div class="text-blue-400 text-sm mono mb-2">EPHEC | 2023 – 2024</div>
+                        <p class="text-slate-400 text-sm">Diagnostic avancé pannes logicielles & matérielles. Environnements Windows/Linux.</p>
+                    </div>
+
+                    <div class="pl-8 relative">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-purple-500 rounded-full border-4 border-black"></div>
+                        <h3 class="font-bold text-lg">Network Infrastructure Project</h3>
+                        <div class="text-purple-400 text-sm mono mb-2">EPHEC | 2023 – 2025</div>
+                        <p class="text-slate-400 text-sm">Configuration routeurs/switchs Cisco. Adressage IP, VLANs, Troubleshooting.</p>
+                    </div>
+
+                    <div class="pl-8 relative">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-slate-600 rounded-full border-4 border-black"></div>
+                        <h3 class="font-bold text-lg">Personal Tech Support</h3>
+                        <div class="text-slate-500 text-sm mono mb-2">2023 – Present</div>
+                        <p class="text-slate-400 text-sm">Gestion parc informatique personnel et familial. Déploiement solutions backup.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="tech-card p-8">
+                <h2 class="text-xl font-bold mb-6 border-b border-white/10 pb-2">Education Path</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-bold">Bachelier Technologie Informatique</div>
+                            <div class="text-sm text-slate-400">EPHEC Bruxelles</div>
+                        </div>
+                        <div class="mono text-sm text-blue-400">2023 - Present</div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-bold">Certification Python</div>
+                            <div class="text-sm text-slate-400">OpenClassrooms</div>
+                        </div>
+                        <div class="mono text-sm text-slate-500">2022</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="space-y-8 fade-up" style="transition-delay: 0.2s">
+            
+            <section class="tech-card p-6">
+                <h2 class="text-lg font-bold mb-4 text-blue-400">Core Systems</h2>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex justify-between"><span>Cisco / Packet Tracer</span><span class="text-green-400">●●●●○</span></li>
+                    <li class="flex justify-between"><span>Linux Admin</span><span class="text-green-400">●●●○○</span></li>
+                    <li class="flex justify-between"><span>Docker / DNS / HTTP</span><span class="text-green-400">●●●○○</span></li>
+                    <li class="flex justify-between"><span>Python / C++</span><span class="text-green-400">●●●○○</span></li>
+                    <li class="flex justify-between"><span>React / Node.js</span><span class="text-green-400">●●●○○</span></li>
+                </ul>
+            </section>
+
+            <section class="tech-card p-6">
+                <h2 class="text-lg font-bold mb-4 text-purple-400">Languages</h2>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span>FRANÇAIS</span><span>Natif</span></div>
+                        <div class="h-1 bg-slate-700 rounded"><div class="h-full bg-white w-full"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span>ANGLAIS</span><span>B2</span></div>
+                        <div class="h-1 bg-slate-700 rounded"><div class="h-full bg-white w-3/4"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span>ARABE</span><span>Courant</span></div>
+                        <div class="h-1 bg-slate-700 rounded"><div class="h-full bg-white w-full"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1"><span>NÉERLANDAIS</span><span>Bases</span></div>
+                        <div class="h-1 bg-slate-700 rounded"><div class="h-full bg-white w-1/4"></div></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+  </main>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,270 +1,152 @@
 <!doctype html>
-<html lang="fr" class="h-full">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saad Zebiri – Portfolio Bac3</title>
-  <meta name="description" content="Portfolio Bac3 – Étudiant en Technologie de l'Informatique à l'EPHEC">
+  <title>Saad Zebiri | Portfolio Bac3</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen">
 
-  <!-- Floating particles -->
-  <div id="particles"></div>
+  <div class="cyber-grid"></div>
+  <div class="glow-spot"></div>
 
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-10">
-    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
-      
-      <!-- Sidebar -->
-      <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
-        
-        <!-- Profile Card -->
-        <div class="glass-card p-7 slide-in-left">
-          <div class="text-xs font-semibold text-blue-400 mb-3 tracking-widest mono">// PORTFOLIO</div>
-          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
-          <p class="text-slate-400 text-sm mb-5">Bac 3 – EPHEC Brussels</p>
-          
-          <div class="divider my-5"></div>
-          
-         
-            <a href="index.html" class="nav-link">
-              <span class="text-xl">🏠</span>
-              <span>Accueil</span>
-            </a>
-            <a href="cv.html" class="nav-link">
-              <span class="text-xl">📄</span>
-              <span>CV</span>
-            </a>
-            <a href="contact.html" class="nav-link">
-              <span class="text-xl">✉️</span>
-              <span>Contact</span>
-            </a>
-        
-        </div>
-        
-        <!-- Contact Card -->
-        <div class="glass-card p-6 slide-in-left" style="animation-delay: 0.2s;">
-          <div class="text-xs font-semibold text-blue-400 mb-4 tracking-widest mono">// COORDONNÉES</div>
-          <div class="space-y-2 text-sm">
-            <div class="info-card">
-              <span class="text-xl">📍</span>
-              <span>Bruxelles</span>
-            </div>
-            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
-              <span class="text-xl">✉️</span>
-              <span class="truncate">saadzebiri65@gmail.com</span>
-            </a>
-            <a href="tel:+32471874910" class="info-card">
-              <span class="text-xl">📞</span>
-              <span>0471 87 49 10</span>
-            </a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="info-card">
-              <span class="text-xl">🔗</span>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="text-xs text-center text-slate-600 mono">© <span id="year"></span> Zebiri Saad</div>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="space-y-8 mt-8 lg:mt-0">
-        
-        <!-- Hero -->
-        <section class="glass-card p-10 lg:p-12 fade-in">
-          <div class="text-xs font-semibold text-blue-400 mb-4 tracking-widest mono">// À_PROPOS</div>
-          <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Construire, apprendre,<br/>
-            <span class="gradient-text">sécuriser.</span>
-          </h2>
-          <p id="summary" class="text-lg text-slate-300 leading-relaxed mb-8"></p>
-          
-          <div class="grid sm:grid-cols-3 gap-5">
-            <div class="glass-card p-5">
-              <div class="text-xs text-slate-500 mb-2">Établissement</div>
-              <div class="font-semibold text-blue-400">EPHEC – TI</div>
-            </div>
-            <div class="glass-card p-5">
-              <div class="text-xs text-slate-500 mb-2">Année</div>
-              <div class="font-semibold text-blue-400">Bac 3 – 2025</div>
-            </div>
-            <div class="glass-card p-5">
-              <div class="text-xs text-slate-500 mb-2">Objectif</div>
-              <div class="font-semibold text-blue-400">Stage Réseaux</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Projet Professionnel -->
-        <section class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">🎯</span>
-            <h3 class="text-2xl font-bold">Projet professionnel</h3>
-          </div>
-          
-          <!-- ========== À COMPLÉTER : TON PROJET PROFESSIONNEL ========== -->
-          <div id="projet-professionnel">
-            <div class="placeholder">
-              <div class="placeholder-icon">🚀</div>
-              <div class="text-xl font-semibold text-blue-400 mb-3">Section à compléter</div>
-              <div class="text-sm text-slate-400 mono">
-                Remplace cette div par ton projet professionnel<br/>
-                (stage → admin réseau → ingénieur sécurité)
-              </div>
-            </div>
-          </div>
-          <!-- ============================================================= -->
-        </section>
-
-        <!-- Points Forts & Axes -->
-        <div class="grid lg:grid-cols-2 gap-6">
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">💪</span>
-              <h3 class="text-xl font-bold">Points forts</h3>
-            </div>
-            
-            <!-- ========== À COMPLÉTER : TES POINTS FORTS ========== -->
-            <div id="points-forts">
-              <div class="placeholder">
-                <div class="placeholder-icon">✨</div>
-                <div class="text-lg font-semibold text-blue-400 mb-2">À compléter</div>
-                <div class="text-sm text-slate-400 mono">
-                  Remplace par tes qualités<br/>
-                  (autonomie, communication, vulgarisation...)
-                </div>
-              </div>
-            </div>
-            <!-- ===================================================== -->
-          </div>
-          
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">📈</span>
-              <h3 class="text-xl font-bold">Axes d'amélioration</h3>
-            </div>
-            
-            <!-- ========== À COMPLÉTER : TES AXES D'AMÉLIORATION ========== -->
-            <div id="axes-amelioration">
-              <div class="placeholder">
-                <div class="placeholder-icon">🎯</div>
-                <div class="text-lg font-semibold text-blue-400 mb-2">À compléter</div>
-                <div class="text-sm text-slate-400 mono">
-                  Remplace par tes pistes de progression<br/>
-                  (gestion du temps, néerlandais, rigueur...)
-                </div>
-              </div>
-            </div>
-            <!-- ========================================================== -->
-          </div>
-        </div>
-
-        <!-- Progress & Rules -->
-        <div class="grid lg:grid-cols-2 gap-6">
-          
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">📊</span>
-              <h3 class="text-xl font-bold">Progression heures</h3>
-            </div>
-            <div id="progress" class="space-y-6"></div>
-            <div id="warnings" class="text-sm text-yellow-400 mt-5 mono"></div>
-          </div>
-          
-          <div class="glass-card p-7 fade-in">
-            <div class="section-header">
-              <span class="section-icon">📋</span>
-              <h3 class="text-xl font-bold">Règles</h3>
-            </div>
-            <div class="space-y-4 text-sm text-slate-300">
-              <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-transparent border-l-2 border-blue-400">
-                <span class="text-blue-400 font-bold">→</span>
-                <span>10h <strong>max/thème</strong> (soft inclus)</span>
-              </div>
-              <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-indigo-500/10 to-transparent border-l-2 border-indigo-400">
-                <span class="text-indigo-400 font-bold">→</span>
-                <span>Une <strong>formation</strong> compte max 10h</span>
-              </div>
-              <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
-                <span class="text-purple-400 font-bold">→</span>
-                <span>Cible totale : <strong>60h</strong> (10h soft + 50h IT)</span>
-              </div>
-              <div class="flex items-start gap-3 p-3 rounded-lg bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
-                <span class="text-cyan-400 font-bold">→</span>
-                <span>Au moins <strong>6 thèmes différents</strong></span>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-
-        <!-- Themes Grid -->
-        <div class="glass-card p-8 fade-in">
-          <div class="flex items-center justify-between mb-6">
-            <div class="section-header mb-0">
-              <span class="section-icon">🎯</span>
-              <h3 class="text-xl font-bold">Synthèse par thème</h3>
-            </div>
-            <span class="text-xs text-blue-400 font-semibold mono">6 THÈMES REQUIS</span>
-          </div>
-          <div id="themesGrid" class="grid md:grid-cols-2 gap-5"></div>
-        </div>
-
-        <!-- Preuves -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">📸</span>
-            <h3 class="text-xl font-bold">Preuves de participation</h3>
-          </div>
-          
-          <!-- ========== À COMPLÉTER : TES PREUVES (PHOTOS, DIPLÔMES...) ========== -->
-          <div id="preuves-section">
-            <div class="placeholder">
-              <div class="placeholder-icon">📷</div>
-              <div class="text-xl font-semibold text-blue-400 mb-3">Photos et documents à ajouter</div>
-              <div class="text-sm text-slate-400 mono">
-                Remplace cette div par tes images :<br/>
-                &lt;div class="grid md:grid-cols-2 gap-4"&gt;<br/>
-                &nbsp;&nbsp;&lt;img src="images/photo1.jpg" class="glass-card p-2 rounded-xl" /&gt;<br/>
-                &nbsp;&nbsp;&lt;img src="images/diplome.jpg" class="glass-card p-2 rounded-xl" /&gt;<br/>
-                &lt;/div&gt;
-              </div>
-            </div>
-          </div>
-          <!-- ====================================================================== -->
-        </div>
-
-        <!-- Table -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">📑</span>
-            <h3 class="text-xl font-bold">Récapitulatif détaillé</h3>
-          </div>
-          <div class="overflow-x-auto">
-            <table id="summaryTable">
-              <thead>
-                <tr>
-                  <th>Thème</th>
-                  <th>Activité</th>
-                  <th>Type</th>
-                  <th class="text-right">Réelles</th>
-                  <th class="text-right">Comptées</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
-        
-      </main>
+  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="font-bold text-xl tracking-tighter mono">
+        ZEBIRI<span class="text-blue-500">.SYS</span>
+      </div>
+      <div class="hidden md:flex gap-8 mono text-sm">
+        <a href="index.html" class="nav-item active">DASHBOARD</a>
+        <a href="cv.html" class="nav-item">PROFILE_LOG</a>
+        <a href="contact.html" class="nav-item">UPLINK</a>
+      </div>
     </div>
-  </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 pt-24 pb-12">
+    
+    <header class="min-h-[60vh] flex flex-col justify-center fade-up">
+      <div class="mono text-blue-400 mb-4">:: SYSTEM_READY</div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight glitch-text" data-text="SAAD ZEBIRI">
+        SAAD ZEBIRI
+      </h1>
+      <div id="hero-subtitle" class="text-xl md:text-2xl text-slate-400 mono h-8 mb-8"></div>
+      <p class="max-w-2xl text-slate-300 text-lg leading-relaxed mb-8">
+        Étudiant en <strong>Technologie de l'Informatique</strong> à l'EPHEC. Passionné par l'architecture réseau, 
+        le durcissement de systèmes et l'automatisation. À la recherche d'un stage technique pour 2025.
+      </p>
+      <div class="flex gap-4">
+        <a href="#progress-section" class="btn-cyber">View Progression</a>
+        <a href="cv.html" class="btn-cyber border-slate-500 text-slate-300 hover:border-white hover:text-white">Access CV</a>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-2 gap-8 mb-20">
+      <section class="tech-card p-8 fade-up">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-blue-500">01.</span> PROJECT_TARGET
+        </h2>
+        
+        <div class="space-y-4">
+            <div class="flex items-start gap-4">
+                <div class="p-2 bg-blue-500/10 rounded text-blue-400">🎯</div>
+                <div>
+                    <h3 class="font-bold">L'Objectif</h3>
+                    <p class="text-slate-400 text-sm">Stage admin réseau → Spécialisation Cybersécurité → Ingénieur SecOps.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="p-2 bg-purple-500/10 rounded text-purple-400">⚡</div>
+                <div>
+                    <h3 class="font-bold">La Motivation</h3>
+                    <p class="text-slate-400 text-sm">Comprendre comment les données transitent pour mieux les protéger. Passion pour l'infrastructure critique.</p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="tech-card p-8 fade-up" style="transition-delay: 0.1s">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-purple-500">02.</span> SYSTEM_SPECS
+        </h2>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/5 p-4 rounded border-l-2 border-green-500">
+                <div class="text-xs text-slate-500 mono mb-1">STRENGTH</div>
+                <div class="font-bold">Autonomie</div>
+            </div>
+            <div class="bg-white/5 p-4 rounded border-l-2 border-blue-500">
+                <div class="text-xs text-slate-500 mono mb-1">STRENGTH</div>
+                <div class="font-bold">Vulgarisation</div>
+            </div>
+            <div class="bg-white/5 p-4 rounded border-l-2 border-yellow-500">
+                <div class="text-xs text-slate-500 mono mb-1">ATTENTION</div>
+                <div class="font-bold">Néerlandais</div>
+            </div>
+            <div class="bg-white/5 p-4 rounded border-l-2 border-red-500">
+                <div class="text-xs text-slate-500 mono mb-1">ATTENTION</div>
+                <div class="font-bold">Gestion Temps</div>
+            </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="progress-section" class="mb-20 fade-up">
+        <div class="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
+            <h2 class="text-3xl font-bold">ACTIVITY_MONITOR</h2>
+            <div class="mono text-xs text-green-400 animate-pulse">● LIVE TRACKING</div>
+        </div>
+
+        <div id="global-progress" class="tech-card p-6 mb-8"></div>
+
+        <div id="themes-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <section class="mb-20 fade-up">
+        <h2 class="text-2xl font-bold mb-8">EVIDENCE_LOGS</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="tech-card p-1 h-64 flex items-center justify-center text-slate-600 border-dashed border-2 border-slate-700">
+                <span>[INSERT IMAGE: CERTIFICATION]</span>
+            </div>
+            <div class="tech-card p-1 h-64 flex items-center justify-center text-slate-600 border-dashed border-2 border-slate-700">
+                <span>[INSERT IMAGE: HACKATHON]</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="fade-up">
+        <h2 class="text-2xl font-bold mb-6">DETAILED_LOGS</h2>
+        <div class="tech-card overflow-hidden">
+            <div class="overflow-x-auto">
+                <table id="log-table" class="w-full text-left border-collapse">
+                    <thead class="bg-white/5 text-xs uppercase mono text-slate-400">
+                        <tr>
+                            <th class="p-4">Thème</th>
+                            <th class="p-4">Activité</th>
+                            <th class="p-4">Type</th>
+                            <th class="p-4 text-right">Réel</th>
+                            <th class="p-4 text-right">Compte</th>
+                            <th class="p-4 text-right">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-sm">
+                        </tbody>
+                </table>
+            </div>
+            <div class="p-4 text-center text-xs text-slate-500 mono bg-black/20">
+                END OF RECORDS
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/10 py-8 text-center text-slate-500 text-sm mono">
+    <p>&copy; <span id="year"></span> ZEBIRI SAAD. EPHEC BRUSSELS.</p>
+  </footer>
 
   <script src="assets/js/main.js"></script>
 </body>

@@ -1,253 +1,80 @@
 <!doctype html>
-<html lang="fr" class="h-full">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact – Saad Zebiri</title>
-  <meta name="description" content="Contactez Saad Zebiri – Étudiant en Technologie de l'Informatique à l'EPHEC">
+  <title>Uplink | Saad Zebiri</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col">
+  <div class="cyber-grid"></div>
+  <div class="glow-spot" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);"></div>
 
-  <!-- Floating particles -->
-  <div id="particles"></div>
-
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-10">
-    <div class="lg:grid lg:grid-cols-[320px,1fr] gap-8">
-      
-      <!-- Sidebar -->
-      <aside class="space-y-6 lg:sticky lg:top-8 lg:h-fit">
-        
-        <!-- Profile Card -->
-        <div class="glass-card p-7 slide-in-left">
-          <div class="text-xs font-semibold text-blue-400 mb-3 tracking-widest mono">// PORTFOLIO</div>
-          <h1 class="text-3xl font-bold gradient-text mb-2">Zebiri Saad</h1>
-          <p class="text-slate-400 text-sm mb-5">Bac 3 – EPHEC Brussels</p>
-          
-          <div class="divider my-5"></div>
-          
-          
-            <a href="index.html" class="nav-link">
-              <span class="text-xl">🏠</span>
-              <span>Accueil</span>
-            </a>
-            <a href="cv.html" class="nav-link">
-              <span class="text-xl">📄</span>
-              <span>CV</span>
-            </a>
-            <a href="contact.html" class="nav-link">
-              <span class="text-xl">✉️</span>
-              <span>Contact</span>
-            </a>
-          
-        </div>
-        
-        <!-- Contact Card -->
-        <div class="glass-card p-6 slide-in-left" style="animation-delay: 0.2s;">
-          <div class="text-xs font-semibold text-blue-400 mb-4 tracking-widest mono">// COORDONNÉES</div>
-          <div class="space-y-2 text-sm">
-            <div class="info-card">
-              <span class="text-xl">📍</span>
-              <span>Bruxelles</span>
-            </div>
-            <a href="mailto:saadzebiri65@gmail.com" class="info-card">
-              <span class="text-xl">✉️</span>
-              <span class="truncate">saadzebiri65@gmail.com</span>
-            </a>
-            <a href="tel:+32471874910" class="info-card">
-              <span class="text-xl">📞</span>
-              <span>0471 87 49 10</span>
-            </a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="info-card">
-              <span class="text-xl">🔗</span>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
-        
-        <div class="text-xs text-center text-slate-600 mono">© <span id="year"></span> Zebiri Saad</div>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="space-y-8 mt-8 lg:mt-0">
-        
-        <!-- Contact Header -->
-        <div class="glass-card p-10 fade-in">
-          <h2 class="text-4xl font-bold gradient-text mb-5">Contactez-moi</h2>
-          <p class="text-lg text-slate-300 leading-relaxed mb-6">
-            Une question ? Une opportunité de stage ? N'hésitez pas à me contacter via le formulaire ci-dessous ou directement par email ou téléphone.
-          </p>
-          
-          <div class="grid sm:grid-cols-3 gap-4">
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">⚡</div>
-              <div class="text-xs text-slate-500 mb-1">Réponse</div>
-              <div class="font-semibold text-blue-400">Sous 24h</div>
-            </div>
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">💼</div>
-              <div class="text-xs text-slate-500 mb-1">Disponibilité</div>
-              <div class="font-semibold text-blue-400">Stage 2025</div>
-            </div>
-            <div class="glass-card p-5 text-center">
-              <div class="text-3xl mb-2">🌍</div>
-              <div class="text-xs text-slate-500 mb-1">Localisation</div>
-              <div class="font-semibold text-blue-400">Bruxelles</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form & Quick Links -->
-        <div class="grid lg:grid-cols-2 gap-6">
-          
-          <!-- Formulaire -->
-          <div class="glass-card p-8 fade-in">
-            <div class="section-header">
-              <span class="section-icon">✉️</span>
-              <h3 class="text-xl font-bold">Formulaire de contact</h3>
-            </div>
-            
-            <form id="contactForm" class="space-y-5">
-              <div>
-                <label class="block text-sm font-semibold text-slate-400 mb-2">Votre nom *</label>
-                <input name="name" required placeholder="Jean Dupont" />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-slate-400 mb-2">Votre email *</label>
-                <input type="email" name="email" required placeholder="jean@example.com" />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-slate-400 mb-2">Objet</label>
-                <input name="subject" placeholder="Stage, collaboration..." />
-              </div>
-              <div>
-                <label class="block text-sm font-semibold text-slate-400 mb-2">Message *</label>
-                <textarea name="msg" rows="6" required placeholder="Votre message..."></textarea>
-              </div>
-              <button type="submit" class="btn-primary w-full">
-                <span>📨 Envoyer le message</span>
-              </button>
-            </form>
-          </div>
-          
-          <!-- Quick Links -->
-          <div class="space-y-6 fade-in">
-            <div class="glass-card p-8">
-              <div class="section-header">
-                <span class="section-icon">🚀</span>
-                <h3 class="text-xl font-bold">Accès rapides</h3>
-              </div>
-              
-              <div class="space-y-4">
-                <a href="tel:+32471874910" class="btn-primary w-full text-center">
-                  <span>📞 Appeler maintenant</span>
-                </a>
-                <a href="mailto:saadzebiri65@gmail.com" class="btn-primary w-full text-center">
-                  <span>✉️ Envoyer un email</span>
-                </a>
-                <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="btn-primary w-full text-center">
-                  <span>🔗 Voir mon LinkedIn</span>
-                </a>
-              </div>
-            </div>
-            
-            <div class="glass-card p-6">
-              <div class="text-sm text-slate-400 mb-3">💡 <strong>Astuce</strong></div>
-              <p class="text-sm text-slate-300">
-                Si le formulaire ne fonctionne pas, vous pouvez m'envoyer un email directement à :
-              </p>
-              <p class="text-blue-400 font-semibold mono mt-2 text-sm">saadzebiri65@gmail.com</p>
-            </div>
-            
-            <div class="glass-card p-6">
-              <div class="text-sm text-slate-400 mb-3">📱 <strong>Réseaux sociaux</strong></div>
-              <div class="space-y-3">
-                <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="info-card">
-                  <span class="text-xl">🔗</span>
-                  <div>
-                    <div class="font-semibold text-sm">LinkedIn</div>
-                    <div class="text-xs text-slate-500">Profil professionnel</div>
-                  </div>
-                </a>
-                <div class="info-card">
-                  <span class="text-xl">💼</span>
-                  <div>
-                    <div class="font-semibold text-sm">GitHub</div>
-                    <div class="text-xs text-slate-500">Projets & code</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="glass-card p-8 fade-in">
-          <div class="section-header">
-            <span class="section-icon">❓</span>
-            <h3 class="text-2xl font-bold">Questions fréquentes</h3>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="glass-card p-5">
-              <div class="font-semibold mb-2 flex items-center gap-2">
-                <span class="text-blue-400">Q:</span>
-                <span>Quand es-tu disponible pour un stage ?</span>
-              </div>
-              <div class="text-sm text-slate-400 pl-6">
-                <span class="text-cyan-400">R:</span> Je suis disponible pour un stage à partir de 2025. Je recherche une opportunité dans les domaines des réseaux et de la cybersécurité.
-              </div>
-            </div>
-            
-            <div class="glass-card p-5">
-              <div class="font-semibold mb-2 flex items-center gap-2">
-                <span class="text-blue-400">Q:</span>
-                <span>Quelle est la durée du stage recherché ?</span>
-              </div>
-              <div class="text-sm text-slate-400 pl-6">
-                <span class="text-cyan-400">R:</span> Je recherche un stage de 3 à 6 mois dans le cadre de ma formation Bac 3 à l'EPHEC.
-              </div>
-            </div>
-            
-            <div class="glass-card p-5">
-              <div class="font-semibold mb-2 flex items-center gap-2">
-                <span class="text-blue-400">Q:</span>
-                <span>Dans quel délai réponds-tu ?</span>
-              </div>
-              <div class="text-sm text-slate-400 pl-6">
-                <span class="text-cyan-400">R:</span> Je réponds généralement sous 24h à tous les messages reçus par email ou formulaire de contact.
-              </div>
-            </div>
-            
-            <div class="glass-card p-5">
-              <div class="font-semibold mb-2 flex items-center gap-2">
-                <span class="text-blue-400">Q:</span>
-                <span>Es-tu ouvert aux opportunités freelance ?</span>
-              </div>
-              <div class="text-sm text-slate-400 pl-6">
-                <span class="text-cyan-400">R:</span> Actuellement, je me concentre sur ma formation et la recherche d'un stage, mais je reste ouvert aux discussions pour des projets intéressants.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Confirmation Message -->
-        <div class="glass-card p-8 fade-in text-center">
-          <div class="text-5xl mb-4">🤝</div>
-          <h3 class="text-2xl font-bold mb-3">Merci de votre intérêt !</h3>
-          <p class="text-slate-300">
-            J'ai hâte de discuter avec vous et d'explorer de nouvelles opportunités.
-          </p>
-        </div>
-        
-      </main>
+  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="font-bold text-xl tracking-tighter mono">ZEBIRI<span class="text-blue-500">.SYS</span></div>
+      <div class="flex gap-8 mono text-sm">
+        <a href="index.html" class="nav-item">DASHBOARD</a>
+        <a href="cv.html" class="nav-item">PROFILE_LOG</a>
+        <a href="contact.html" class="nav-item active">UPLINK</a>
+      </div>
     </div>
-  </div>
+  </nav>
+
+  <main class="flex-grow flex items-center justify-center px-4 py-24">
+    <div class="w-full max-w-4xl grid md:grid-cols-2 gap-8 fade-up">
+        
+        <div class="space-y-6">
+            <h1 class="text-4xl font-bold glitch-text" data-text="ESTABLISH UPLINK">ESTABLISH UPLINK</h1>
+            <p class="text-slate-400">
+                Canal de communication ouvert pour opportunités de stage ou collaboration technique.
+            </p>
+            
+            <div class="space-y-4 mt-8">
+                <div class="tech-card p-4 flex items-center gap-4">
+                    <div class="text-2xl">📍</div>
+                    <div>
+                        <div class="text-xs text-slate-500 mono">LOCATION</div>
+                        <div>Bruxelles, BE</div>
+                    </div>
+                </div>
+                <a href="mailto:saadzebiri65@gmail.com" class="tech-card p-4 flex items-center gap-4 hover:border-blue-500">
+                    <div class="text-2xl">✉️</div>
+                    <div>
+                        <div class="text-xs text-slate-500 mono">EMAIL PROTOCOL</div>
+                        <div>saadzebiri65@gmail.com</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="tech-card p-4 flex items-center gap-4 hover:border-blue-500">
+                    <div class="text-2xl">🔗</div>
+                    <div>
+                        <div class="text-xs text-slate-500 mono">NETWORK</div>
+                        <div>LinkedIn Profile</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="tech-card p-8">
+            <form action="mailto:saadzebiri65@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-blue-400 mono mb-2">IDENTIFIER (NOM)</label>
+                    <input type="text" name="name" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono">
+                </div>
+                <div>
+                    <label class="block text-xs text-blue-400 mono mb-2">RETURN ADDRESS (EMAIL)</label>
+                    <input type="email" name="email" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono">
+                </div>
+                <div>
+                    <label class="block text-xs text-blue-400 mono mb-2">DATA PACKET (MESSAGE)</label>
+                    <textarea name="message" rows="4" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono"></textarea>
+                </div>
+                <button type="submit" class="w-full btn-cyber text-center">TRANSMIT DATA</button>
+            </form>
+        </div>
+
+    </div>
+  </main>
 
   <script src="assets/js/main.js"></script>
 </body>
