@@ -1,182 +1,120 @@
 /* ========================================================================
-   PORTFOLIO BAC3 - STYLESHEET
-   Zebiri Saad - EPHEC 2025
+   PORTFOLIO STYLES - SAAD ZEBIRI
    ======================================================================== */
 
-/* Variables & Reset */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+/* --- 1. FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap');
 
-:root {
-    --bg-color: #030712;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-hover-border: rgba(255, 255, 255, 0.2);
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent-blue: #3b82f6;
-    --accent-purple: #8b5cf6;
-    --accent-cyan: #06b6d4;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+/* --- 2. GLOBAL SETTINGS --- */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0B0F19; /* Dark Navy Background */
+    color: #F3F4F6;
     overflow-x: hidden;
-    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
 }
 
-/* --- Background Aurora Animation --- */
-.ambient-light {
+/* --- 3. SCROLLBAR CUSTOM --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0B0F19;
+}
+::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #4B5563;
+}
+
+/* --- 4. BACKGROUND GLOWS (Lumières d'ambiance) --- */
+.glow-bg {
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    overflow: hidden;
-    z-index: -1;
-    background: #030712;
-}
-
-.blob {
-    position: absolute;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: float 10s infinite ease-in-out alternate;
-    transition: transform 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); /* Smooth mouse follow */
-}
-
-.blob-1 { width: 500px; height: 500px; background: #4f46e5; top: -10%; left: -10%; }
-.blob-2 { width: 400px; height: 400px; background: #c026d3; bottom: 10%; right: -5%; animation-delay: -2s; }
-.blob-3 { width: 300px; height: 300px; background: #0891b2; top: 40%; left: 40%; animation-delay: -4s; }
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, -30px) scale(1.1); }
-}
-
-/* --- Navigation Pill --- */
-.nav-pill {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--card-border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 100px;
-    display: flex;
-    gap: 2rem;
-    z-index: 100;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: bottom 0.3s ease;
-}
-
-.nav-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.nav-link:hover, .nav-link.active { color: white; transform: translateY(-2px); }
-.nav-link.active::after {
-    content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
-    width: 4px; height: 4px; background: var(--accent-blue); border-radius: 50%;
-}
-
-/* --- Bento Grid Layout --- */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.5rem;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-    .bento-grid { grid-template-columns: repeat(2, 1fr); }
-    .col-span-2 { grid-column: span 2; }
-}
-@media (min-width: 1024px) {
-    .bento-grid { grid-template-columns: repeat(4, 1fr); }
-    .col-span-2 { grid-column: span 2; }
-    .col-span-3 { grid-column: span 3; }
-    .row-span-2 { grid-row: span 2; }
-}
-
-/* --- Glass Cards --- */
-.card {
-    background: var(--card-bg);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.1s, box-shadow 0.3s;
-    transform-style: preserve-3d; /* Pour l'effet 3D */
-}
-
-.card:hover {
-    border-color: var(--card-hover-border);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
-}
-
-/* Effet de brillance au survol (Sheen) */
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    transition: 0.5s;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: -1;
     pointer-events: none;
 }
-.card:hover::before { left: 100%; }
 
-/* --- Typography & Elements --- */
-h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white; }
-p { line-height: 1.6; color: var(--text-muted); }
-
-.badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 12px; border-radius: 100px;
-    font-size: 0.75rem; font-weight: 700;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-main);
+.glow-1 {
+    top: -100px;
+    left: -100px;
+    background: #3B82F6; /* Blue */
+    animation: float 8s infinite ease-in-out;
 }
 
-.btn-primary {
-    display: inline-block;
-    background: white; color: black;
-    padding: 0.8rem 1.5rem; border-radius: 100px;
-    font-weight: 600; text-decoration: none;
-    transition: transform 0.2s;
-}
-.btn-primary:hover { transform: scale(1.05); }
-
-/* --- Progress Bars --- */
-.progress-track {
-    width: 100%; height: 8px; background: rgba(255,255,255,0.1);
-    border-radius: 100px; overflow: hidden; margin-top: 10px;
-}
-.progress-fill {
-    height: 100%; border-radius: 100px;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+.glow-2 {
+    bottom: -100px;
+    right: -100px;
+    background: #8B5CF6; /* Purple */
+    animation: float 10s infinite ease-in-out reverse;
 }
 
-/* --- Table --- */
-table { width: 100%; border-collapse: collapse; }
-th { text-align: left; padding: 12px; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid var(--card-border); }
-td { padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem; }
-tr:last-child td { border-bottom: none; }
+/* --- 5. GLASSMORPHISM (Effet Verre) --- */
+/* Utilisé pour les grandes sections */
+.glass-panel {
+    background: rgba(17, 24, 39, 0.7); /* Semi-transparent dark */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Utilisé pour les petites cartes (CV, Contact) */
+.glass-card {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease;
+}
+
+/* --- 6. TYPOGRAPHY & TEXT EFFECTS --- */
+.font-display {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --- 7. FORMS (Inputs & Textarea) --- */
+input, textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+    transition: 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+}
+
+input:focus, textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+    background: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* --- 8. ANIMATIONS --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}

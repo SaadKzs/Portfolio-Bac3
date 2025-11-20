@@ -1,110 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <title>CV | Saad Zebiri</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Saad Zebiri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0B0F19', blue: '#3B82F6' } } } } }
+    </script>
 </head>
-<body>
-  <div class="ambient-light">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-  </div>
+<body class="pt-24 pb-12 px-4">
 
-  <nav class="nav-pill">
-      <a href="index.html" class="nav-link">🏠 <span class="hidden sm:inline">Accueil</span></a>
-      <a href="cv.html" class="nav-link active">📄 <span class="hidden sm:inline">CV</span></a>
-      <a href="contact.html" class="nav-link">✉️ <span class="hidden sm:inline">Contact</span></a>
-  </nav>
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#0B0F19]/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-display font-bold">ZEBIRI<span class="text-brand-blue">.IO</span></a>
+            <a href="index.html" class="text-sm text-gray-400 hover:text-white">Retour Accueil</a>
+        </div>
+    </nav>
 
-  <main class="bento-grid" style="padding-bottom: 100px; padding-top: 40px;">
-      
-      <div class="card col-span-2 lg:col-span-2 flex justify-between items-center">
-          <div>
-              <h1>Curriculum Vitae</h1>
-              <p>Parcours académique et professionnel</p>
-          </div>
-          <a href="#" class="btn-primary">Télécharger PDF</a>
-      </div>
+    <main class="max-w-4xl mx-auto">
+        
+        <div class="flex justify-between items-end mb-8">
+            <h1 class="text-4xl font-display font-bold">Curriculum Vitae</h1>
+            <button class="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm transition flex items-center gap-2">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
 
-      <div class="card col-span-2 row-span-2">
-          <h2>🚀 Expériences</h2>
-          
-          <div class="mt-6 space-y-8 pl-4 border-l-2 border-white/10">
-              
-              <div class="relative pl-6">
-                  <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-[#0f172a]"></div>
-                  <h3 class="text-white font-bold text-lg">IT Support Practice</h3>
-                  <div class="text-sm text-blue-400 mb-2">EPHEC • 2023-2024</div>
-                  <p class="text-sm">Maintenance parc informatique, résolution tickets incidents niveau 1 & 2, installation OS (Linux/Windows).</p>
-              </div>
+        <div class="grid gap-6">
+            
+            <div class="glass-card p-8 rounded-2xl">
+                <h2 class="text-xl font-bold text-brand-blue mb-6 flex items-center gap-2">
+                    <i class="fas fa-briefcase"></i> Expériences
+                </h2>
+                <div class="space-y-8 relative border-l border-gray-800 ml-3 pl-8">
+                    
+                    <div class="relative">
+                        <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-brand-blue border-4 border-[#0B0F19]"></span>
+                        <h3 class="font-bold text-lg">IT Support Practice</h3>
+                        <div class="text-sm text-gray-500 mb-2">EPHEC | 2023 - 2024</div>
+                        <p class="text-gray-400 leading-relaxed">Diagnostic pannes logicielles & matérielles (Windows/Linux). Gestion de tickets niveau 1 et 2.</p>
+                    </div>
 
-              <div class="relative pl-6">
-                  <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#0f172a]"></div>
-                  <h3 class="text-white font-bold text-lg">Projet Infrastructure Réseau</h3>
-                  <div class="text-sm text-purple-400 mb-2">Projet Académique • 2024</div>
-                  <p class="text-sm">Conception d'un réseau d'entreprise sécurisé sous Cisco Packet Tracer. VLANs, ACLs, DHCP Snooping.</p>
-              </div>
+                    <div class="relative">
+                        <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#0B0F19]"></span>
+                        <h3 class="font-bold text-lg">Projet Infrastructure Réseau</h3>
+                        <div class="text-sm text-gray-500 mb-2">Académique | 2024</div>
+                        <p class="text-gray-400 leading-relaxed">Configuration complète sous Cisco Packet Tracer : VLANs, Routage Inter-VLAN, DHCP, ACLs.</p>
+                    </div>
 
-              <div class="relative pl-6">
-                  <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-500 border-4 border-[#0f172a]"></div>
-                  <h3 class="text-white font-bold text-lg">Support Technique Particulier</h3>
-                  <div class="text-sm text-slate-400 mb-2">Freelance • Depuis 2022</div>
-                  <p class="text-sm">Aide à l'entourage, montage PC, configuration box internet et domotique simple.</p>
-              </div>
+                </div>
+            </div>
 
-          </div>
-      </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h2 class="text-xl font-bold text-brand-blue mb-6"><i class="fas fa-graduation-cap"></i> Formation</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="font-bold">Bachelier TI</div>
+                            <div class="text-sm text-gray-500">EPHEC Bruxelles | En cours</div>
+                        </div>
+                        <div>
+                            <div class="font-bold">CESS Général</div>
+                            <div class="text-sm text-gray-500">Lycée Daschbeck | 2021</div>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="card">
-          <h2>🛠️ Hard Skills</h2>
-          <div class="flex flex-wrap gap-2 mt-4">
-              <span class="badge">Cisco IOS</span>
-              <span class="badge">Linux (Debian)</span>
-              <span class="badge">Python</span>
-              <span class="badge">Docker</span>
-              <span class="badge">Wireshark</span>
-              <span class="badge">HTML/CSS</span>
-              <span class="badge">Git</span>
-          </div>
-      </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <h2 class="text-xl font-bold text-brand-blue mb-6"><i class="fas fa-laptop-code"></i> Compétences</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Cisco IOS</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Linux Admin</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Docker</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded text-sm">Python</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded text-sm">React / Node</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded text-sm">Git</span>
+                    </div>
+                </div>
+            </div>
 
-      <div class="card">
-          <h2>🌍 Langues</h2>
-          <ul class="space-y-3 mt-4">
-              <li class="flex justify-between text-sm">
-                  <span>Français</span>
-                  <span class="text-green-400 font-bold">Natif</span>
-              </li>
-              <li class="flex justify-between text-sm">
-                  <span>Arabe</span>
-                  <span class="text-green-400 font-bold">Courant</span>
-              </li>
-              <li class="flex justify-between text-sm">
-                  <span>Anglais</span>
-                  <span class="text-blue-400 font-bold">B2 (Tech)</span>
-              </li>
-              <li class="flex justify-between text-sm">
-                  <span>Néerlandais</span>
-                  <span class="text-orange-400 font-bold">A2 (Bases)</span>
-              </li>
-          </ul>
-      </div>
-
-      <div class="card col-span-2 lg:col-span-1">
-          <h2>🎓 Formation</h2>
-          <div class="mt-4 space-y-4">
-              <div>
-                  <div class="font-bold text-white">Bachelier en TI</div>
-                  <div class="text-xs text-slate-400">EPHEC Bruxelles • En cours</div>
-              </div>
-              <div>
-                  <div class="font-bold text-white">CESS Général</div>
-                  <div class="text-xs text-slate-400">Lycée Daschbeck • 2021</div>
-              </div>
-          </div>
-      </div>
-
-  </main>
+        </div>
+    </main>
 </body>
 </html>

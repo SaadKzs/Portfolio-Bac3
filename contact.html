@@ -1,62 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <title>Contact | Saad Zebiri</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Saad Zebiri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0B0F19', blue: '#3B82F6' } } } } }
+    </script>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-  
-  <div class="ambient-light">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-3"></div>
-  </div>
+<body class="h-screen flex flex-col">
 
-  <nav class="nav-pill">
-      <a href="index.html" class="nav-link">🏠 <span class="hidden sm:inline">Accueil</span></a>
-      <a href="cv.html" class="nav-link">📄 <span class="hidden sm:inline">CV</span></a>
-      <a href="contact.html" class="nav-link active">✉️ <span class="hidden sm:inline">Contact</span></a>
-  </nav>
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#0B0F19]/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-display font-bold">ZEBIRI<span class="text-brand-blue">.IO</span></a>
+            <a href="index.html" class="text-sm text-gray-400 hover:text-white">Retour Accueil</a>
+        </div>
+    </nav>
 
-  <main class="bento-grid w-full" style="max-width: 900px;">
-      
-    <div class="card col-span-2 text-center py-12">
-        <h1>Restons en contact</h1>
-        <p class="max-w-lg mx-auto mt-4">
-            Une opportunité de stage ? Un projet à discuter ? 
-            Je suis disponible sur Bruxelles et réponds généralement sous 24h.
-        </p>
-    </div>
-
-    <a href="mailto:saadzebiri65@gmail.com" class="card flex flex-col items-center justify-center gap-2 text-center hover:bg-white/5 transition">
-        <div class="text-4xl">✉️</div>
-        <div class="font-bold text-white">Email</div>
-        <div class="text-sm text-blue-400">saadzebiri65@gmail.com</div>
-    </a>
-
-    <a href="https://linkedin.com" target="_blank" class="card flex flex-col items-center justify-center gap-2 text-center hover:bg-white/5 transition">
-        <div class="text-4xl">🔗</div>
-        <div class="font-bold text-white">LinkedIn</div>
-        <div class="text-sm text-blue-400">Profil Pro</div>
-    </a>
-
-    <div class="card col-span-2">
-        <form id="contactForm" class="space-y-4 max-w-lg mx-auto">
-            <div class="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="Nom" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
-                <input type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
-            </div>
-            <input type="text" placeholder="Sujet" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
-            <textarea rows="5" placeholder="Votre message..." class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition"></textarea>
+    <main class="flex-grow flex items-center justify-center px-4 pt-20">
+        <div class="w-full max-w-4xl grid md:grid-cols-2 gap-8 items-center">
             
-            <button type="button" onclick="window.location.href='mailto:saadzebiri65@gmail.com'" class="w-full btn-primary text-center py-3 cursor-pointer">
-                Envoyer le message
-            </button>
-        </form>
-    </div>
+            <div>
+                <h1 class="text-5xl font-display font-bold mb-6">Discutons <br><span class="text-brand-blue">Projet.</span></h1>
+                <p class="text-gray-400 mb-8 text-lg">À la recherche d'un stage pour 2025 ou simplement envie d'échanger sur la cybersécurité ?</p>
+                
+                <div class="space-y-4">
+                    <a href="mailto:saadzebiri65@gmail.com" class="flex items-center gap-4 p-4 glass-card rounded-xl hover:border-blue-500/50 transition">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase font-bold">Email</div>
+                            <div class="font-mono">saadzebiri65@gmail.com</div>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="flex items-center gap-4 p-4 glass-card rounded-xl hover:border-blue-500/50 transition">
+                        <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="fab fa-linkedin-in"></i></div>
+                        <div>
+                            <div class="text-xs text-gray-500 uppercase font-bold">LinkedIn</div>
+                            <div class="font-mono">Saad Zebiri</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-  </main>
+            <form class="glass-card p-8 rounded-2xl space-y-4" action="mailto:saadzebiri65@gmail.com" method="post" enctype="text/plain">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Votre Nom</label>
+                    <input type="text" name="nom" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Votre Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Message</label>
+                    <textarea name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 rounded-lg bg-brand-blue hover:bg-blue-600 font-bold text-white transition shadow-lg shadow-blue-500/25">
+                    Envoyer
+                </button>
+            </form>
 
-  <script src="assets/js/main.js"></script>
+        </div>
+    </main>
+
 </body>
 </html>

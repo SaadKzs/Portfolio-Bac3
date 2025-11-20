@@ -1,162 +1,105 @@
 /* ========================================================================
-   PORTFOLIO BAC3 - JAVASCRIPT
-   Zebiri Saad - EPHEC 2025
+   PORTFOLIO ENGINE - SAAD ZEBIRI
    ======================================================================== */
 
-// ========================================================================
-// 🔧 CONFIGURATION DES DONNÉES
-// ========================================================================
-
-
-
 const DATA = {
-    // --- 📊 DONNÉES À REMPLIR ---
-    stats: { soft: 0, tech: 0, total: 0 },
-    themes: [
-        {id: 'network', name: 'Réseaux', color: '#3b82f6', icon: '📡'},
-        {id: 'security', name: 'Sécurité', color: '#8b5cf6', icon: '🔐'},
-        {id: 'web', name: 'Web & Dev', color: '#06b6d4', icon: '💻'},
-        {id: 'iot', name: 'IoT', color: '#10b981', icon: '🤖'},
-        {id: 'soft', name: 'Soft Skills', color: '#f59e0b', icon: '🗣️'}
-    ],
+    // ⚠️ REMPLIS TES ACTIVITÉS ICI ⚠️
     activities: [
-        // EXEMPLE 1:
-        // { theme: 'network', title: 'Certification Cisco', kind: 'Formation', hours: 15, date: '2025-01-10' },
-        // EXEMPLE 2:
-        // { theme: 'security', title: 'CTF RootMe', kind: 'Event', hours: 5, date: '2025-02-15' },
+        // { theme: 'network', title: 'Formation Cisco CCNA 1', kind: 'Formation', hours: 25, date: '2025-01-15' },
+        // { theme: 'security', title: 'Workshop Cyber', kind: 'Atelier', hours: 4, date: '2025-02-20' },
+        // { theme: 'web', title: 'Projet React Personnel', kind: 'Projet', hours: 15, date: '2025-03-10' }
+    ],
+    
+    themes: [
+        { id: 'network', name: 'Réseaux', color: 'from-blue-500 to-blue-700', icon: 'fa-network-wired', max: 10 },
+        { id: 'security', name: 'Cybersécurité', color: 'from-purple-500 to-purple-700', icon: 'fa-shield-alt', max: 10 },
+        { id: 'web', name: 'Dev Web', color: 'from-cyan-500 to-cyan-700', icon: 'fa-code', max: 10 },
+        { id: 'iot', name: 'IoT & SysAdmin', color: 'from-emerald-500 to-emerald-700', icon: 'fa-server', max: 10 },
+        { id: 'soft', name: 'Soft Skills', color: 'from-orange-500 to-orange-700', icon: 'fa-users', max: 10 },
+        { id: 'project', name: 'Gestion Projet', color: 'from-red-500 to-red-700', icon: 'fa-tasks', max: 10 }
     ]
 };
 
-// --- 🧮 Moteur de Calcul (Keep it simple) ---
-function processData() {
-    const themeCounts = {};
-    DATA.themes.forEach(t => themeCounts[t.id] = 0);
-    const rows = [];
+function initDashboard() {
+    const themeStats = {};
+    DATA.themes.forEach(t => themeStats[t.id] = 0);
+    
+    let totalHours = 0;
+    const tableBody = document.getElementById('activity-tbody');
+    
+    // Si on n'est pas sur la page d'accueil (pas de tableau), on arrête le script
+    if (!tableBody) return; 
+    
+    tableBody.innerHTML = '';
 
+    // 1. CALCULER ET REMPLIR LE TABLEAU
     DATA.activities.forEach(act => {
-        // Logique : Max 10h/formation, Max 10h/thème
-        let allowed = act.hours;
-        if (act.kind.toLowerCase().includes('formation') && allowed > 10) allowed = 10;
+        let hoursToAdd = act.hours;
         
-        // Soft skill mapping
-        let themeId = act.theme;
-        if (themeId === 'communication' || themeId === 'project') themeId = 'soft';
-
-        const current = themeCounts[themeId] || 0;
-        const space = 10 - current;
-        const added = Math.min(allowed, Math.max(0, space));
+        const currentThemeTotal = themeStats[act.theme] || 0;
+        const remainingSpace = 10 - currentThemeTotal;
+        const counted = Math.min(hoursToAdd, Math.max(0, remainingSpace));
         
-        if (themeCounts[themeId] !== undefined) themeCounts[themeId] += added;
-        
-        rows.push({...act, counted: added});
-    });
+        themeStats[act.theme] += counted;
+        totalHours += counted;
 
-    // Totals
-    let tech = 0, soft = 0;
-    DATA.themes.forEach(t => {
-        if(t.id === 'soft') soft += themeCounts[t.id];
-        else tech += themeCounts[t.id];
-    });
-
-    return { themeCounts, rows, tech, soft, total: tech + soft };
-}
-
-// --- 🎨 Rendu Visuel ---
-function renderDashboard() {
-    const data = processData();
-    
-    // 1. Global Progress
-    const totalEl = document.getElementById('total-hours');
-    if (totalEl) totalEl.innerText = `${data.total}h`;
-    
-    const barEl = document.getElementById('main-progress-bar');
-    if (barEl) barEl.style.width = `${(data.total / 60) * 100}%`;
-
-    const subStatsEl = document.getElementById('sub-stats');
-    if (subStatsEl) {
-        subStatsEl.innerHTML = `
-            <span class="text-blue-400">IT: ${data.tech}/50h</span> • 
-            <span class="text-yellow-400">Soft: ${data.soft}/10h</span>
+        // Ajouter au tableau HTML
+        const row = `
+            <tr class="hover:bg-white/5 transition">
+                <td class="p-4">
+                    <span class="px-2 py-1 rounded text-xs font-bold bg-gray-800 text-gray-300 border border-gray-700 uppercase">
+                        ${act.theme}
+                    </span>
+                </td>
+                <td class="p-4 font-medium text-white">${act.title}</td>
+                <td class="p-4 text-gray-400">${act.kind}</td>
+                <td class="p-4 text-right font-mono">
+                    <span class="text-gray-500 line-through text-xs mr-2">${act.hours > counted ? act.hours : ''}</span>
+                    <span class="text-brand-blue font-bold">${counted}h</span>
+                </td>
+                <td class="p-4 text-right text-gray-500 font-mono">${act.date}</td>
+            </tr>
         `;
-    }
+        tableBody.innerHTML += row;
+    });
 
-    // 2. Mini Cards Themes
-    const themesContainer = document.getElementById('mini-themes');
-    if (themesContainer) {
-        themesContainer.innerHTML = DATA.themes.map(t => {
-            const val = data.themeCounts[t.id] || 0;
+    // 2. METTRE À JOUR LES CARTES THÈMES
+    const themesGrid = document.getElementById('themes-grid');
+    if (themesGrid) {
+        themesGrid.innerHTML = DATA.themes.map(t => {
+            const val = themeStats[t.id] || 0;
             const pct = (val / 10) * 100;
+
             return `
-                <div class="mb-3">
-                    <div class="flex justify-between text-xs mb-1 text-slate-300">
-                        <span>${t.icon} ${t.name}</span>
-                        <span>${val}/10</span>
+            <div class="glass-panel p-6 rounded-xl relative overflow-hidden group">
+                <div class="flex justify-between items-start mb-4 relative z-10">
+                    <div class="p-3 rounded-lg bg-white/5 text-white">
+                        <i class="fas ${t.icon} text-lg"></i>
                     </div>
-                    <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <div class="h-full" style="width: ${pct}%; background: ${t.color}"></div>
-                    </div>
+                    <div class="text-2xl font-bold font-display text-white">${val}<span class="text-sm text-gray-500 font-normal">/10h</span></div>
                 </div>
+                
+                <h4 class="text-lg font-bold text-gray-200 mb-2 relative z-10">${t.name}</h4>
+                
+                <div class="h-2 bg-gray-800 rounded-full overflow-hidden relative z-10">
+                    <div class="h-full bg-gradient-to-r ${t.color}" style="width: ${pct}%"></div>
+                </div>
+
+                <div class="absolute inset-0 bg-gradient-to-br ${t.color} opacity-0 group-hover:opacity-10 transition duration-500"></div>
+            </div>
             `;
         }).join('');
     }
 
-    // 3. Tableau
-    const tbody = document.querySelector('#activity-table tbody');
-    if (tbody) {
-        tbody.innerHTML = data.rows.map(row => `
-            <tr>
-                <td><span class="badge">${row.theme}</span></td>
-                <td class="font-semibold text-white">${row.title}</td>
-                <td>${row.kind}</td>
-                <td class="text-right opacity-50">${row.hours}h</td>
-                <td class="text-right font-bold text-blue-400">${row.counted}h</td>
-            </tr>
-        `).join('');
-    }
+    // 3. METTRE À JOUR LE HERO HEADER
+    const heroTotal = document.getElementById('hero-total');
+    const heroBar = document.getElementById('hero-bar');
+    const badge = document.getElementById('total-badge');
+
+    if (heroTotal) heroTotal.innerText = `${totalHours} / 60h`;
+    if (badge) badge.innerText = `Total Validé: ${totalHours}h`;
+    if (heroBar) setTimeout(() => heroBar.style.width = `${(totalHours / 60) * 100}%`, 500);
 }
 
-// --- 🖱️ Interaction & 3D Tilt ---
-function initInteractions() {
-    // 1. Blobs follow mouse (Parallax soft)
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        
-        document.querySelector('.blob-1').style.transform = `translate(${x * 30}px, ${y * 30}px)`;
-        document.querySelector('.blob-2').style.transform = `translate(${-x * 30}px, ${-y * 30}px)`;
-    });
-
-    // 2. 3D Tilt Effect on Cards
-    const cards = document.querySelectorAll('.card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Calculer la rotation (max 5deg)
-            const xPct = (x / rect.width) - 0.5;
-            const yPct = (y / rect.height) - 0.5;
-            
-            // rotateY dépend de X, rotateX dépend de Y (inversé)
-            card.style.transform = `perspective(1000px) rotateY(${xPct * 5}deg) rotateX(${yPct * -5}deg) scale(1.01)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale(1)';
-        });
-    });
-}
-
-// --- Init ---
-document.addEventListener('DOMContentLoaded', () => {
-    renderDashboard();
-    initInteractions();
-    
-    // Active Link Logic
-    const path = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href') === path) link.classList.add('active');
-    });
-});
+// Lancer au chargement
+document.addEventListener('DOMContentLoaded', initDashboard);
