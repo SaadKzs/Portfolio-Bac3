@@ -1,139 +1,226 @@
 /* ========================================================================
-   PORTFOLIO LOGIC - SAAD ZEBIRI
+   INTERACTIVE PORTFOLIO CORE
    ======================================================================== */
 
+// --- 1. DATA CONFIGURATION (TES INFOS) ---
 const DATA = {
-    // 📊 LES DONNÉES RÉELLES
     activities: [
-        // Activités exemples (à compléter avec tes vraies heures)
-        { 
-            theme: 'network', 
-            title: 'Network Basics Project', 
-            kind: 'Projet', 
-            hours: 15, 
-            date: '2023-2025' 
-        },
-        { 
-            theme: 'iot', 
-            title: 'Smart Mailbox "Boite-alerte"', 
-            kind: 'Projet Group', 
-            hours: 20, 
-            date: '2024' 
-        },
-        { 
-            theme: 'security', 
-            title: 'Lhoist Security Onboarding', 
-            kind: 'Stage', 
-            hours: 10, 
-            date: '2025' 
-        },
-        { 
-            theme: 'web', 
-            title: 'Portfolio Development', 
-            kind: 'Projet Perso', 
-            hours: 10, 
-            date: '2025' 
-        },
-        { 
-            theme: 'soft', 
-            title: 'Group IT Project Management', 
-            kind: 'Gestion Projet', 
-            hours: 5, 
-            date: '2024' 
-        }
+        { theme: 'network', title: 'Network Basics Project', date: '2024', hours: 15 },
+        { theme: 'iot', title: 'Projet Boite-alerte (Team)', date: '2024', hours: 20 },
+        { theme: 'security', title: 'Lhoist Security Stage', date: '2025', hours: 10 },
+        { theme: 'web', title: 'Portfolio Dev', date: '2025', hours: 10 },
+        { theme: 'soft', title: 'Gestion Projet IT', date: '2024', hours: 5 }
     ],
-    
-    // Configuration des thèmes EPHEC
     themes: [
-        { id: 'network', name: 'Réseaux', color: '#2997FF', icon: 'fa-network-wired' },      // Tech
-        { id: 'security', name: 'Cybersécurité', color: '#BF5AF2', icon: 'fa-shield-alt' },  // Tech
-        { id: 'web', name: 'Web / MERN', color: '#30D158', icon: 'fa-code' },                // Tech
-        { id: 'iot', name: 'IoT / Hardware', color: '#FFD60A', icon: 'fa-microchip' },       // Tech
-        { id: 'soft', name: 'Communication', color: '#FF9F0A', icon: 'fa-comments' },        // Soft
-        { id: 'project', name: 'Gestion Projet', color: '#FF453A', icon: 'fa-tasks' }        // Soft
+        { id: 'network', name: 'Réseaux' },
+        { id: 'security', name: 'Cybersécurité' },
+        { id: 'web', name: 'Web Dev' },
+        { id: 'iot', name: 'IoT / Hardware' },
+        { id: 'soft', name: 'Soft Skills' },
+        { id: 'project', name: 'Gestion Projet' }
     ]
 };
 
-function renderDashboard() {
-    const stats = {};
-    let globalTotal = 0;
-    
-    // Init stats
-    DATA.themes.forEach(t => stats[t.id] = 0);
+// --- 2. PARTICLE NETWORK ANIMATION (LE FOND INTERACTIF) ---
+const canvas = document.getElementById('canvas-container');
+const ctx = canvas.getContext('2d');
+let particlesArray;
 
-    // Calcul (Règle: Max 10h par thème comptabilisé pour le total portfolio)
-    const rowsHTML = DATA.activities.map(act => {
-        let mapTheme = act.theme;
-        
-        // Mapping simplifié pour les thèmes soft/tech si besoin
-        // Ici on utilise les IDs directs définis dans DATA.themes
-        
-        let counted = act.hours;
-        // Plafonnement intelligent (juste pour l'affichage du total validé)
-        const current = stats[mapTheme] || 0;
-        const space = 10 - current;
-        const added = Math.min(counted, Math.max(0, space));
-        
-        if(stats[mapTheme] !== undefined) {
-            stats[mapTheme] += added;
-            globalTotal += added;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Gestion souris
+let mouse = { x: null, y: null, radius: 150 };
+
+window.addEventListener('mousemove', (event) => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+});
+
+class Particle {
+    constructor(x, y, directionX, directionY, size, color) {
+        this.x = x;
+        this.y = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color = color;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = '#64ffda'; // Couleur des points
+        ctx.fill();
+    }
+    update() {
+        if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+        if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+
+        // Interaction souris (les points fuient un peu ou s'activent)
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx*dx + dy*dy);
+
+        if (distance < mouse.radius + this.size) {
+            if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 2;
+            if (mouse.x > this.x && this.x > this.size * 10) this.x -= 2;
+            if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 2;
+            if (mouse.y > this.y && this.y > this.size * 10) this.y -= 2;
         }
 
-        return `
-            <tr class="transition-colors hover:bg-white/5">
-                <td><span class="badge">${DATA.themes.find(t=>t.id===mapTheme)?.name || mapTheme}</span></td>
-                <td class="font-medium text-white">${act.title}</td>
-                <td class="text-[#86868B] text-sm">${act.kind}</td>
-                <td class="text-right font-mono font-bold text-white">${added}h <span class="text-[#86868B] text-xs font-normal">/ ${act.hours}h</span></td>
-            </tr>
-        `;
-    }).join('');
+        this.x += this.directionX;
+        this.y += this.directionY;
+        this.draw();
+    }
+}
 
-    // Render Table
-    const tableEl = document.getElementById('activity-rows');
-    if(tableEl) tableEl.innerHTML = rowsHTML;
+function initParticles() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.height * canvas.width) / 9000;
+    for (let i = 0; i < numberOfParticles; i++) {
+        let size = (Math.random() * 2) + 1;
+        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+        let directionX = (Math.random() * 0.4) - 0.2; // Vitesse lente
+        let directionY = (Math.random() * 0.4) - 0.2;
+        let color = '#64ffda';
 
-    // Render Total
-    const totalEl = document.getElementById('total-hours');
-    if(totalEl) totalEl.innerText = `${globalTotal}h`;
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+    }
+}
 
-    // Render Theme Cards
-    const gridEl = document.getElementById('themes-container');
-    if(gridEl) {
-        gridEl.innerHTML = DATA.themes.map(t => {
+function connectParticles() {
+    let opacityValue = 1;
+    for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                         + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+            if (distance < (canvas.width/7) * (canvas.height/7)) {
+                opacityValue = 1 - (distance/20000);
+                ctx.strokeStyle = 'rgba(100, 255, 218,' + opacityValue + ')'; // Lignes Cyan
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+function animateParticles() {
+    requestAnimationFrame(animateParticles);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+    }
+    connectParticles();
+}
+
+window.addEventListener('resize', () => {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    initParticles();
+});
+
+
+// --- 3. TYPING EFFECT ---
+const textsToType = ["Networks.", "Infrastructure.", "IoT Systems.", "the Future."];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+function typeEffect() {
+    const element = document.getElementById('typing-text');
+    if(!element) return;
+
+    if (count === textsToType.length) count = 0;
+    currentText = textsToType[count];
+    letter = currentText.slice(0, ++index);
+    
+    element.textContent = letter;
+    
+    if (letter.length === currentText.length) {
+        setTimeout(() => {
+            // Simple reset for infinite loop effect without backspace complexity for now
+            index = 0;
+            count++;
+        }, 2000);
+    }
+    setTimeout(typeEffect, 100);
+}
+
+// --- 4. PORTFOLIO LOGIC ---
+function renderPortfolio() {
+    const stats = {};
+    let total = 0;
+    DATA.themes.forEach(t => stats[t.id] = 0);
+
+    // Table Rows
+    const tbody = document.getElementById('activity-table-body');
+    if(tbody) {
+        tbody.innerHTML = DATA.activities.map(act => {
+            // Calc logic
+            const current = stats[act.theme] || 0;
+            const added = Math.min(act.hours, 10 - current); // Max 10h rule simplified
+            if(stats[act.theme] !== undefined) stats[act.theme] += added;
+            total += added;
+
+            return `
+                <tr class="transition duration-300">
+                    <td class="font-mono text-accent text-xs">${act.date}</td>
+                    <td class="font-bold text-white">${act.title}</td>
+                    <td><span class="tech-badge">${DATA.themes.find(t=>t.id===act.theme)?.name}</span></td>
+                    <td class="font-mono text-secondary">${act.hours}h</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    // Total Display
+    const totalDisp = document.getElementById('total-hours-display');
+    if(totalDisp) totalDisp.innerText = total;
+
+    // Progress Bars
+    const progContainer = document.getElementById('theme-progress-container');
+    if(progContainer) {
+        progContainer.innerHTML = DATA.themes.map(t => {
             const val = stats[t.id];
             const pct = (val / 10) * 100;
-            const isDone = val >= 10;
-            
             return `
-                <div class="bento-card p-5 flex flex-col justify-between">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: ${t.color}20; color: ${t.color}">
-                            <i class="fas ${t.icon}"></i>
-                        </div>
-                        <div class="text-lg font-bold font-mono text-white">${val}<span class="text-xs text-[#86868B]">/10</span></div>
+                <div>
+                    <div class="flex justify-between mb-2 font-tech text-sm">
+                        <span class="text-white">${t.name}</span>
+                        <span class="text-accent">${val}/10h</span>
                     </div>
-                    <div>
-                        <h4 class="font-medium text-sm mb-2 text-gray-300">${t.name}</h4>
-                        <div class="w-full h-2 bg-[#333] rounded-full overflow-hidden">
-                            <div class="h-full rounded-full transition-all duration-1000" style="width: ${pct}%; background: ${t.color}"></div>
-                        </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: ${pct}%"></div>
                     </div>
                 </div>
             `;
         }).join('');
     }
-
-    // Mouse move effect for cards
-    document.querySelectorAll('.bento-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
 }
 
-document.addEventListener('DOMContentLoaded', renderDashboard);
+// --- 5. SCROLL REVEAL ---
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+}
+
+// --- INIT ---
+document.addEventListener('DOMContentLoaded', () => {
+    initParticles();
+    animateParticles();
+    typeEffect();
+    renderPortfolio();
+    initScrollReveal();
+});

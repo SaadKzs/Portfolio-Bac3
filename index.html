@@ -3,158 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saad Zebiri - Portfolio & Cybersecurity</title>
+    <title>Saad Zebiri | Network & Security</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
+    <canvas id="canvas-container"></canvas>
 
-    <nav class="fixed w-full z-50 nav-blur">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="text-lg font-semibold tracking-tight hover:text-white transition">
-                Zebiri<span class="text-[#2997FF]">.Dev</span>
+    <nav class="fixed w-full z-50 h-20 flex items-center transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-tech font-bold text-accent tracking-widest">
+                ZEBIRI<span class="text-white">.NET</span>
             </a>
-            <div class="flex gap-6 text-sm font-medium text-[#86868B]">
-                <a href="index.html" class="text-white">Overview</a>
-                <a href="cv.html" class="hover:text-white transition">Parcours</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            <div class="hidden md:flex gap-8 font-tech text-sm tracking-wider">
+                <a href="index.html" class="text-white hover:text-accent transition"><span class="text-accent">01.</span> HOME</a>
+                <a href="cv.html" class="text-secondary hover:text-accent transition"><span class="text-accent">02.</span> CV</a>
+                <a href="contact.html" class="text-secondary hover:text-accent transition"><span class="text-accent">03.</span> CONTACT</a>
             </div>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-        
-        <header class="mb-16 fade-in">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#30D158]/20 bg-[#30D158]/10 text-[#30D158] text-xs font-bold mb-6">
-                <span class="w-2 h-2 rounded-full bg-[#30D158] animate-pulse"></span>
-                STAGE CHEZ LHOIST (IT SECURITY)
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Sécuriser l'infrastructure.<br>
-                <span class="text-[#86868B]">De l'IoT au Cloud.</span>
-            </h1>
-            <p class="text-xl text-[#86868B] max-w-2xl">
-                Étudiant Bac 3 à l'EPHEC. Actuellement en focus sur l'automatisation de Pentesting et la protection Endpoint (OT) chez Lhoist.
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+
+        <section class="min-h-[80vh] flex flex-col justify-center items-start fade-in-up">
+            <p class="text-accent font-tech tracking-widest mb-4">Salut, je m'appelle</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Saad Zebiri.</h1>
+            <h2 class="text-4xl md:text-6xl font-bold text-secondary mb-6">
+                I secure <span id="typing-text" class="text-accent typing-cursor"></span>
+            </h2>
+            <p class="max-w-xl text-secondary text-lg leading-relaxed mb-10">
+                Étudiant Bac 3 à l'EPHEC. Actuellement en stage chez <strong>Lhoist</strong> en tant qu'IT Security Intern.
+                Je me spécialise dans l'automatisation du Pentesting et la protection des infrastructures OT.
             </p>
-            <div class="flex gap-4 mt-8">
-                <a href="https://github.com/SaadKzs?tab=repositories" target="_blank" class="bento-card py-3 px-6 flex items-center gap-2 hover:bg-[#1C1C1E]">
-                    <i class="fab fa-github text-xl"></i> <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="bento-card py-3 px-6 flex items-center gap-2 hover:bg-[#0077B5]/20 hover:border-[#0077B5]/50">
-                    <i class="fab fa-linkedin text-xl text-[#0077B5]"></i> <span>LinkedIn</span>
-                </a>
+            <div class="flex gap-6">
+                <a href="#projects" class="btn-cyber">Check my work</a>
+                <a href="cv.html" class="btn-cyber" style="border-color: #ccd6f6; color: #ccd6f6;">Voir Parcours</a>
             </div>
-        </header>
+        </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-20 fade-in delay-1">
-            
-            <div class="bento-card md:col-span-2 lg:col-span-2 flex flex-col justify-between">
+        <section class="grid md:grid-cols-3 gap-6 mb-24 fade-in-up">
+            <div class="holo-card flex items-center gap-4">
+                <i class="fas fa-building text-3xl text-accent"></i>
                 <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="badge badge-blue">ACTUELLEMENT</div>
-                        <i class="fas fa-building text-[#86868B]"></i>
+                    <div class="font-tech text-xs text-accent">CURRENT STATUS</div>
+                    <div class="font-bold text-white">IT Security Intern @ Lhoist</div>
+                </div>
+            </div>
+            <div class="holo-card flex items-center gap-4">
+                <i class="fas fa-chart-line text-3xl text-accent"></i>
+                <div>
+                    <div class="font-tech text-xs text-accent">PORTFOLIO PROGRESS</div>
+                    <div class="font-bold text-white"><span id="total-hours-display">0</span> / 60 Heures Validées</div>
+                </div>
+            </div>
+            <div class="holo-card flex items-center gap-4">
+                <i class="fas fa-code-branch text-3xl text-accent"></i>
+                <div>
+                    <div class="font-tech text-xs text-accent">PROJECT FOCUS</div>
+                    <div class="font-bold text-white">Pentesting Automation</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-32">
+            <h2 class="flex items-center gap-4 text-2xl font-bold text-white mb-12 fade-in-up">
+                <span class="text-accent font-tech text-xl">01.</span> Featured Projects <span class="h-px bg-gray-700 flex-grow max-w-xs"></span>
+            </h2>
+
+            <div class="grid md:grid-cols-12 gap-8 items-center mb-20 fade-in-up">
+                <div class="md:col-span-7 relative z-10">
+                    <div class="holo-card p-8">
+                        <p class="text-accent font-tech text-sm mb-2">IoT & Web Project</p>
+                        <h3 class="text-2xl font-bold text-white mb-4">Smart Mailbox "Boite-alerte"</h3>
+                        <p class="text-secondary mb-6">
+                            Développement d'un système connecté (ESP32) détectant le courrier physique et envoyant des notifications en temps réel.
+                            Interface web complète pour l'historique et la gestion des alertes.
+                        </p>
+                        <ul class="flex flex-wrap gap-4 font-tech text-sm text-secondary mb-6">
+                            <li>ESP32</li>
+                            <li>Node.js</li>
+                            <li>React</li>
+                            <li>MongoDB</li>
+                        </ul>
+                        <div class="flex gap-4 text-xl">
+                            <a href="#" class="text-white hover:text-accent"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Stage IT Security</h3>
-                    <p class="text-[#86868B] text-sm mb-4">Chez <strong>Lhoist</strong> • Superviseur : Benjamin Budts</p>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#2997FF]"></i> Automated Pentesting</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#2997FF]"></i> OT Endpoint Protection</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-[#2997FF]"></i> IT Risk Assessment</li>
-                    </ul>
                 </div>
-                <div class="mt-6 h-1 bg-[#2997FF] w-1/3 rounded-full"></div>
-            </div>
-
-            <div class="bento-card md:col-span-1 lg:col-span-2 group cursor-pointer">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="badge badge-green">PROJET TEAM</div>
-                    <i class="fas fa-microchip text-xl group-hover:text-[#30D158] transition"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2 group-hover:text-[#30D158] transition">Smart Mailbox "Boite-alerte"</h3>
-                <p class="text-[#86868B] text-sm mb-4">Système IoT de notification de courrier avec Dashboard web.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="badge">ESP32</span>
-                    <span class="badge">React/Vite</span>
-                    <span class="badge">Node.js</span>
-                    <span class="badge">MongoDB</span>
+                <div class="md:col-span-5 h-full border border-accent/20 rounded bg-accent/5 flex items-center justify-center p-10">
+                    <i class="fas fa-microchip text-9xl text-accent/20"></i>
                 </div>
             </div>
 
-            <div class="bento-card md:col-span-1">
-                <h3 class="font-bold mb-4 text-[#BF5AF2]">Tech Stack</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between text-sm"><span>MERN Stack</span> <span class="text-white">90%</span></div>
-                    <div class="progress-track"><div class="progress-fill bg-[#BF5AF2]" style="width: 90%"></div></div>
-                    
-                    <div class="flex justify-between text-sm mt-2"><span>Cisco/Réseau</span> <span class="text-white">85%</span></div>
-                    <div class="progress-track"><div class="progress-fill bg-[#2997FF]" style="width: 85%"></div></div>
-
-                    <div class="flex justify-between text-sm mt-2"><span>Python</span> <span class="text-white">75%</span></div>
-                    <div class="progress-track"><div class="progress-fill bg-[#FFD60A]" style="width: 75%"></div></div>
+            <div class="grid md:grid-cols-12 gap-8 items-center fade-in-up">
+                <div class="md:col-span-5 h-full border border-accent/20 rounded bg-accent/5 flex items-center justify-center p-10 order-2 md:order-1">
+                    <i class="fas fa-shield-alt text-9xl text-accent/20"></i>
+                </div>
+                <div class="md:col-span-7 relative z-10 order-1 md:order-2">
+                    <div class="holo-card p-8 text-right">
+                        <p class="text-accent font-tech text-sm mb-2">Internship Project</p>
+                        <h3 class="text-2xl font-bold text-white mb-4">Automated Pentesting & OT Security</h3>
+                        <p class="text-secondary mb-6">
+                            Mise en place de solutions pour scanner automatiquement les vulnérabilités des assets.
+                            Protection des endpoints OT (Operational Technology) dans un contexte industriel critique.
+                        </p>
+                        <ul class="flex flex-wrap justify-end gap-4 font-tech text-sm text-secondary mb-6">
+                            <li>Cybersecurity</li>
+                            <li>Python</li>
+                            <li>Risk Assessment</li>
+                            <li>Log Management</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="bento-card md:col-span-1 flex flex-col justify-center items-center text-center hover:border-[#2997FF]/50 transition">
-                <div class="w-16 h-16 rounded-full bg-[#2997FF]/10 flex items-center justify-center mb-4 text-[#2997FF]">
-                    <i class="fab fa-github text-3xl"></i>
-                </div>
-                <h3 class="font-bold">Code Repository</h3>
-                <a href="https://github.com/SaadKzs?tab=repositories" class="text-xs text-[#86868B] mt-2 hover:text-white underline decoration-[#2997FF]">Voir mes projets →</a>
-            </div>
-
-            <div class="bento-card md:col-span-2">
-                <h3 class="font-bold mb-2">🎯 Target 2026</h3>
-                <p class="text-[#86868B] text-sm">
-                    Devenir <strong>Ingénieur Sécurité</strong> ou <strong>Network Admin</strong>. 
-                    Je combine l'administration système (Linux/Windows) avec le développement moderne pour créer des outils de sécurité sur mesure.
-                </p>
-            </div>
-        </div>
-
-        <section id="portfolio" class="fade-in delay-2">
-            <div class="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
-                <div>
-                    <h2 class="text-2xl font-bold">Portfolio Académique</h2>
-                    <p class="text-[#86868B] text-sm mt-1">Suivi des 60h d'activités obligatoires (EPHEC)</p>
-                </div>
-                <div class="text-right">
-                    <div id="total-hours" class="text-3xl font-mono font-bold text-white">0h</div>
-                    <div class="text-xs text-[#86868B]">/ 60 HEURES</div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-8" id="themes-container">
+        <section class="max-w-5xl mx-auto mb-20">
+            <h2 class="flex items-center gap-4 text-2xl font-bold text-white mb-8 fade-in-up">
+                <span class="text-accent font-tech text-xl">02.</span> Activity Log (60h)
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 mb-12 fade-in-up" id="theme-progress-container">
                 </div>
 
-            <div class="bento-card p-0 overflow-hidden">
+            <div class="holo-card p-0 fade-in-up">
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead>
-                            <tr class="bg-white/5">
-                                <th>Thème</th>
-                                <th>Activité</th>
-                                <th>Type</th>
-                                <th class="text-right">Validé</th>
+                            <tr>
+                                <th>Date</th>
+                                <th>Activity</th>
+                                <th>Theme</th>
+                                <th>Hours</th>
                             </tr>
                         </thead>
-                        <tbody id="activity-rows">
+                        <tbody id="activity-table-body">
                             </tbody>
                     </table>
                 </div>
             </div>
         </section>
 
+        <section class="text-center py-20 fade-in-up">
+            <p class="text-accent font-tech mb-4">What's Next?</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+            <p class="text-secondary max-w-lg mx-auto mb-10">
+                Mon stage se termine bientôt et je suis à l'écoute d'opportunités en Administration Réseau ou Cybersécurité.
+            </p>
+            <a href="contact.html" class="btn-cyber px-8 py-4 text-lg">Say Hello</a>
+        </section>
+
     </main>
 
-    <footer class="border-t border-white/10 py-12 text-center bg-[#050505]">
-        <p class="text-[#86868B] text-sm">© 2025 Saad Zebiri • Bruxelles</p>
-        <div class="flex justify-center gap-4 mt-4">
-            <a href="mailto:saadzebiri65@gmail.com" class="text-[#86868B] hover:text-white"><i class="fas fa-envelope"></i></a>
-            <a href="tel:0471874910" class="text-[#86868B] hover:text-white"><i class="fas fa-phone"></i></a>
+    <footer class="text-center py-6 text-secondary text-sm font-tech">
+        <div class="flex justify-center gap-6 mb-4 text-xl">
+            <a href="https://github.com/SaadKzs?tab=repositories" class="hover:text-accent"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" class="hover:text-accent"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:saadzebiri65@gmail.com" class="hover:text-accent"><i class="fas fa-envelope"></i></a>
         </div>
+        <p>Designed & Built by Saad Zebiri</p>
     </footer>
 
     <script src="assets/js/main.js"></script>

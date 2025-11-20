@@ -1,113 +1,139 @@
 /* ========================================================================
-   PREMIUM BENTO PORTFOLIO - STYLE.CSS
+   NEURAL NETWORK THEME - STYLE.CSS
    ======================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap');
 
 :root {
-    --bg-dark: #000000;
-    --bg-card: #0F0F10;
-    --border-color: rgba(255, 255, 255, 0.08);
-    --accent-blue: #2997FF; /* Apple Blue */
-    --accent-purple: #BF5AF2;
-    --text-primary: #F5F5F7;
-    --text-secondary: #86868B;
+    --bg-color: #0a192f;
+    --card-bg: rgba(17, 34, 64, 0.7);
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --accent: #64ffda; /* Cyan Cyber */
+    --accent-glow: rgba(100, 255, 218, 0.2);
 }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-color);
     color: var(--text-primary);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* --- Background Effects --- */
-.ambient-glow {
+/* --- CANVAS BACKGROUND --- */
+#canvas-container {
     position: fixed;
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(41, 151, 255, 0.08) 0%, transparent 60%);
-    top: -20%; left: 50%; transform: translateX(-50%);
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    pointer-events: none;
+    background: linear-gradient(to bottom, #0a192f, #020c1b);
 }
 
-/* --- Bento Cards (The Apple Look) --- */
-.bento-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 24px;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, .font-tech { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+h1 { line-height: 1.1; }
+
+.text-accent { color: var(--accent); }
+.text-glow { text-shadow: 0 0 10px var(--accent-glow); }
+
+/* --- NAVIGATION --- */
+nav {
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+/* --- CARDS (HOLO EFFECT) --- */
+.holo-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.bento-card:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+.holo-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
 }
 
-/* Effet de brillance au survol */
-.bento-card::after {
+.holo-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.holo-card:hover::before { transform: scaleX(1); }
+
+/* --- BUTTONS --- */
+.btn-cyber {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn-cyber:hover {
+    background: var(--accent-glow);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* --- SCROLL ANIMATION --- */
+.fade-in-up {
     opacity: 0;
-    transition: opacity 0.3s;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.bento-card:hover::after { opacity: 1; }
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
-/* --- Typography & Badges --- */
-h1, h2, h3 { letter-spacing: -0.02em; }
-.font-mono { font-family: 'JetBrains Mono', monospace; }
-
-.badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 4px 10px; border-radius: 999px;
-    font-size: 12px; font-weight: 600;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
-    transition: 0.3s;
+/* --- PROGRESS BARS --- */
+.progress-bar-bg {
+    background: rgba(100, 255, 218, 0.1);
+    height: 6px; width: 100%;
+    border-radius: 3px; overflow: hidden;
 }
-.badge:hover { background: rgba(255, 255, 255, 0.1); color: white; }
-
-.badge-blue { background: rgba(41, 151, 255, 0.1); color: #5AC8FA; border-color: rgba(41, 151, 255, 0.2); }
-.badge-green { background: rgba(48, 209, 88, 0.1); color: #30D158; border-color: rgba(48, 209, 88, 0.2); }
-
-/* --- Progress Bars --- */
-.progress-track {
-    width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1);
-    border-radius: 99px; overflow: hidden;
-}
-.progress-fill {
-    height: 100%; border-radius: 99px;
-    transition: width 1.5s ease-out;
+.progress-bar-fill {
+    background: var(--accent);
+    height: 100%; width: 0;
+    transition: width 1.5s ease-in-out;
+    box-shadow: 0 0 10px var(--accent);
 }
 
-/* --- Navigation --- */
-.nav-blur {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-color);
+/* --- BADGES --- */
+.tech-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-block;
 }
 
-/* --- Animations --- */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.fade-in { animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
+/* --- TABLE --- */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th { text-align: left; padding: 15px; color: var(--text-secondary); font-family: 'Rajdhani', sans-serif; font-size: 14px; border-bottom: 1px solid rgba(100, 255, 218, 0.1); }
+td { padding: 15px; border-bottom: 1px solid rgba(100, 255, 218, 0.05); font-size: 14px; }
+tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
 
-/* --- Table --- */
-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-th { text-align: left; padding: 16px; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); }
-td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 14px; }
-tr:hover td { background: rgba(255,255,255,0.02); }
+/* --- TYPING CURSOR --- */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: var(--accent);
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
