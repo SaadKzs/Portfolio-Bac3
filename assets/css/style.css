@@ -137,3 +137,88 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
     color: var(--accent);
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* --- EXPLORER SECTION STYLES --- */
+
+/* Boutons de filtre */
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: var(--text-secondary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+/* État Actif du bouton (dynamique selon la couleur du thème) */
+.filter-btn.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-width: 1px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Carte Activité */
+.activity-card {
+    background: var(--bg-card); /* ou rgba(17, 34, 64, 0.6) */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeInCard 0.5s forwards;
+}
+
+@keyframes fadeInCard {
+    to { opacity: 1; }
+}
+
+.activity-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Indicateur visuel à gauche de la carte */
+.activity-border-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+/* Badges dans la carte */
+.card-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Typo spécifique pour les heures */
+.font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+}
