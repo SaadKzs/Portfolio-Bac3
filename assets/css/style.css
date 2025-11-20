@@ -1,120 +1,113 @@
 /* ========================================================================
-   PORTFOLIO STYLES - SAAD ZEBIRI
+   PREMIUM BENTO PORTFOLIO - STYLE.CSS
    ======================================================================== */
 
-/* --- 1. FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
-/* --- 2. GLOBAL SETTINGS --- */
+:root {
+    --bg-dark: #000000;
+    --bg-card: #0F0F10;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --accent-blue: #2997FF; /* Apple Blue */
+    --accent-purple: #BF5AF2;
+    --text-primary: #F5F5F7;
+    --text-secondary: #86868B;
+}
+
 body {
-    background-color: #0B0F19; /* Dark Navy Background */
-    color: #F3F4F6;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
-    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 3. SCROLLBAR CUSTOM --- */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #0B0F19;
-}
-::-webkit-scrollbar-thumb {
-    background: #374151;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #4B5563;
-}
-
-/* --- 4. BACKGROUND GLOWS (Lumières d'ambiance) --- */
-.glow-bg {
+/* --- Background Effects --- */
+.ambient-glow {
     position: fixed;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.08) 0%, transparent 60%);
+    top: -20%; left: 50%; transform: translateX(-50%);
     z-index: -1;
     pointer-events: none;
 }
 
-.glow-1 {
-    top: -100px;
-    left: -100px;
-    background: #3B82F6; /* Blue */
-    animation: float 8s infinite ease-in-out;
+/* --- Bento Cards (The Apple Look) --- */
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 24px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.glow-2 {
-    bottom: -100px;
-    right: -100px;
-    background: #8B5CF6; /* Purple */
-    animation: float 10s infinite ease-in-out reverse;
+.bento-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* --- 5. GLASSMORPHISM (Effet Verre) --- */
-/* Utilisé pour les grandes sections */
-.glass-panel {
-    background: rgba(17, 24, 39, 0.7); /* Semi-transparent dark */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
+/* Effet de brillance au survol */
+.bento-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
+.bento-card:hover::after { opacity: 1; }
 
-.glass-panel:hover {
-    border-color: rgba(59, 130, 246, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-}
+/* --- Typography & Badges --- */
+h1, h2, h3 { letter-spacing: -0.02em; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
 
-/* Utilisé pour les petites cartes (CV, Contact) */
-.glass-card {
-    background: rgba(17, 24, 39, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    transition: border-color 0.3s ease;
-}
-
-/* --- 6. TYPOGRAPHY & TEXT EFFECTS --- */
-.font-display {
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* --- 7. FORMS (Inputs & Textarea) --- */
-input, textarea {
-    background: rgba(0, 0, 0, 0.3);
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 0.5rem;
-    padding: 0.75rem;
-    width: 100%;
-    transition: 0.3s ease;
-    font-family: 'Outfit', sans-serif;
+    color: var(--text-secondary);
+    transition: 0.3s;
+}
+.badge:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+
+.badge-blue { background: rgba(41, 151, 255, 0.1); color: #5AC8FA; border-color: rgba(41, 151, 255, 0.2); }
+.badge-green { background: rgba(48, 209, 88, 0.1); color: #30D158; border-color: rgba(48, 209, 88, 0.2); }
+
+/* --- Progress Bars --- */
+.progress-track {
+    width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px; overflow: hidden;
+}
+.progress-fill {
+    height: 100%; border-radius: 99px;
+    transition: width 1.5s ease-out;
 }
 
-input:focus, textarea:focus {
-    border-color: #3B82F6;
-    outline: none;
-    background: rgba(59, 130, 246, 0.05);
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+/* --- Navigation --- */
+.nav-blur {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* --- 8. ANIMATIONS --- */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+/* --- Animations --- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+.fade-in { animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
 
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
+/* --- Table --- */
+table { width: 100%; border-collapse: separate; border-spacing: 0; }
+th { text-align: left; padding: 16px; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); }
+td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 14px; }
+tr:hover td { background: rgba(255,255,255,0.02); }

@@ -5,82 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Saad Zebiri</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <script>
-        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0B0F19', blue: '#3B82F6' } } } } }
-    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="pt-24 pb-12 px-4">
+<body>
+    <div class="ambient-glow"></div>
 
-    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#0B0F19]/90 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="text-2xl font-display font-bold">ZEBIRI<span class="text-brand-blue">.IO</span></a>
-            <a href="index.html" class="text-sm text-gray-400 hover:text-white">Retour Accueil</a>
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-lg font-semibold hover:text-white transition">Zebiri.Dev</a>
+            <a href="index.html" class="text-sm text-[#86868B] hover:text-white">Retour Dashboard</a>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto">
+    <main class="pt-32 pb-20 px-6 max-w-5xl mx-auto">
         
-        <div class="flex justify-between items-end mb-8">
-            <h1 class="text-4xl font-display font-bold">Curriculum Vitae</h1>
-            <button class="px-4 py-2 rounded bg-white/10 hover:bg-white/20 text-sm transition flex items-center gap-2">
-                <i class="fas fa-download"></i> Download PDF
-            </button>
+        <div class="flex justify-between items-end mb-10 fade-in">
+            <div>
+                <h1 class="text-4xl font-bold mb-2">Saad Zebiri</h1>
+                <p class="text-[#86868B]">Bac 3 Technologie de l'Informatique • Spécialisation Réseaux & Sécurité</p>
+            </div>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="badge badge-blue px-4 py-2">
+                <i class="fab fa-linkedin text-lg mr-2"></i> LinkedIn
+            </a>
         </div>
 
-        <div class="grid gap-6">
+        <div class="grid md:grid-cols-3 gap-6 fade-in delay-1">
             
-            <div class="glass-card p-8 rounded-2xl">
-                <h2 class="text-xl font-bold text-brand-blue mb-6 flex items-center gap-2">
-                    <i class="fas fa-briefcase"></i> Expériences
-                </h2>
-                <div class="space-y-8 relative border-l border-gray-800 ml-3 pl-8">
+            <div class="md:col-span-2 space-y-6">
+                
+                <section class="bento-card">
+                    <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-6 rounded-full bg-[#2997FF]"></span> Expériences
+                    </h2>
                     
-                    <div class="relative">
-                        <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-brand-blue border-4 border-[#0B0F19]"></span>
-                        <h3 class="font-bold text-lg">IT Support Practice</h3>
-                        <div class="text-sm text-gray-500 mb-2">EPHEC | 2023 - 2024</div>
-                        <p class="text-gray-400 leading-relaxed">Diagnostic pannes logicielles & matérielles (Windows/Linux). Gestion de tickets niveau 1 et 2.</p>
-                    </div>
+                    <div class="border-l border-[#333] ml-3 pl-8 space-y-8 relative">
+                        
+                        <div class="relative">
+                            <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#2997FF] border-4 border-[#0F0F10]"></div>
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-bold text-lg">IT Security Intern</h3>
+                                <span class="badge">En cours</span>
+                            </div>
+                            <div class="text-sm text-[#2997FF] mb-2">Lhoist • Superviseur: Benjamin Budts</div>
+                            <ul class="text-sm text-[#86868B] list-disc ml-4 space-y-1">
+                                <li>Automated Pentesting of Systems & Assets.</li>
+                                <li>OT Endpoint Protection & Log Management.</li>
+                                <li>Assistance SOC Ticket Remediation.</li>
+                            </ul>
+                        </div>
 
-                    <div class="relative">
-                        <span class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#0B0F19]"></span>
-                        <h3 class="font-bold text-lg">Projet Infrastructure Réseau</h3>
-                        <div class="text-sm text-gray-500 mb-2">Académique | 2024</div>
-                        <p class="text-gray-400 leading-relaxed">Configuration complète sous Cisco Packet Tracer : VLANs, Routage Inter-VLAN, DHCP, ACLs.</p>
-                    </div>
+                        <div class="relative">
+                            <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#333] border-4 border-[#0F0F10]"></div>
+                            <h3 class="font-bold text-lg">IT Support Practice</h3>
+                            <div class="text-sm text-[#86868B] mb-2">EPHEC • 2023-2024</div>
+                            <p class="text-sm text-[#86868B]">Diagnostic pannes matérielles/logicielles, support Windows/Linux.</p>
+                        </div>
 
-                </div>
+                    </div>
+                </section>
+
+                <section class="bento-card">
+                    <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-6 rounded-full bg-[#30D158]"></span> Projets Clés
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                            <div class="flex justify-between mb-2">
+                                <h3 class="font-bold">Smart Mailbox "Boite-alerte"</h3>
+                                <div class="flex gap-2">
+                                    <i class="fab fa-react text-[#61DAFB]"></i>
+                                    <i class="fab fa-node text-[#30D158]"></i>
+                                </div>
+                            </div>
+                            <p class="text-sm text-[#86868B] mb-3">
+                                Développement d'un système IoT avec ESP32 pour notifier la réception de courrier. 
+                                Dashboard React pour l'historique et les alertes.
+                            </p>
+                            <div class="flex gap-2 text-xs">
+                                <span class="px-2 py-1 rounded bg-[#333] text-white">MongoDB</span>
+                                <span class="px-2 py-1 rounded bg-[#333] text-white">Express</span>
+                                <span class="px-2 py-1 rounded bg-[#333] text-white">IoT</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+                            <h3 class="font-bold mb-2">Network Basics Project</h3>
+                            <p class="text-sm text-[#86868B]">
+                                Architecture réseau complète sous Packet Tracer : VLANs, ACLs, Routage dynamique, Sécurisation switchs.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card p-8 rounded-2xl">
-                    <h2 class="text-xl font-bold text-brand-blue mb-6"><i class="fas fa-graduation-cap"></i> Formation</h2>
+            <div class="space-y-6">
+                
+                <section class="bento-card">
+                    <h3 class="font-bold mb-4 text-white">🎓 Formation</h3>
                     <div class="space-y-4">
                         <div>
-                            <div class="font-bold">Bachelier TI</div>
-                            <div class="text-sm text-gray-500">EPHEC Bruxelles | En cours</div>
+                            <div class="font-bold text-sm text-white">Bachelier TI</div>
+                            <div class="text-xs text-[#2997FF]">EPHEC • Bac 3</div>
+                            <div class="text-xs text-[#86868B] mt-1">Spécialisation Réseaux & Sécurité</div>
                         </div>
                         <div>
-                            <div class="font-bold">CESS Général</div>
-                            <div class="text-sm text-gray-500">Lycée Daschbeck | 2021</div>
+                            <div class="font-bold text-sm text-white">CESS Général</div>
+                            <div class="text-xs text-[#86868B]">Lycée Daschbeck</div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <div class="glass-card p-8 rounded-2xl">
-                    <h2 class="text-xl font-bold text-brand-blue mb-6"><i class="fas fa-laptop-code"></i> Compétences</h2>
+                <section class="bento-card">
+                    <h3 class="font-bold mb-4 text-white">💻 Hard Skills</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Cisco IOS</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Linux Admin</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded text-sm">Docker</span>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded text-sm">Python</span>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded text-sm">React / Node</span>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded text-sm">Git</span>
+                        <span class="badge">Cisco Packet Tracer</span>
+                        <span class="badge">Linux Admin</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">React / Node.js</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">MongoDB</span>
+                        <span class="badge">Git / GitHub</span>
                     </div>
-                </div>
+                </section>
+
+                <section class="bento-card">
+                    <h3 class="font-bold mb-4 text-white">🌍 Langues</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex justify-between"><span>Français</span> <span class="text-white">Courant</span></li>
+                        <li class="flex justify-between"><span>Arabe</span> <span class="text-white">Courant</span></li>
+                        <li class="flex justify-between"><span>Anglais</span> <span class="text-[#2997FF]">B2</span></li>
+                        <li class="flex justify-between"><span>Néerlandais</span> <span class="text-[#86868B]">Bases</span></li>
+                    </ul>
+                </section>
+
             </div>
 
         </div>
