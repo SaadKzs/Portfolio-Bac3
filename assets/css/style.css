@@ -1,7 +1,6 @@
 /* ========================================================================
-   NEURAL NETWORK THEME - STYLE.CSS
+   NEURAL NETWORK THEME - STYLE.CSS (FULL)
    ======================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap');
 
 :root {
@@ -33,7 +32,6 @@ body {
 /* --- TYPOGRAPHY --- */
 h1, h2, h3, .font-tech { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 h1 { line-height: 1.1; }
-
 .text-accent { color: var(--accent); }
 .text-glow { text-shadow: 0 0 10px var(--accent-glow); }
 
@@ -54,13 +52,11 @@ nav {
     position: relative;
     overflow: hidden;
 }
-
 .holo-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
 }
-
 .holo-card::before {
     content: '';
     position: absolute;
@@ -86,19 +82,18 @@ nav {
     background: transparent;
     cursor: pointer;
 }
-
 .btn-cyber:hover {
     background: var(--accent-glow);
     box-shadow: 0 0 15px var(--accent-glow);
 }
 
-/* --- SCROLL ANIMATION --- */
+/* --- SCROLL ANIMATION (IMPORTANT) --- */
 .fade-in-up {
-    opacity: 0;
+    opacity: 0; /* CACHÉ PAR DÉFAUT */
     transform: translateY(20px);
     transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+.fade-in-up.visible { opacity: 1; transform: translateY(0); } /* AFFICHÉ PAR JS */
 
 /* --- PROGRESS BARS --- */
 .progress-bar-bg {
@@ -139,8 +134,6 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* --- EXPLORER SECTION STYLES --- */
-
-/* Boutons de filtre */
 .filter-btn {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -156,13 +149,10 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
     align-items: center;
     gap: 8px;
 }
-
 .filter-btn:hover {
     background: rgba(255, 255, 255, 0.08);
     color: white;
 }
-
-/* État Actif du bouton (dynamique selon la couleur du thème) */
 .filter-btn.active {
     background: rgba(255, 255, 255, 0.05);
     color: white;
@@ -171,9 +161,8 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
     transform: translateY(-2px);
 }
 
-/* Carte Activité */
 .activity-card {
-    background: var(--bg-card); /* ou rgba(17, 34, 64, 0.6) */
+    background: var(--card-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 20px;
@@ -186,27 +175,13 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
     opacity: 0;
     animation: fadeInCard 0.5s forwards;
 }
-
-@keyframes fadeInCard {
-    to { opacity: 1; }
-}
-
+@keyframes fadeInCard { to { opacity: 1; } }
 .activity-card:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
-
-/* Indicateur visuel à gauche de la carte */
-.activity-border-left {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-}
-
-/* Badges dans la carte */
+.activity-border-left { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
 .card-badge {
     font-size: 0.75rem;
     padding: 4px 8px;
@@ -217,8 +192,4 @@ tr:hover td { background: rgba(100, 255, 218, 0.05); color: var(--accent); }
     align-items: center;
     gap: 6px;
 }
-
-/* Typo spécifique pour les heures */
-.font-mono-data {
-    font-family: 'JetBrains Mono', monospace;
-}
+.font-mono-data { font-family: 'JetBrains Mono', monospace; }
