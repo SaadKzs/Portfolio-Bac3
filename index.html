@@ -3,150 +3,109 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saad Zebiri | Portfolio Bac3</title>
+  <title>Saad Zebiri | Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen">
+<body>
 
-  <div class="cyber-grid"></div>
-  <div class="glow-spot"></div>
+  <div class="ambient-light">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+  </div>
 
-  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="font-bold text-xl tracking-tighter mono">
-        ZEBIRI<span class="text-blue-500">.SYS</span>
-      </div>
-      <div class="hidden md:flex gap-8 mono text-sm">
-        <a href="index.html" class="nav-item active">DASHBOARD</a>
-        <a href="cv.html" class="nav-item">PROFILE_LOG</a>
-        <a href="contact.html" class="nav-item">UPLINK</a>
-      </div>
-    </div>
+  <nav class="nav-pill">
+      <a href="index.html" class="nav-link">🏠 <span class="hidden sm:inline">Accueil</span></a>
+      <a href="cv.html" class="nav-link">📄 <span class="hidden sm:inline">CV</span></a>
+      <a href="contact.html" class="nav-link">✉️ <span class="hidden sm:inline">Contact</span></a>
   </nav>
 
-  <main class="max-w-7xl mx-auto px-4 pt-24 pb-12">
+  <main class="bento-grid" style="padding-bottom: 100px; padding-top: 40px;">
     
-    <header class="min-h-[60vh] flex flex-col justify-center fade-up">
-      <div class="mono text-blue-400 mb-4">:: SYSTEM_READY</div>
-      <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight glitch-text" data-text="SAAD ZEBIRI">
-        SAAD ZEBIRI
-      </h1>
-      <div id="hero-subtitle" class="text-xl md:text-2xl text-slate-400 mono h-8 mb-8"></div>
-      <p class="max-w-2xl text-slate-300 text-lg leading-relaxed mb-8">
-        Étudiant en <strong>Technologie de l'Informatique</strong> à l'EPHEC. Passionné par l'architecture réseau, 
-        le durcissement de systèmes et l'automatisation. À la recherche d'un stage technique pour 2025.
-      </p>
-      <div class="flex gap-4">
-        <a href="#progress-section" class="btn-cyber">View Progression</a>
-        <a href="cv.html" class="btn-cyber border-slate-500 text-slate-300 hover:border-white hover:text-white">Access CV</a>
-      </div>
-    </header>
-
-    <div class="grid lg:grid-cols-2 gap-8 mb-20">
-      <section class="tech-card p-8 fade-up">
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="text-blue-500">01.</span> PROJECT_TARGET
-        </h2>
-        
-        <div class="space-y-4">
-            <div class="flex items-start gap-4">
-                <div class="p-2 bg-blue-500/10 rounded text-blue-400">🎯</div>
-                <div>
-                    <h3 class="font-bold">L'Objectif</h3>
-                    <p class="text-slate-400 text-sm">Stage admin réseau → Spécialisation Cybersécurité → Ingénieur SecOps.</p>
-                </div>
-            </div>
-            <div class="flex items-start gap-4">
-                <div class="p-2 bg-purple-500/10 rounded text-purple-400">⚡</div>
-                <div>
-                    <h3 class="font-bold">La Motivation</h3>
-                    <p class="text-slate-400 text-sm">Comprendre comment les données transitent pour mieux les protéger. Passion pour l'infrastructure critique.</p>
-                </div>
-            </div>
+    <div class="card col-span-2" style="display:flex; flex-direction:column; justify-content:center;">
+        <div class="badge mb-4 text-blue-300 border-blue-500/30">🎓 Étudiant Bac 3 TI</div>
+        <h1>Saad Zebiri</h1>
+        <p class="text-lg mt-4 max-w-md">
+            Futur administrateur réseau & sécurité. Je transforme des câbles et du code en infrastructures sécurisées.
+            <br><span class="text-white/60 text-sm mt-2 block">Recherche stage pour Février 2025.</span>
+        </p>
+        <div class="mt-6 flex gap-4">
+            <a href="contact.html" class="btn-primary">Me Contacter</a>
+            <a href="#project" class="text-white underline underline-offset-4 hover:text-blue-400 py-3 px-2 transition">Voir mon projet</a>
         </div>
-      </section>
-
-      <section class="tech-card p-8 fade-up" style="transition-delay: 0.1s">
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="text-purple-500">02.</span> SYSTEM_SPECS
-        </h2>
-        
-        <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white/5 p-4 rounded border-l-2 border-green-500">
-                <div class="text-xs text-slate-500 mono mb-1">STRENGTH</div>
-                <div class="font-bold">Autonomie</div>
-            </div>
-            <div class="bg-white/5 p-4 rounded border-l-2 border-blue-500">
-                <div class="text-xs text-slate-500 mono mb-1">STRENGTH</div>
-                <div class="font-bold">Vulgarisation</div>
-            </div>
-            <div class="bg-white/5 p-4 rounded border-l-2 border-yellow-500">
-                <div class="text-xs text-slate-500 mono mb-1">ATTENTION</div>
-                <div class="font-bold">Néerlandais</div>
-            </div>
-            <div class="bg-white/5 p-4 rounded border-l-2 border-red-500">
-                <div class="text-xs text-slate-500 mono mb-1">ATTENTION</div>
-                <div class="font-bold">Gestion Temps</div>
-            </div>
-        </div>
-      </section>
     </div>
 
-    <section id="progress-section" class="mb-20 fade-up">
-        <div class="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
-            <h2 class="text-3xl font-bold">ACTIVITY_MONITOR</h2>
-            <div class="mono text-xs text-green-400 animate-pulse">● LIVE TRACKING</div>
+    <div class="card">
+        <h2>Progression</h2>
+        <div class="flex items-end gap-2 mb-2">
+            <span id="total-hours" class="text-4xl font-bold text-white">0h</span>
+            <span class="text-sm text-slate-400 mb-1">/ 60 heures</span>
         </div>
-
-        <div id="global-progress" class="tech-card p-6 mb-8"></div>
-
-        <div id="themes-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
-
-    <section class="mb-20 fade-up">
-        <h2 class="text-2xl font-bold mb-8">EVIDENCE_LOGS</h2>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="tech-card p-1 h-64 flex items-center justify-center text-slate-600 border-dashed border-2 border-slate-700">
-                <span>[INSERT IMAGE: CERTIFICATION]</span>
-            </div>
-            <div class="tech-card p-1 h-64 flex items-center justify-center text-slate-600 border-dashed border-2 border-slate-700">
-                <span>[INSERT IMAGE: HACKATHON]</span>
-            </div>
+        <div class="progress-track bg-white/5">
+            <div id="main-progress-bar" class="progress-fill bg-gradient-to-r from-blue-500 to-purple-500" style="width: 0%"></div>
         </div>
-    </section>
+        <div id="sub-stats" class="text-xs mt-3 font-mono text-slate-400 text-center"></div>
+    </div>
 
-    <section class="fade-up">
-        <h2 class="text-2xl font-bold mb-6">DETAILED_LOGS</h2>
-        <div class="tech-card overflow-hidden">
-            <div class="overflow-x-auto">
-                <table id="log-table" class="w-full text-left border-collapse">
-                    <thead class="bg-white/5 text-xs uppercase mono text-slate-400">
-                        <tr>
-                            <th class="p-4">Thème</th>
-                            <th class="p-4">Activité</th>
-                            <th class="p-4">Type</th>
-                            <th class="p-4 text-right">Réel</th>
-                            <th class="p-4 text-right">Compte</th>
-                            <th class="p-4 text-right">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800 text-sm">
-                        </tbody>
-                </table>
+    <div class="card">
+        <h2>Répartition</h2>
+        <div id="mini-themes" class="flex flex-col justify-center h-full">
             </div>
-            <div class="p-4 text-center text-xs text-slate-500 mono bg-black/20">
-                END OF RECORDS
+    </div>
+
+    <div id="project" class="card col-span-2">
+        <div class="flex items-start justify-between">
+            <div>
+                <h2>🎯 Projet Professionnel</h2>
+                <p class="mb-4">Mon objectif est clair : maîtriser les flux de données.</p>
+                <ul style="list-style: none; padding: 0;" class="space-y-2 text-sm text-slate-300">
+                    <li class="flex items-center gap-2">🔹 <strong>Court terme :</strong> Stage Admin Réseau / NOC</li>
+                    <li class="flex items-center gap-2">🔹 <strong>Moyen terme :</strong> Spécialisation Cyberdéfense</li>
+                    <li class="flex items-center gap-2">🔹 <strong>Long terme :</strong> Architecte Infrastructure Sécurisée</li>
+                </ul>
             </div>
+            <div class="text-6xl opacity-20">🚀</div>
         </div>
-    </section>
+    </div>
+
+    <div class="card">
+        <h2>⚡ Atouts</h2>
+        <div class="flex flex-wrap gap-2 mt-4">
+            <span class="badge bg-green-500/10 text-green-400 border-green-500/20">Autonomie</span>
+            <span class="badge bg-blue-500/10 text-blue-400 border-blue-500/20">Curiosité</span>
+            <span class="badge bg-purple-500/10 text-purple-400 border-purple-500/20">Vulgarisation</span>
+            <span class="badge bg-orange-500/10 text-orange-400 border-orange-500/20">Esprit d'équipe</span>
+        </div>
+        <div class="mt-6 pt-6 border-t border-white/10">
+            <h3 class="text-sm font-bold text-white mb-2">⚠️ Axes d'amélioration</h3>
+            <p class="text-xs">Néerlandais (En cours d'apprentissage) • Gestion du temps (WIP)</p>
+        </div>
+    </div>
+
+    <div class="card col-span-2 lg:col-span-3">
+        <div class="flex justify-between items-center mb-4">
+            <h2>Journal d'activités</h2>
+            <span class="text-xs text-slate-500">Mise à jour automatique</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table id="activity-table">
+                <thead>
+                    <tr>
+                        <th>Thème</th>
+                        <th>Activité</th>
+                        <th>Type</th>
+                        <th class="text-right">Réel</th>
+                        <th class="text-right">Compté</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="5" class="text-center py-4 text-slate-500">Chargement des données...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
   </main>
-
-  <footer class="border-t border-white/10 py-8 text-center text-slate-500 text-sm mono">
-    <p>&copy; <span id="year"></span> ZEBIRI SAAD. EPHEC BRUSSELS.</p>
-  </footer>
 
   <script src="assets/js/main.js"></script>
 </body>

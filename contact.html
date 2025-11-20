@@ -2,78 +2,59 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>Uplink | Saad Zebiri</title>
+  <title>Contact | Saad Zebiri</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex flex-col">
-  <div class="cyber-grid"></div>
-  <div class="glow-spot" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);"></div>
+<body class="flex items-center justify-center min-h-screen">
+  
+  <div class="ambient-light">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-3"></div>
+  </div>
 
-  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="font-bold text-xl tracking-tighter mono">ZEBIRI<span class="text-blue-500">.SYS</span></div>
-      <div class="flex gap-8 mono text-sm">
-        <a href="index.html" class="nav-item">DASHBOARD</a>
-        <a href="cv.html" class="nav-item">PROFILE_LOG</a>
-        <a href="contact.html" class="nav-item active">UPLINK</a>
-      </div>
-    </div>
+  <nav class="nav-pill">
+      <a href="index.html" class="nav-link">🏠 <span class="hidden sm:inline">Accueil</span></a>
+      <a href="cv.html" class="nav-link">📄 <span class="hidden sm:inline">CV</span></a>
+      <a href="contact.html" class="nav-link active">✉️ <span class="hidden sm:inline">Contact</span></a>
   </nav>
 
-  <main class="flex-grow flex items-center justify-center px-4 py-24">
-    <div class="w-full max-w-4xl grid md:grid-cols-2 gap-8 fade-up">
-        
-        <div class="space-y-6">
-            <h1 class="text-4xl font-bold glitch-text" data-text="ESTABLISH UPLINK">ESTABLISH UPLINK</h1>
-            <p class="text-slate-400">
-                Canal de communication ouvert pour opportunités de stage ou collaboration technique.
-            </p>
-            
-            <div class="space-y-4 mt-8">
-                <div class="tech-card p-4 flex items-center gap-4">
-                    <div class="text-2xl">📍</div>
-                    <div>
-                        <div class="text-xs text-slate-500 mono">LOCATION</div>
-                        <div>Bruxelles, BE</div>
-                    </div>
-                </div>
-                <a href="mailto:saadzebiri65@gmail.com" class="tech-card p-4 flex items-center gap-4 hover:border-blue-500">
-                    <div class="text-2xl">✉️</div>
-                    <div>
-                        <div class="text-xs text-slate-500 mono">EMAIL PROTOCOL</div>
-                        <div>saadzebiri65@gmail.com</div>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="tech-card p-4 flex items-center gap-4 hover:border-blue-500">
-                    <div class="text-2xl">🔗</div>
-                    <div>
-                        <div class="text-xs text-slate-500 mono">NETWORK</div>
-                        <div>LinkedIn Profile</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="tech-card p-8">
-            <form action="mailto:saadzebiri65@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-                <div>
-                    <label class="block text-xs text-blue-400 mono mb-2">IDENTIFIER (NOM)</label>
-                    <input type="text" name="name" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono">
-                </div>
-                <div>
-                    <label class="block text-xs text-blue-400 mono mb-2">RETURN ADDRESS (EMAIL)</label>
-                    <input type="email" name="email" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono">
-                </div>
-                <div>
-                    <label class="block text-xs text-blue-400 mono mb-2">DATA PACKET (MESSAGE)</label>
-                    <textarea name="message" rows="4" required class="w-full bg-black/50 border border-slate-700 p-3 rounded focus:border-blue-500 focus:outline-none text-white font-mono"></textarea>
-                </div>
-                <button type="submit" class="w-full btn-cyber text-center">TRANSMIT DATA</button>
-            </form>
-        </div>
-
+  <main class="bento-grid w-full" style="max-width: 900px;">
+      
+    <div class="card col-span-2 text-center py-12">
+        <h1>Restons en contact</h1>
+        <p class="max-w-lg mx-auto mt-4">
+            Une opportunité de stage ? Un projet à discuter ? 
+            Je suis disponible sur Bruxelles et réponds généralement sous 24h.
+        </p>
     </div>
+
+    <a href="mailto:saadzebiri65@gmail.com" class="card flex flex-col items-center justify-center gap-2 text-center hover:bg-white/5 transition">
+        <div class="text-4xl">✉️</div>
+        <div class="font-bold text-white">Email</div>
+        <div class="text-sm text-blue-400">saadzebiri65@gmail.com</div>
+    </a>
+
+    <a href="https://linkedin.com" target="_blank" class="card flex flex-col items-center justify-center gap-2 text-center hover:bg-white/5 transition">
+        <div class="text-4xl">🔗</div>
+        <div class="font-bold text-white">LinkedIn</div>
+        <div class="text-sm text-blue-400">Profil Pro</div>
+    </a>
+
+    <div class="card col-span-2">
+        <form id="contactForm" class="space-y-4 max-w-lg mx-auto">
+            <div class="grid grid-cols-2 gap-4">
+                <input type="text" placeholder="Nom" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
+                <input type="email" placeholder="Email" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
+            </div>
+            <input type="text" placeholder="Sujet" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition">
+            <textarea rows="5" placeholder="Votre message..." class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:border-blue-500 transition"></textarea>
+            
+            <button type="button" onclick="window.location.href='mailto:saadzebiri65@gmail.com'" class="w-full btn-primary text-center py-3 cursor-pointer">
+                Envoyer le message
+            </button>
+        </form>
+    </div>
+
   </main>
 
   <script src="assets/js/main.js"></script>
