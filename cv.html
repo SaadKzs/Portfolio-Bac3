@@ -1,195 +1,218 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV_LOG | Saad Zebiri</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Saad Zebiri</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <canvas id="canvas-container"></canvas>
+  <div class="curtain"><span class="curtain-text">CV</span></div>
 
-    <nav class="fixed w-full z-50 h-20 flex items-center transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-tech font-bold text-accent tracking-widest">
-                ZEBIRI<span class="text-white">.NET</span>
-            </a>
-            <div class="hidden md:flex gap-8 font-tech text-sm tracking-wider">
-                <a href="index.html" class="text-secondary hover:text-accent transition"><span class="text-accent">01.</span> HOME</a>
-                <a href="cv.html" class="text-white hover:text-accent transition"><span class="text-accent">02.</span> CV</a>
-                <a href="contact.html" class="text-secondary hover:text-accent transition"><span class="text-accent">03.</span> CONTACT</a>
-            </div>
+  <header class="mobile-bar">
+    <a href="index.html" class="sb-logo">SZ<em>.</em></a>
+    <button class="sb-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </header>
+
+  <div class="sidebar-overlay"></div>
+
+  <div class="site-wrap">
+
+    <nav class="sidebar">
+      <a href="index.html" class="sb-logo">SZ<em>.</em></a>
+      <div class="sb-divider"></div>
+      <div class="sb-profile">
+        <div class="sb-name">Saad Zebiri</div>
+        <div class="sb-role">Network &amp; Security</div>
+      </div>
+      <ul class="sb-nav">
+        <li><a href="index.html"           class="sb-link"><span class="sb-num">←</span>Accueil</a></li>
+        <li><a href="index.html#projects"  class="sb-link"><span class="sb-num">03</span>Projets</a></li>
+        <li><a href="index.html#skills"    class="sb-link"><span class="sb-num">04</span>Compétences</a></li>
+        <li><a href="contact.html"         class="sb-link"><span class="sb-num">—</span>Contact</a></li>
+      </ul>
+      <div class="sb-footer">
+        <div class="sb-social">
+          <a href="https://github.com/SaadKzs" target="_blank" class="sb-social-link"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="sb-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:saadzebiri65@gmail.com" class="sb-social-link"><i class="fa-solid fa-envelope"></i></a>
         </div>
+        <div class="sb-status"><span class="badge-dot"></span>Available 2025</div>
+      </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+    <main class="main-panel">
 
-        <header class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-6 fade-in-up">
-            <div>
-                <div class="font-tech text-accent mb-2">/// PERSONNEL FILE_2025</div>
-                <h1 class="text-5xl font-bold text-white mb-2">Saad Zebiri</h1>
-                <p class="text-xl text-secondary">Network & Security Student</p>
-            </div>
-            <div class="mt-6 md:mt-0">
-                <a href="assets/cv.pdf" download class="btn-cyber flex items-center gap-2">
-                    <i class="fas fa-download"></i> DOWNLOAD PDF
-                </a>
-            </div>
-        </header>
-
-        <div class="grid lg:grid-cols-3 gap-8 fade-in-up">
-            
-            <div class="space-y-6">
-                
-                <div class="holo-card p-6">
-                    <h3 class="text-white text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-terminal text-accent"></i> INFO
-                    </h3>
-                    <ul class="space-y-3 text-sm text-secondary">
-                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt w-5"></i> Bruxelles, BE</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-envelope w-5"></i> saadzebiri65@gmail.com</li>
-                        <li class="flex items-center gap-3"><i class="fab fa-github w-5"></i> /SaadKzs</li>
-                        <li class="flex items-center gap-3"><i class="fab fa-linkedin w-5"></i> /in/saad-zebiri</li>
-                    </ul>
-                </div>
-
-                <div class="holo-card p-6">
-                    <h3 class="text-white text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-code text-accent"></i> SKILLS
-                    </h3>
-                    
-                    <div class="mb-4">
-                        <div class="font-tech text-xs text-accent mb-2">INFRASTRUCTURE</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tech-badge">Cisco Packet Tracer</span>
-                            <span class="tech-badge">Linux</span>
-                            <span class="tech-badge">Docker</span>
-                            <span class="tech-badge">ESP32 (IoT)</span>
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <div class="font-tech text-xs text-accent mb-2">DEV & WEB</div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">React</span>
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">MongoDB</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="font-tech text-xs text-accent mb-2">LANGUAGES</div>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between text-secondary"><span>Français</span> <span class="text-white">Natif</span></div>
-                            <div class="flex justify-between text-secondary"><span>Anglais</span> <span class="text-accent">B2 (Technique)</span></div>
-                            <div class="flex justify-between text-secondary"><span>Arabe</span> <span class="text-white">Courant</span></div>
-                            <div class="flex justify-between text-secondary"><span>Néerlandais</span> <span>Base</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="holo-card p-6">
-                    <h3 class="text-white text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-graduation-cap text-accent"></i> EDUCATION
-                    </h3>
-                    <div class="relative border-l border-gray-700 ml-2 pl-6 space-y-6">
-                        <div class="relative">
-                            <span class="absolute -left-[29px] top-1 w-3 h-3 rounded-full bg-accent"></span>
-                            <div class="text-white font-bold">Bac 3 TI</div>
-                            <div class="text-accent text-xs font-tech mb-1">EPHEC | EN COURS</div>
-                            <div class="text-secondary text-xs">Spécialisation Réseaux & Sécurité</div>
-                        </div>
-                        <div class="relative">
-                            <span class="absolute -left-[29px] top-1 w-3 h-3 rounded-full bg-gray-600"></span>
-                            <div class="text-white font-bold">CESS Général</div>
-                            <div class="text-secondary text-xs font-tech">LYCÉE DASCHBECK | 2021</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="lg:col-span-2 space-y-6">
-                
-                <div class="holo-card p-8">
-                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                        <span class="text-accent font-tech">01.</span> EXPERIENCE
-                    </h2>
-
-                    <div class="space-y-10">
-                        <div class="group">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                <h3 class="text-xl font-bold text-white group-hover:text-accent transition">IT Security Intern</h3>
-                                <span class="font-tech text-accent text-sm bg-accent/10 px-3 py-1 rounded">LHOIST • 2025</span>
-                            </div>
-                            <p class="text-secondary text-sm mb-4 italic">Superviseur : Benjamin Budts (IT Security Director)</p>
-                            <ul class="list-disc list-inside text-secondary space-y-2 marker:text-accent">
-                                <li>Mise en place de <strong>scans de vulnérabilités automatisés</strong> pour les assets critiques.</li>
-                                <li>Gestion de la protection des endpoints <strong>OT (Operational Technology)</strong> et analyse des logs.</li>
-                                <li>Participation à l'évaluation des risques IT et support au SOC pour la remédiation.</li>
-                            </ul>
-                        </div>
-
-                        <div class="group">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                                <h3 class="text-xl font-bold text-white group-hover:text-accent transition">IT Support Practice</h3>
-                                <span class="font-tech text-secondary text-sm">EPHEC • 2023-2024</span>
-                            </div>
-                            <p class="text-secondary text-sm mb-4">Support technique niveau 1 & 2.</p>
-                            <ul class="list-disc list-inside text-secondary space-y-2 marker:text-accent">
-                                <li>Diagnostic et réparation de pannes matérielles et logicielles.</li>
-                                <li>Maintenance de parc informatique (Windows/Linux).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="holo-card p-8">
-                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                        <span class="text-accent font-tech">02.</span> PROJECTS
-                    </h2>
-
-                    <div class="space-y-8">
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <h3 class="text-xl font-bold text-white">Smart Mailbox "Boite-alerte"</h3>
-                                <a href="#" class="text-secondary hover:text-accent"><i class="fab fa-github text-xl"></i></a>
-                            </div>
-                            <div class="text-accent text-xs font-tech mb-3">IOT / FULLSTACK</div>
-                            <p class="text-secondary mb-4">
-                                Conception d'une boîte aux lettres connectée (ESP32) capable de notifier l'utilisateur lors de la réception de courrier. Dashboard React pour visualiser l'historique.
-                            </p>
-                            <div class="flex gap-3 text-xs font-mono text-secondary">
-                                <span>#ESP32</span> <span>#React</span> <span>#NodeJS</span> <span>#MongoDB</span>
-                            </div>
-                        </div>
-
-                        <hr class="border-gray-800">
-
-                        <div>
-                            <div class="flex justify-between items-center mb-2">
-                                <h3 class="text-xl font-bold text-white">Enterprise Network Architecture</h3>
-                            </div>
-                            <div class="text-accent text-xs font-tech mb-3">CISCO PACKET TRACER</div>
-                            <p class="text-secondary mb-4">
-                                Configuration complète d'une infrastructure réseau d'entreprise sécurisée.
-                            </p>
-                            <div class="flex gap-3 text-xs font-mono text-secondary">
-                                <span>#VLANs</span> <span>#ACLs</span> <span>#DHCP</span> <span>#Switching</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+      <div class="cv-top panel-pad">
+        <span class="s-label reveal">Fichier personnel · 2025</span>
+        <div class="cv-hrow">
+          <div>
+            <h1 class="cv-name reveal rd1">Saad Zebiri</h1>
+            <p class="cv-role reveal rd2">Network &amp; Security Student · EPHEC Bac&nbsp;3</p>
+          </div>
+          <div class="reveal rd3">
+            <a href="CV-Zebiri-Saad.pdf" download class="btn btn-ghost">
+              <i class="fa-solid fa-file-arrow-down"></i> Télécharger PDF
+            </a>
+          </div>
         </div>
+      </div>
+
+      <div class="cv-layout panel-pad">
+
+        <aside class="cv-aside reveal">
+
+          <div class="cv-block">
+            <h3 class="cv-block-title">Contact</h3>
+            <div class="cv-info"><i class="fa-solid fa-location-dot"></i> Bruxelles, Belgique</div>
+            <div class="cv-info"><i class="fa-solid fa-envelope"></i> saadzebiri65@gmail.com</div>
+            <div class="cv-info"><i class="fa-solid fa-phone"></i> 0471 87 49 10</div>
+            <div class="cv-info"><i class="fa-brands fa-github"></i><a href="https://github.com/SaadKzs" target="_blank" style="color:var(--ac)">/SaadKzs</a></div>
+            <div class="cv-info"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" style="color:var(--ac)">/in/saad-zebiri</a></div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-block-title">Compétences</h3>
+            <div class="s-group">
+              <div class="s-group-name">Infrastructure</div>
+              <div class="s-pills">
+                <span class="s-pill">Cisco PT</span><span class="s-pill">Linux</span>
+                <span class="s-pill">Docker</span><span class="s-pill">ESP32</span>
+              </div>
+            </div>
+            <div class="s-group">
+              <div class="s-group-name">Sécurité</div>
+              <div class="s-pills">
+                <span class="s-pill">OT Security</span><span class="s-pill">Nmap</span>
+                <span class="s-pill">Pentest</span><span class="s-pill">Log Analysis</span>
+              </div>
+            </div>
+            <div class="s-group">
+              <div class="s-group-name">Développement</div>
+              <div class="s-pills">
+                <span class="s-pill">Python</span><span class="s-pill">React</span>
+                <span class="s-pill">Node.js</span><span class="s-pill">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-block-title">Langues</h3>
+            <div class="lang-row"><span>Français</span><span class="lang-lv">Natif</span></div>
+            <div class="lang-row"><span>Arabe</span><span class="lang-lv">Courant</span></div>
+            <div class="lang-row"><span>Anglais</span><span class="lang-lv">B2</span></div>
+            <div class="lang-row"><span>Néerlandais</span><span class="lang-lv">Notions</span></div>
+          </div>
+
+          <div class="cv-block">
+            <h3 class="cv-block-title">Formation</h3>
+            <div class="edu-item">
+              <div class="edu-dot"></div>
+              <div>
+                <div class="edu-period">2022 — En cours</div>
+                <div class="edu-name">Bac 3 TI</div>
+                <div class="edu-sub">EPHEC · Réseaux &amp; Sécurité</div>
+              </div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-dot dim"></div>
+              <div>
+                <div class="edu-period">2021</div>
+                <div class="edu-name">CESS Général</div>
+                <div class="edu-sub">Lycée Daschbeck</div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+        <main>
+
+          <div class="cv-card reveal rd1">
+            <h2 class="cv-block-title">Expérience</h2>
+
+            <div class="xp-item">
+              <div class="xp-top">
+                <span class="xp-title">IT Security Intern</span>
+                <span class="xp-badge">Lhoist · 2025</span>
+              </div>
+              <p class="xp-org">Superviseur : Benjamin Budts (IT Security Director)</p>
+              <ul class="xp-list">
+                <li>Mise en place de scans de vulnérabilités automatisés (pipeline TVM).</li>
+                <li>Protection des endpoints OT et analyse des logs de sécurité.</li>
+                <li>Participation à l'évaluation des risques IT et support au SOC.</li>
+                <li>Rédaction de rapports techniques destinés à l'équipe sécurité.</li>
+              </ul>
+            </div>
+
+            <hr class="xp-divider">
+
+            <div class="xp-item" style="margin-bottom:0">
+              <div class="xp-top">
+                <span class="xp-title">IT Support Practice</span>
+                <span class="xp-badge" style="color:var(--t2);border-color:var(--b1);background:transparent">EPHEC · 2023–2024</span>
+              </div>
+              <p class="xp-org">Support technique N1 &amp; N2 — laboratoire interne EPHEC</p>
+              <ul class="xp-list">
+                <li>Diagnostic et réparation de pannes matérielles et logicielles.</li>
+                <li>Maintenance de parc informatique Windows/Linux.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cv-card reveal rd2">
+            <h2 class="cv-block-title">Projets</h2>
+
+            <div class="xp-item">
+              <div class="xp-top">
+                <span class="xp-title">Smart Mailbox "Boite-alerte"</span>
+                <a href="https://github.com/SaadKzs" target="_blank" style="color:var(--ac)"><i class="fa-brands fa-github"></i></a>
+              </div>
+              <p class="xp-org">IoT · Full-Stack · Hackathon EPHEC</p>
+              <p style="font-size:.85rem;color:var(--t2);line-height:1.75;margin-bottom:.75rem">
+                ESP32 + notifications temps réel + dashboard React/Node/MongoDB.
+              </p>
+              <div class="s-pills">
+                <span class="s-pill">#ESP32</span><span class="s-pill">#React</span>
+                <span class="s-pill">#NodeJS</span><span class="s-pill">#MongoDB</span>
+              </div>
+            </div>
+
+            <hr class="xp-divider">
+
+            <div class="xp-item" style="margin-bottom:0">
+              <div class="xp-top"><span class="xp-title">Enterprise Network Architecture</span></div>
+              <p class="xp-org">Réseaux · Cisco Packet Tracer</p>
+              <p style="font-size:.85rem;color:var(--t2);line-height:1.75;margin-bottom:.75rem">
+                Infrastructure sécurisée : VLANs, ACLs, routage inter-VLAN, DHCP, switching multicouche.
+              </p>
+              <div class="s-pills">
+                <span class="s-pill">#VLANs</span><span class="s-pill">#ACLs</span>
+                <span class="s-pill">#DHCP</span><span class="s-pill">#Switching</span>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+
+      <footer>
+        <div class="footer-row">
+          <span class="footer-text">Saad Zebiri — EPHEC 2025</span>
+          <div class="footer-links">
+            <a href="https://github.com/SaadKzs" target="_blank" class="footer-link"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:saadzebiri65@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </footer>
 
     </main>
+  </div>
 
-    <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
