@@ -3,547 +3,593 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saad Zebiri — Network & Security</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Saad Zebiri — Network &amp; Security Engineer</title>
+  <meta name="description" content="Portfolio de Saad Zebiri, étudiant en Réseaux &amp; Sécurité à l'EPHEC. Disponible pour stage et emploi 2025.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <div class="curtain"><span class="curtain-text">Saad Zebiri</span></div>
+  <!-- ─── LOADER ─────────────────────────────────────────────── -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="ld-wrap">
+      <p class="ld-name">Saad Zebiri</p>
+      <div class="ld-track"><div class="ld-bar" id="ld-bar"></div></div>
+      <p class="ld-status" id="ld-status">Initialisation système...</p>
+    </div>
+  </div>
 
-  <!-- Mobile top bar -->
-  <header class="mobile-bar">
-    <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-    <button class="sb-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-  </header>
+  <!-- ─── LIGHTBOX ──────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
+    <button class="lb-close" id="lb-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <p class="lb-caption" id="lb-caption"></p>
+  </div>
 
-  <!-- Sidebar overlay (mobile backdrop) -->
-  <div class="sidebar-overlay"></div>
+  <!-- ─── NAVIGATION ────────────────────────────────────────── -->
+  <header class="nav-wrap" id="nav-wrap">
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
 
-  <div class="site-wrap">
-
-    <!-- ─── SIDEBAR ──────────────────────────────────────────── -->
-    <nav class="sidebar">
-      <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-
-      <div class="sb-divider"></div>
-
-      <div class="sb-profile">
-        <div class="sb-name">Saad Zebiri</div>
-        <div class="sb-role">Network &amp; Security</div>
-      </div>
-
-      <ul class="sb-nav">
-        <li><a href="#intro"      class="sb-link active" data-target="intro"><span class="sb-num">01</span>Intro</a></li>
-        <li><a href="#about"      class="sb-link" data-target="about"><span class="sb-num">02</span>À propos</a></li>
-        <li><a href="#projects"   class="sb-link" data-target="projects"><span class="sb-num">03</span>Projets</a></li>
-        <li><a href="#skills"     class="sb-link" data-target="skills"><span class="sb-num">04</span>Compétences</a></li>
-        <li><a href="#experience" class="sb-link" data-target="experience"><span class="sb-num">05</span>Expérience</a></li>
-        <li><a href="#explorer"   class="sb-link" data-target="explorer"><span class="sb-num">06</span>Activités</a></li>
-        <li><a href="contact.html" class="sb-link"><span class="sb-num">—</span>Contact</a></li>
+      <ul class="nav-links" role="list">
+        <li><a href="#intro"        class="nl active" data-target="intro">Accueil</a></li>
+        <li><a href="#about"        class="nl" data-target="about">À propos</a></li>
+        <li><a href="#projects"     class="nl" data-target="projects">Projets</a></li>
+        <li><a href="#skills"       class="nl" data-target="skills">Compétences</a></li>
+        <li><a href="#experience"   class="nl" data-target="experience">Expérience</a></li>
+        <li><a href="activities.html" class="nl">Activités</a></li>
       </ul>
 
-      <div class="sb-footer">
-        <div class="sb-social">
-          <a href="https://github.com/SaadKzs" target="_blank" class="sb-social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="sb-social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="mailto:saadzebiri65@gmail.com" class="sb-social-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="cv.html" class="sb-social-link" aria-label="CV"><i class="fa-solid fa-file-lines"></i></a>
+      <div class="nav-end">
+        <div class="nav-socials">
+          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
-        <div class="sb-status">
-          <span class="badge-dot"></span>
-          Available 2025
-        </div>
+        <a href="contact.html" class="btn-contact">Contact</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
       </div>
     </nav>
+  </header>
 
-    <!-- ─── MAIN PANEL ─────────────────────────────────────── -->
-    <main class="main-panel">
+  <!-- Mobile menu -->
+  <div class="mob-menu" id="mob-menu" aria-hidden="true">
+    <a href="#intro"          class="mm-link active" data-target="intro"><span>01</span>Accueil</a>
+    <a href="#about"          class="mm-link" data-target="about"><span>02</span>À propos</a>
+    <a href="#projects"       class="mm-link" data-target="projects"><span>03</span>Projets</a>
+    <a href="#skills"         class="mm-link" data-target="skills"><span>04</span>Compétences</a>
+    <a href="#experience"     class="mm-link" data-target="experience"><span>05</span>Expérience</a>
+    <a href="activities.html" class="mm-link"><span>06</span>Activités EPHEC</a>
+    <div class="mm-sep"></div>
+    <a href="contact.html" class="mm-link"><span>—</span>Contact</a>
+  </div>
+  <div class="mob-overlay" id="mob-overlay"></div>
 
-      <!-- INTRO -->
-      <section class="intro-section" id="intro" data-section="intro">
-        <canvas id="hero-canvas"></canvas>
-        <div class="intro-noise"></div>
+  <!-- ─── HERO ──────────────────────────────────────────────── -->
+  <section class="hero" id="intro" data-section="intro">
+    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-orbs" aria-hidden="true">
+      <div class="hero-orb ho-1"></div>
+      <div class="hero-orb ho-2"></div>
+      <div class="hero-orb ho-3"></div>
+    </div>
 
-        <div class="intro-inner">
-          <div class="intro-badge">
-            <span class="badge-dot"></span>
-            Disponible — Stage / Emploi 2025
-            <span style="color:var(--t3);margin:0 .4rem">·</span>
-            EPHEC Bac&nbsp;3
-          </div>
+    <div class="hero-inner">
 
-          <div class="intro-role">
-            <span class="role-sup">Network &amp;</span>
-            <span class="role-main">Security</span>
-            <span class="role-outline">Engineer.</span>
-          </div>
-
-          <div class="intro-meta">
-            <div class="intro-location">
-              <i class="fa-solid fa-location-dot" style="color:var(--ac)"></i>
-              Bruxelles, Belgique · EPHEC Bac 3
-            </div>
-            <p class="intro-desc">
-              Passionné par la sécurité des systèmes critiques et le DevSecOps.
-              Actuellement en stage chez <strong style="color:var(--t1)">Lhoist</strong> sur la sécurité OT industrielle.
-            </p>
-          </div>
-
-          <div class="intro-ctas">
-            <a href="#projects" class="btn btn-primary magnetic">Voir mes projets</a>
-            <a href="contact.html" class="btn btn-ghost magnetic">Me contacter</a>
-          </div>
-
-          <div class="intro-stats">
-            <span><strong>60+</strong> heures d'activités</span>
-            <span class="is-sep">·</span>
-            <span><strong>3</strong> projets</span>
-            <span class="is-sep">·</span>
-            <span><strong>2</strong> ans EPHEC</span>
-            <span class="is-sep">·</span>
-            <span><strong>4</strong> langues</span>
-          </div>
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-pulse"></span>
+          Disponible — Stage / Emploi 2025
+          <span class="badge-sep">·</span>
+          EPHEC Bac&nbsp;3
         </div>
 
-        <div class="scroll-hint">
-          <span>SCROLL</span>
-          <div class="scroll-line"></div>
-        </div>
-      </section>
+        <h1 class="hero-name">
+          <span class="hn-line">Saad</span>
+          <span class="hn-line hn-alt">Zebiri</span>
+        </h1>
 
-      <!-- ABOUT -->
-      <section class="main-section panel-pad" id="about" data-section="about">
-        <div class="about-grid">
+        <p class="hero-role">Network &amp; Security<br><em>Engineer.</em></p>
 
-          <div class="reveal">
-            <span class="s-label">02 / À propos</span>
-            <h2 class="s-title" style="margin-bottom:1.5rem">Qui suis-<em>je</em>&nbsp;?</h2>
-            <span class="about-email">saadzebiri65@gmail.com</span>
+        <p class="hero-desc">
+          Passionné par la sécurité des systèmes critiques et le DevSecOps.
+          Actuellement en stage chez <strong>Lhoist</strong> sur la sécurité OT industrielle.
+        </p>
 
-            <p class="about-body">
-              Étudiant en Réseaux &amp; Sécurité à l'EPHEC (Bac 3), je suis passionné
-              par la construction d'infrastructures réseau robustes et la protection des
-              systèmes critiques. Mon approche allie rigueur technique et curiosité constante.
-            </p>
-            <p class="about-body">
-              Actuellement en stage chez <strong style="color:var(--t1)">Lhoist</strong>,
-              je travaille sur la sécurisation des environnements OT industriels —
-              automatisation des scans de vulnérabilités, analyse des logs et évaluation
-              des risques IT.
-            </p>
-            <p class="about-body">
-              Stack : Cisco PT, Linux, Python, Nmap, Docker, React/Node.js.
-            </p>
-
-            <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
-              <a href="CV-Zebiri-Saad.pdf" download class="btn btn-primary magnetic" style="font-size:.8rem;padding:.65rem 1.4rem">
-                Télécharger CV <i class="fa-solid fa-arrow-down-to-line" style="font-size:.7rem"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="reveal rd2">
-            <div class="terminal">
-              <div class="terminal-header">
-                <div class="t-dots"><span></span><span></span><span></span></div>
-                <span class="t-title">sys.profile — saad.zebiri</span>
-              </div>
-              <div class="terminal-body" style="min-height:auto">
-                <div><span class="t-p">user</span><span class="t-d">      :</span> <span class="t-c">Saad Zebiri</span></div>
-                <div><span class="t-p">role</span><span class="t-d">      :</span> <span class="t-c">Network &amp; Security Intern</span></div>
-                <div><span class="t-p">location</span><span class="t-d">  :</span> <span class="t-c">Bruxelles, BE</span></div>
-                <div><span class="t-p">current</span><span class="t-d">   :</span> <span class="t-ok">Lhoist · OT Security</span></div>
-                <div style="margin:.65rem 0;border-top:1px solid var(--b1);padding-top:.65rem">
-                  <span class="t-d">── SKILLS ──────────────────</span>
-                </div>
-                <div><span class="t-ok">▸</span> Network Architecture &amp; VLANs</div>
-                <div><span class="t-ok">▸</span> OT / ICS Security</div>
-                <div><span class="t-ok">▸</span> Python · Nmap · Linux</div>
-                <div><span class="t-ok">▸</span> React / Node.js / MongoDB</div>
-                <div style="margin:.65rem 0;border-top:1px solid var(--b1);padding-top:.65rem">
-                  <span class="t-p">status</span><span class="t-d">    :</span>
-                  <span style="color:#22c55e">● AVAILABLE 2025</span>
-                </div>
-                <div><span class="t-p">saad@lhoist</span><span class="t-d">:~$</span> <span class="t-cur"></span></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section class="main-section panel-pad" id="projects" data-section="projects">
-        <div class="reveal">
-          <span class="s-label">03 / Projets</span>
-          <h2 class="s-title w-reveal">Ce que j'ai <em>construit</em></h2>
-          <p class="s-sub">Des systèmes réels, construits avec une vraie stack.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">Voir mes projets</a>
+          <a href="contact.html" class="btn-ghost">Me contacter</a>
         </div>
 
-        <div class="projects-grid">
-
-          <div class="proj-card featured reveal rd1">
-            <span class="p-num">01</span>
-            <span class="p-tag">IoT · Full-Stack · Hackathon</span>
-            <h3 class="p-title">Smart Mailbox "Boite-alerte"</h3>
-            <p class="p-desc">
-              Boîte aux lettres connectée (ESP32) détectant le courrier en temps réel
-              et envoyant des notifications push. Dashboard React pour l'historique
-              et la gestion des alertes. Projet primé au Hackathon EPHEC 2024.
-            </p>
-            <div class="p-stack">
-              <span class="p-pill">ESP32</span>
-              <span class="p-pill">Node.js</span>
-              <span class="p-pill">React</span>
-              <span class="p-pill">MongoDB</span>
-            </div>
-            <a href="https://github.com/SaadKzs" target="_blank" class="p-link">
-              <i class="fa-brands fa-github"></i> Voir sur GitHub
-            </a>
+        <div class="hero-stats">
+          <div class="hstat">
+            <span class="hstat-n" data-count="60">0</span>
+            <span class="hstat-l">heures EPHEC</span>
           </div>
-
-          <div class="proj-card reveal rd2">
-            <span class="p-num">02</span>
-            <span class="p-tag">Cybersécurité · OT · Stage</span>
-            <h3 class="p-title">Automated Pentesting &amp; OT Security</h3>
-            <p class="p-desc">
-              Scans automatisés sur assets critiques, protection des endpoints OT et
-              évaluation des risques IT chez Lhoist.
-            </p>
-            <div class="p-stack">
-              <span class="p-pill">Python</span>
-              <span class="p-pill">Nmap</span>
-              <span class="p-pill">Risk Assessment</span>
-              <span class="p-pill">Log Management</span>
-            </div>
-            <span class="p-link" style="cursor:default;opacity:.35">
-              <i class="fa-solid fa-lock"></i> Confidentiel
-            </span>
+          <span class="hstat-sep"></span>
+          <div class="hstat">
+            <span class="hstat-n" data-count="3">0</span>
+            <span class="hstat-l">projets</span>
           </div>
-
-          <div class="proj-card reveal rd3">
-            <span class="p-num">03</span>
-            <span class="p-tag">Réseaux · Infrastructure</span>
-            <h3 class="p-title">Enterprise Network Architecture</h3>
-            <p class="p-desc">
-              Infrastructure réseau d'entreprise sécurisée : VLANs, ACLs, routage
-              inter-VLAN, DHCP et switching multicouche.
-            </p>
-            <div class="p-stack">
-              <span class="p-pill">Cisco PT</span>
-              <span class="p-pill">VLANs</span>
-              <span class="p-pill">ACLs</span>
-              <span class="p-pill">DHCP</span>
-            </div>
-            <span class="p-link" style="cursor:default;opacity:.35">
-              <i class="fa-solid fa-file-pdf"></i> Rapport disponible
-            </span>
+          <span class="hstat-sep"></span>
+          <div class="hstat">
+            <span class="hstat-n" data-count="4">0</span>
+            <span class="hstat-l">langues</span>
           </div>
-
-          <div class="proj-card reveal rd4">
-            <span class="p-num">04</span>
-            <span class="p-tag">Web · Portfolio</span>
-            <h3 class="p-title">Ce portfolio</h3>
-            <p class="p-desc">
-              Design STELLAR : Three.js particle field, sidebar layout, glassmorphism,
-              curseur spring-lerp, GSAP animations et gradient borders.
-            </p>
-            <div class="p-stack">
-              <span class="p-pill">HTML5</span>
-              <span class="p-pill">CSS3</span>
-              <span class="p-pill">JS</span>
-              <span class="p-pill">Three.js</span>
-              <span class="p-pill">GSAP</span>
-            </div>
-            <a href="https://github.com/SaadKzs" target="_blank" class="p-link">
-              <i class="fa-brands fa-github"></i> Source
-            </a>
+          <span class="hstat-sep"></span>
+          <div class="hstat">
+            <span class="hstat-n" data-count="2">0</span>
+            <span class="hstat-l">ans EPHEC</span>
           </div>
-
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-      <section class="main-section panel-pad" id="skills" data-section="skills">
-        <div class="reveal">
-          <span class="s-label">04 / Compétences</span>
-          <h2 class="s-title">Stack &amp; <em>Outils</em></h2>
-        </div>
-
-        <div class="skills-grid">
-
-          <div class="reveal">
-            <span class="r-col-title">Software Skills</span>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Network / Cisco</span><span class="skill-pct">90%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="90"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Linux Administration</span><span class="skill-pct">80%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="80"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Python Automation</span><span class="skill-pct">75%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="75"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">OT / ICS Security</span><span class="skill-pct">70%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="70"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Docker / DevOps</span><span class="skill-pct">65%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="65"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">React / Node.js</span><span class="skill-pct">60%</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="60"></div></div>
-            </div>
-
-            <span class="r-sub-title">Langues</span>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Français</span><span class="skill-pct">Natif</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="100"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Arabe</span><span class="skill-pct">Courant</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="85"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Anglais</span><span class="skill-pct">B2</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="72"></div></div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-head"><span class="skill-name">Néerlandais</span><span class="skill-pct">Notions</span></div>
-              <div class="skill-track"><div class="skill-fill" data-pct="22"></div></div>
-            </div>
-          </div>
-
-          <div class="reveal rd1">
-            <span class="r-col-title">Toolbox</span>
-            <div class="tech-grid">
-              <div>
-                <div class="tech-group-label">Infrastructure</div>
-                <div class="s-pills">
-                  <span class="s-pill">Cisco PT</span>
-                  <span class="s-pill">Linux</span>
-                  <span class="s-pill">Docker</span>
-                  <span class="s-pill">ESP32</span>
-                  <span class="s-pill">VLANs</span>
-                  <span class="s-pill">ACLs</span>
-                </div>
-              </div>
-              <div>
-                <div class="tech-group-label">Sécurité</div>
-                <div class="s-pills">
-                  <span class="s-pill">Nmap</span>
-                  <span class="s-pill">OT Security</span>
-                  <span class="s-pill">Pentest</span>
-                  <span class="s-pill">Log Analysis</span>
-                  <span class="s-pill">Risk Assessment</span>
-                </div>
-              </div>
-              <div>
-                <div class="tech-group-label">Développement</div>
-                <div class="s-pills">
-                  <span class="s-pill">Python</span>
-                  <span class="s-pill">React</span>
-                  <span class="s-pill">Node.js</span>
-                  <span class="s-pill">MongoDB</span>
-                  <span class="s-pill">HTML/CSS/JS</span>
-                </div>
-              </div>
-              <div>
-                <div class="tech-group-label">Objectifs</div>
-                <div class="s-pills">
-                  <span class="s-pill">CompTIA Sec+</span>
-                  <span class="s-pill">CCNA</span>
-                  <span class="s-pill">DevSecOps</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- EXPERIENCE -->
-      <section class="main-section panel-pad" id="experience" data-section="experience">
-        <div class="reveal">
-          <span class="s-label">05 / Expérience</span>
-          <h2 class="s-title">Parcours &amp; <em>Formation</em></h2>
-        </div>
-
-        <div class="xp-layout">
-
-          <div class="reveal rd1">
-            <span class="r-col-title">Expérience</span>
-
-            <div class="tl-item">
-              <div class="tl-circle">2025</div>
-              <div>
-                <div class="tl-title">IT Security Intern</div>
-                <div class="tl-org">Lhoist · Bruxelles</div>
-                <div class="tl-desc">Scans de vulnérabilités automatisés (pipeline TVM), protection des endpoints OT, analyse des logs et support SOC.</div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-circle">2024</div>
-              <div>
-                <div class="tl-title">Hackathon — Boite-alerte</div>
-                <div class="tl-org">EPHEC · IoT Full-Stack</div>
-                <div class="tl-desc">ESP32 connecté avec notifications push, dashboard React/Node/MongoDB.</div>
-              </div>
-            </div>
-
-            <div class="tl-item" style="margin-bottom:0">
-              <div class="tl-circle">2023</div>
-              <div>
-                <div class="tl-title">IT Support Practice</div>
-                <div class="tl-org">EPHEC · Laboratoire</div>
-                <div class="tl-desc">Support N1/N2, diagnostic matériel et logiciel, maintenance Windows/Linux.</div>
-              </div>
-            </div>
-
-            <span class="r-sub-title">Formation</span>
-
-            <div class="tl-item">
-              <div class="tl-circle">2022<br>→</div>
-              <div>
-                <div class="tl-title">Bac 3 TI</div>
-                <div class="tl-org">EPHEC · Réseaux &amp; Sécurité</div>
-                <div class="tl-desc">Spécialisation Réseaux, Cybersécurité et DevSecOps.</div>
-              </div>
-            </div>
-
-            <div class="tl-item" style="margin-bottom:0">
-              <div class="tl-circle">2021</div>
-              <div>
-                <div class="tl-title">CESS Général</div>
-                <div class="tl-org">Lycée Daschbeck</div>
-                <div class="tl-desc">Diplôme d'études secondaires supérieures.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal rd2">
-            <span class="r-col-title">Services</span>
-
-            <div class="service-item">
-              <div class="svc-icon"><i class="fa-solid fa-network-wired"></i></div>
-              <div>
-                <div class="svc-title">Network Architecture</div>
-                <div class="svc-desc">VLANs, ACLs, routage inter-VLAN, DHCP, switching.</div>
-              </div>
-            </div>
-            <div class="service-item">
-              <div class="svc-icon"><i class="fa-solid fa-shield-halved"></i></div>
-              <div>
-                <div class="svc-title">Security Auditing</div>
-                <div class="svc-desc">Vulnerability assessment, pentest, rapports de risques.</div>
-              </div>
-            </div>
-            <div class="service-item">
-              <div class="svc-icon"><i class="fa-solid fa-terminal"></i></div>
-              <div>
-                <div class="svc-title">Automation &amp; Scripting</div>
-                <div class="svc-desc">Python, pipelines TVM, monitoring automatisé.</div>
-              </div>
-            </div>
-            <div class="service-item">
-              <div class="svc-icon"><i class="fa-solid fa-industry"></i></div>
-              <div>
-                <div class="svc-title">OT / ICS Security</div>
-                <div class="svc-desc">Protection des environnements industriels.</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- TERMINAL -->
-      <div class="panel-pad" style="padding-bottom:1.5rem">
-        <div class="terminal reveal">
-          <div class="terminal-header">
-            <div class="t-dots"><span></span><span></span><span></span></div>
-            <span class="t-title">security-scan.sh</span>
-          </div>
-          <div class="terminal-body" id="terminal-output"></div>
         </div>
       </div>
 
-      <!-- EXPLORER -->
-      <section class="main-section panel-pad" id="explorer" data-section="explorer" style="padding-top:3rem">
-        <div class="reveal">
-          <span class="s-label">06 / Activités EPHEC</span>
-          <h2 class="s-title w-reveal">60 heures d'<em>apprentissage</em></h2>
-          <p class="s-sub">Filtrez par thème pour explorer les heures validées.</p>
-        </div>
-
-        <div class="filter-row" id="filter-container" style="margin-top:2.5rem"></div>
-        <div class="activities-grid" id="activities-grid"></div>
-        <div id="empty-state" class="empty-state hidden">
-          <i class="fa-regular fa-folder-open"></i>
-          <p>Aucune activité pour ce thème.</p>
-        </div>
-
-        <div class="reveal" style="margin-top:4.5rem">
-          <span class="s-label">07 / Récapitulatif</span>
-          <h2 class="s-title">Academic <em>Summary</em></h2>
-        </div>
-
-        <div class="progress-grid reveal" id="theme-progress-container" style="margin-top:2rem"></div>
-
-        <div class="table-wrap reveal">
-          <table>
-            <thead>
-              <tr><th>Date</th><th>Activité</th><th>Thème</th><th>Heures</th></tr>
-            </thead>
-            <tbody id="activity-table-body"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta-section">
-        <div class="cta-bg"></div>
-        <span class="cta-word" aria-hidden="true">CONTACT</span>
-        <div class="cta-inner">
-          <span class="s-label reveal">Ce qui vient ensuite</span>
-          <h2 class="s-title reveal rd1" style="max-width:520px;margin:0 auto 1rem">
-            Construisons quelque chose <em>ensemble</em>
-          </h2>
-          <p class="s-sub reveal rd2" style="margin:0 auto 2.5rem;max-width:460px">
-            Mon stage se termine bientôt. Je suis à l'écoute d'opportunités en
-            Administration Réseau, Cybersécurité ou DevSecOps.
-          </p>
-          <a href="contact.html" class="btn btn-primary magnetic reveal rd3"
-             style="font-size:1rem;padding:1rem 2.5rem">
-            Me contacter
-          </a>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer>
-        <div class="footer-row">
-          <span class="footer-text">Designed &amp; built by Saad Zebiri — EPHEC 2025</span>
-          <div class="footer-links">
-            <a href="https://github.com/SaadKzs" target="_blank" class="footer-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="footer-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:saadzebiri65@gmail.com" class="footer-link" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <div class="hero-right" aria-hidden="true">
+        <div class="status-console">
+          <div class="sc-header">
+            <div class="sc-dots"><span></span><span></span><span></span></div>
+            <span class="sc-title">sys.profile — saad.zebiri</span>
+            <span class="sc-live"><span></span>LIVE</span>
+          </div>
+          <div class="sc-body">
+            <div class="sc-row"><span class="sc-k">user</span><span class="sc-sep">:</span><span class="sc-v">Saad Zebiri</span></div>
+            <div class="sc-row"><span class="sc-k">role</span><span class="sc-sep">:</span><span class="sc-v">Network &amp; Security Intern</span></div>
+            <div class="sc-row"><span class="sc-k">company</span><span class="sc-sep">:</span><span class="sc-v sc-hi">Lhoist · OT Security</span></div>
+            <div class="sc-row"><span class="sc-k">location</span><span class="sc-sep">:</span><span class="sc-v">Bruxelles, BE</span></div>
+            <div class="sc-div"></div>
+            <div class="sc-row"><span class="sc-k">stack</span><span class="sc-sep">:</span><span class="sc-v sc-tw" id="sc-tw">Cisco · Linux · Python</span></div>
+            <div class="sc-div"></div>
+            <div class="sc-row"><span class="sc-k">status</span><span class="sc-sep">:</span><span class="sc-v sc-online"><span class="sc-pulse"></span>AVAILABLE 2025</span></div>
+            <div class="sc-row sc-prompt"><span class="sc-k">saad@lhoist:~$</span><span class="sc-cursor" id="sc-cursor">_</span></div>
           </div>
         </div>
-      </footer>
 
-    </main>
-  </div><!-- .site-wrap -->
+        <div class="hero-chip hc-1">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>OT Security</span>
+        </div>
+        <div class="hero-chip hc-2">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>Network Arch.</span>
+        </div>
+        <div class="hero-chip hc-3">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Python / Nmap</span>
+        </div>
+      </div>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ─── MARQUEE ─────────────────────────────────────────────── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Network Architecture</span><span class="mq-dot">·</span>
+      <span>OT Security</span><span class="mq-dot">·</span>
+      <span>Vulnerability Assessment</span><span class="mq-dot">·</span>
+      <span>Python Automation</span><span class="mq-dot">·</span>
+      <span>Cisco · VLANs · ACLs</span><span class="mq-dot">·</span>
+      <span>Log Analysis</span><span class="mq-dot">·</span>
+      <span>Risk Assessment</span><span class="mq-dot">·</span>
+      <span>DevSecOps</span><span class="mq-dot">·</span>
+      <span>IoT Full-Stack</span><span class="mq-dot">·</span>
+      <span>Pentest</span><span class="mq-dot">·</span>
+      <span>Network Architecture</span><span class="mq-dot">·</span>
+      <span>OT Security</span><span class="mq-dot">·</span>
+      <span>Vulnerability Assessment</span><span class="mq-dot">·</span>
+      <span>Python Automation</span><span class="mq-dot">·</span>
+      <span>Cisco · VLANs · ACLs</span><span class="mq-dot">·</span>
+      <span>Log Analysis</span><span class="mq-dot">·</span>
+      <span>Risk Assessment</span><span class="mq-dot">·</span>
+      <span>DevSecOps</span><span class="mq-dot">·</span>
+      <span>IoT Full-Stack</span><span class="mq-dot">·</span>
+      <span>Pentest</span><span class="mq-dot">·</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+  <section class="section" id="about" data-section="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="reveal">
+          <p class="sec-num">02 / À propos</p>
+          <h2 class="sec-title">Qui suis-<em>je</em>&nbsp;?</h2>
+          <a href="mailto:saadzebiri65@gmail.com" class="about-email">saadzebiri65@gmail.com</a>
+
+          <p class="body-text">
+            Étudiant en Réseaux &amp; Sécurité à l'EPHEC (Bac 3), je suis passionné
+            par la construction d'infrastructures réseau robustes et la protection des
+            systèmes critiques. Mon approche allie rigueur technique et curiosité constante.
+          </p>
+          <p class="body-text">
+            Actuellement en stage chez <strong>Lhoist</strong>,
+            je travaille sur la sécurisation des environnements OT industriels —
+            automatisation des scans de vulnérabilités, analyse des logs et évaluation
+            des risques IT.
+          </p>
+          <p class="body-text">Stack : Cisco PT, Linux, Python, Nmap, Docker, React/Node.js.</p>
+
+          <a href="CV-Zebiri-Saad.pdf" download class="btn-primary" style="margin-top:2rem;display:inline-flex;align-items:center;gap:.6rem">
+            Télécharger CV <i class="fa-solid fa-arrow-down-to-line" style="font-size:.75em"></i>
+          </a>
+        </div>
+
+        <div class="reveal rd1">
+          <div class="terminal" aria-label="Profile terminal">
+            <div class="term-hd">
+              <div class="term-dots"><span></span><span></span><span></span></div>
+              <span class="term-title">sys.profile — saad.zebiri</span>
+            </div>
+            <div class="term-bd">
+              <div class="tr"><span class="tk">user</span><span class="td">:</span> <span class="tv">Saad Zebiri</span></div>
+              <div class="tr"><span class="tk">role</span><span class="td">:</span> <span class="tv">Network &amp; Security Intern</span></div>
+              <div class="tr"><span class="tk">location</span><span class="td">:</span> <span class="tv">Bruxelles, BE</span></div>
+              <div class="tr"><span class="tk">current</span><span class="td">:</span> <span class="tv-ok">Lhoist · OT Security</span></div>
+              <div class="term-sep"></div>
+              <div class="tr"><span class="tv-ok">▸</span> Network Architecture &amp; VLANs</div>
+              <div class="tr"><span class="tv-ok">▸</span> OT / ICS Security</div>
+              <div class="tr"><span class="tv-ok">▸</span> Python · Nmap · Linux</div>
+              <div class="tr"><span class="tv-ok">▸</span> React / Node.js / MongoDB</div>
+              <div class="term-sep"></div>
+              <div class="tr"><span class="tk">status</span><span class="td">:</span> <span class="tv-avail">● AVAILABLE 2025</span></div>
+              <div class="tr term-prompt"><span class="tk">saad@lhoist:~$</span> <span class="term-cur" id="term-cur"></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJECTS ──────────────────────────────────────────── -->
+  <section class="section section--dark" id="projects" data-section="projects">
+    <div class="container">
+      <div class="reveal">
+        <p class="sec-num">03 / Projets</p>
+        <h2 class="sec-title">Ce que j'ai <em>construit</em></h2>
+        <p class="sec-sub">Des systèmes réels, construits avec une vraie stack.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="proj-list">
+
+        <article class="proj-row reveal" tabindex="0">
+          <div class="pr-index"><span class="pr-num">01</span></div>
+          <div class="pr-content">
+            <div class="pr-header">
+              <div>
+                <span class="pr-cat">IoT · Full-Stack · Hackathon</span>
+                <h3 class="pr-title">Smart Mailbox <em>"Boite-alerte"</em></h3>
+              </div>
+              <div class="pr-aside">
+                <span class="pr-badge">Primé jury</span>
+                <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" class="pr-action">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+            <div class="pr-expand">
+              <p class="pr-desc">Boîte aux lettres connectée (ESP32) détectant le courrier en temps réel et envoyant des notifications push. Dashboard React pour l'historique et la gestion des alertes.</p>
+              <div class="pr-stack"><span>ESP32</span><span>Node.js</span><span>React</span><span>MongoDB</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-row reveal rd1" tabindex="0">
+          <div class="pr-index"><span class="pr-num">02</span></div>
+          <div class="pr-content">
+            <div class="pr-header">
+              <div>
+                <span class="pr-cat">Cybersécurité · OT · Stage</span>
+                <h3 class="pr-title">Automated Pentesting <em>&amp; OT Security</em></h3>
+              </div>
+              <div class="pr-aside">
+                <span class="pr-badge pr-badge--amber">Stage Lhoist</span>
+                <span class="pr-action pr-action--lock"><i class="fa-solid fa-lock"></i> Confidentiel</span>
+              </div>
+            </div>
+            <div class="pr-expand">
+              <p class="pr-desc">Scans automatisés sur assets critiques, protection des endpoints OT et évaluation des risques IT chez Lhoist.</p>
+              <div class="pr-stack"><span>Python</span><span>Nmap</span><span>Risk Assessment</span><span>Log Management</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-row reveal rd2" tabindex="0">
+          <div class="pr-index"><span class="pr-num">03</span></div>
+          <div class="pr-content">
+            <div class="pr-header">
+              <div>
+                <span class="pr-cat">Réseaux · Infrastructure</span>
+                <h3 class="pr-title">Enterprise Network <em>Architecture</em></h3>
+              </div>
+              <div class="pr-aside">
+                <span class="pr-action pr-action--doc"><i class="fa-solid fa-file-pdf"></i> Rapport</span>
+              </div>
+            </div>
+            <div class="pr-expand">
+              <p class="pr-desc">Infrastructure réseau d'entreprise sécurisée : VLANs, ACLs, routage inter-VLAN, DHCP et switching multicouche.</p>
+              <div class="pr-stack"><span>Cisco PT</span><span>VLANs</span><span>ACLs</span><span>DHCP</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj-row reveal rd1" tabindex="0">
+          <div class="pr-index"><span class="pr-num">04</span></div>
+          <div class="pr-content">
+            <div class="pr-header">
+              <div>
+                <span class="pr-cat">Web · Portfolio</span>
+                <h3 class="pr-title">Portfolio <em>STELLAR</em></h3>
+              </div>
+              <div class="pr-aside">
+                <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" class="pr-action">GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+            <div class="pr-expand">
+              <p class="pr-desc">Design STELLAR : Three.js particle field, sidebar layout, glassmorphism, curseur spring-lerp, GSAP animations et gradient borders.</p>
+              <div class="pr-stack"><span>HTML5</span><span>CSS3</span><span>JS</span><span>Three.js</span><span>GSAP</span></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ────────────────────────────────────────────── -->
+  <section class="section section--alt" id="skills" data-section="skills">
+    <div class="container">
+      <div class="reveal">
+        <p class="sec-num">04 / Compétences</p>
+        <h2 class="sec-title">Stack &amp; <em>Outils</em></h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="reveal">
+          <p class="col-label">Software Skills</p>
+          <div class="sbar"><div class="sbar-head"><span>Network / Cisco</span><span>90%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="90"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Linux Administration</span><span>80%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="80"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Python Automation</span><span>75%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="75"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>OT / ICS Security</span><span>70%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="70"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Docker / DevOps</span><span>65%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="65"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>React / Node.js</span><span>60%</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="60"></div></div></div>
+
+          <p class="col-label" style="margin-top:2.5rem">Langues</p>
+          <div class="sbar"><div class="sbar-head"><span>Français</span><span>Natif</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="100"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Arabe</span><span>Courant</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="85"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Anglais</span><span>B2</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="72"></div></div></div>
+          <div class="sbar"><div class="sbar-head"><span>Néerlandais</span><span>Notions</span></div><div class="sbar-track"><div class="sbar-fill" data-pct="22"></div></div></div>
+        </div>
+
+        <div class="reveal rd1">
+          <p class="col-label">Toolbox</p>
+          <div class="tb-group">
+            <p class="tb-cat">Infrastructure</p>
+            <div class="tb-pills"><span>Cisco PT</span><span>Linux</span><span>Docker</span><span>ESP32</span><span>VLANs</span><span>ACLs</span></div>
+          </div>
+          <div class="tb-group">
+            <p class="tb-cat">Sécurité</p>
+            <div class="tb-pills"><span>Nmap</span><span>OT Security</span><span>Pentest</span><span>Log Analysis</span><span>Risk Assessment</span></div>
+          </div>
+          <div class="tb-group">
+            <p class="tb-cat">Développement</p>
+            <div class="tb-pills"><span>Python</span><span>React</span><span>Node.js</span><span>MongoDB</span><span>HTML/CSS/JS</span></div>
+          </div>
+          <div class="tb-group">
+            <p class="tb-cat">Objectifs</p>
+            <div class="tb-pills tb-pills--goal"><span>CompTIA Sec+</span><span>CCNA</span><span>DevSecOps</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EXPERIENCE ────────────────────────────────────────── -->
+  <section class="section" id="experience" data-section="experience">
+    <div class="container">
+      <div class="reveal">
+        <p class="sec-num">05 / Expérience</p>
+        <h2 class="sec-title">Parcours &amp; <em>Formation</em></h2>
+      </div>
+
+      <div class="xp-grid">
+
+        <div class="reveal rd1">
+          <p class="col-label">Expérience</p>
+          <div class="tl">
+            <div class="tl-item">
+              <div class="tl-dot"><span>2025</span></div>
+              <div class="tl-body">
+                <h4>IT Security Intern</h4>
+                <p class="tl-org">Lhoist · Bruxelles</p>
+                <p class="tl-desc">Scans de vulnérabilités automatisés (pipeline TVM), protection des endpoints OT, analyse des logs et support SOC.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span>2024</span></div>
+              <div class="tl-body">
+                <h4>Hackathon — Boite-alerte</h4>
+                <p class="tl-org">EPHEC · IoT Full-Stack</p>
+                <p class="tl-desc">ESP32 connecté avec notifications push, dashboard React/Node/MongoDB. Projet primé.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span>2023</span></div>
+              <div class="tl-body">
+                <h4>IT Support Practice</h4>
+                <p class="tl-org">EPHEC · Laboratoire</p>
+                <p class="tl-desc">Support N1/N2, diagnostic matériel et logiciel, maintenance Windows/Linux.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="col-label" style="margin-top:2.5rem">Formation</p>
+          <div class="tl">
+            <div class="tl-item">
+              <div class="tl-dot"><span>2022→</span></div>
+              <div class="tl-body">
+                <h4>Bac 3 TI</h4>
+                <p class="tl-org">EPHEC · Réseaux &amp; Sécurité</p>
+                <p class="tl-desc">Spécialisation Réseaux, Cybersécurité et DevSecOps.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"><span>2021</span></div>
+              <div class="tl-body">
+                <h4>CESS Général</h4>
+                <p class="tl-org">Lycée Daschbeck</p>
+                <p class="tl-desc">Diplôme d'études secondaires supérieures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal rd2">
+          <p class="col-label">Services</p>
+          <div class="svc-list">
+            <div class="svc-item">
+              <div class="svc-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <div>
+                <h4>Network Architecture</h4>
+                <p>VLANs, ACLs, routage inter-VLAN, DHCP, switching.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <div class="svc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h4>Security Auditing</h4>
+                <p>Vulnerability assessment, pentest, rapports de risques.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <div class="svc-icon"><i class="fa-solid fa-terminal"></i></div>
+              <div>
+                <h4>Automation &amp; Scripting</h4>
+                <p>Python, pipelines TVM, monitoring automatisé.</p>
+              </div>
+            </div>
+            <div class="svc-item">
+              <div class="svc-icon"><i class="fa-solid fa-industry"></i></div>
+              <div>
+                <h4>OT / ICS Security</h4>
+                <p>Protection des environnements industriels.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ACTIVITIES TEASER ───────────────────────────────────── -->
+  <section class="section section--alt" id="explorer" data-section="explorer">
+    <div class="container">
+      <div class="reveal">
+        <p class="sec-num">06 / Activités EPHEC</p>
+        <h2 class="sec-title">60h <em>documentées</em></h2>
+        <p class="sec-sub">Formations, hackathons, conférences et visites — chaque heure est accompagnée de preuves photos et vidéos.</p>
+      </div>
+
+      <div class="act-stats reveal rd1">
+        <div class="astat"><span class="astat-n">8</span><span class="astat-l">activités</span></div>
+        <span class="astat-sep"></span>
+        <div class="astat"><span class="astat-n" data-count="60">0</span><span class="astat-l">heures réelles</span></div>
+        <span class="astat-sep"></span>
+        <div class="astat"><span class="astat-n">6</span><span class="astat-l">thèmes</span></div>
+        <span class="astat-sep"></span>
+        <div class="astat"><span class="astat-n">5</span><span class="astat-l">types</span></div>
+      </div>
+
+      <!-- Mini theme grid teaser -->
+      <div class="teaser-themes reveal rd2">
+        <div class="tt-row">
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#3b82f6"></span>
+            <span class="tt-name">Réseaux</span>
+            <span class="tt-h">12h</span>
+          </div>
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#8b5cf6"></span>
+            <span class="tt-name">Cybersécurité</span>
+            <span class="tt-h">4h</span>
+          </div>
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#06b6d4"></span>
+            <span class="tt-name">Web / MERN</span>
+            <span class="tt-h">10h</span>
+          </div>
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#10b981"></span>
+            <span class="tt-name">IoT</span>
+            <span class="tt-h">18h</span>
+          </div>
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#f59e0b"></span>
+            <span class="tt-name">Communication</span>
+            <span class="tt-h">22h</span>
+          </div>
+          <div class="tt-item">
+            <span class="tt-dot" style="background:#ef4444"></span>
+            <span class="tt-name">Gestion projet</span>
+            <span class="tt-h">6h</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="teaser-cta reveal rd2">
+        <a href="activities.html" class="btn-primary">
+          Voir toutes les activités avec preuves
+          <i class="fa-solid fa-arrow-right" style="font-size:.8em"></i>
+        </a>
+        <p class="teaser-note">
+          <i class="fa-solid fa-images"></i> Photos &amp; vidéos accessibles directement
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CTA ───────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <p class="cta-label"><span></span> Disponible 2025</p>
+        <h2 class="cta-title">Travaillons<br><em>ensemble.</em></h2>
+        <p class="cta-sub">Ouvert aux opportunités de stage et d'emploi dans le domaine Network &amp; Security.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn-primary btn-lg">Me contacter</a>
+          <a href="CV-Zebiri-Saad.pdf" download class="btn-ghost btn-lg">Télécharger CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
+      <p class="footer-copy">&copy; Saad Zebiri · Network &amp; Security · Bruxelles 2025</p>
+      <div class="footer-socials">
+        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
