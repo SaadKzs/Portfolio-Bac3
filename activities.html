@@ -4,134 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activités EPHEC — Saad Zebiri · 60h Portfolio</title>
-  <meta name="description" content="60 heures d'activités obligatoires EPHEC documentées — formations, hackathons, conférences et visites avec preuves photos et vidéos.">
+  <meta name="description" content="42 heures d'activités obligatoires EPHEC documentées — hackathon Green IT, conférences, visites et formations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/activities.css">
 </head>
 <body>
 
-  <!-- ─── LIGHTBOX ─────────────────────────────────────────────── -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
     <button class="lb-close" id="lb-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
     <img class="lb-img" id="lb-img" src="" alt="">
     <p class="lb-caption" id="lb-caption"></p>
   </div>
 
-  <!-- ─── NAVIGATION ───────────────────────────────────────────── -->
-  <header class="nav-wrap" id="nav-wrap">
-    <nav class="nav" id="nav" aria-label="Navigation principale">
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <div class="nav-wrap" id="nav-wrap">
+    <nav class="nav">
       <a href="index.html" class="nav-logo">SZ<em>.</em></a>
-
-      <ul class="nav-links" role="list">
-        <li><a href="index.html#intro"       class="nl">Accueil</a></li>
-        <li><a href="index.html#about"       class="nl">À propos</a></li>
-        <li><a href="index.html#projects"    class="nl">Projets</a></li>
-        <li><a href="index.html#skills"      class="nl">Compétences</a></li>
-        <li><a href="index.html#experience"  class="nl">Expérience</a></li>
-        <li><a href="activities.html"        class="nl active">Activités</a></li>
-      </ul>
-
+      <div class="nav-links">
+        <a href="index.html"            class="nl">Accueil</a>
+        <a href="index.html#about"      class="nl">À propos</a>
+        <a href="index.html#projects"   class="nl">Projets</a>
+        <a href="index.html#skills"     class="nl">Compétences</a>
+        <a href="activities.html"       class="nl active">Activités</a>
+      </div>
       <div class="nav-end">
         <div class="nav-socials">
           <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
-        <a href="contact.html" class="btn-contact">Contact</a>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-          <span></span><span></span>
-        </button>
+        <a href="contact.html" class="btn-nav">Contact</a>
       </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
-  </header>
-
-  <!-- Mobile menu -->
-  <div class="mob-menu" id="mob-menu" aria-hidden="true">
-    <a href="index.html"            class="mm-link"><span>—</span>Accueil</a>
-    <a href="index.html#about"      class="mm-link"><span>02</span>À propos</a>
-    <a href="index.html#projects"   class="mm-link"><span>03</span>Projets</a>
-    <a href="index.html#skills"     class="mm-link"><span>04</span>Compétences</a>
-    <a href="index.html#experience" class="mm-link"><span>05</span>Expérience</a>
-    <a href="activities.html"       class="mm-link active"><span>06</span>Activités EPHEC</a>
-    <div class="mm-sep"></div>
-    <a href="contact.html" class="mm-link"><span>—</span>Contact</a>
   </div>
-  <div class="mob-overlay" id="mob-overlay"></div>
 
-  <!-- ─── PAGE HERO ────────────────────────────────────────────── -->
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="index.html"          class="mm-link"><span>—</span>Accueil</a>
+    <a href="index.html#about"    class="mm-link"><span>01</span>À propos</a>
+    <a href="index.html#projects" class="mm-link"><span>02</span>Projets</a>
+    <a href="index.html#skills"   class="mm-link"><span>03</span>Compétences</a>
+    <a href="activities.html"     class="mm-link active"><span>05</span>Activités EPHEC</a>
+    <a href="contact.html"        class="mm-link"><span>→</span>Contact</a>
+  </div>
+
+  <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
   <section class="acts-hero">
-    <div class="hero-orbs" aria-hidden="true">
-      <div class="hero-orb ho-1" style="background:rgba(75,143,255,0.1)"></div>
-      <div class="hero-orb ho-2" style="background:rgba(16,185,129,0.06)"></div>
-    </div>
     <div class="container">
       <div class="acts-hero-grid">
 
         <div class="reveal">
           <p class="acts-eyebrow">EPHEC · Bachelier TI · 2024–2025</p>
-          <h1 class="acts-title">60 heures<br><em>d'activités</em><br>obligatoires</h1>
+          <h1 class="acts-title">
+            60 heures<br><em>d'activités</em><br>obligatoires
+          </h1>
           <p class="acts-subtitle">
-            Formations, hackathons, conférences et visites d'entreprise
+            Hackathon Green IT, conférences, visites d'entreprise et formations
             documentées avec preuves photos et vidéos — conformément aux
             exigences EPHEC du cursus Réseaux &amp; Sécurité.
           </p>
           <div class="acts-quick-stats">
             <div class="qs-item">
-              <span class="qs-val">8</span>
+              <span class="qs-val">7</span>
               <span class="qs-label">Activités</span>
             </div>
             <span class="qs-sep"></span>
             <div class="qs-item">
-              <span class="qs-val">60h</span>
-              <span class="qs-label">Heures réelles</span>
+              <span class="qs-val">42h</span>
+              <span class="qs-label">Comptabilisées</span>
             </div>
             <span class="qs-sep"></span>
             <div class="qs-item">
-              <span class="qs-val">6</span>
-              <span class="qs-label">Thèmes</span>
+              <span class="qs-val" style="color:#F87171">18h</span>
+              <span class="qs-label">Restantes</span>
             </div>
             <span class="qs-sep"></span>
             <div class="qs-item">
               <span class="qs-val">5</span>
-              <span class="qs-label">Types</span>
+              <span class="qs-label">Rubriques</span>
             </div>
           </div>
         </div>
 
         <div class="ring-container reveal rd1">
           <div class="ring-wrap">
-            <svg class="ring-svg" viewBox="0 0 200 200" aria-label="Progression 60h">
-              <circle class="ring-bg" cx="100" cy="100" r="85"/>
-              <circle class="ring-fill" id="ring-fill" cx="100" cy="100" r="85"/>
+            <svg class="ring-svg" viewBox="0 0 200 200" aria-label="Progression 42h / 60h">
+              <circle class="ring-bg"   cx="100" cy="100" r="85"/>
+              <circle id="ring-fill" class="ring-fill" cx="100" cy="100" r="85"/>
             </svg>
-            <div class="ring-inner" aria-hidden="true">
-              <span class="ring-num">60</span>
+            <div class="ring-inner">
+              <span class="ring-num">42</span>
               <span class="ring-denom">/ 60h</span>
             </div>
           </div>
           <div class="ring-legend">
             <div class="rl-row">
-              <span class="rl-left">
-                <span class="rl-dot" style="background:var(--ac)"></span>
-                Informatique
-              </span>
-              <span class="rl-val">50h max</span>
+              <span class="rl-left"><span class="rl-dot" style="background:var(--ac)"></span>Comptabilisées</span>
+              <span class="rl-val">42h</span>
             </div>
             <div class="rl-row">
-              <span class="rl-left">
-                <span class="rl-dot" style="background:#f59e0b"></span>
-                Soft Skills
-              </span>
-              <span class="rl-val">10h max</span>
+              <span class="rl-left"><span class="rl-dot" style="background:#F87171"></span>Restantes</span>
+              <span class="rl-val" style="color:#F87171">18h</span>
             </div>
             <div class="rl-row">
-              <span class="rl-left">
-                <span class="rl-dot" style="background:rgba(255,255,255,0.25)"></span>
-                Par thème
-              </span>
+              <span class="rl-left"><span class="rl-dot" style="background:#FCD34D"></span>Soft Skills</span>
               <span class="rl-val">10h max</span>
             </div>
           </div>
@@ -141,259 +124,194 @@
     </div>
   </section>
 
-  <!-- ─── THEME TRACKER ────────────────────────────────────────── -->
+  <!-- ══ THEME TRACKER ══════════════════════════════════════ -->
   <section class="theme-section">
     <div class="container">
       <div class="reveal">
         <p class="sec-num">Répartition par thème</p>
         <h2 class="sec-title">Tracker <em>EPHEC</em></h2>
-        <p class="sec-sub">Suivi des heures par thème — chaque thème est limité à 10h comptabilisées.</p>
+        <p class="sec-sub-sm">Suivi des heures par thème — chaque thème est limité à 10h comptabilisées.</p>
       </div>
 
       <div class="theme-grid reveal rd1">
 
-        <!-- TECH THEMES -->
         <div>
-          <p class="theme-col-title">
-            Informatique
-            <span class="tct-max">max 50h</span>
-          </p>
+          <p class="theme-col-title">Informatique <span class="tct-max">max 50h</span></p>
 
-          <!-- Réseaux -->
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
-                <span class="tbr-dot" style="background:var(--c-network)"></span>
-                <span class="tbr-name">Réseaux</span>
-                <span class="tbr-type">· Cisco · VLANs · Infrastructure</span>
+                <span class="tbr-dot" style="background:var(--c-greenIT)"></span>
+                <span class="tbr-name">Green IT</span>
+                <span class="tbr-type">· Hackathon · IoT · Réseaux</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">12h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">10h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
-              <div class="tbr-fill" data-pct="100" style="background:var(--c-network)"></div>
-              <div class="tbr-cap-line" style="left:83.3%"></div>
+              <div class="tbr-fill" data-pct="100" style="background:var(--c-greenIT)"></div>
             </div>
           </div>
 
-          <!-- Cybersécurité -->
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
                 <span class="tbr-dot" style="background:var(--c-security)"></span>
                 <span class="tbr-name">Cybersécurité</span>
-                <span class="tbr-type">· Pentest · SIEM · OT</span>
+                <span class="tbr-type">· SIEM · Corporate IT · OT</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">4h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">4h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
               <div class="tbr-fill" data-pct="40" style="background:var(--c-security)"></div>
             </div>
           </div>
 
-          <!-- Web / MERN -->
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
-                <span class="tbr-dot" style="background:var(--c-web)"></span>
-                <span class="tbr-name">Web / MERN</span>
-                <span class="tbr-type">· React · Node.js · MongoDB</span>
+                <span class="tbr-dot" style="background:var(--c-network)"></span>
+                <span class="tbr-name">Réseaux</span>
+                <span class="tbr-type">· Hardware · Infrastructure</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">10h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">6h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
-              <div class="tbr-fill" data-pct="100" style="background:var(--c-web)"></div>
+              <div class="tbr-fill" data-pct="60" style="background:var(--c-network)"></div>
             </div>
           </div>
 
-          <!-- IoT -->
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
                 <span class="tbr-dot" style="background:var(--c-iot)"></span>
                 <span class="tbr-name">IoT</span>
-                <span class="tbr-type">· ESP32 · Électronique · Hardware</span>
+                <span class="tbr-type">· Soudure · Câblage · Electronics</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">18h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">2h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
-              <div class="tbr-fill" data-pct="100" style="background:var(--c-iot)"></div>
-              <div class="tbr-cap-line" style="left:55.5%"></div>
+              <div class="tbr-fill" data-pct="20" style="background:var(--c-iot)"></div>
             </div>
           </div>
-        </div>
 
-        <!-- SOFT SKILLS + RULES -->
-        <div>
-          <p class="theme-col-title">
-            Soft Skills
-            <span class="tct-max">max 10h total</span>
-          </p>
-
-          <!-- Communication -->
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
                 <span class="tbr-dot" style="background:var(--c-comm)"></span>
                 <span class="tbr-name">Communication</span>
-                <span class="tbr-type">· Conférences · Présentation</span>
+                <span class="tbr-type">· Conférences · ERP · Présentation</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">22h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">12h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
               <div class="tbr-fill" data-pct="100" style="background:var(--c-comm)"></div>
-              <div class="tbr-cap-line" style="left:45.4%"></div>
+              <div class="tbr-cap-line" style="left:83.3%"></div>
             </div>
           </div>
+        </div>
 
-          <!-- Gestion de projet -->
+        <div>
+          <p class="theme-col-title">Soft Skills <span class="tct-max">max 10h total</span></p>
+
           <div class="theme-bar-row">
             <div class="tbr-head">
               <div class="tbr-left">
-                <span class="tbr-dot" style="background:var(--c-project)"></span>
-                <span class="tbr-name">Gestion de projet</span>
-                <span class="tbr-type">· ERP · Organisation</span>
+                <span class="tbr-dot" style="background:#EC4899"></span>
+                <span class="tbr-name">Soft Skills</span>
+                <span class="tbr-type">· Piano · Discipline · Mémoire</span>
               </div>
-              <div class="tbr-right">
-                <span class="tbr-hours">6h</span>
-                <span class="tbr-max">/ 10h max</span>
-              </div>
+              <div class="tbr-right"><span class="tbr-hours">10h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
             <div class="tbr-track">
-              <div class="tbr-fill" data-pct="60" style="background:var(--c-project)"></div>
+              <div class="tbr-fill" data-pct="100" style="background:#EC4899"></div>
             </div>
           </div>
 
-          <!-- Rules accordion -->
+          <div class="hours-summary">
+            <div class="hs-row"><span class="hs-label">Heures réelles</span><span class="hs-val">44h</span></div>
+            <div class="hs-row"><span class="hs-label">Heures comptabilisées</span><span class="hs-val">42h <span class="hs-note">(2h comm. non-cpt.)</span></span></div>
+            <div class="hs-row hs-row--alert"><span class="hs-label">Restant à réaliser</span><span class="hs-val">18h</span></div>
+          </div>
+
           <div class="rules-accordion">
             <button class="rules-trigger" id="rules-trigger" aria-expanded="false">
-              <span><i class="fa-solid fa-circle-info" style="color:var(--ac);margin-right:.5rem"></i>Règles EPHEC — Limites de comptabilisation</span>
+              <span><i class="fa-solid fa-circle-info" style="color:var(--ac);margin-right:.5rem"></i>Règles EPHEC — Limites</span>
               <i class="fa-solid fa-chevron-down"></i>
             </button>
-            <div class="rules-content" id="rules-content" role="region">
+            <div class="rules-content" id="rules-content">
               <div class="rule-card">
                 <p class="rule-card-title"><i class="fa-solid fa-layer-group"></i>Global</p>
-                <p class="rule-card-body">
-                  Total requis : <span>60h</span><br>
-                  Soft Skills : max <span>10h</span><br>
-                  Informatique : max <span>50h</span><br>
-                  Thèmes différents : min <span>6</span>
-                </p>
+                <p class="rule-card-body">Total requis : <span>60h</span><br>Soft Skills : max <span>10h</span><br>Informatique : max <span>50h</span><br>Thèmes différents : min <span>6</span></p>
               </div>
               <div class="rule-card">
                 <p class="rule-card-title"><i class="fa-solid fa-ruler"></i>Par thème</p>
-                <p class="rule-card-body">
-                  Max <span>10h</span> par thème<br>
-                  Heures excédentaires<br>
-                  non comptabilisées<br>
-                  <span>6 thèmes</span> min obligatoires
-                </p>
+                <p class="rule-card-body">Max <span>10h</span> par thème<br>Heures excédentaires non comptabilisées<br><span>6 thèmes</span> min obligatoires</p>
               </div>
               <div class="rule-card">
                 <p class="rule-card-title"><i class="fa-solid fa-list-check"></i>Par type</p>
-                <p class="rule-card-body">
-                  Hackathon : max <span>3×10h</span><br>
-                  Formation ligne : max <span>2×10h</span><br>
-                  Formation prés. : max <span>3×10h</span><br>
-                  Conf. / Visite / Salon / Job : max <span>1×10h</span>
-                </p>
+                <p class="rule-card-body">Hackathon : max <span>3×10h</span><br>Formation ligne : max <span>2×10h</span><br>Formation prés. : max <span>3×10h</span><br>Conf./Visite : max <span>1×10h</span></p>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ─── ACTIVITIES LIST ───────────────────────────────────────── -->
+  <!-- ══ ACTIVITIES LIST ════════════════════════════════════ -->
   <section class="activities-section">
     <div class="container">
       <div class="reveal">
-        <p class="sec-num">08 activités documentées</p>
+        <p class="sec-num">07 activités documentées</p>
         <h2 class="sec-title">Preuves &amp; <em>détails</em></h2>
-        <p class="sec-sub">Chaque activité est accompagnée de ses preuves — photos ou vidéos accessibles directement.</p>
+        <p class="sec-sub-sm">Chaque activité est accompagnée de ses preuves — photos ou vidéos accessibles directement.</p>
       </div>
 
       <!-- Filter bar -->
-      <div class="acts-filter-bar reveal rd1" role="group" aria-label="Filtres activités">
+      <div class="acts-filter-bar reveal rd1">
         <button class="afb-btn active" data-filter-type="all">Tous</button>
         <span class="afb-sep"></span>
-        <!-- Theme filters -->
-        <button class="afb-theme" data-filter-theme="network" style="--theme-dot-color:var(--c-network)">
-          <span class="afb-theme-dot" style="background:var(--c-network)"></span>
-          Réseaux
+        <button class="afb-btn" data-filter-type="hackathon">
+          <span class="afb-theme-dot" style="background:var(--c-greenIT)"></span>Green IT
         </button>
-        <button class="afb-theme" data-filter-theme="security" style="">
-          <span class="afb-theme-dot" style="background:var(--c-security)"></span>
-          Sécurité
+        <button class="afb-btn" data-filter-type="visite">
+          <span class="afb-theme-dot" style="background:var(--c-security)"></span>Visite
         </button>
-        <button class="afb-theme" data-filter-theme="web">
-          <span class="afb-theme-dot" style="background:var(--c-web)"></span>
-          Web
+        <button class="afb-btn" data-filter-type="conference">
+          <span class="afb-theme-dot" style="background:var(--c-comm)"></span>Conférence
         </button>
-        <button class="afb-theme" data-filter-theme="iot">
-          <span class="afb-theme-dot" style="background:var(--c-iot)"></span>
-          IoT
+        <button class="afb-btn" data-filter-type="formation">
+          <span class="afb-theme-dot" style="background:var(--c-network)"></span>Formation
         </button>
-        <button class="afb-theme" data-filter-theme="comm">
-          <span class="afb-theme-dot" style="background:var(--c-comm)"></span>
-          Communication
+        <button class="afb-btn" data-filter-type="softskill">
+          <span class="afb-theme-dot" style="background:#EC4899"></span>Soft Skill
         </button>
-        <button class="afb-theme" data-filter-theme="project">
-          <span class="afb-theme-dot" style="background:var(--c-project)"></span>
-          Projet
-        </button>
-        <span class="afb-sep"></span>
-        <!-- Type filters -->
-        <button class="afb-btn" data-filter-type="hackathon">Hackathon</button>
-        <button class="afb-btn" data-filter-type="conference">Conférence</button>
-        <button class="afb-btn" data-filter-type="visite">Visite</button>
-        <button class="afb-btn" data-filter-type="formation">Formation</button>
       </div>
 
-      <!-- Activity items -->
       <div class="acts-items">
 
-        <!-- 01 · HACKATHON EPHEC ─────────────────────────────── -->
-        <article class="act-item reveal" data-themes="iot network" data-type="hackathon"
-                 style="--ai-theme-color:var(--c-iot)">
+        <!-- ══ GREEN IT ══════════════════════════════════════ -->
+        <div class="rubrique-header" style="--ai-theme-color:var(--c-greenIT)">
+          <i class="fa-solid fa-leaf" style="color:var(--c-greenIT)"></i>
+          <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Green IT</span></div>
+          <span class="rubrique-hours">10h</span>
+        </div>
+
+        <article class="act-item reveal" data-type="hackathon" style="--ai-theme-color:var(--c-greenIT)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
               <div class="ai-meta">
                 <span class="ai-type-pill"><i class="fa-solid fa-code"></i> Hackathon</span>
+                <span class="ai-theme-pill t-greenIT">Green IT</span>
                 <span class="ai-theme-pill t-iot">IoT</span>
-                <span class="ai-theme-pill t-network">Réseaux</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">10h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
+                <div class="ai-hours-badge"><span class="ai-h-real">10h</span><span class="ai-h-sub">réelles</span></div>
               </div>
-              <h3 class="ai-title">Hackathon EPHEC — Boite-alerte</h3>
+              <h3 class="ai-title">Hackathon EPHEC</h3>
               <p class="ai-date">2024 · EPHEC · Louvain-la-Neuve</p>
-              <p class="ai-desc">
-                Conception et réalisation d'une boîte aux lettres connectée (ESP32)
-                détectant le courrier en temps réel avec notifications push.
-                Dashboard React/Node.js/MongoDB pour l'historique et la gestion des alertes.
-              </p>
-              <div class="ai-tags">
-                <span>ESP32</span><span>Node.js</span><span>React</span><span>MongoDB</span><span>IoT</span>
-              </div>
+              <p class="ai-desc">Conception et réalisation d'un projet IoT en 24h dans le cadre du hackathon EPHEC. Développement d'une solution connectée "Boite-alerte" avec ESP32, dashboard React/Node.js/MongoDB pour la gestion et le monitoring en temps réel.</p>
+              <div class="ai-tags"><span>ESP32</span><span>Node.js</span><span>React</span><span>MongoDB</span><span>IoT</span></div>
               <div class="ai-award"><i class="fa-solid fa-trophy"></i> Projet primé par le jury</div>
             </div>
             <div class="ai-right">
@@ -406,30 +324,26 @@
           </div>
         </article>
 
-        <!-- 02 · VISITE AXA ──────────────────────────────────── -->
-        <article class="act-item reveal rd1" data-themes="security" data-type="visite"
-                 style="--ai-theme-color:var(--c-security)">
+        <!-- ══ VISITE ENTREPRISE ════════════════════════════ -->
+        <div class="rubrique-header" style="--ai-theme-color:var(--c-security)">
+          <i class="fa-solid fa-building" style="color:var(--c-security)"></i>
+          <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Visite Entreprise</span></div>
+          <span class="rubrique-hours">4h</span>
+        </div>
+
+        <article class="act-item reveal" data-type="visite" style="--ai-theme-color:var(--c-security)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
               <div class="ai-meta">
                 <span class="ai-type-pill"><i class="fa-solid fa-building"></i> Visite entreprise</span>
                 <span class="ai-theme-pill t-security">Cybersécurité</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">4h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
+                <div class="ai-hours-badge"><span class="ai-h-real">4h</span><span class="ai-h-sub">réelles</span></div>
               </div>
               <h3 class="ai-title">AXA Belgium — Département IT</h3>
               <p class="ai-date">2024 · AXA Belgium · Bruxelles</p>
-              <p class="ai-desc">
-                Immersion dans le département IT &amp; Cybersécurité d'AXA Belgium.
-                Découverte de l'architecture réseau corporate, des outils SIEM utilisés
-                et des procédures de réponse aux incidents en environnement assurance.
-              </p>
-              <div class="ai-tags">
-                <span>SIEM</span><span>Incident Response</span><span>Corporate IT</span><span>Architecture réseau</span>
-              </div>
+              <p class="ai-desc">Immersion dans le département IT &amp; Cybersécurité d'AXA Belgium. Découverte de l'architecture réseau corporate, des outils SIEM utilisés et des procédures de réponse aux incidents en environnement assurance.</p>
+              <div class="ai-tags"><span>SIEM</span><span>Incident Response</span><span>Corporate IT</span><span>Architecture réseau</span></div>
             </div>
             <div class="ai-right">
               <p class="ai-proof-title"><i class="fa-solid fa-images"></i> Preuves photos (3)</p>
@@ -451,9 +365,14 @@
           </div>
         </article>
 
-        <!-- 03 · CONFÉRENCE ODOO ─────────────────────────────── -->
-        <article class="act-item reveal" data-themes="comm project" data-type="conference"
-                 style="--ai-theme-color:var(--c-comm)">
+        <!-- ══ CONFÉRENCES ══════════════════════════════════ -->
+        <div class="rubrique-header" style="--ai-theme-color:var(--c-comm)">
+          <i class="fa-solid fa-microphone" style="color:var(--c-comm)"></i>
+          <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Conférences</span></div>
+          <span class="rubrique-hours">12h</span>
+        </div>
+
+        <article class="act-item reveal" data-type="conference" style="--ai-theme-color:var(--c-comm)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
@@ -461,21 +380,12 @@
                 <span class="ai-type-pill"><i class="fa-solid fa-microphone"></i> Conférence</span>
                 <span class="ai-theme-pill t-comm">Communication</span>
                 <span class="ai-theme-pill t-project">Gestion projet</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">6h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
+                <div class="ai-hours-badge"><span class="ai-h-real">6h</span><span class="ai-h-sub">réelles</span></div>
               </div>
               <h3 class="ai-title">Conférence Odoo ERP</h3>
               <p class="ai-date">2024 · Odoo · Belgique</p>
-              <p class="ai-desc">
-                Présentation des modules métier Odoo — CRM, comptabilité et gestion de projet.
-                Échanges avec des experts en transformation digitale et intégrations ERP
-                pour PME et grandes entreprises.
-              </p>
-              <div class="ai-tags">
-                <span>ERP</span><span>CRM</span><span>Odoo</span><span>Digital Transformation</span>
-              </div>
+              <p class="ai-desc">Présentation des modules métier Odoo — CRM, comptabilité et gestion de projet. Échanges avec des experts en transformation digitale et intégrations ERP pour PME et grandes entreprises.</p>
+              <div class="ai-tags"><span>ERP</span><span>CRM</span><span>Odoo</span><span>Digital Transformation</span></div>
             </div>
             <div class="ai-right">
               <p class="ai-proof-title"><i class="fa-solid fa-images"></i> Preuves photos (2)</p>
@@ -493,31 +403,19 @@
           </div>
         </article>
 
-        <!-- 04 · CONFÉRENCE NAMUR ───────────────────────────── -->
-        <article class="act-item reveal rd1" data-themes="comm" data-type="conference"
-                 style="--ai-theme-color:var(--c-comm)">
+        <article class="act-item reveal rd1" data-type="conference" style="--ai-theme-color:var(--c-comm)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
               <div class="ai-meta">
                 <span class="ai-type-pill"><i class="fa-solid fa-microphone"></i> Conférence</span>
                 <span class="ai-theme-pill t-comm">Communication</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">6h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
+                <div class="ai-hours-badge"><span class="ai-h-real">6h</span><span class="ai-h-sub">réelles</span></div>
               </div>
               <h3 class="ai-title">Conférence Namur — Technologies IT</h3>
               <p class="ai-date">2024 · Namur · Belgique</p>
-              <p class="ai-desc">
-                Échanges avec des professionnels IT sur les tendances cybersécurité,
-                l'évolution des métiers du digital et les opportunités de carrière
-                dans le secteur technologique belge.
-              </p>
-              <div class="ai-tags">
-                <span>Networking</span><span>Cybersécurité</span><span>Carrière IT</span>
-              </div>
-              <div class="ai-warning"><i class="fa-solid fa-triangle-exclamation"></i> Vérifier: max 1 conférence EPHEC</div>
+              <p class="ai-desc">Échanges avec des professionnels IT sur les tendances cybersécurité, l'évolution des métiers du digital et les opportunités de carrière dans le secteur technologique belge.</p>
+              <div class="ai-tags"><span>Networking</span><span>Cybersécurité</span><span>Carrière IT</span></div>
             </div>
             <div class="ai-right">
               <p class="ai-proof-title"><i class="fa-solid fa-image"></i> Preuve photo (1)</p>
@@ -531,36 +429,36 @@
           </div>
         </article>
 
-        <!-- 05 · FORMATION MONTAGE PC ───────────────────────── -->
-        <article class="act-item reveal" data-themes="network" data-type="formation"
-                 style="--ai-theme-color:var(--c-network)">
+        <!-- ══ FORMATIONS ════════════════════════════════════ -->
+        <div class="rubrique-header" style="--ai-theme-color:var(--c-network)">
+          <i class="fa-solid fa-graduation-cap" style="color:var(--c-network)"></i>
+          <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Formations</span></div>
+          <span class="rubrique-hours">8h</span>
+        </div>
+
+        <article class="act-item reveal" data-type="formation" style="--ai-theme-color:var(--c-network)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
               <div class="ai-meta">
                 <span class="ai-type-pill"><i class="fa-solid fa-graduation-cap"></i> Formation présentiel</span>
                 <span class="ai-theme-pill t-network">Réseaux</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">6h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
+                <div class="ai-hours-badge"><span class="ai-h-real">6h</span><span class="ai-h-sub">réelles</span></div>
               </div>
               <h3 class="ai-title">Formation Montage PC &amp; Matériel</h3>
               <p class="ai-date">2024 · EPHEC · Laboratoire informatique</p>
-              <p class="ai-desc">
-                Assemblage complet d'un PC à partir de composants, configuration du BIOS/UEFI,
-                diagnostic matériel et logiciel, maintenance Windows/Linux en laboratoire EPHEC.
-                Introduction à l'infrastructure physique des réseaux.
-              </p>
-              <div class="ai-tags">
-                <span>Hardware</span><span>BIOS</span><span>Diagnostic</span><span>Windows</span><span>Linux</span>
-              </div>
+              <p class="ai-desc">Assemblage complet d'un PC à partir de composants, configuration du BIOS/UEFI, diagnostic matériel et logiciel, maintenance Windows/Linux en laboratoire EPHEC.</p>
+              <div class="ai-tags"><span>Hardware</span><span>BIOS</span><span>Diagnostic</span><span>Windows</span><span>Linux</span></div>
             </div>
             <div class="ai-right">
-              <p class="ai-proof-title"><i class="fa-solid fa-image"></i> Preuve photo (1)</p>
-              <div class="proof-gallery g1">
+              <p class="ai-proof-title"><i class="fa-solid fa-images"></i> Preuves photos (2)</p>
+              <div class="proof-gallery g2">
                 <div class="pg-item" data-src="img/MontagePC.jpeg" data-caption="Formation Montage PC — Laboratoire EPHEC">
                   <img src="img/MontagePC.jpeg" alt="Formation Montage PC EPHEC" loading="lazy">
+                  <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Agrandir</span></div>
+                </div>
+                <div class="pg-item" data-src="img/TourPc.png" data-caption="Tour PC assemblée — Configuration finale">
+                  <img src="img/TourPc.png" alt="Tour PC assemblée" loading="lazy">
                   <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Agrandir</span></div>
                 </div>
               </div>
@@ -568,136 +466,88 @@
           </div>
         </article>
 
-        <!-- 06 · PIANO / SOFT SKILL ─────────────────────────── -->
-        <article class="act-item reveal rd1" data-themes="comm" data-type="formation"
-                 style="--ai-theme-color:var(--c-comm)">
+        <article class="act-item reveal rd1" data-type="formation" style="--ai-theme-color:var(--c-iot)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">
               <div class="ai-meta">
-                <span class="ai-type-pill"><i class="fa-solid fa-graduation-cap"></i> Formation soft skill</span>
-                <span class="ai-theme-pill t-comm">Communication</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">10h</span>
-                  <span class="ai-h-sub">réelles</span>
+                <span class="ai-type-pill"><i class="fa-solid fa-plug"></i> Formation pratique</span>
+                <span class="ai-theme-pill t-iot">IoT</span>
+                <div class="ai-hours-badge"><span class="ai-h-real">2h</span><span class="ai-h-sub">réelles</span></div>
+              </div>
+              <h3 class="ai-title">Soudure Câble Électrique</h3>
+              <p class="ai-date">2024 · Formation pratique</p>
+              <p class="ai-desc">Apprentissage et pratique de la soudure de câbles électriques — techniques de soudage, préparation des fils, isolation et vérification des connexions. Compétence essentielle pour les projets IoT et électronique embarquée.</p>
+              <div class="ai-tags"><span>Soudure</span><span>Câblage</span><span>Électronique</span><span>IoT</span></div>
+            </div>
+            <div class="ai-right">
+              <p class="ai-proof-title"><i class="fa-solid fa-image"></i> Preuve photo (1)</p>
+              <div class="proof-gallery g1">
+                <div class="pg-item" data-src="img/SoudageCableElectique.jpeg" data-caption="Soudure de câble électrique — Travaux pratiques">
+                  <img src="img/SoudageCableElectique.jpeg" alt="Soudure câble électrique" loading="lazy">
+                  <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Agrandir</span></div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ══ SOFT SKILLS ════════════════════════════════════ -->
+        <div class="rubrique-header" style="--ai-theme-color:#EC4899">
+          <i class="fa-solid fa-music" style="color:#EC4899"></i>
+          <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Soft Skills</span></div>
+          <span class="rubrique-hours">10h</span>
+        </div>
+
+        <article class="act-item reveal" data-type="softskill" style="--ai-theme-color:#EC4899">
+          <div class="ai-stripe"></div>
+          <div class="ai-body">
+            <div class="ai-left">
+              <div class="ai-meta">
+                <span class="ai-type-pill"><i class="fa-solid fa-music"></i> Formation soft skill</span>
+                <span class="ai-theme-pill t-softskill">Soft Skill</span>
+                <div class="ai-hours-badge"><span class="ai-h-real">10h</span><span class="ai-h-sub">réelles</span></div>
               </div>
               <h3 class="ai-title">Apprentissage du Piano</h3>
               <p class="ai-date">2024 · Pratique personnelle hebdomadaire</p>
-              <p class="ai-desc">
-                Pratique régulière du piano — lecture de partitions, coordination main gauche
-                et main droite, mémorisation mélodique et développement de la discipline.
-                Compétences transversales développées : concentration, mémoire, créativité.
-              </p>
-              <div class="ai-tags">
-                <span>Discipline</span><span>Mémoire</span><span>Coordination</span><span>Créativité</span>
-              </div>
+              <p class="ai-desc">Pratique régulière du piano — lecture de partitions, coordination main gauche et main droite, mémorisation mélodique et développement de la discipline. Compétences transversales développées : concentration, mémoire, créativité.</p>
+              <div class="ai-tags"><span>Discipline</span><span>Mémoire</span><span>Coordination</span><span>Créativité</span></div>
             </div>
             <div class="ai-right">
               <p class="ai-proof-title"><i class="fa-solid fa-music"></i> Activité artistique</p>
               <div class="proof-empty">
                 <i class="fa-solid fa-music"></i>
                 <span>Soft skill — discipline artistique</span>
-                <span style="opacity:.5;font-size:.65rem">Pratique hebdomadaire documentée</span>
+                <span style="color:var(--text-3);font-size:.7rem">Pratique hebdomadaire documentée</span>
               </div>
             </div>
           </div>
         </article>
 
-        <!-- 07 · ÉLECTRICITÉ ────────────────────────────────── -->
-        <article class="act-item reveal" data-themes="iot" data-type="formation"
-                 style="--ai-theme-color:var(--c-iot)">
-          <div class="ai-stripe"></div>
-          <div class="ai-body">
-            <div class="ai-left">
-              <div class="ai-meta">
-                <span class="ai-type-pill"><i class="fa-solid fa-bolt"></i> Formation présentiel</span>
-                <span class="ai-theme-pill t-iot">IoT</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">8h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
-              </div>
-              <h3 class="ai-title">Formation Électricité &amp; Câblage</h3>
-              <p class="ai-date">2024 · Formation pratique</p>
-              <p class="ai-desc">
-                Formation pratique en électricité — notions de base en câblage,
-                circuits électroniques et intégration hardware pour les objets connectés (IoT).
-                Compréhension des fondamentaux nécessaires aux projets ESP32 et Arduino.
-              </p>
-              <div class="ai-tags">
-                <span>Électricité</span><span>Câblage</span><span>ESP32</span><span>Circuits</span><span>IoT</span>
-              </div>
-            </div>
-            <div class="ai-right">
-              <p class="ai-proof-title"><i class="fa-solid fa-video"></i> Preuve vidéo</p>
-              <video class="proof-video" controls preload="metadata" aria-label="Vidéo formation électricité">
-                <source src="Video/469F1319-5F8E-4723-B2FB-0046FA1B0FDD.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture vidéo.
-              </video>
-            </div>
-          </div>
-        </article>
-
-        <!-- 08 · DÉVELOPPEMENT WEB ──────────────────────────── -->
-        <article class="act-item reveal rd1" data-themes="web" data-type="hackathon"
-                 style="--ai-theme-color:var(--c-web)">
-          <div class="ai-stripe"></div>
-          <div class="ai-body">
-            <div class="ai-left">
-              <div class="ai-meta">
-                <span class="ai-type-pill"><i class="fa-solid fa-code"></i> Hackathon / Dev</span>
-                <span class="ai-theme-pill t-web">Web / MERN</span>
-                <div class="ai-hours-badge">
-                  <span class="ai-h-real">10h</span>
-                  <span class="ai-h-sub">réelles</span>
-                </div>
-              </div>
-              <h3 class="ai-title">Développement Web — Portfolio STELLAR</h3>
-              <p class="ai-date">2025 · Projet personnel · Full-Stack</p>
-              <p class="ai-desc">
-                Conception et développement du portfolio personnel STELLAR —
-                HTML5, CSS3, JavaScript vanilla avec animations GSAP, canvas réseau Three.js,
-                design glassmorphism et système responsive multi-pages.
-              </p>
-              <div class="ai-tags">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GSAP</span><span>Canvas</span>
-              </div>
-            </div>
-            <div class="ai-right">
-              <p class="ai-proof-title"><i class="fa-solid fa-video"></i> Preuve vidéo</p>
-              <video class="proof-video" controls preload="metadata" aria-label="Vidéo développement web">
-                <source src="Video/534CD886-BC1E-46A2-827C-7F105CD4AEFB.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture vidéo.
-              </video>
-            </div>
-          </div>
-        </article>
-
-      </div><!-- /acts-items -->
-    </div>
-  </section>
-
-  <!-- ─── CTA ──────────────────────────────────────────────────── -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-inner reveal">
-        <p class="cta-label"><span></span> Disponible 2025</p>
-        <h2 class="cta-title">Travaillons<br><em>ensemble.</em></h2>
-        <p class="cta-sub">Ouvert aux opportunités de stage et d'emploi dans le domaine Network &amp; Security.</p>
-        <div class="cta-actions">
-          <a href="contact.html" class="btn-primary btn-lg">Me contacter</a>
-          <a href="CV-Zebiri-Saad.pdf" download class="btn-ghost btn-lg">Télécharger CV</a>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <!-- ══ CTA ════════════════════════════════════════════════ -->
+  <section class="acts-cta cta-section">
+    <div class="container" style="position:relative;z-index:2">
+      <div class="cta-label reveal"><span></span>Disponible 2025</div>
+      <h2 class="cta-title reveal">Travaillons<br><em>ensemble.</em></h2>
+      <p class="cta-sub reveal rd1">Ouvert aux opportunités de stage et d'emploi dans le domaine Network &amp; Security.</p>
+      <div class="cta-actions reveal rd2">
+        <a href="contact.html" class="btn btn-primary">Me contacter</a>
+        <a href="CV-Zebiri-Saad.pdf" download class="btn btn-outline">
+          <i class="fa-solid fa-download"></i> Télécharger CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
   <footer class="footer">
     <div class="container footer-inner">
       <a href="index.html" class="footer-logo">SZ<em>.</em></a>
-      <p class="footer-copy">&copy; Saad Zebiri · Network &amp; Security · Bruxelles 2025</p>
+      <p class="footer-copy">© Saad Zebiri · Network &amp; Security · Bruxelles 2025</p>
       <div class="footer-socials">
         <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -706,107 +556,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    /* ── ACTIVITIES PAGE SPECIFIC ── */
-
-    /* Ring animation */
-    function initRing() {
-      const ring = document.getElementById('ring-fill');
-      if (!ring) return;
-      // 60/60h = 100% → dashoffset = 0
-      // Circumference = 2π × 85 ≈ 534.07
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            ring.classList.add('animate');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      obs.observe(ring.closest('svg') || ring);
-    }
-
-    /* Theme bars */
-    function initThemeBars() {
-      const fills = document.querySelectorAll('.tbr-fill');
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (!e.isIntersecting) return;
-          const section = e.target;
-          section.querySelectorAll('.tbr-fill').forEach(fill => {
-            fill.style.width = (fill.dataset.pct || '0') + '%';
-          });
-          obs.unobserve(section);
-        });
-      }, { threshold: 0.2 });
-      const ts = document.querySelector('.theme-section');
-      if (ts) obs.observe(ts);
-    }
-
-    /* Rules accordion */
-    function initRulesAccordion() {
-      const trigger = document.getElementById('rules-trigger');
-      const content = document.getElementById('rules-content');
-      if (!trigger || !content) return;
-      trigger.addEventListener('click', () => {
-        const open = content.classList.toggle('open');
-        trigger.classList.toggle('open', open);
-        trigger.setAttribute('aria-expanded', open);
-      });
-    }
-
-    /* Activities filter */
-    function initActsFilter() {
-      const typeBtns  = document.querySelectorAll('.afb-btn');
-      const themeBtns = document.querySelectorAll('.afb-theme');
-      const items     = document.querySelectorAll('.act-item');
-
-      let activeType  = 'all';
-      let activeTheme = 'all';
-
-      function applyFilter() {
-        items.forEach(item => {
-          const themes = (item.dataset.themes || '').split(' ');
-          const type   = item.dataset.type || '';
-          const typeOk  = activeType  === 'all' || type === activeType;
-          const themeOk = activeTheme === 'all' || themes.includes(activeTheme);
-          item.style.display = (typeOk && themeOk) ? '' : 'none';
-        });
-      }
-
-      typeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          typeBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          activeType = btn.dataset.filterType || 'all';
-          applyFilter();
-        });
-      });
-
-      themeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const t = btn.dataset.filterTheme;
-          if (activeTheme === t) {
-            activeTheme = 'all';
-            btn.classList.remove('active');
-          } else {
-            themeBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            activeTheme = t;
-          }
-          applyFilter();
-        });
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initRing();
-      initThemeBars();
-      initRulesAccordion();
-      initActsFilter();
-    });
-  </script>
 </body>
 </html>

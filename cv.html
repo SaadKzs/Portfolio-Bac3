@@ -4,65 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV — Saad Zebiri</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <div class="curtain"><span class="curtain-text">CV</span></div>
-
-  <header class="mobile-bar">
-    <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-    <button class="sb-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-  </header>
-
-  <div class="sidebar-overlay"></div>
-
-  <div class="site-wrap">
-
-    <nav class="sidebar">
-      <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-      <div class="sb-divider"></div>
-      <div class="sb-profile">
-        <div class="sb-name">Saad Zebiri</div>
-        <div class="sb-role">Network &amp; Security</div>
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <div class="nav-wrap" id="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
+      <div class="nav-links">
+        <a href="index.html"          class="nl">Accueil</a>
+        <a href="index.html#projects" class="nl">Projets</a>
+        <a href="index.html#skills"   class="nl">Compétences</a>
+        <a href="activities.html"     class="nl">Activités</a>
+        <a href="contact.html"        class="nl">Contact</a>
       </div>
-      <ul class="sb-nav">
-        <li><a href="index.html"           class="sb-link"><span class="sb-num">←</span>Accueil</a></li>
-        <li><a href="index.html#projects"  class="sb-link"><span class="sb-num">03</span>Projets</a></li>
-        <li><a href="index.html#skills"    class="sb-link"><span class="sb-num">04</span>Compétences</a></li>
-        <li><a href="activities.html"      class="sb-link"><span class="sb-num">06</span>Activités</a></li>
-        <li><a href="contact.html"         class="sb-link"><span class="sb-num">—</span>Contact</a></li>
-      </ul>
-      <div class="sb-footer">
-        <div class="sb-social">
-          <a href="https://github.com/SaadKzs" target="_blank" class="sb-social-link"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="sb-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="mailto:saadzebiri65@gmail.com" class="sb-social-link"><i class="fa-solid fa-envelope"></i></a>
+      <div class="nav-end">
+        <div class="nav-socials">
+          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
-        <div class="sb-status"><span class="badge-dot"></span>Available 2025</div>
+        <a href="contact.html" class="btn-nav">Contact</a>
       </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+  </div>
 
-    <main class="main-panel">
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="index.html"          class="mm-link"><span>—</span>Accueil</a>
+    <a href="index.html#projects" class="mm-link"><span>02</span>Projets</a>
+    <a href="index.html#skills"   class="mm-link"><span>03</span>Compétences</a>
+    <a href="activities.html"     class="mm-link"><span>05</span>Activités</a>
+    <a href="contact.html"        class="mm-link"><span>→</span>Contact</a>
+  </div>
 
-      <div class="cv-top panel-pad">
-        <span class="s-label reveal">Fichier personnel · 2025</span>
-        <div class="cv-hrow">
-          <div>
-            <h1 class="cv-name reveal rd1">Saad Zebiri</h1>
-            <p class="cv-role reveal rd2">Network &amp; Security Student · EPHEC Bac&nbsp;3</p>
-          </div>
-          <div class="reveal rd3">
-            <a href="CV-Zebiri-Saad.pdf" download class="btn btn-ghost">
-              <i class="fa-solid fa-file-arrow-down"></i> Télécharger PDF
-            </a>
-          </div>
+  <!-- ══ CV ══════════════════════════════════════════════════ -->
+  <main class="cv-page">
+    <div class="container">
+
+      <div class="cv-header">
+        <div>
+          <p class="sec-label reveal" style="margin-bottom:.5rem">Fichier personnel · 2025</p>
+          <h1 class="cv-name reveal rd1">Saad Zebiri</h1>
+          <p class="cv-role reveal rd2">Network &amp; Security Student · EPHEC Bac 3</p>
+        </div>
+        <div class="reveal rd3">
+          <a href="CV-Zebiri-Saad.pdf" download class="btn btn-outline">
+            <i class="fa-solid fa-file-arrow-down"></i> Télécharger PDF
+          </a>
         </div>
       </div>
 
-      <div class="cv-layout panel-pad">
+      <div class="cv-layout">
 
+        <!-- ASIDE -->
         <aside class="cv-aside reveal">
 
           <div class="cv-block">
@@ -70,32 +72,29 @@
             <div class="cv-info"><i class="fa-solid fa-location-dot"></i> Bruxelles, Belgique</div>
             <div class="cv-info"><i class="fa-solid fa-envelope"></i> saadzebiri65@gmail.com</div>
             <div class="cv-info"><i class="fa-solid fa-phone"></i> 0471 87 49 10</div>
-            <div class="cv-info"><i class="fa-brands fa-github"></i><a href="https://github.com/SaadKzs" target="_blank" style="color:var(--ac)">/SaadKzs</a></div>
-            <div class="cv-info"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" style="color:var(--ac)">/in/saad-zebiri</a></div>
+            <div class="cv-info">
+              <i class="fa-brands fa-github"></i>
+              <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" style="color:var(--ac)">/SaadKzs</a>
+            </div>
+            <div class="cv-info">
+              <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" style="color:var(--ac)">/in/saad-zebiri</a>
+            </div>
           </div>
 
           <div class="cv-block">
             <h3 class="cv-block-title">Compétences</h3>
-            <div class="s-group">
-              <div class="s-group-name">Infrastructure</div>
-              <div class="s-pills">
-                <span class="s-pill">Cisco PT</span><span class="s-pill">Linux</span>
-                <span class="s-pill">Docker</span><span class="s-pill">ESP32</span>
-              </div>
+            <div style="margin-bottom:.85rem">
+              <div style="font-size:.72rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.08em;text-transform:uppercase">Infrastructure</div>
+              <div class="s-pills"><span class="s-pill">Cisco PT</span><span class="s-pill">Linux</span><span class="s-pill">Docker</span><span class="s-pill">ESP32</span></div>
             </div>
-            <div class="s-group">
-              <div class="s-group-name">Sécurité</div>
-              <div class="s-pills">
-                <span class="s-pill">OT Security</span><span class="s-pill">Nmap</span>
-                <span class="s-pill">Pentest</span><span class="s-pill">Log Analysis</span>
-              </div>
+            <div style="margin-bottom:.85rem">
+              <div style="font-size:.72rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.08em;text-transform:uppercase">Sécurité</div>
+              <div class="s-pills"><span class="s-pill">OT Security</span><span class="s-pill">Nmap</span><span class="s-pill">Pentest</span><span class="s-pill">Log Analysis</span></div>
             </div>
-            <div class="s-group">
-              <div class="s-group-name">Développement</div>
-              <div class="s-pills">
-                <span class="s-pill">Python</span><span class="s-pill">React</span>
-                <span class="s-pill">Node.js</span><span class="s-pill">MongoDB</span>
-              </div>
+            <div>
+              <div style="font-size:.72rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.08em;text-transform:uppercase">Développement</div>
+              <div class="s-pills"><span class="s-pill">Python</span><span class="s-pill">React</span><span class="s-pill">Node.js</span><span class="s-pill">MongoDB</span></div>
             </div>
           </div>
 
@@ -129,18 +128,19 @@
 
         </aside>
 
-        <main>
+        <!-- MAIN CONTENT -->
+        <div>
 
           <div class="cv-card reveal rd1">
             <h2 class="cv-block-title">Expérience</h2>
 
-            <div class="xp-item">
-              <div class="xp-top">
-                <span class="xp-title">IT Security Intern</span>
-                <span class="xp-badge">Lhoist · 2025</span>
+            <div class="cv-xp-item">
+              <div class="cv-xp-top">
+                <span class="cv-xp-title">IT Security Intern</span>
+                <span class="cv-xp-badge">Lhoist · 2025</span>
               </div>
-              <p class="xp-org">Superviseur : Benjamin Budts (IT Security Director)</p>
-              <ul class="xp-list">
+              <p class="cv-xp-org">Superviseur : Benjamin Budts (IT Security Director)</p>
+              <ul class="cv-xp-list">
                 <li>Mise en place de scans de vulnérabilités automatisés (pipeline TVM).</li>
                 <li>Protection des endpoints OT et analyse des logs de sécurité.</li>
                 <li>Participation à l'évaluation des risques IT et support au SOC.</li>
@@ -148,32 +148,33 @@
               </ul>
             </div>
 
-            <hr class="xp-divider">
+            <hr class="cv-divider">
 
-            <div class="xp-item" style="margin-bottom:0">
-              <div class="xp-top">
-                <span class="xp-title">IT Support Practice</span>
-                <span class="xp-badge" style="color:var(--t2);border-color:var(--b1);background:transparent">EPHEC · 2023–2024</span>
+            <div class="cv-xp-item">
+              <div class="cv-xp-top">
+                <span class="cv-xp-title">IT Support Practice</span>
+                <span class="cv-xp-badge" style="background:transparent;color:var(--text-3);border-color:var(--border)">EPHEC · 2023–2024</span>
               </div>
-              <p class="xp-org">Support technique N1 &amp; N2 — laboratoire interne EPHEC</p>
-              <ul class="xp-list">
+              <p class="cv-xp-org">Support technique N1 &amp; N2 — laboratoire interne EPHEC</p>
+              <ul class="cv-xp-list">
                 <li>Diagnostic et réparation de pannes matérielles et logicielles.</li>
                 <li>Maintenance de parc informatique Windows/Linux.</li>
               </ul>
             </div>
+
           </div>
 
           <div class="cv-card reveal rd2">
             <h2 class="cv-block-title">Projets</h2>
 
-            <div class="xp-item">
-              <div class="xp-top">
-                <span class="xp-title">Smart Mailbox "Boite-alerte"</span>
-                <a href="https://github.com/SaadKzs" target="_blank" style="color:var(--ac)"><i class="fa-brands fa-github"></i></a>
+            <div class="cv-xp-item">
+              <div class="cv-xp-top">
+                <span class="cv-xp-title">Smart Mailbox "Boite-alerte"</span>
+                <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" style="color:var(--ac);font-size:.9rem"><i class="fa-brands fa-github"></i></a>
               </div>
-              <p class="xp-org">IoT · Full-Stack · Hackathon EPHEC</p>
-              <p style="font-size:.85rem;color:var(--t2);line-height:1.75;margin-bottom:.75rem">
-                ESP32 + notifications temps réel + dashboard React/Node/MongoDB.
+              <p class="cv-xp-org">IoT · Full-Stack · Hackathon EPHEC (Primé)</p>
+              <p style="font-size:.87rem;color:var(--text-2);line-height:1.75;margin-bottom:.75rem">
+                ESP32 + notifications temps réel + dashboard React/Node.js/MongoDB.
               </p>
               <div class="s-pills">
                 <span class="s-pill">#ESP32</span><span class="s-pill">#React</span>
@@ -181,12 +182,14 @@
               </div>
             </div>
 
-            <hr class="xp-divider">
+            <hr class="cv-divider">
 
-            <div class="xp-item" style="margin-bottom:0">
-              <div class="xp-top"><span class="xp-title">Enterprise Network Architecture</span></div>
-              <p class="xp-org">Réseaux · Cisco Packet Tracer</p>
-              <p style="font-size:.85rem;color:var(--t2);line-height:1.75;margin-bottom:.75rem">
+            <div class="cv-xp-item">
+              <div class="cv-xp-top">
+                <span class="cv-xp-title">Enterprise Network Architecture</span>
+              </div>
+              <p class="cv-xp-org">Réseaux · Cisco Packet Tracer</p>
+              <p style="font-size:.87rem;color:var(--text-2);line-height:1.75;margin-bottom:.75rem">
                 Infrastructure sécurisée : VLANs, ACLs, routage inter-VLAN, DHCP, switching multicouche.
               </p>
               <div class="s-pills">
@@ -194,26 +197,27 @@
                 <span class="s-pill">#DHCP</span><span class="s-pill">#Switching</span>
               </div>
             </div>
+
           </div>
 
-        </main>
-      </div>
-
-      <footer>
-        <div class="footer-row">
-          <span class="footer-text">Saad Zebiri — EPHEC 2025</span>
-          <div class="footer-links">
-            <a href="https://github.com/SaadKzs" target="_blank" class="footer-link"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:saadzebiri65@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
-          </div>
         </div>
-      </footer>
+      </div>
+    </div>
+  </main>
 
-    </main>
-  </div>
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
+      <span class="footer-copy">Saad Zebiri — EPHEC 2025</span>
+      <div class="footer-socials">
+        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

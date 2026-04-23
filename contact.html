@@ -4,121 +4,128 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Saad Zebiri</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <div class="curtain"><span class="curtain-text">Contact</span></div>
-
-  <header class="mobile-bar">
-    <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-    <button class="sb-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-  </header>
-
-  <div class="sidebar-overlay"></div>
-
-  <div class="site-wrap">
-
-    <nav class="sidebar">
-      <a href="index.html" class="sb-logo">SZ<em>.</em></a>
-      <div class="sb-divider"></div>
-      <div class="sb-profile">
-        <div class="sb-name">Saad Zebiri</div>
-        <div class="sb-role">Network &amp; Security</div>
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <div class="nav-wrap" id="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
+      <div class="nav-links">
+        <a href="index.html"          class="nl">Accueil</a>
+        <a href="index.html#projects" class="nl">Projets</a>
+        <a href="index.html#skills"   class="nl">Compétences</a>
+        <a href="activities.html"     class="nl">Activités</a>
+        <a href="cv.html"             class="nl">CV</a>
       </div>
-      <ul class="sb-nav">
-        <li><a href="index.html"          class="sb-link"><span class="sb-num">←</span>Accueil</a></li>
-        <li><a href="index.html#projects" class="sb-link"><span class="sb-num">03</span>Projets</a></li>
-        <li><a href="cv.html"             class="sb-link"><span class="sb-num">—</span>CV</a></li>
-      </ul>
-      <div class="sb-footer">
-        <div class="sb-social">
-          <a href="https://github.com/SaadKzs" target="_blank" class="sb-social-link"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="sb-social-link"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="mailto:saadzebiri65@gmail.com" class="sb-social-link"><i class="fa-solid fa-envelope"></i></a>
+      <div class="nav-end">
+        <div class="nav-socials">
+          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
-        <div class="sb-status"><span class="badge-dot"></span>Available 2025</div>
+        <a href="contact.html" class="btn-nav" style="background:var(--ac);color:#0B1120;border-color:var(--ac)">Contact</a>
       </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
-
-    <main class="main-panel">
-
-      <div class="panel-pad">
-        <div class="contact-wrap">
-
-          <div class="reveal">
-            <span class="s-label">Me contacter</span>
-            <h1 class="contact-big">
-              Travaillons<br><em>ensemble.</em>
-            </h1>
-            <p class="contact-sub">
-              Je suis à la recherche de nouvelles opportunités en
-              <strong style="color:var(--t1)">Réseaux</strong>,
-              <strong style="color:var(--t1)">Cybersécurité</strong> ou
-              <strong style="color:var(--t1)">DevSecOps</strong>.
-              Que ce soit pour un emploi, un stage ou juste un échange,
-              ma boîte de réception est ouverte.
-            </p>
-            <div class="contact-links">
-              <a href="mailto:saadzebiri65@gmail.com" class="c-link">
-                <i class="fa-solid fa-envelope"></i> saadzebiri65@gmail.com
-              </a>
-              <a href="tel:0471874910" class="c-link">
-                <i class="fa-solid fa-phone"></i> 0471 87 49 10
-              </a>
-              <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="c-link">
-                <i class="fa-brands fa-linkedin-in"></i> LinkedIn — /in/saad-zebiri
-              </a>
-              <a href="https://github.com/SaadKzs" target="_blank" class="c-link">
-                <i class="fa-brands fa-github"></i> GitHub — /SaadKzs
-              </a>
-            </div>
-          </div>
-
-          <div class="c-form reveal rd2">
-            <div class="c-form-head">
-              <div class="pulse-dot"></div>
-              <span class="c-form-title">Envoyer un message</span>
-            </div>
-            <form action="mailto:saadzebiri65@gmail.com" method="post" enctype="text/plain">
-              <div class="form-group">
-                <label class="form-label" for="f-name">Nom</label>
-                <input class="form-input" type="text" id="f-name" name="name" placeholder="Jean Dupont" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-email">Email</label>
-                <input class="form-input" type="email" id="f-email" name="email" placeholder="jean@exemple.com" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-msg">Message</label>
-                <textarea class="form-input" id="f-msg" name="message" rows="5" placeholder="Bonjour Saad…" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary magnetic"
-                      style="width:100%;justify-content:center;margin-top:.5rem">
-                Envoyer <i class="fa-solid fa-paper-plane" style="font-size:.8rem"></i>
-              </button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-      <footer>
-        <div class="footer-row">
-          <span class="footer-text">Saad Zebiri — EPHEC 2025</span>
-          <div class="footer-links">
-            <a href="https://github.com/SaadKzs" target="_blank" class="footer-link"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:saadzebiri65@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-      </footer>
-
-    </main>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="index.html"          class="mm-link"><span>—</span>Accueil</a>
+    <a href="index.html#projects" class="mm-link"><span>02</span>Projets</a>
+    <a href="index.html#skills"   class="mm-link"><span>03</span>Compétences</a>
+    <a href="activities.html"     class="mm-link"><span>05</span>Activités</a>
+    <a href="cv.html"             class="mm-link"><span>—</span>CV</a>
+  </div>
+
+  <!-- ══ CONTACT ════════════════════════════════════════════ -->
+  <main class="contact-page">
+    <div class="container">
+
+      <p class="sec-label reveal">Me contacter</p>
+
+      <div class="contact-grid">
+
+        <div class="reveal rd1">
+          <h1 class="contact-big">
+            Travaillons<br><em>ensemble.</em>
+          </h1>
+          <p class="contact-sub">
+            Je suis à la recherche de nouvelles opportunités en
+            <strong style="color:var(--ac)">Réseaux</strong>,
+            <strong style="color:var(--ac)">Cybersécurité</strong> ou
+            <strong style="color:var(--ac)">DevSecOps</strong>.
+            Que ce soit pour un emploi, un stage ou juste un échange,
+            ma boîte de réception est ouverte.
+          </p>
+          <div class="c-links">
+            <a href="mailto:saadzebiri65@gmail.com" class="c-link">
+              <i class="fa-solid fa-envelope"></i>
+              saadzebiri65@gmail.com
+            </a>
+            <a href="tel:0471874910" class="c-link">
+              <i class="fa-solid fa-phone"></i>
+              0471 87 49 10
+            </a>
+            <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" class="c-link">
+              <i class="fa-brands fa-linkedin-in"></i>
+              LinkedIn — /in/saad-zebiri
+            </a>
+            <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" class="c-link">
+              <i class="fa-brands fa-github"></i>
+              GitHub — /SaadKzs
+            </a>
+          </div>
+        </div>
+
+        <div class="c-form-card reveal rd2">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem">
+            <span class="hb-dot"></span>
+            <span style="font-size:.8rem;color:var(--text-2);font-weight:500">Envoyer un message</span>
+          </div>
+          <form action="mailto:saadzebiri65@gmail.com" method="post" enctype="text/plain">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Nom</label>
+              <input class="form-input" type="text" id="f-name" name="name" placeholder="Jean Dupont" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-email">Email</label>
+              <input class="form-input" type="email" id="f-email" name="email" placeholder="jean@exemple.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-msg">Message</label>
+              <textarea class="form-input" id="f-msg" name="message" rows="5" placeholder="Bonjour Saad…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
+              Envoyer <i class="fa-solid fa-paper-plane" style="font-size:.8rem"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer" style="margin-top:4rem">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
+      <span class="footer-copy">Saad Zebiri — EPHEC 2025</span>
+      <div class="footer-socials">
+        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
