@@ -916,6 +916,72 @@ a, button, [role="button"] { cursor: none; }
   .bilan-grid--2 { grid-template-columns: 1fr; }
 }
 
+/* ── PROJETS PAGE — Card grid ────────────────────────────────── */
+.projets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 2rem;
+}
+
+.projets-card {
+  background: var(--ivory-deep);
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--navy);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform .3s var(--ease);
+}
+.projets-card:hover { transform: translateY(-3px); }
+.projets-card--amber { border-left-color: var(--amber); }
+
+.pc-eyebrow {
+  font-family: var(--mono); font-size: .6rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+}
+
+.pc-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  letter-spacing: -.02em; color: var(--ink); line-height: 1.2;
+}
+
+.pc-desc { font-size: .9rem; color: var(--ink-soft); line-height: 1.78; }
+
+.pc-block { display: flex; flex-direction: column; gap: .45rem; }
+
+.pc-block-label {
+  font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--navy);
+  padding-bottom: .35rem; border-bottom: 1px solid var(--line);
+  display: block;
+}
+
+.pc-block-text { font-size: .88rem; color: var(--gray); line-height: 1.72; }
+
+.pc-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
+.pc-tags span {
+  padding: .22rem .65rem;
+  border: 1px solid var(--line);
+  font-family: var(--mono); font-size: .6rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--gray);
+}
+
+.pc-cta {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink);
+  padding-bottom: 2px; border-bottom: 1px solid var(--ink);
+  width: fit-content; transition: color .2s, border-bottom-color .2s;
+}
+.pc-cta:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+@media (max-width: 960px) {
+  .projets-grid { grid-template-columns: 1fr; }
+}
+
 /* ══════════════════════════════════════════════════════════
    PROJETS PAGE
 ══════════════════════════════════════════════════════════ */

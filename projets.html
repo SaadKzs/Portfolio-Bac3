@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projets techniques — Saad Zebiri · SIEM, Pentest Lab, Smart Mailbox, CTF.">
-  <title>Projets techniques — Saad Zebiri</title>
+  <meta name="description" content="Projets — Saad Zebiri · ArtisanStack, AI Voice Agent SaaS, Hackathon Green IT, Unity.">
+  <title>Projets — Saad Zebiri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,143 +52,121 @@
   <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
   <section class="proj-hero">
     <div class="container">
-      <p class="page-eyebrow reveal">04 — Projets techniques</p>
+      <p class="page-eyebrow reveal">04 — PROJETS</p>
       <h1 class="page-h1 reveal rd1">
-        Concret,<br><em>documenté.</em>
+        Concret, et un peu <em>à côté</em> de ma cible.
       </h1>
       <p class="page-sub reveal rd2">
-        Une sélection de projets en sécurité, réseaux, automatisation et IoT — chacun ancré dans une pratique réelle.
+        Mes projets perso d'entrepreneur tech, en complément de mon orientation cybersécurité. Une autre face de ma polyvalence.
       </p>
     </div>
   </section>
 
-  <!-- ══ PROJETS GRID ════════════════════════════════════════ -->
-  <section class="section">
+  <!-- ══ SECTION 01 — Pourquoi cette page existe ════════════ -->
+  <section class="page-section-alt">
     <div class="container">
+      <p class="page-eyebrow reveal">01 — Pourquoi cette page existe</p>
+      <h2 class="page-h2 reveal rd1">Pourquoi cette page existe</h2>
+      <p class="page-body reveal rd2">
+        Mes projets perso ne sont pas tous dans l'axe direct de ma cible cybersécurité. Je préfère le dire d'entrée plutôt que de bricoler le récit. Ces projets parlent d'autre chose : entrepreneuriat tech, dev produit, monétisation, apprentissage de nouvelles stacks. Ils nourrissent ma polyvalence technique et ma capacité d'apprentissage autodidacte (deux forces que je revendique sur la page Bilan), même s'ils ne portent pas sur la sécu pure. Je les présente ici tels qu'ils sont.
+      </p>
+    </div>
+  </section>
 
-      <div class="proj-grid">
+  <!-- ══ SECTION 02 — Les projets ══════════════════════════ -->
+  <section class="page-section">
+    <div class="container">
+      <p class="page-eyebrow reveal">02 — Les projets</p>
+      <h2 class="page-h2 reveal rd1">Les projets</h2>
 
-        <div class="proj-card reveal">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="projets-grid reveal rd2">
+
+        <!-- CARTE 1 — ArtisanStack -->
+        <div class="projets-card">
+          <p class="pc-eyebrow">Projet 1 · En production</p>
+          <h3 class="pc-title">ArtisanStack — Site SEO programmatique B2B</h3>
+          <p class="pc-desc">
+            Site de comparatifs de logiciels de gestion d'entreprise (field service management) ciblant les artisans français et belges, monétisé par affiliation. C'est un projet en production que j'ai conçu et développé en autonomie, du choix de la stack au déploiement.
+          </p>
+          <div class="pc-block">
+            <span class="pc-block-label">Stack technique</span>
+            <p class="pc-block-text">Next.js 16, TypeScript, Tailwind CSS, déploiement sur Vercel.</p>
           </div>
-          <div class="proj-body">
-            <p class="proj-num">01 — Security · Infrastructure</p>
-            <h3 class="proj-title">Architecture SIEM — SOC Home Lab</h3>
-            <p class="proj-desc">
-              Déploiement d'un SIEM complet avec Elastic Stack + Wazuh dans un homelab virtualisé sur Proxmox.
-              Ingestion de logs réseau, dashboards de monitoring, alertes sur détection d'intrusion.
-              Lab fonctionnel utilisé pour pratiquer l'analyse de logs et la corrélation d'événements.
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>Elastic Stack</span><span>Wazuh</span><span>Kibana</span><span>Proxmox</span>
-              </div>
-              <span class="proj-tag proj-tag--school">Bac 3</span>
-            </div>
+          <div class="pc-block">
+            <span class="pc-block-label">Ce qui est en place</span>
+            <p class="pc-block-text">Pages générées dynamiquement (programmatic SEO), Schema.org JSON-LD pour les rich snippets, sitemap automatique, pages légales conformes RGPD et obligations affiliation France/Belgique, intégration de partenaires affiliation (Obat, Connecteam, Jobber, GoHighLevel, Teamleader).</p>
+          </div>
+          <div class="pc-tags">
+            <span>Next.js</span>
+            <span>TypeScript</span>
+            <span>Tailwind</span>
+            <span>Vercel</span>
+            <span>SEO programmatique</span>
+            <span>Affiliation</span>
+          </div>
+          <a href="https://www.artisanstack.pro" target="_blank" rel="noopener noreferrer" class="pc-cta">Voir le site →</a>
+        </div>
+
+        <!-- CARTE 2 — AI Voice Agent SaaS -->
+        <div class="projets-card">
+          <p class="pc-eyebrow">Projet 2 · Boilerplate commercial</p>
+          <h3 class="pc-title">AI Voice Agent SaaS — Starter Kit Next.js</h3>
+          <p class="pc-desc">
+            Boilerplate commercialisable destiné à des développeurs et agences qui veulent lancer leur propre SaaS d'agents vocaux IA. Produit pensé comme un kit prêt à l'emploi avec auth, dashboard, gestion d'agents, intégration paiement et webhooks.
+          </p>
+          <div class="pc-block">
+            <span class="pc-block-label">Stack technique</span>
+            <p class="pc-block-text">Next.js 15 (App Router, Server Actions, Turbopack), TypeScript strict, Supabase (PostgreSQL avec Row Level Security), Vapi.ai et ElevenLabs pour le voice, Lemon Squeezy pour le paiement (gestion automatique de la TVA EU), Shadcn/ui et Tailwind pour l'interface.</p>
+          </div>
+          <div class="pc-block">
+            <span class="pc-block-label">Ce qui est en place</span>
+            <p class="pc-block-text">Authentification SSR complète, dashboard avec stats, CRUD agents vocaux, gestion des appels (initiation, historique, transcripts), webhooks signés, billing avec plans, middleware d'auth, mode démo. Documentation produite : environ 1500 lignes (README, guide setup, FAQ, déploiement).</p>
+          </div>
+          <div class="pc-block">
+            <span class="pc-block-label">Statut</span>
+            <p class="pc-block-text">Boilerplate techniquement complet, en phase de finalisation commerciale.</p>
+          </div>
+          <div class="pc-tags">
+            <span>Next.js 15</span>
+            <span>TypeScript</span>
+            <span>Supabase</span>
+            <span>Vapi.ai</span>
+            <span>Lemon Squeezy</span>
+            <span>SaaS</span>
           </div>
         </div>
 
-        <div class="proj-card reveal rd1">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-bug"></i></div>
+        <!-- CARTE 3 — Hackathon Green IT -->
+        <div class="projets-card">
+          <p class="pc-eyebrow">Projet 3 · EPHEC · 2023</p>
+          <h3 class="pc-title">Hackathon Green IT — Projet IoT en équipe</h3>
+          <p class="pc-desc">
+            Hackathon EPHEC Louvain-la-Neuve sur 48 heures non-stop, équipe de 5 étudiants, thème Green IT et numérique responsable. Mon apport personnel a porté sur l'interface applicative, en binôme avec un coéquipier. Équipe bien classée à l'issue de l'événement.
+          </p>
+          <p class="pc-desc">
+            Ce projet est documenté en détail comme activité d'acquisition de compétences. Pour l'analyse réflexive complète (cadre, faits, créativité), voir la page Activités, thème Green IT.
+          </p>
+          <div class="pc-tags">
+            <span>Hackathon</span>
+            <span>IoT</span>
+            <span>Frontend</span>
+            <span>Travail d'équipe</span>
           </div>
-          <div class="proj-body">
-            <p class="proj-num">02 — Pentesting · Virtualization</p>
-            <h3 class="proj-title">Pentest Lab — Infrastructure de test</h3>
-            <p class="proj-desc">
-              Environnement isolé pour la pratique du pentest : machines vulnérables (Metasploitable, DVWA, VulnHub),
-              segmentation réseau pfSense, méthodologie PTES complète. Utilisé pour les labs TryHackMe et HackTheBox.
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>Kali Linux</span><span>Metasploit</span><span>pfSense</span><span>Burp Suite</span>
-              </div>
-              <span class="proj-tag proj-tag--lock">Personnel</span>
-            </div>
-          </div>
+          <a href="activites.html" class="pc-cta">Voir l'analyse complète →</a>
         </div>
 
-        <div class="proj-card reveal rd2">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-terminal"></i></div>
-          </div>
-          <div class="proj-body">
-            <p class="proj-num">03 — Network · Automation</p>
-            <h3 class="proj-title">Automation Réseau — Scripts Python</h3>
-            <p class="proj-desc">
-              Scripts Python pour l'automatisation réseau : sauvegarde de configs Cisco, déploiement de VLANs en masse,
-              monitoring de disponibilité et génération de rapports. Utilisation de Netmiko et Ansible.
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>Python</span><span>Netmiko</span><span>Ansible</span><span>Cisco IOS</span>
-              </div>
-              <span class="proj-tag proj-tag--school">EPHEC</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card reveal rd3">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-microchip"></i></div>
-          </div>
-          <div class="proj-body">
-            <p class="proj-num">04 — Green IT · IoT · Hackathon</p>
-            <h3 class="proj-title">Hackathon EPHEC — Smart Mailbox</h3>
-            <p class="proj-desc">
-              Solution IoT "Boite-alerte" réalisée en 24h non-stop — ESP32, notifications temps réel,
-              dashboard React/Node.js/MongoDB. Projet primé par le jury devant un panel professionnel.
-              API sécurisée, authentification, monitoring en temps réel.
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>ESP32</span><span>React</span><span>Node.js</span><span>MongoDB</span>
-              </div>
-              <span class="proj-tag proj-tag--award">Primé ★</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card reveal rd4">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-flag"></i></div>
-          </div>
-          <div class="proj-body">
-            <p class="proj-num">05 — CTF · Security Research</p>
-            <h3 class="proj-title">CTF Challenges — Compétitions</h3>
-            <p class="proj-desc">
-              Participation régulière à des CTF sur HackTheBox, TryHackMe et PicoCTF. Spécialité en
-              challenges réseau (PCAP, pivoting) et web (injection, XSS, SSRF). Pratique continue
-              pour maintenir les compétences offensives au service de la défense.
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>HackTheBox</span><span>TryHackMe</span><span>Wireshark</span>
-              </div>
-              <span class="proj-tag proj-tag--lock">En cours</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card reveal rd1">
-          <div class="proj-img">
-            <div class="proj-img-placeholder"><i class="fa-solid fa-industry"></i></div>
-          </div>
-          <div class="proj-body">
-            <p class="proj-num">06 — OT Security · Stage</p>
-            <h3 class="proj-title">Pipeline TVM — Stage Lhoist 2025</h3>
-            <p class="proj-desc">
-              Mise en place de scans de vulnérabilités automatisés (Threat &amp; Vulnerability Management)
-              en environnement industriel OT/IT. Microsoft Defender for Endpoint, analyse de logs de
-              sécurité, support au SOC interne. Superviseur : Benjamin Budts (IT Security Director).
-            </p>
-            <div class="proj-footer">
-              <div class="proj-pills">
-                <span>Microsoft Defender</span><span>TVM</span><span>OT Security</span><span>SOC</span>
-              </div>
-              <span class="proj-tag proj-tag--lock">Professionnel</span>
-            </div>
+        <!-- CARTE 4 — Unity -->
+        <div class="projets-card projets-card--amber">
+          <p class="pc-eyebrow">Projet 4 · Apprentissage en cours</p>
+          <h3 class="pc-title">Unity — Découverte du game development</h3>
+          <p class="pc-desc">
+            Apprentissage en cours des bases de Unity (tutos, mini-prototypes). Pas encore de projet à montrer. Je le mentionne pour rester honnête sur ce que je suis en train d'explorer en parallèle de mon cursus.
+          </p>
+          <div class="pc-tags">
+            <span>Unity</span>
+            <span>C#</span>
+            <span>Game dev</span>
+            <span>Apprentissage</span>
           </div>
         </div>
 
@@ -197,14 +175,12 @@
   </section>
 
   <!-- ══ CTA ════════════════════════════════════════════════ -->
-  <section class="cta-section">
-    <div class="container" style="position:relative;z-index:2">
-      <div class="cta-label reveal"><span></span>Portfolio EPHEC 2025-2026</div>
-      <h2 class="cta-title reveal">Travaillons<br><em>ensemble.</em></h2>
-      <p class="cta-sub reveal rd1">Ouvert aux opportunités de stage et d'emploi dans le domaine Network &amp; Security.</p>
-      <div class="cta-actions reveal rd2">
-        <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Me contacter</a>
-        <a href="cv.html" class="btn btn-cobalt"><i class="fa-solid fa-download"></i> Voir le CV</a>
+  <section class="pp-cta-strip">
+    <div class="container">
+      <p class="pp-cta-lead reveal">Pour le détail de mon projet professionnel et de mes activités d'acquisition de compétences :</p>
+      <div class="cta-actions reveal rd1">
+        <a href="projet-pro.html" class="btn btn-primary">Voir mon projet pro</a>
+        <a href="activites.html" class="btn btn-cobalt">Parcourir mes activités</a>
       </div>
     </div>
   </section>
