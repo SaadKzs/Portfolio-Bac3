@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activités EPHEC — Saad Zebiri · 60h Portfolio</title>
+  <meta name="description" content="47 heures d'activités EPHEC documentées en 7 thèmes avec analyse réflexive Cadre / Faits / Créativité.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/activities.css">
+</head>
+<body>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lb-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <p class="lb-caption" id="lb-caption"></p>
+  </div>
+
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <div class="nav-wrap" id="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
+      <div class="nav-links">
+        <a href="index.html"      class="nl">Accueil</a>
+        <a href="projet-pro.html" class="nl">Projet pro</a>
+        <a href="bilan.html"      class="nl">Bilan</a>
+        <a href="activites.html"  class="nl active">Activités</a>
+        <a href="projets.html"    class="nl">Projets</a>
+        <a href="cv.html"         class="nl">CV</a>
+      </div>
+      <div class="nav-end">
+        <div class="nav-socials">
+          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <a href="contact.html" class="btn-nav">Contact</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="index.html"      class="mm-link"><span>01</span>Accueil</a>
+    <a href="projet-pro.html" class="mm-link"><span>02</span>Projet pro</a>
+    <a href="bilan.html"      class="mm-link"><span>03</span>Bilan</a>
+    <a href="activites.html"  class="mm-link active"><span>04</span>Activités</a>
+    <a href="projets.html"    class="mm-link"><span>05</span>Projets</a>
+    <a href="cv.html"         class="mm-link"><span>06</span>CV</a>
+    <a href="contact.html"    class="mm-link"><span>→</span>Contact</a>
+  </div>
+
+  <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
+  <section class="acts-hero">
+    <div class="container">
+      <div class="acts-hero-grid">
+
+        <div class="reveal">
+          <p class="acts-eyebrow">03 — EPHEC · Bachelier TI · 2024–2026</p>
+          <h1 class="acts-title">
+            60 heures<br><em>d'activités</em><br>documentées
+          </h1>
+          <p class="acts-subtitle">
+            7 thèmes · 9 activités · 47h documentées (AWS Cloud Quest 10h en cours)
+          </p>
+          <div class="acts-quick-stats">
+            <div class="qs-item"><span class="qs-val">7</span><span class="qs-label">Thèmes</span></div>
+            <span class="qs-sep"></span>
+            <div class="qs-item"><span class="qs-val">9</span><span class="qs-label">Activités</span></div>
+            <span class="qs-sep"></span>
+            <div class="qs-item"><span class="qs-val">47h</span><span class="qs-label">Documentées</span></div>
+            <span class="qs-sep"></span>
+            <div class="qs-item"><span class="qs-val" style="color:var(--amber)">+10h</span><span class="qs-label">AWS en cours</span></div>
+          </div>
+          <p class="acts-notice">
+            Total documenté : 47h sur 60h. Activité AWS Cloud Quest (10h) en cours, sera ajoutée avant le rendu.
+          </p>
+        </div>
+
+        <div class="ring-container reveal rd1">
+          <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 200 200" aria-label="Progression 47h / 60h">
+              <circle class="ring-bg"  cx="100" cy="100" r="85"/>
+              <circle id="ring-fill" class="ring-fill" cx="100" cy="100" r="85" data-value="47" data-max="60"/>
+            </svg>
+            <div class="ring-inner">
+              <span class="ring-num">47</span>
+              <span class="ring-denom">/ 60h</span>
+            </div>
+          </div>
+          <div class="ring-legend">
+            <div class="rl-row">
+              <span class="rl-left"><span class="rl-dot" style="background:var(--navy)"></span>Documentées</span>
+              <span class="rl-val">47h</span>
+            </div>
+            <div class="rl-row">
+              <span class="rl-left"><span class="rl-dot" style="background:var(--amber)"></span>AWS en cours</span>
+              <span class="rl-val">+10h</span>
+            </div>
+            <div class="rl-row">
+              <span class="rl-left"><span class="rl-dot" style="background:var(--gray-soft)"></span>Restantes</span>
+              <span class="rl-val">3h</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FILTER BAR ════════════════════════════════════════ -->
+  <section style="padding:1.5rem 0;background:var(--ivory-deep);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <div class="acts-filter-bar">
+        <button class="afb-btn active" data-filter-theme="all">Tous</button>
+        <span class="afb-sep"></span>
+        <button class="afb-btn" data-filter-theme="01"><span class="afb-theme-dot" style="background:var(--c-theme1)"></span>01 · Green IT</button>
+        <button class="afb-btn" data-filter-theme="02"><span class="afb-theme-dot" style="background:var(--c-theme2)"></span>02 · Réseaux</button>
+        <button class="afb-btn" data-filter-theme="03"><span class="afb-theme-dot" style="background:var(--c-theme3)"></span>03 · Salons</button>
+        <button class="afb-btn" data-filter-theme="04"><span class="afb-theme-dot" style="background:var(--c-theme4)"></span>04 · Visites</button>
+        <button class="afb-btn" data-filter-theme="05"><span class="afb-theme-dot" style="background:var(--c-theme5)"></span>05 · Électronique</button>
+        <button class="afb-btn" data-filter-theme="06"><span class="afb-theme-dot" style="background:var(--c-theme6)"></span>06 · Soft skills</button>
+        <button class="afb-btn" data-filter-theme="07"><span class="afb-theme-dot" style="background:var(--c-theme7)"></span>07 · Cloud</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 1 — Green IT & développement durable (10h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-01" data-theme="01">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 01</span>
+        <h2 class="theme-heading">Green IT &amp; <em>développement durable</em></h2>
+        <span class="theme-hours-badge">10h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Comprendre les enjeux du numérique responsable et concevoir avec sobriété matérielle. Compétence transversale qui touche directement la sécurité (consommation des SOC, infrastructure verte, recyclage matériel).
+      </p>
+
+      <div class="acts-list">
+
+        <!-- Hackathon Green IT -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme1)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Hackathon</span>
+                <h3 class="accord-title">Hackathon Green IT EPHEC</h3>
+              </div>
+              <p class="accord-date">2023 · EPHEC Louvain-la-Neuve · <strong>10h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">10h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">En 2023, j'ai participé à un hackathon Green IT organisé par l'EPHEC sur le campus de Louvain-la-Neuve. Le format était un classique 48h non-stop, du vendredi 17h au dimanche 17h, avec une équipe de 5 étudiants. Le thème central était le numérique responsable et la sobriété matérielle : les organisateurs avaient mis en place plusieurs animations cohérentes avec le sujet (recyclage, un vélo branché à un mixeur pour faire ses smoothies sur les pauses, une attention générale à la sobriété énergétique). Notre projet était un objet connecté avec une interface web pour le piloter. Je me suis réparti la partie front-end avec un autre membre de l'équipe.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">Mon rôle dans le hackathon était de développer l'interface applicative côté utilisateur, en binôme avec un coéquipier. Concrètement, ça voulait dire intégrer le design, gérer les écrans, communiquer avec la partie back-end qu'un autre membre de l'équipe développait. Sur 48h sans pause structurée, le travail en binôme aide énormément : on se relaie, on se relit, on se débogue. Ce que je retiens le plus de l'expérience technique, c'est cette pression du temps qui change complètement la façon de coder. On ne fait pas du beau code, on fait du code qui marche au moment de la démo. Au début c'est frustrant pour quelqu'un qui aime bien faire les choses, mais on apprend à arbitrer entre "ce qui est essentiel" et "ce qui est bonus", et c'est une compétence qui sert dans tous les projets. L'autre apprentissage majeur, c'est l'équipe. À 5, avec des compétences différentes (front, back, design, hardware, présentation), il faut se synchroniser souvent et se faire confiance sur les parties qu'on ne maîtrise pas. On n'a pas gagné le hackathon mais on a été bien classés, ce qui a validé l'effort.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Ce hackathon a été ma première vraie expérience d'équipe technique sous contrainte. Au-delà du résultat, ce que je retiens, c'est l'ambiance : une cinquantaine d'étudiants concentrés sur le même week-end, des profs qui passent voir où on en est, des moments de fatigue et de relâche complète, un vélo-smoothie qui sert littéralement à faire son petit-déjeuner. C'est cette densité d'expérience qui rend le hackathon formateur, pas le projet en lui-même. Pour mon projet pro, j'en retiens que je suis à l'aise dans un cadre où il faut produire vite et collaborer en flux tendu, ce qui correspond pas mal à ce qu'on attend dans un SOC ou en réponse à incident, où l'urgence et la coordination d'équipe sont la norme. Le côté Green IT m'a aussi marqué, plus que je ne l'aurais cru sur le moment. Ça fait partie des sujets qui prennent de plus en plus d'importance dans les choix d'architecture en entreprise (efficacité énergétique des datacenters, sobriété logicielle), et ce premier contact m'a donné envie de garder un oeil sur ces questions dans la suite de mon parcours.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <p class="ai-proof-title"><i class="fa-solid fa-video"></i> Preuves vidéo</p>
+                  <video class="proof-video" controls preload="metadata" style="margin-bottom:4px">
+                    <source src="Video/HackatonVideo.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                  </video>
+                  <video class="proof-video" controls preload="metadata" style="margin-bottom:4px">
+                    <source src="Video/469F1319-5F8E-4723-B2FB-0046FA1B0FDD.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                  </video>
+                  <video class="proof-video" controls preload="metadata">
+                    <source src="Video/534CD886-BC1E-46A2-827C-7F105CD4AEFB.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                  </video>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 2 — Réseaux & Hardware (8h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-02" data-theme="02">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 02</span>
+        <h2 class="theme-heading">Réseaux &amp; <em>Hardware</em></h2>
+        <span class="theme-hours-badge">8h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Maîtriser l'infrastructure physique sur laquelle reposent les réseaux et la sécurité. Geste technique qui ancre la compréhension hardware / software.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- Montage PC -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme2)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Formation pratique</span>
+                <h3 class="accord-title">Montage PC personnel — Build haute performance</h3>
+              </div>
+              <p class="accord-date">Nov. 2025 (recherches) · Jan. 2026 (montage) · Domicile · <strong>8h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">8h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">Entre novembre 2025 et fin janvier 2026, j'ai monté mon propre PC fixe, mon premier build personnel. La phase de recherche et de sélection des composants a commencé en novembre 2025, le montage effectif s'est fait fin janvier 2026 une fois toutes les pièces réunies. La configuration retenue est une machine haut de gamme orientée performance : carte graphique ASUS TUF Gaming RTX 5070 Ti OC 16 Go, carte mère MSI MAG B850 Tomahawk MAX WIFI, processeur AMD Ryzen 9, RAM Kingston Fury DDR5, SSD Samsung 990 Pro 2 To NVMe, watercooling AIO Arctic Liquid Freezer III Pro 280 A-RGB. J'ai estimé la durée totale d'apprentissage et de montage à 8h, ce qui couvre l'assemblage physique, la configuration BIOS UEFI, l'installation Windows et des drivers, et le diagnostic de premier démarrage.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">C'était mon premier montage en autonomie totale. La phase la plus longue n'a pas été le montage en lui-même, mais la phase de recherche en amont. Choisir des composants compatibles entre eux n'est pas évident quand on débute : la socket CPU doit correspondre à la carte mère, la RAM doit être supportée à la bonne fréquence, l'alimentation doit être suffisante pour la carte graphique, le boîtier doit accueillir le radiateur du watercooling. Je me suis appuyé sur des configurateurs en ligne et sur des comparatifs YouTube pour valider la cohérence de l'ensemble. Le montage proprement dit a aussi posé ses propres défis. Le câblage est l'étape qui m'a le plus pris de temps : faire passer les câbles derrière la carte mère, brancher les bons connecteurs au bon endroit, gérer les RGB, c'est plus long qu'on ne le pense quand on le fait pour la première fois. La pose du watercooling AIO m'a aussi demandé d'être attentif à l'orientation du radiateur et à la qualité du contact avec le CPU. Au démarrage, tout a fonctionné dès la première fois, ce qui n'allait pas de soi. J'ai ensuite pris en main le BIOS pour activer le profil mémoire XMP, configuré le boot, installé Windows et tous les drivers à la main.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Monter un PC peut sembler être une activité de loisir sans rapport direct avec un projet pro en informatique, mais c'est tout sauf le cas. Comprendre l'infrastructure physique sur laquelle tournent tous les logiciels qu'on utilise change la façon de penser la pile technique. Avant ce montage, le hardware était pour moi quelque chose d'abstrait. Maintenant, je sais ce qu'il y a derrière les termes, je sais ce qui chauffe, ce qui consomme, ce qui peut tomber en panne. Pour un profil orienté réseaux et sécurité, c'est utile : un serveur, un switch, un routeur reposent sur les mêmes briques de base que mon PC, dans des facteurs de forme différents. La compréhension du hardware est aussi un préalable utile pour aller vers la sécurité OT ou la cybersécurité industrielle, où l'on travaille sur des équipements physiques très concrets. Au-delà de l'aspect technique, ce projet m'a appris à conduire un achat lourd de manière rationnelle : faire des recherches, comparer, anticiper les compatibilités, tenir un budget, choisir un compromis entre performance et coût. C'est une démarche que je retrouverai dans tout choix technique en entreprise.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g2">
+                    <div class="pg-item" data-src="img/MontagePC.jpeg" data-caption="Montage PC — assemblage composants">
+                      <img src="img/MontagePC.jpeg" alt="Montage PC" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                    <div class="pg-item" data-src="img/TourPc.png" data-caption="Tour PC assemblée">
+                      <img src="img/TourPc.png" alt="Tour PC" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 3 — Salons & Conférences IT (10h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-03" data-theme="03">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 03</span>
+        <h2 class="theme-heading">Salons &amp; <em>Conférences IT</em></h2>
+        <span class="theme-hours-badge">10h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Construire un réseau professionnel et comprendre l'écosystème IT belge. Réponse directe à ma faiblesse identifiée : réseau professionnel limité.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- SETT Namur -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme3)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Salon</span>
+                <h3 class="accord-title">Salon SETT Namur</h3>
+              </div>
+              <p class="accord-date">2026 · Namur Expo · Easyfairs · <strong>5h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">5h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">Début 2026, je suis allé au salon SETT Namur (Salon des Solutions et des Ressources pour l'Éducation et la Formation) qui se tient chaque année au parc d'expositions de Namur. C'est un salon professionnel principalement orienté edtech, qui rassemble des éditeurs de logiciels pédagogiques, des fabricants de matériel numérique pour les écoles, et des solutions de formation en entreprise. J'y suis allé par curiosité personnelle, en groupe avec des amis. Le badge nominatif mentionnait mon statut d'étudiant EPHEC. J'ai passé environ 8h sur place, mais je plafonne mon temps valorisable à 5h pour ne retenir que le temps d'apprentissage réellement actif (parcours des stands, échanges, observation des démos), et exclure les pauses et déplacements internes au salon.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">C'était mon premier salon professionnel. L'expérience est très différente d'un cours ou d'une conférence : on circule librement entre des dizaines de stands, on choisit ce qui attire le regard, on peut entrer dans des conversations courtes ou longues selon les exposants. Je ne ressors pas de SETT avec un savoir technique précis, je ressors plutôt avec une vue large sur un secteur que je connaissais peu (les solutions numériques pour l'enseignement et la formation continue). La densité d'offres dans ce domaine m'a surpris : tableaux interactifs, plateformes LMS, outils de gestion administrative pour les écoles, robots éducatifs, solutions VR pour la formation. Je me souviens surtout de l'ambiance générale plus que de stands précis. Pour quelqu'un qui n'avait jamais mis les pieds dans un salon, c'est aussi un apprentissage en soi : se présenter rapidement à un exposant, demander une démo en quelques minutes, savoir circuler sans s'éterniser sur un seul stand.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Le lien avec mon projet pro est indirect mais réel. SETT m'a montré qu'il existe une économie complète autour du numérique appliqué à des secteurs spécifiques, ici l'éducation. Cette logique de "verticalisation" du numérique (des solutions tech pensées pour un métier précis) se retrouve dans tous les secteurs, y compris en cybersécurité où l'on parle aujourd'hui de sécurité OT, de sécurité santé, de sécurité finance. Voir cette logique appliquée à l'éducation m'a aidé à mieux comprendre la mécanique générale : un éditeur ne vend pas juste un logiciel, il vend une réponse adaptée à un secteur, avec un vocabulaire et des contraintes propres. Au-delà de cette prise de recul, ce salon m'a aussi donné le réflexe d'aller à d'autres événements pros par la suite (Odoo Experience, Tech Career Night chez AXA), donc il a joué un rôle de déclencheur dans ma démarche d'ouverture sur l'écosystème IT belge.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g1">
+                    <div class="pg-item" data-src="img/ConferenceNamur.jpeg" data-caption="Badge SETT Namur — Easyfairs · Saad Zebiri · Étudiant EPHEC">
+                      <img src="img/ConferenceNamur.jpeg" alt="Badge SETT Namur" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Odoo Experience -->
+        <div class="act-accordion reveal rd1" style="--ai-theme-color:var(--c-theme3)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Conférence</span>
+                <h3 class="accord-title">Odoo Experience 2023 — Brussels Expo</h3>
+              </div>
+              <p class="accord-date">8–10 novembre 2023 · Brussels Expo Palais 10 · <strong>3h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">3h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">Du 8 au 10 novembre 2023, j'ai assisté à Odoo Experience, l'événement annuel international de l'éditeur belge Odoo, qui se tenait au Brussels Expo, Palais 10. C'est l'un des plus gros rassemblements tech open source en Belgique, qui réunit des développeurs, des intégrateurs, des partenaires Odoo et des clients utilisateurs venus du monde entier. Le badge nominatif que j'avais (catégorie "Teacher-Student", Basic Pass) donnait accès aux conférences générales et aux espaces de démonstration. J'y suis allé par curiosité personnelle, en groupe avec des amis. Mon temps de présence effective sur les sessions et démos a été d'environ 3h.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">Odoo Experience était mon premier contact avec un événement tech d'envergure internationale. L'échelle du salon est impressionnante : plusieurs salles en parallèle, des sessions en anglais comme en français, des démos de modules sur les stands partenaires, un public mélangé entre profils techniques et fonctionnels. Le côté open source de l'écosystème est très visible sur place : on sent une communauté active autour du produit, avec des partenaires qui développent leurs propres modules et les présentent. Je n'ai pas une connaissance approfondie d'Odoo en tant qu'ERP, mais ce que j'ai retenu c'est la densité de cas d'usage couverts par un seul logiciel : compta, ventes, RH, gestion de projet, e-commerce, manufacturing, le tout dans une interface unifiée. Ça donne une autre vision de ce que peut être un ERP par rapport aux idées reçues que j'avais du logiciel d'entreprise (image souvent vieillotte et lourde).</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Ma participation à Odoo Experience a déclenché chez moi un intérêt pour cet acteur belge, qui s'est concrétisé deux ans plus tard par une visite optionnelle de leur siège de Corbais (que je documente comme activité distincte). Pour mon projet pro, ce que je retiens d'Odoo Experience, c'est l'envergure que peut prendre un éditeur belge sur la scène internationale quand il s'appuie sur l'open source comme stratégie. C'est un modèle qui change la donne par rapport au modèle propriétaire classique (Microsoft, SAP, Oracle), et qui mérite d'être compris par quiconque veut travailler dans le numérique en Europe aujourd'hui. Au-delà du contenu technique, cette première grande conférence a aussi été un apprentissage sur ma façon de vivre ce type d'événements : je préfère circuler librement entre les stands et les démos plutôt que de m'asseoir longuement sur une keynote, et c'est un format que j'ai re-choisi par la suite (SETT Namur, Tech Career Night).</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g2">
+                    <div class="pg-item" data-src="img/OdooConference.PNG" data-caption="Odoo Experience 2023 — Badge nominatif">
+                      <img src="img/OdooConference.PNG" alt="Conférence Odoo" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                    <div class="pg-item" data-src="img/OdooConferec-nce2.PNG" data-caption="Odoo Experience 2023 — Session modules">
+                      <img src="img/OdooConferec-nce2.PNG" alt="Odoo session" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conférence Cloud M365 Azure — Axentys -->
+        <div class="act-accordion reveal rd2" style="--ai-theme-color:var(--c-theme3)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Conférence</span>
+                <h3 class="accord-title">Cloud avec M365 et Azure Infrastructure — Axentys</h3>
+              </div>
+              <p class="accord-date">3 novembre 2025 · Axentys · Kevin Keurvels · <strong>2h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">2h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">J'ai assisté le 3 novembre 2025 à la conférence "Cloud with M365 and Azure Infrastructure" présentée par Axentys, animée par Kevin Keurvels. La session s'adressait à un public mixte d'étudiants en informatique et de professionnels IT. Le sujet portait sur l'intégration des solutions cloud Microsoft (Microsoft 365 et Azure) dans les environnements d'entreprise.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">Le speaker a balayé pas mal de sujets en deux heures : le cloud hybride (mélange entre serveurs sur site et services cloud), la gestion des identités avec Entra ID, l'authentification multi-facteurs, les politiques d'accès conditionnel. Pour être honnête, je n'ai pas tout suivi : certaines parties techniques étaient dures à raccrocher quand on n'a jamais touché à Azure en vrai. Ce qui est resté, c'est surtout l'idée que la gestion des identités (qui accède à quoi, depuis où, avec quel niveau de vérification) est devenue centrale dans la sécurité moderne. Pas un truc qu'on rajoute à la fin, un pilier.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Le vrai apprentissage de cette conférence, ce n'est pas un concept précis, c'est une prise de recul. J'ai vu en deux heures à quel point le cloud Microsoft est partout en entreprise et à quel point je ne le maîtrise pas encore. C'est exactement ce qui m'a poussé à m'inscrire à AWS Cloud Quest derrière, comme première marche concrète. Le cloud, ce n'est plus une option dans mon projet pro, c'est un prérequis. Cette conf m'a servi de réveil plus que de cours, et c'est bien comme ça : un cours, j'aurais oublié, le réveil reste.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g1">
+                    <div class="pg-item" data-src="img/ConferenceCloudavecM365AzureInfrastructure.png" data-caption="Email de participation — Conférence Cloud M365 Azure · Axentys · Kevin Keurvels · 3 nov. 2025">
+                      <img src="img/ConferenceCloudavecM365AzureInfrastructure.png" alt="Preuve conférence Cloud M365 Azure" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 4 — Visites & Immersion entreprise (7h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-04" data-theme="04">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 04</span>
+        <h2 class="theme-heading">Visites &amp; <em>Immersion entreprise</em></h2>
+        <span class="theme-hours-badge">7h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Voir comment l'IT et la cybersécurité s'organisent concrètement en entreprise. Premier contact direct avec mes futurs métiers.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- Visite AXA Belgium -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme4)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Visite entreprise</span>
+                <h3 class="accord-title">Visite AXA Belgium — Tech Career Night</h3>
+              </div>
+              <p class="accord-date">13 octobre 2025 · AXA Belgium · Bruxelles · <strong>5h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">5h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">Le 13 octobre 2025, j'ai participé à la Tech Career Night organisée par AXA Belgium dans leurs bureaux Regentlaan 7 à Bruxelles. La soirée était suivie en direct dans leurs locaux IT, avec un format mixte : conférences, speed networking, visite des bureaux et dîner. Le programme a duré 5h, de 17h à 22h : accueil et drink à 17h, welcome speech à 18h15, business presentations sur des sujets tech (dont une sur la GenAI chez AXA, "Innovation @ AXA"), speed networking à partir de 18h30, dîner street food à 21h, puis networking informel jusqu'à 22h. J'étais accueilli par Alizé Bouton et j'ai eu un badge Visitor nominatif.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">C'était la première fois que j'entrais dans les bureaux IT d'un grand groupe d'assurance. Plusieurs choses m'ont marqué. D'abord les business presentations, en particulier celle sur la GenAI : on voyait concrètement comment AXA cherche à intégrer ces nouvelles technologies dans son métier (gestion des sinistres, relation client). C'était intéressant de voir un grand groupe régulé se positionner sur un sujet aussi récent. Ensuite le speed networking : j'ai pu échanger avec plusieurs profils différents (RH, IT, business) en peu de temps, et c'est un format qui m'a obligé à pitcher rapidement mon parcours, ce que je n'avais jamais fait dans ce genre de contexte. La visite des bureaux et le dîner ont permis de voir l'ambiance plus informelle. Mais la chose qui m'a vraiment fait réfléchir, c'est leur manière de bosser : ils m'ont parlé de leur organisation en sprint, user stories, epics. Exactement le vocabulaire qu'on voit en cours de gestion de projet à l'EPHEC. J'avais l'impression de ne pas avoir quitté l'école.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Cette soirée a clarifié quelque chose d'important pour mon projet pro. L'agile tel qu'il est appliqué chez AXA m'a paru rigide, presque scolaire. Les sprints encadrent tout, les user stories formalisent chaque demande, les epics structurent le long terme. Sur le papier c'est propre, mais en vrai j'ai senti que ça enlevait beaucoup de flexibilité au quotidien. Je préfère un cadre où je peux être plus libre dans ma façon de répondre à un problème, plus proche du terrain et des incidents concrets. Ça me confirme que je me vois bien dans une équipe SOC ou Blue Team, où le quotidien tourne autour de cas réels (alertes, incidents, investigations) plus que de sprints planifiés. Ce que je retiens surtout, c'est qu'une visite ne sert pas qu'à valider une voie, elle sert aussi à affiner ce qu'on cherche vraiment. La culture d'entreprise pèse autant que le métier dans mes futurs choix, et c'est un critère que je n'avais jamais vraiment pris en compte avant cette soirée.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g2">
+                    <div class="pg-item" data-src="img/VisiteAxa.jpeg" data-caption="Tech Career Night AXA Belgium">
+                      <img src="img/VisiteAxa.jpeg" alt="Visite AXA Belgium" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                    <div class="pg-item" data-src="img/VisiteAxa2.jpeg" data-caption="AXA Belgium — Locaux IT">
+                      <img src="img/VisiteAxa2.jpeg" alt="AXA Belgium IT" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                  <div class="proof-gallery g1" style="margin-top:2px">
+                    <div class="pg-item" data-src="img/VisiteAxa3.png" data-caption="AXA Belgium — Badge Visitor · Alizé Bouton · 13/10/2025">
+                      <img src="img/VisiteAxa3.png" alt="Badge AXA Visitor" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visite Odoo Corbais -->
+        <div class="act-accordion reveal rd1" style="--ai-theme-color:var(--c-theme4)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Visite entreprise</span>
+                <h3 class="accord-title">Visite Odoo — Corbais (visite optionnelle EPHEC)</h3>
+              </div>
+              <p class="accord-date">2025 · Corbais (près de Louvain-la-Neuve) · <strong>2h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">2h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">En 2025, j'ai participé à une visite optionnelle organisée par l'EPHEC chez Odoo, dans leur établissement de Corbais (près de Louvain-la-Neuve). C'est le siège belge de l'éditeur et un de leurs centres de développement principal. Le format de la journée mêlait visite des locaux, présentation de l'entreprise, déjeuner sur place avec les équipes, et une démo d'un de leurs outils internes (Runbot, leur système de CI maison qui gère les pull requests sur leur monorepo). J'ai choisi cette visite optionnelle parce que j'avais déjà été à Odoo Experience en 2023 et que je voulais voir l'envers du décor : pas le salon vitrine, mais la vraie boîte au quotidien.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">Plusieurs choses m'ont marqué pendant cette visite. D'abord les locaux : on est loin de l'image classique de l'entreprise IT en open space gris. L'ambiance est plus détendue, presque universitaire, avec beaucoup d'espaces communs où les équipes mangent et discutent. Ça donne une idée concrète de ce que peut être une boîte tech qui a gardé une culture startup même en grandissant. Ensuite la présentation de l'entreprise : leur modèle économique m'a paru cohérent. Odoo est open source, le code est public, mais ils vendent du support, de l'hébergement et des modules entreprise. Concrètement, ils gagnent de l'argent en vendant le service autour du logiciel libre, pas le logiciel lui-même. Je trouve ce modèle plus sain que le pur propriétaire, surtout pour un outil qu'autant d'entreprises utilisent. Enfin la démo de Runbot : voir comment une boîte de cette taille gère les pull requests sur un projet aussi gros (Odoo a des milliers de modules), avec des tests automatisés sur des centaines de configurations en parallèle, c'était impressionnant. Ça m'a donné une autre vision de ce que peut être un pipeline CI à grande échelle.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Cette visite a complété ce que j'avais vu chez AXA quelques semaines plus tôt, mais dans l'autre sens. Là où AXA m'avait paru rigide et trop processus, Odoo m'a montré un environnement plus libre, plus tech, plus aligné avec ce que je cherche. Ce qui n'est pas juste une question d'ambiance : c'est aussi visible dans leur façon de travailler, plus orientée code et outillage que cérémonies agile. Pour mon projet pro, ça me confirme que je veux bosser dans des structures où l'on construit quelque chose de concret, où le quotidien tourne autour du produit et pas du process. Même si Odoo n'est pas une boîte sécurité, je retiens cette ambiance comme un repère pour mes futurs choix d'entreprise. Et la découverte de Runbot m'a donné envie de creuser les outils CI/CD que j'utiliserai forcément dans un cadre SOC ou DevSecOps.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g1">
+                    <div class="pg-item" data-src="img/VisiteEntrepriseOdooAvecEcole.png" data-caption="Email EPHEC d'organisation — Visite Odoo Corbais 2025">
+                      <img src="img/VisiteEntrepriseOdooAvecEcole.png" alt="Preuve visite Odoo Corbais" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                  <div class="proof-empty" style="margin-top:2px">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Photo locaux + badge</span>
+                    <span style="font-size:.7rem">À intégrer par Saad</span>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 5 — Électronique (2h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-05" data-theme="05">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 05</span>
+        <h2 class="theme-heading"><em>Électronique</em></h2>
+        <span class="theme-hours-badge">2h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Compétence pratique transversale et rare. Apprentissage manuel en laboratoire qui complète les compétences logicielles.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- Soudure EPHEC -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme5)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Formation pratique</span>
+                <h3 class="accord-title">Soudure câbles électroniques — Laboratoire EPHEC</h3>
+              </div>
+              <p class="accord-date">2025 · Lab Électronique EPHEC · Gousenbourger &amp; Dewulf · <strong>2h certifiées</strong></p>
+            </div>
+            <span class="accord-hours">2h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">En 2025, j'ai participé à une séance pratique de soudure dans le laboratoire d'électronique de l'EPHEC, encadrée par Pierre-Yves Gousenbourger et Arnaud Dewulf. L'objectif était double : aider le labo en re-soudant des câbles abîmés du matériel pédagogique, et profiter d'une opportunité concrète de formation manuelle valorisable pour le portfolio. J'étais en groupe avec deux autres étudiants, Rayane Ben Lhaj et Mohamed El Hosni. La séance a duré 2h et a fait l'objet d'un certificat signé par les deux encadrants.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">C'était ma première fois avec un fer à souder, donc j'ai vraiment dû partir de zéro. Les encadrants nous ont appris la base : préparer les fils proprement (dénuder, étamer), doser correctement l'étain pour avoir une soudure brillante et bien ronde, et surtout ne pas trop chauffer le composant pour éviter de l'endommager. Ce sont des gestes qui paraissent simples vus de loin mais qui demandent de la précision en pratique. La main tremble plus qu'on ne croit quand on est face à un fil de quelques millimètres. Au début mes soudures étaient ternes et mal formées, à la fin elles tenaient correctement, ce qui m'a fait plaisir.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Cette séance a été une expérience très intéressante, dans un domaine assez éloigné de mon quotidien d'étudiant en informatique. Souder un fil n'a pas de lien direct avec mon projet pro, mais ça m'a fait toucher du doigt l'envers technique de tout système informatique : les composants, les câblages, le matériel sur lequel tournent les logiciels qu'on étudie en cours. C'est le genre d'apprentissage manuel qu'on a peu l'occasion de faire dans un cursus IT, et qui apporte une compréhension différente. Au-delà du geste lui-même, ce que je retiens c'est la patience que ça demande, et la satisfaction concrète quand une soudure tient bien. C'est un type de réussite immédiat et tangible qu'on retrouve rarement dans le travail logiciel, et qui fait du bien.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-gallery g1">
+                    <div class="pg-item" data-src="img/SoudageCableElectique.jpeg" data-caption="Formation soudure — Laboratoire EPHEC 2025">
+                      <img src="img/SoudageCableElectique.jpeg" alt="Soudure câble électronique" loading="lazy">
+                      <div class="pg-overlay"><i class="fa-solid fa-expand"></i><span>Voir</span></div>
+                    </div>
+                  </div>
+                  <div class="proof-empty" style="margin-top:2px">
+                    <i class="fa-solid fa-file-certificate"></i>
+                    <span>Certificat EPHEC signé — Gousenbourger &amp; Dewulf</span>
+                    <span style="font-size:.7rem">À scanner et intégrer par Saad</span>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 6 — Soft skills hors EPHEC (10h)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-06" data-theme="06">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 06</span>
+        <h2 class="theme-heading">Soft skills <em>hors EPHEC</em></h2>
+        <span class="theme-hours-badge">10h</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Activité personnelle non liée à un cours EPHEC, conformément au critère soft skills. Apprentissage autodidacte qui développe une discipline d'apprentissage transférable.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- Piano -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme6)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Soft skill</span>
+                <h3 class="accord-title">Pratique du piano — Apprentissage autodidacte</h3>
+              </div>
+              <p class="accord-date">Début 2026 · Roland FP-10 BK · <strong>10h comptabilisées</strong></p>
+            </div>
+            <span class="accord-hours">10h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text">J'ai commencé le piano en autodidacte au début de l'année 2026, après avoir vu quelqu'un jouer et m'être dit que c'était un défi personnel que je voulais tenter. J'ai investi dans un Roland FP-10 BK satiné, un piano numérique avec touches lestées, qui se rapproche au mieux du toucher d'un piano acoustique. Je n'ai pris aucun cours, je travaille à partir de partitions trouvées en ligne. Mon stage m'a réduit le temps disponible, mais j'ai quand même cumulé environ 15h de pratique effective sur les premiers mois. Je plafonne ce thème à 10h dans le portfolio, conformément aux règles EPHEC.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text">Apprendre un instrument seul, sans prof, c'est très différent de tout ce qu'on apprend dans un cursus classique. Au début, je me suis cassé les dents sur des choses qui semblaient évidentes : lire deux portées en même temps (main droite et main gauche), coordonner deux mains qui font des choses différentes, garder un tempo régulier sans métronome au début. Le morceau sur lequel je passe le plus de temps en ce moment, c'est "Van Gogh" de Virginio Aiello, un morceau accessible aux débutants mais qui demande déjà pas mal de coordination. La progression est lente et frustrante par moments, parce que le geste musical demande du temps avant d'être automatique. Je gagne 30 secondes de morceau par semaine environ, ce qui paraît peu mais qui s'accumule. Je me suis rendu compte aussi que la vidéo Youtube ou Synthesia ne suffit pas : à un moment il faut comprendre la partition, donc apprendre à lire la musique, et c'est là qu'on bloque souvent au début.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text">Le piano n'a évidemment pas de lien direct avec mon projet pro en informatique. Ce que je retiens, c'est plus la méthode que le résultat musical. Apprendre seul, sans cadre scolaire, sans prof qui corrige, c'est un exercice qui ressemble beaucoup à ce qu'on doit faire en informatique quand on apprend une nouvelle techno. Personne ne vient nous tenir la main, on suit une doc, on essaie, on échoue, on recommence. Le piano me rend cette boucle plus consciente parce que les progrès se mesurent à l'oreille, pas en lignes de code qui marchent ou pas. C'est une activité qui me sort des écrans aussi, ce qui devient plus précieux quand on passe sa journée à regarder des logs et des dashboards. Au-delà de ces aspects, c'est juste un domaine totalement différent de ce que je fais d'habitude, et ça change la tête. Je n'ai pas de prétention à devenir bon, juste à progresser à mon rythme et à mesurer ce que ça me fait d'apprendre quelque chose de neuf en partant de zéro à 23 ans.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-empty">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Vidéo courte de pratique</span>
+                    <span style="font-size:.7rem">À enregistrer et intégrer par Saad</span>
+                  </div>
+                  <div class="proof-empty" style="margin-top:2px">
+                    <i class="fa-solid fa-music"></i>
+                    <span>Photo du Roland FP-10 BK</span>
+                    <span style="font-size:.7rem">À intégrer par Saad</span>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       THÈME 7 — Cloud & Infrastructure moderne (10h, EN COURS)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="theme-bloc" id="theme-07" data-theme="07">
+    <div class="container">
+      <div class="theme-bloc-head reveal">
+        <span class="theme-num">THÈME 07</span>
+        <h2 class="theme-heading">Cloud &amp; <em>Infrastructure moderne</em></h2>
+        <span class="theme-hours-badge" style="color:var(--amber);border-color:var(--amber)">10h · en cours</span>
+      </div>
+      <p class="theme-intro reveal rd1">
+        Le cloud est devenu le terrain principal de la cybersécurité moderne. Réponse directe à ma faiblesse identifiée : manque d'expérience cloud.
+      </p>
+
+      <div class="acts-list">
+
+        <!-- AWS Cloud Quest -->
+        <div class="act-accordion reveal" style="--ai-theme-color:var(--c-theme7)">
+          <button class="accord-head" aria-expanded="false">
+            <div class="accord-stripe"></div>
+            <div class="accord-info">
+              <div class="accord-row1">
+                <span class="accord-type">Formation en ligne</span>
+                <h3 class="accord-title">AWS Cloud Quest — Cloud Practitioner</h3>
+                <span class="badge-en-cours">En cours</span>
+              </div>
+              <p class="accord-date">AWS Skill Builder · <strong>10h prévues</strong> · Finalisation avant le rendu</p>
+            </div>
+            <span class="accord-hours" style="color:var(--amber)">10h</span>
+            <i class="fa-solid fa-chevron-down accord-chev"></i>
+          </button>
+          <div class="accord-body">
+            <div class="accord-body-inner">
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">A · Le cadre</p>
+                  <p class="refl-text refl-placeholder" style="border-color:var(--amber);color:var(--amber)">À RÉDIGER après finalisation de la formation. La formation AWS Cloud Quest (Cloud Practitioner) sur AWS Skill Builder est en cours de complétion. L'analyse réflexive sera rédigée et intégrée une fois le badge obtenu, avant le rendu portfolio.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">B · Les faits</p>
+                  <p class="refl-text refl-placeholder" style="border-color:var(--amber);color:var(--amber)">À RÉDIGER après finalisation de la formation.</p>
+                </div>
+                <div class="refl-section">
+                  <p class="refl-heading">C · La créativité</p>
+                  <p class="refl-text refl-placeholder" style="border-color:var(--amber);color:var(--amber)">À RÉDIGER après finalisation de la formation.</p>
+                </div>
+              </div>
+              <div class="refl-col">
+                <div class="refl-section">
+                  <p class="refl-heading">Preuves</p>
+                  <div class="proof-empty">
+                    <i class="fa-solid fa-award"></i>
+                    <span>Badge AWS Cloud Quest</span>
+                    <span style="font-size:.7rem">À intégrer une fois la formation finalisée</span>
+                  </div>
+                </div>
+                <button class="accord-back-btn" aria-label="Refermer">↑ Refermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ════════════════════════════════════════════════ -->
+  <section class="acts-cta cta-section">
+    <div class="container" style="position:relative;z-index:2">
+      <div class="cta-label reveal"><span></span>Portfolio EPHEC 2025-2026</div>
+      <h2 class="cta-title reveal">Découvrir le<br><em>projet professionnel.</em></h2>
+      <div class="cta-actions reveal rd1">
+        <a href="projet-pro.html" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-right"></i> Projet professionnel
+        </a>
+        <a href="bilan.html" class="btn btn-cobalt">Lire le bilan →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
+      <span class="footer-copy">© 2025-2026 Saad Zebiri — Tous droits réservés</span>
+      <div class="footer-socials">
+        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

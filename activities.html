@@ -7,7 +7,7 @@
   <meta name="description" content="42 heures d'activités obligatoires EPHEC documentées.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/activities.css">
@@ -26,11 +26,12 @@
     <nav class="nav">
       <a href="index.html" class="nav-logo">SZ<em>.</em></a>
       <div class="nav-links">
-        <a href="index.html"            class="nl">Accueil</a>
-        <a href="index.html#about"      class="nl">À propos</a>
-        <a href="index.html#projects"   class="nl">Projets</a>
-        <a href="index.html#skills"     class="nl">Compétences</a>
-        <a href="activities.html"       class="nl active">Activités</a>
+        <a href="index.html"      class="nl">Accueil</a>
+        <a href="projet-pro.html" class="nl">Projet pro</a>
+        <a href="bilan.html"      class="nl">Bilan</a>
+        <a href="activites.html"  class="nl active">Activités</a>
+        <a href="projets.html"    class="nl">Projets</a>
+        <a href="cv.html"         class="nl">CV</a>
       </div>
       <div class="nav-end">
         <div class="nav-socials">
@@ -47,12 +48,13 @@
 
   <div class="mob-overlay" id="mob-overlay"></div>
   <div class="mob-menu" id="mob-menu">
-    <a href="index.html"          class="mm-link"><span>—</span>Accueil</a>
-    <a href="index.html#about"    class="mm-link"><span>01</span>À propos</a>
-    <a href="index.html#projects" class="mm-link"><span>02</span>Projets</a>
-    <a href="index.html#skills"   class="mm-link"><span>03</span>Compétences</a>
-    <a href="activities.html"     class="mm-link active"><span>05</span>Activités EPHEC</a>
-    <a href="contact.html"        class="mm-link"><span>→</span>Contact</a>
+    <a href="index.html"      class="mm-link"><span>01</span>Accueil</a>
+    <a href="projet-pro.html" class="mm-link"><span>02</span>Projet pro</a>
+    <a href="bilan.html"      class="mm-link"><span>03</span>Bilan</a>
+    <a href="activites.html"  class="mm-link active"><span>04</span>Activités</a>
+    <a href="projets.html"    class="mm-link"><span>05</span>Projets</a>
+    <a href="cv.html"         class="mm-link"><span>06</span>CV</a>
+    <a href="contact.html"    class="mm-link"><span>→</span>Contact</a>
   </div>
 
   <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
@@ -75,7 +77,7 @@
             <span class="qs-sep"></span>
             <div class="qs-item"><span class="qs-val">42h</span><span class="qs-label">Comptabilisées</span></div>
             <span class="qs-sep"></span>
-            <div class="qs-item"><span class="qs-val" style="color:#FF4444">18h</span><span class="qs-label">Restantes</span></div>
+            <div class="qs-item"><span class="qs-val" style="color:var(--navy);font-style:italic">18h</span><span class="qs-label">Restantes</span></div>
             <span class="qs-sep"></span>
             <div class="qs-item"><span class="qs-val">5</span><span class="qs-label">Rubriques</span></div>
           </div>
@@ -94,15 +96,15 @@
           </div>
           <div class="ring-legend">
             <div class="rl-row">
-              <span class="rl-left"><span class="rl-dot" style="background:var(--neon);box-shadow:0 0 6px var(--neon)"></span>Comptabilisées</span>
+              <span class="rl-left"><span class="rl-dot" style="background:var(--navy)"></span>Comptabilisées</span>
               <span class="rl-val">42h</span>
             </div>
             <div class="rl-row">
-              <span class="rl-left"><span class="rl-dot" style="background:#FF4444;box-shadow:0 0 6px #FF4444"></span>Restantes</span>
-              <span class="rl-val" style="color:#FF4444">18h</span>
+              <span class="rl-left"><span class="rl-dot" style="background:var(--gray-soft)"></span>Restantes</span>
+              <span class="rl-val" style="color:var(--navy);font-style:italic">18h</span>
             </div>
             <div class="rl-row">
-              <span class="rl-left"><span class="rl-dot" style="background:var(--cobalt-2)"></span>Soft Skills</span>
+              <span class="rl-left"><span class="rl-dot" style="background:var(--amber)"></span>Soft Skills</span>
               <span class="rl-val">10h max</span>
             </div>
           </div>
@@ -130,7 +132,7 @@
               <div class="tbr-left"><span class="tbr-dot" style="background:var(--c-greenIT)"></span><span class="tbr-name">Green IT</span><span class="tbr-type">· Hackathon · IoT</span></div>
               <div class="tbr-right"><span class="tbr-hours">10h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
-            <div class="tbr-track"><div class="tbr-fill" data-pct="100" style="background:var(--c-greenIT);box-shadow:0 0 8px var(--c-greenIT)"></div></div>
+            <div class="tbr-track"><div class="tbr-fill" data-pct="100" style="background:var(--c-greenIT)"></div></div>
           </div>
 
           <div class="theme-bar-row">
@@ -174,10 +176,10 @@
 
           <div class="theme-bar-row">
             <div class="tbr-head">
-              <div class="tbr-left"><span class="tbr-dot" style="background:#EC4899"></span><span class="tbr-name">Soft Skills</span><span class="tbr-type">· Piano · Discipline</span></div>
+              <div class="tbr-left"><span class="tbr-dot" style="background:var(--gray)"></span><span class="tbr-name">Soft Skills</span><span class="tbr-type">· Piano · Discipline</span></div>
               <div class="tbr-right"><span class="tbr-hours">10h</span><span class="tbr-max">/ 10h max</span></div>
             </div>
-            <div class="tbr-track"><div class="tbr-fill" data-pct="100" style="background:#EC4899"></div></div>
+            <div class="tbr-track"><div class="tbr-fill" data-pct="100" style="background:var(--gray)"></div></div>
           </div>
 
           <div class="hours-summary">
@@ -188,7 +190,7 @@
 
           <div class="rules-accordion">
             <button class="rules-trigger" id="rules-trigger" aria-expanded="false">
-              <span><i class="fa-solid fa-circle-info" style="color:var(--cobalt-2);margin-right:.5rem"></i>Règles EPHEC — Limites</span>
+              <span><i class="fa-solid fa-circle-info" style="color:var(--navy);margin-right:.5rem"></i>Règles EPHEC — Limites</span>
               <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="rules-content" id="rules-content">
@@ -229,7 +231,7 @@
         <button class="afb-btn" data-filter-type="visite"><span class="afb-theme-dot" style="background:var(--c-security)"></span>Visite</button>
         <button class="afb-btn" data-filter-type="conference"><span class="afb-theme-dot" style="background:var(--c-comm)"></span>Conférence</button>
         <button class="afb-btn" data-filter-type="formation"><span class="afb-theme-dot" style="background:var(--c-network)"></span>Formation</button>
-        <button class="afb-btn" data-filter-type="softskill"><span class="afb-theme-dot" style="background:#EC4899"></span>Soft Skill</button>
+        <button class="afb-btn" data-filter-type="softskill"><span class="afb-theme-dot" style="background:var(--gray)"></span>Soft Skill</button>
       </div>
 
       <div class="acts-items">
@@ -430,13 +432,13 @@
           </div>
         </article>
 
-        <div class="rubrique-header" style="--ai-theme-color:#EC4899">
-          <i class="fa-solid fa-music" style="color:#EC4899"></i>
+        <div class="rubrique-header" style="--ai-theme-color:var(--gray)">
+          <i class="fa-solid fa-music" style="color:var(--gray)"></i>
           <div><span class="rubrique-label">Rubrique</span><span class="rubrique-title">Soft Skills</span></div>
           <span class="rubrique-hours">10h</span>
         </div>
 
-        <article class="act-item reveal" data-type="softskill" style="--ai-theme-color:#EC4899">
+        <article class="act-item reveal" data-type="softskill" style="--ai-theme-color:var(--gray)">
           <div class="ai-stripe"></div>
           <div class="ai-body">
             <div class="ai-left">

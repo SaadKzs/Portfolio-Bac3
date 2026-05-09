@@ -6,7 +6,7 @@
   <title>CV — Saad Zebiri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -17,11 +17,12 @@
     <nav class="nav">
       <a href="index.html" class="nav-logo">SZ<em>.</em></a>
       <div class="nav-links">
-        <a href="index.html"          class="nl">Accueil</a>
-        <a href="index.html#projects" class="nl">Projets</a>
-        <a href="index.html#skills"   class="nl">Compétences</a>
-        <a href="activities.html"     class="nl">Activités</a>
-        <a href="contact.html"        class="nl">Contact</a>
+        <a href="index.html"      class="nl">Accueil</a>
+        <a href="projet-pro.html" class="nl">Projet pro</a>
+        <a href="bilan.html"      class="nl">Bilan</a>
+        <a href="activites.html"  class="nl">Activités</a>
+        <a href="projets.html"    class="nl">Projets</a>
+        <a href="cv.html"         class="nl active">CV</a>
       </div>
       <div class="nav-end">
         <div class="nav-socials">
@@ -38,11 +39,13 @@
 
   <div class="mob-overlay" id="mob-overlay"></div>
   <div class="mob-menu" id="mob-menu">
-    <a href="index.html"          class="mm-link"><span>—</span>Accueil</a>
-    <a href="index.html#projects" class="mm-link"><span>02</span>Projets</a>
-    <a href="index.html#skills"   class="mm-link"><span>03</span>Compétences</a>
-    <a href="activities.html"     class="mm-link"><span>05</span>Activités</a>
-    <a href="contact.html"        class="mm-link"><span>→</span>Contact</a>
+    <a href="index.html"      class="mm-link"><span>01</span>Accueil</a>
+    <a href="projet-pro.html" class="mm-link"><span>02</span>Projet pro</a>
+    <a href="bilan.html"      class="mm-link"><span>03</span>Bilan</a>
+    <a href="activites.html"  class="mm-link"><span>04</span>Activités</a>
+    <a href="projets.html"    class="mm-link"><span>05</span>Projets</a>
+    <a href="cv.html"         class="mm-link active"><span>06</span>CV</a>
+    <a href="contact.html"    class="mm-link"><span>→</span>Contact</a>
   </div>
 
   <!-- ══ CV ══════════════════════════════════════════════════ -->
@@ -51,9 +54,10 @@
 
       <div class="cv-header">
         <div>
-          <p class="sec-label reveal" style="margin-bottom:.5rem">Fichier personnel · 2025</p>
+          <p class="sec-label reveal" style="margin-bottom:.5rem">Fichier personnel · EPHEC 2025-2026</p>
           <h1 class="cv-name reveal rd1">Saad Zebiri</h1>
           <p class="cv-role reveal rd2">Network &amp; Security Engineer · EPHEC Bac 3</p>
+          <p class="cv-role reveal rd3" style="margin-top:.35rem;font-size:.78rem;">Pour le projet professionnel détaillé, voir → <a href="projet-pro.html" style="color:var(--navy)">projet-pro.html</a></p>
         </div>
         <div class="reveal rd3">
           <a href="CV-Zebiri-Saad.pdf" download class="btn btn-primary">
@@ -85,7 +89,7 @@
           <div class="cv-block">
             <h3 class="cv-block-title">Compétences</h3>
             <div style="margin-bottom:.85rem">
-              <div style="font-size:.6rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--display)">Infrastructure</div>
+              <div style="font-size:.6rem;color:var(--gray);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--mono)">Infrastructure</div>
               <div class="s-pills">
                 <span class="s-pill">Cisco PT</span><span class="s-pill">Linux</span>
                 <span class="s-pill">Docker</span><span class="s-pill">ESP32</span>
@@ -93,7 +97,7 @@
               </div>
             </div>
             <div style="margin-bottom:.85rem">
-              <div style="font-size:.6rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--display)">Sécurité</div>
+              <div style="font-size:.6rem;color:var(--gray);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--mono)">Sécurité</div>
               <div class="s-pills">
                 <span class="s-pill">OT Security</span><span class="s-pill">Nmap</span>
                 <span class="s-pill">Pentest</span><span class="s-pill">Log Analysis</span>
@@ -101,7 +105,7 @@
               </div>
             </div>
             <div>
-              <div style="font-size:.6rem;color:var(--text-3);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--display)">Dev</div>
+              <div style="font-size:.6rem;color:var(--gray);margin-bottom:.4rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:var(--mono)">Dev</div>
               <div class="s-pills">
                 <span class="s-pill">Python</span><span class="s-pill">React</span>
                 <span class="s-pill">Node.js</span><span class="s-pill">MongoDB</span>
@@ -164,7 +168,7 @@
             <div class="cv-xp-item">
               <div class="cv-xp-top">
                 <span class="cv-xp-title">IT Support Practice</span>
-                <span class="cv-xp-badge" style="background:transparent;color:var(--text-3);border-color:var(--border-h)">EPHEC · 2023–2024</span>
+                <span class="cv-xp-badge" style="background:transparent;color:var(--gray);border-color:var(--line)">EPHEC · 2023–2024</span>
               </div>
               <p class="cv-xp-org">Support technique N1 &amp; N2 — laboratoire interne EPHEC</p>
               <ul class="cv-xp-list">
@@ -180,10 +184,10 @@
             <div class="cv-xp-item">
               <div class="cv-xp-top">
                 <span class="cv-xp-title">Smart Mailbox "Boite-alerte"</span>
-                <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" style="color:var(--cobalt-2);font-size:.9rem"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" style="color:var(--navy);font-size:.9rem"><i class="fa-brands fa-github"></i></a>
               </div>
-              <p class="cv-xp-org">IoT · Full-Stack · Hackathon EPHEC — <span style="color:var(--neon);font-weight:700">Primé ★</span></p>
-              <p style="font-size:.87rem;color:var(--text-2);line-height:1.75;margin-bottom:.75rem">
+              <p class="cv-xp-org">IoT · Full-Stack · Hackathon EPHEC — <span style="color:var(--amber);font-weight:600">Primé ★</span></p>
+              <p style="font-size:.87rem;color:var(--ink-soft);line-height:1.75;margin-bottom:.75rem">
                 ESP32 + notifications temps réel + dashboard React/Node.js/MongoDB.
               </p>
               <div class="s-pills">
@@ -199,7 +203,7 @@
                 <span class="cv-xp-title">Architecture SIEM — SOC Home Lab</span>
               </div>
               <p class="cv-xp-org">Security · Infrastructure · EPHEC Bac 3</p>
-              <p style="font-size:.87rem;color:var(--text-2);line-height:1.75;margin-bottom:.75rem">
+              <p style="font-size:.87rem;color:var(--ink-soft);line-height:1.75;margin-bottom:.75rem">
                 Déploiement Elastic Stack + Wazuh sur Proxmox. Ingestion de logs, dashboards Kibana, alertes intrusion.
               </p>
               <div class="s-pills">
@@ -215,7 +219,7 @@
                 <span class="cv-xp-title">Enterprise Network Architecture</span>
               </div>
               <p class="cv-xp-org">Réseaux · Cisco Packet Tracer · EPHEC</p>
-              <p style="font-size:.87rem;color:var(--text-2);line-height:1.75;margin-bottom:.75rem">
+              <p style="font-size:.87rem;color:var(--ink-soft);line-height:1.75;margin-bottom:.75rem">
                 Infrastructure sécurisée : VLANs, ACLs, routage inter-VLAN, DHCP, switching multicouche.
               </p>
               <div class="s-pills">
@@ -234,7 +238,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <a href="index.html" class="footer-logo">SZ<em>.</em></a>
-      <span class="footer-copy">Saad Zebiri — EPHEC 2025</span>
+      <span class="footer-copy">© 2025-2026 Saad Zebiri — Tous droits réservés</span>
       <div class="footer-socials">
         <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>

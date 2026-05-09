@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projets techniques — Saad Zebiri · SIEM, Pentest Lab, Smart Mailbox, CTF.">
+  <title>Projets techniques — Saad Zebiri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ══ NAV ════════════════════════════════════════════════ -->
+  <div class="nav-wrap" id="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
+      <div class="nav-links">
+        <a href="index.html"      class="nl">Accueil</a>
+        <a href="projet-pro.html" class="nl">Projet pro</a>
+        <a href="bilan.html"      class="nl">Bilan</a>
+        <a href="activites.html"  class="nl">Activités</a>
+        <a href="projets.html"    class="nl active">Projets</a>
+        <a href="cv.html"         class="nl">CV</a>
+      </div>
+      <div class="nav-end">
+        <div class="nav-socials">
+          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <a href="contact.html" class="btn-nav">Contact</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <div class="mob-menu" id="mob-menu">
+    <a href="index.html"      class="mm-link"><span>01</span>Accueil</a>
+    <a href="projet-pro.html" class="mm-link"><span>02</span>Projet pro</a>
+    <a href="bilan.html"      class="mm-link"><span>03</span>Bilan</a>
+    <a href="activites.html"  class="mm-link"><span>04</span>Activités</a>
+    <a href="projets.html"    class="mm-link active"><span>05</span>Projets</a>
+    <a href="cv.html"         class="mm-link"><span>06</span>CV</a>
+    <a href="contact.html"    class="mm-link"><span>→</span>Contact</a>
+  </div>
+
+  <!-- ══ PAGE HERO ══════════════════════════════════════════ -->
+  <section class="proj-hero">
+    <div class="container">
+      <p class="page-eyebrow reveal">04 — Projets techniques</p>
+      <h1 class="page-h1 reveal rd1">
+        Concret,<br><em>documenté.</em>
+      </h1>
+      <p class="page-sub reveal rd2">
+        Une sélection de projets en sécurité, réseaux, automatisation et IoT — chacun ancré dans une pratique réelle.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ PROJETS GRID ════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="proj-grid">
+
+        <div class="proj-card reveal">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-shield-halved"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">01 — Security · Infrastructure</p>
+            <h3 class="proj-title">Architecture SIEM — SOC Home Lab</h3>
+            <p class="proj-desc">
+              Déploiement d'un SIEM complet avec Elastic Stack + Wazuh dans un homelab virtualisé sur Proxmox.
+              Ingestion de logs réseau, dashboards de monitoring, alertes sur détection d'intrusion.
+              Lab fonctionnel utilisé pour pratiquer l'analyse de logs et la corrélation d'événements.
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>Elastic Stack</span><span>Wazuh</span><span>Kibana</span><span>Proxmox</span>
+              </div>
+              <span class="proj-tag proj-tag--school">Bac 3</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd1">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-bug"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">02 — Pentesting · Virtualization</p>
+            <h3 class="proj-title">Pentest Lab — Infrastructure de test</h3>
+            <p class="proj-desc">
+              Environnement isolé pour la pratique du pentest : machines vulnérables (Metasploitable, DVWA, VulnHub),
+              segmentation réseau pfSense, méthodologie PTES complète. Utilisé pour les labs TryHackMe et HackTheBox.
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>Kali Linux</span><span>Metasploit</span><span>pfSense</span><span>Burp Suite</span>
+              </div>
+              <span class="proj-tag proj-tag--lock">Personnel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd2">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-terminal"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">03 — Network · Automation</p>
+            <h3 class="proj-title">Automation Réseau — Scripts Python</h3>
+            <p class="proj-desc">
+              Scripts Python pour l'automatisation réseau : sauvegarde de configs Cisco, déploiement de VLANs en masse,
+              monitoring de disponibilité et génération de rapports. Utilisation de Netmiko et Ansible.
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>Python</span><span>Netmiko</span><span>Ansible</span><span>Cisco IOS</span>
+              </div>
+              <span class="proj-tag proj-tag--school">EPHEC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd3">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-microchip"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">04 — Green IT · IoT · Hackathon</p>
+            <h3 class="proj-title">Hackathon EPHEC — Smart Mailbox</h3>
+            <p class="proj-desc">
+              Solution IoT "Boite-alerte" réalisée en 24h non-stop — ESP32, notifications temps réel,
+              dashboard React/Node.js/MongoDB. Projet primé par le jury devant un panel professionnel.
+              API sécurisée, authentification, monitoring en temps réel.
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>ESP32</span><span>React</span><span>Node.js</span><span>MongoDB</span>
+              </div>
+              <span class="proj-tag proj-tag--award">Primé ★</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd4">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-flag"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">05 — CTF · Security Research</p>
+            <h3 class="proj-title">CTF Challenges — Compétitions</h3>
+            <p class="proj-desc">
+              Participation régulière à des CTF sur HackTheBox, TryHackMe et PicoCTF. Spécialité en
+              challenges réseau (PCAP, pivoting) et web (injection, XSS, SSRF). Pratique continue
+              pour maintenir les compétences offensives au service de la défense.
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>HackTheBox</span><span>TryHackMe</span><span>Wireshark</span>
+              </div>
+              <span class="proj-tag proj-tag--lock">En cours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card reveal rd1">
+          <div class="proj-img">
+            <div class="proj-img-placeholder"><i class="fa-solid fa-industry"></i></div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-num">06 — OT Security · Stage</p>
+            <h3 class="proj-title">Pipeline TVM — Stage Lhoist 2025</h3>
+            <p class="proj-desc">
+              Mise en place de scans de vulnérabilités automatisés (Threat &amp; Vulnerability Management)
+              en environnement industriel OT/IT. Microsoft Defender for Endpoint, analyse de logs de
+              sécurité, support au SOC interne. Superviseur : Benjamin Budts (IT Security Director).
+            </p>
+            <div class="proj-footer">
+              <div class="proj-pills">
+                <span>Microsoft Defender</span><span>TVM</span><span>OT Security</span><span>SOC</span>
+              </div>
+              <span class="proj-tag proj-tag--lock">Professionnel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ════════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="container" style="position:relative;z-index:2">
+      <div class="cta-label reveal"><span></span>Portfolio EPHEC 2025-2026</div>
+      <h2 class="cta-title reveal">Travaillons<br><em>ensemble.</em></h2>
+      <p class="cta-sub reveal rd1">Ouvert aux opportunités de stage et d'emploi dans le domaine Network &amp; Security.</p>
+      <div class="cta-actions reveal rd2">
+        <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Me contacter</a>
+        <a href="cv.html" class="btn btn-cobalt"><i class="fa-solid fa-download"></i> Voir le CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
+      <span class="footer-copy">© 2025-2026 Saad Zebiri — Tous droits réservés</span>
+      <div class="footer-socials">
+        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

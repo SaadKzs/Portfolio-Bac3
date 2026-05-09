@@ -1,6 +1,92 @@
 /* ═══════════════════════════════════════════════════════════
-   CYBER-ÉLÉGANCE — main.js
+   EDITORIAL TECH — main.js
 ═══════════════════════════════════════════════════════════ */
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── NETWORK BACKGROUND CANVAS ───────────────────────────── */
+let _networkRAF = null;
+
+function initNetwork() {
+  cancelAnimationFrame(_networkRAF);
+  const existing = document.getElementById('bg-network');
+  if (existing) existing.remove();
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'bg-network';
+  canvas.setAttribute('aria-hidden', 'true');
+  canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;';
+  document.body.insertBefore(canvas, document.body.firstChild);
+
+  const ctx    = canvas.getContext('2d');
+  const NR     = [27, 42, 78]; // --navy #1B2A4E
+  let W, H;
+
+  const COUNT = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 20000), 52);
+  const DIST  = Math.min(window.innerWidth, window.innerHeight) * 0.24;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeNode() {
+    return {
+      x:     Math.random() * W,
+      y:     Math.random() * H,
+      vx:    (Math.random() - .5) * .18,
+      vy:    (Math.random() - .5) * .18,
+      r:     1.5 + Math.random() * 2.2,
+      phase: Math.random() * Math.PI * 2,
+      spd:   .006 + Math.random() * .008,
+    };
+  }
+
+  new ResizeObserver(resize).observe(canvas);
+  resize();
+  const nodes = Array.from({ length: COUNT }, makeNode);
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    /* edges */
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < DIST) {
+          const a = (1 - d / DIST) * .07;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(${NR[0]},${NR[1]},${NR[2]},${a.toFixed(3)})`;
+          ctx.lineWidth = .7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* nodes */
+    for (const n of nodes) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < -20) n.x = W + 20;
+      if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20;
+      if (n.y > H + 20) n.y = -20;
+
+      const pulse = .25 + .35 * (.5 + .5 * Math.sin(t * .001 * n.spd * 1000 + n.phase));
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${NR[0]},${NR[1]},${NR[2]},${pulse.toFixed(3)})`;
+      ctx.fill();
+    }
+
+    _networkRAF = requestAnimationFrame(draw);
+  }
+
+  _networkRAF = requestAnimationFrame(draw);
+}
 
 /* ── NAV ─────────────────────────────────────────────────── */
 function initNav() {
@@ -15,8 +101,8 @@ function initNav() {
   }, { passive: true });
 
   if (toggle && menu && overlay) {
-    const open  = () => { menu.classList.add('open'); overlay.classList.add('open'); toggle.classList.add('open'); toggle.setAttribute('aria-expanded','true'); };
-    const close = () => { menu.classList.remove('open'); overlay.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); };
+    const open  = () => { menu.classList.add('open'); overlay.classList.add('open'); toggle.classList.add('open'); toggle.setAttribute('aria-expanded', 'true'); };
+    const close = () => { menu.classList.remove('open'); overlay.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); };
     toggle.addEventListener('click', () => menu.classList.contains('open') ? close() : open());
     overlay.addEventListener('click', close);
     menu.querySelectorAll('.mm-link').forEach(l => l.addEventListener('click', close));
@@ -29,112 +115,30 @@ function initReveal() {
   if (!els.length) return;
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   els.forEach(el => obs.observe(el));
 }
 
-/* ── CANVAS — Network topology (Cobalt + Neon) ───────────── */
-function initCanvas() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
+/* ── CUSTOM CURSOR ───────────────────────────────────────── */
+function initCursor() {
+  if (REDUCED || window.matchMedia('(hover:none)').matches) return;
 
-  const ctx = canvas.getContext('2d');
-  const isMobile    = window.innerWidth < 768;
-  const NODE_COUNT  = isMobile ? 35 : 65;
-  const CONNECT_D   = isMobile ? 130 : 160;
-  const MOUSE_D     = 180;
+  const el = Object.assign(document.createElement('div'), { className: 'cursor' });
+  document.body.appendChild(el);
 
-  let W, H, nodes = [];
-  let mouseX = -9999, mouseY = -9999;
-  let raf;
-
-  /* Inline canvas styles so it sits behind content */
-  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;';
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function makeNode() {
-    const isCobalt = Math.random() > .3;
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - .5) * .25,
-      vy: (Math.random() - .5) * .25,
-      r:  Math.random() * 1.6 + .6,
-      cobalt: isCobalt,
-    };
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < -20) n.x = W + 20;
-      if (n.x > W+20) n.x = -20;
-      if (n.y < -20) n.y = H + 20;
-      if (n.y > H+20) n.y = -20;
-
-      /* Mouse repulsion */
-      const dx = n.x - mouseX, dy = n.y - mouseY;
-      const dm = Math.sqrt(dx*dx + dy*dy);
-      if (dm < MOUSE_D && dm > 0) {
-        const f = (MOUSE_D - dm) / MOUSE_D;
-        n.x += (dx/dm) * f * 1.8;
-        n.y += (dy/dm) * f * 1.8;
-      }
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
-      ctx.fillStyle = n.cobalt
-        ? `rgba(0,102,255,${.5 + Math.random()*.08})`
-        : `rgba(57,255,20,${.45 + Math.random()*.08})`;
-      ctx.fill();
-    }
-
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i+1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
-        if (d < CONNECT_D) {
-          const a = (1 - d/CONNECT_D) * .14;
-          const isMixed = nodes[i].cobalt !== nodes[j].cobalt;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = isMixed
-            ? `rgba(57,255,20,${a * .6})`
-            : nodes[i].cobalt
-              ? `rgba(0,102,255,${a})`
-              : `rgba(57,255,20,${a * .5})`;
-          ctx.lineWidth = .65;
-          ctx.stroke();
-        }
-      }
-    }
-
-    raf = requestAnimationFrame(draw);
-  }
-
-  const hero = canvas.closest('.hero');
-  hero?.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    mouseX = e.clientX - r.left;
-    mouseY = e.clientY - r.top;
+  /* Suit la souris exactement via transform — zéro lerp, zéro lag */
+  document.addEventListener('mousemove', e => {
+    el.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
   }, { passive: true });
-  hero?.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
 
-  new ResizeObserver(() => resize()).observe(canvas);
-  resize();
-  nodes = Array.from({ length: NODE_COUNT }, makeNode);
-  draw();
+  const sel = 'a, button, .btn, .proj-card, .svc-card, .act-item, .pg-item, .afb-btn, .tb-tags span, .tag, label';
+  document.addEventListener('mouseover', e => { if (e.target.closest(sel)) el.classList.add('hover'); });
+  document.addEventListener('mouseout',  e => { if (e.target.closest(sel)) el.classList.remove('hover'); });
+
+  document.addEventListener('mousedown', () => el.classList.add('press'));
+  document.addEventListener('mouseup',   () => el.classList.remove('press'));
 }
 
 /* ── COUNTERS ────────────────────────────────────────────── */
@@ -147,6 +151,7 @@ function initCounters() {
       const target = parseInt(e.target.dataset.target || e.target.textContent, 10);
       if (isNaN(target)) return;
       e.target.dataset.target = target;
+      if (REDUCED) { e.target.textContent = target; return; }
       let cur = 0;
       const step = Math.max(1, target / 40);
       const t = setInterval(() => {
@@ -159,7 +164,7 @@ function initCounters() {
   }, { threshold: .5 });
   spans.forEach(s => {
     const v = parseInt(s.textContent, 10);
-    if (!isNaN(v)) { s.dataset.target = v; s.textContent = '0'; obs.observe(s); }
+    if (!isNaN(v)) { s.dataset.target = v; if (!REDUCED) s.textContent = '0'; obs.observe(s); }
   });
 }
 
@@ -177,38 +182,56 @@ function initLangBars() {
   sections.forEach(s => obs.observe(s));
 }
 
-/* ── EPHEC BAR ───────────────────────────────────────────── */
-function initEPHECBar() {
-  const bar = document.querySelector('.ep-bar-fill');
-  if (!bar) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      bar.style.width = (bar.dataset.w || 70) + '%';
-      obs.unobserve(e.target);
-    });
-  }, { threshold: .5 });
-  obs.observe(bar);
-}
-
 /* ── SVG RING ────────────────────────────────────────────── */
 function initRing() {
   const ring = document.getElementById('ring-fill');
   if (!ring) return;
-  const r    = 85;
-  const circ = 2 * Math.PI * r;
+  const r = 85, circ = 2 * Math.PI * r;
+  const val = parseFloat(ring.dataset.value ?? 60);
+  const max = parseFloat(ring.dataset.max   ?? 60);
   ring.style.strokeDasharray  = circ;
   ring.style.strokeDashoffset = circ;
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      ring.style.transition       = 'stroke-dashoffset 1.5s cubic-bezier(.22,1,.36,1)';
-      ring.style.strokeDashoffset = circ * (1 - 42/60);
+      ring.style.transition       = REDUCED ? 'none' : 'stroke-dashoffset 1.5s cubic-bezier(.22,1,.36,1)';
+      ring.style.strokeDashoffset = circ * (1 - val / max);
       obs.unobserve(e.target);
     });
   }, { threshold: .4 });
   obs.observe(ring);
+}
+
+/* ── ACTIVITY ACCORDIONS ─────────────────────────────────── */
+function initActivityAccordions() {
+  const accordions = document.querySelectorAll('.act-accordion');
+  if (!accordions.length) return;
+  accordions.forEach(acc => {
+    const head = acc.querySelector('.accord-head');
+    if (!head) return;
+    head.addEventListener('click', () => {
+      const isOpen = acc.classList.contains('open');
+      accordions.forEach(a => a.classList.remove('open'));
+      if (!isOpen) acc.classList.add('open');
+    });
+    const backBtn = acc.querySelector('.accord-back-btn');
+    if (backBtn) backBtn.addEventListener('click', e => { e.stopPropagation(); acc.classList.remove('open'); });
+  });
+}
+
+/* ── ACTIVITIES THEME FILTER ─────────────────────────────── */
+function initThemeFilter() {
+  const btns   = document.querySelectorAll('[data-filter-theme]');
+  const blocs  = document.querySelectorAll('[data-theme]');
+  if (!btns.length) return;
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filterTheme;
+      blocs.forEach(b => { b.style.display = (f === 'all' || b.dataset.theme === f) ? '' : 'none'; });
+    });
+  });
 }
 
 /* ── ACTIVITIES FILTER ───────────────────────────────────── */
@@ -221,9 +244,7 @@ function initActivitiesFilter() {
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const f = btn.dataset.filterType;
-      items.forEach(item => {
-        item.style.display = (f === 'all' || item.dataset.type === f) ? '' : 'none';
-      });
+      items.forEach(item => { item.style.display = (f === 'all' || item.dataset.type === f) ? '' : 'none'; });
     });
   });
 }
@@ -280,15 +301,18 @@ function initThemeBars() {
 
 /* ── INIT ────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  if (!REDUCED) initNetwork();
   initNav();
   initReveal();
-  initCanvas();
+  if (!REDUCED) initCursor();
   initCounters();
   initLangBars();
-  initEPHECBar();
   initRing();
   initActivitiesFilter();
+  initActivityAccordions();
+  initThemeFilter();
   initLightbox();
   initAccordion();
   initThemeBars();
 });
+
