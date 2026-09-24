@@ -2,171 +2,270 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio académique EPHEC — Saad Zebiri · Bachelier TI · Réseaux &amp; Sécurité · 2025-2026.">
-  <title>Saad Zebiri — Portfolio EPHEC Bac 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saad Zebiri, cybersécurité et réseaux</title>
+  <meta name="description" content="Portfolio de Saad Zebiri, étudiant en master d’architecture des systèmes informatiques (Hénallux, UNamur). Gestion des vulnérabilités, Microsoft Defender, Azure, réseaux.">
+  <meta name="theme-color" content="#2f3372">
+  <link rel="canonical" href="https://saadkzs.github.io/Portfolio-Bac3/">
+
+  <!-- Aperçu LinkedIn et réseaux sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Saad Zebiri, cybersécurité et réseaux">
+  <meta property="og:description" content="Master en architecture des systèmes informatiques à Namur. En stage, j’ai automatisé la gestion des vulnérabilités d’un parc industriel.">
+  <meta property="og:url" content="https://saadkzs.github.io/Portfolio-Bac3/">
+  <meta property="og:image" content="https://saadkzs.github.io/Portfolio-Bac3/img/pdpPortfolio.JPG">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF8A6B'/%3E%3Cstop offset='1' stop-color='%23A98BFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-weight='800' font-size='26' text-anchor='middle' fill='%23fff'%3ESZ%3C/text%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..700&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Saad Zebiri",
+    "url": "https://saadkzs.github.io/Portfolio-Bac3/",
+    "jobTitle": "Étudiant en master d’architecture des systèmes informatiques",
+    "affiliation": [
+      { "@type": "CollegeOrUniversity", "name": "Hénallux" },
+      { "@type": "CollegeOrUniversity", "name": "Université de Namur" }
+    ],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "EPHEC" },
+      { "@type": "CollegeOrUniversity", "name": "Université libre de Bruxelles" }
+    ],
+    "knowsAbout": ["Cybersécurité", "Gestion des vulnérabilités", "Microsoft Defender for Endpoint", "Azure Automation", "PowerShell", "Réseaux"],
+    "sameAs": ["https://www.linkedin.com/in/saad-zebiri-72b790335", "https://github.com/SaadKzs"]
+  }
+  </script>
 </head>
 <body>
+  <!-- Le monde 3D (l'île) derrière toute la page -->
+  <canvas class="world" aria-hidden="true"></canvas>
+  <div class="hotspots" aria-label="Carte de l’île"></div>
 
-  <!-- ══ NAV ════════════════════════════════════════════════ -->
-  <div class="nav-wrap" id="nav-wrap">
-    <nav class="nav">
-      <a href="index.html" class="nav-logo">SZ<em>.</em></a>
-      <div class="nav-links">
-        <a href="index.html"      class="nl active">Accueil</a>
-        <a href="projet-pro.html" class="nl">Projet pro</a>
-        <a href="bilan.html"      class="nl">Bilan</a>
-        <a href="activites.html"  class="nl">Activités</a>
-        <a href="projets.html"    class="nl">Projets</a>
-        <a href="cv.html"         class="nl">CV</a>
-      </div>
-      <div class="nav-end">
-        <div class="nav-socials">
-          <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-        <a href="contact.html" class="btn-nav">Contact</a>
-      </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <a class="skip-link" href="#profil">Aller au contenu</a>
+
+  <!-- NAVIGATION -->
+  <header class="nav" data-nav>
+    <a class="nav__logo" href="#top" aria-label="Saad Zebiri, retour en haut">SZ</a>
+    <span class="nav__sep" aria-hidden="true"></span>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#profil">Profil</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Menu mobile">
+      <a href="#profil">Profil</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#etude-de-cas">Étude de cas</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 
-  <div class="mob-overlay" id="mob-overlay"></div>
-  <div class="mob-menu" id="mob-menu">
-    <a href="index.html"      class="mm-link active"><span>01</span>Accueil</a>
-    <a href="projet-pro.html" class="mm-link"><span>02</span>Projet pro</a>
-    <a href="bilan.html"      class="mm-link"><span>03</span>Bilan</a>
-    <a href="activites.html"  class="mm-link"><span>04</span>Activités</a>
-    <a href="projets.html"    class="mm-link"><span>05</span>Projets</a>
-    <a href="cv.html"         class="mm-link"><span>06</span>CV</a>
-    <a href="contact.html"    class="mm-link"><span>→</span>Contact</a>
-  </div>
+  <!-- Progression : un point par escale -->
+  <nav class="dots" aria-label="Progression dans le portfolio" data-dots></nav>
 
-  <!-- ══ HERO ═══════════════════════════════════════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Portfolio EPHEC · Bachelier TI · 2025-2026</p>
+  <main>
 
-        <h1 class="hero-title">
-          NETWORK &amp;<br>
-          SECURITY<br>
-          <span class="ht-accent">BAC 3</span>
-        </h1>
+    <!-- ACCUEIL : vue d'ensemble de l'île -->
+    <section class="stop stop--hero" id="top" data-stop="overview" data-label="Accueil">
+      <div class="hero">
+        <h1 class="hero__title" data-intro="1">Saad Zebiri</h1>
+        <p class="hero__role" data-intro="2"><span class="hero__line" aria-hidden="true"></span>Cybersécurité et réseaux</p>
+        <p class="hero__lead" data-intro="3">Étudiant en master d’architecture des systèmes informatiques à Namur. En stage chez Lhoist, j’ai automatisé la gestion des vulnérabilités de tout un parc industriel.</p>
+        <div class="hero__actions" data-intro="4">
+          <a class="btn btn--primary" href="#profil" data-magnetic>Explorer</a>
+          <a class="btn btn--ghost" href="CV-Zebiri-Saad.pdf" download>Télécharger mon CV</a>
+        </div>
+        <p class="hero__hint" data-intro="5">Chaque bâtiment de l’île est une partie de mon parcours. Survolez-les, cliquez, ou faites défiler.</p>
+      </div>
+      <a class="scroll-cue" href="#profil" aria-label="Descendre vers le profil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+    </section>
 
-        <p class="hero-sub">Saad Zebiri &nbsp;·&nbsp; Étudiant EPHEC · Candidat Master Cybersécurité</p>
+    <!-- PROFIL : le phare -->
+    <section class="stop" id="profil" data-stop="lighthouse" data-label="Profil">
+      <div class="panel" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le phare, profil</p>
+        <div class="profil__head">
+          <img class="profil__photo" src="img/pdpPortfolio.JPG" alt="Portrait de Saad Zebiri" width="600" height="800" loading="lazy">
+          <h2 class="panel__title">Ce qui me guide</h2>
+        </div>
+        <p class="panel__lead">J’ai commencé par l’informatique théorique à l’ULB. Il me manquait le concret, alors je suis passé à l’EPHEC, en réseaux et sécurité. Depuis, je fais deux choses : de la sécurité, c’est mon métier, et du développement, pour construire mes propres outils.</p>
+        <dl class="facts">
+          <div><dt>Formation</dt><dd>Master en architecture des systèmes informatiques, Hénallux et UNamur</dd></div>
+          <div><dt>Dernière expérience</dt><dd>Security Analyst en stage chez Lhoist</dd></div>
+          <div><dt>Langues</dt><dd>Français, arabe, anglais (B2), néerlandais (notions)</dd></div>
+          <div><dt>Basé à</dt><dd>Bruxelles, en cours à Namur</dd></div>
+        </dl>
+      </div>
+    </section>
 
-        <div class="hero-badge">
-          <span class="hb-dot"></span>
-          Cybersécurité défensive · Analyste SOC · Blue Team
+    <!-- PARCOURS : le campus -->
+    <section class="stop" id="parcours" data-stop="campus" data-label="Parcours">
+      <div class="panel" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le campus, parcours</p>
+        <h2 class="panel__title">Du théorique au terrain</h2>
+        <ol class="timeline" data-render="experience"></ol>
+      </div>
+    </section>
+
+    <!-- ÉTUDE DE CAS : l'usine sous bouclier -->
+    <section class="stop" id="etude-de-cas" data-stop="plant" data-label="Stage Security Analyst">
+      <div class="panel panel--wide" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>L’usine protégée, stage chez Lhoist</p>
+        <h2 class="panel__title">Cent mille lignes, pas une de plus</h2>
+        <p class="panel__lead">J’ai construit la chaîne qui remonte les vulnérabilités de chaque poste jusqu’au tableau de bord de l’équipe sécurité. Personne n’a besoin de la lancer : elle tourne seule.</p>
+
+        <ol class="flow" data-case>
+          <li class="flow__step"><span class="flow__index">1</span><div><h3>Defender for Endpoint</h3><p>L’API Advanced Hunting fournit les vulnérabilités de chaque machine.</p></div></li>
+          <li class="flow__step"><span class="flow__index">2</span><div><h3>Azure Automation</h3><p>Des runbooks PowerShell interrogent l’API et préparent les données.</p></div></li>
+          <li class="flow__step"><span class="flow__index">3</span><div><h3>SharePoint</h3><p>Les résultats y sont déposés, avec leur historique.</p></div></li>
+          <li class="flow__step"><span class="flow__index">4</span><div><h3>Power BI</h3><p>L’équipe suit l’état du parc dans un tableau de bord.</p></div></li>
+        </ol>
+
+        <div class="case__beats">
+          <div class="case__beat" data-beat="problem">
+            <h3><span class="beat-dot beat-dot--coral" aria-hidden="true"></span>Le problème</h3>
+            <p>L’API ne renvoie jamais plus de 100 000 lignes par requête. Sur un parc industriel, une seule requête ne suffisait pas : tout ce qui dépassait était perdu.</p>
+          </div>
+          <div class="case__beat" data-beat="solution">
+            <h3><span class="beat-dot beat-dot--cyan" aria-hidden="true"></span>La solution</h3>
+            <p>J’ai découpé la requête selon le préfixe hexadécimal de l’identifiant de chaque machine, le <code>DeviceId</code>. Chaque tranche reste sous la limite, et plus aucune ligne ne se perd.</p>
+          </div>
         </div>
 
-        <div class="hero-stats">
-          <div class="hstat">
-            <div class="hstat-n"><span>3</span></div>
-            <div class="hstat-l">Ans EPHEC</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n"><span class="neon">60</span>h</div>
-            <div class="hstat-l">Activités EPHEC</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n"><span>7</span></div>
-            <div class="hstat-l">Thèmes documentés</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n" style="font-size:1.35rem;letter-spacing:.04em">LHOIST</div>
-            <div class="hstat-l">Stage Sécurité 2025</div>
-          </div>
+        <figure class="case__chart">
+          <svg viewBox="0 0 660 300" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">Découpage des requêtes par préfixe hexadécimal</title>
+            <desc id="chart-desc">Une seule requête dépasse la limite de 100 000 lignes et perd des données. Découpée en seize requêtes, une par préfixe de 0 à F, chaque requête reste sous la limite.</desc>
+            <defs>
+              <linearGradient id="gSlice" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#A98BFF"/><stop offset="1" stop-color="#7FF4FF"/></linearGradient>
+              <linearGradient id="gBar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#A98BFF" stop-opacity=".6"/><stop offset="1" stop-color="#FF8A6B" stop-opacity=".85"/></linearGradient>
+            </defs>
+            <g class="chart__limit"><line x1="20" y1="92" x2="640" y2="92"/><text x="640" y="80" text-anchor="end">limite de l’API : 100 000 lignes</text></g>
+            <g data-chart></g>
+            <text class="chart__label" x="88" y="294" text-anchor="middle">une requête</text>
+            <text class="chart__label chart__label--split" x="456" y="294" text-anchor="middle" opacity="0">une requête par préfixe</text>
+            <line class="chart__base" x1="20" y1="250" x2="640" y2="250"/>
+          </svg>
+          <figcaption><span class="case__status" data-case-status>Chaîne en place</span><span>Schéma illustratif, sans données réelles.</span></figcaption>
+        </figure>
+        <button class="btn btn--ghost btn--small case__replay" type="button" data-case-replay>Rejouer l’animation</button>
+      </div>
+    </section>
+
+    <!-- PROJETS : le quartier -->
+    <section class="stop" id="projets" data-stop="city" data-label="Projets">
+      <div class="panel panel--wide" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le quartier, projets</p>
+        <h2 class="panel__title">Ce que je construis</h2>
+        <p class="panel__lead">En dehors des cours et du stage. Surtout du web, parce que c’est le moyen le plus rapide de mettre une idée en ligne.</p>
+        <div class="projects" data-render="projects"></div>
+        <div class="experiments" data-render="experiments"></div>
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES : le centre de données -->
+    <section class="stop" id="competences" data-stop="datacenter" data-label="Compétences">
+      <div class="panel panel--wide" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le centre de données, compétences</p>
+        <h2 class="panel__title">Chaque outil, une preuve</h2>
+        <p class="panel__lead">Chaque compétence est rattachée à l’endroit où je l’ai utilisée. Filtrez pour voir ce qui vient du stage, des cours ou de mes projets.</p>
+        <div class="filters" role="group" aria-label="Filtrer les compétences" data-render="skill-filters"></div>
+        <div class="skills" data-render="skills"></div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS : le monument -->
+    <section class="stop" id="certifications" data-stop="monument" data-label="Certifications">
+      <div class="panel panel--wide" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le monument, certifications</p>
+        <h2 class="panel__title">Validé, et la suite</h2>
+        <div data-render="certs-earned"></div>
+        <h3 class="panel__sub">Prochaines étapes</h3>
+        <ul class="next-list" data-render="certs-next"></ul>
+        <h3 class="panel__sub">Salons, conférences et visites</h3>
+        <ul class="events" data-render="events"></ul>
+      </div>
+    </section>
+
+    <!-- NOTES DE LABO (cachée tant que data.js ne contient aucune note) -->
+    <section class="stop" id="notes" data-stop="datacenter" data-label="Notes de labo" hidden>
+      <div class="panel panel--wide" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Notes de labo</p>
+        <h2 class="panel__title">Ce que j’apprends en pratiquant</h2>
+        <ul class="notes" data-render="notes"></ul>
+      </div>
+    </section>
+
+    <!-- HORS ÉCRAN : le kiosque à musique -->
+    <section class="stop" id="hors-ecran" data-stop="kiosk" data-label="Hors écran">
+      <div class="panel" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>Le kiosque, hors écran</p>
+        <h2 class="panel__title">Le piano, en autodidacte</h2>
+        <p class="panel__lead">Depuis début 2026, sur un Roland FP-10, avec des partitions trouvées en ligne. En ce moment, je travaille <em>Van Gogh</em> de Virginio Aiello. C’est ce qui me sort des écrans.</p>
+        <figure class="media" data-media-fallback="img/piano.png">
+          <video controls preload="none" playsinline poster="img/piano.png">
+            <source src="Video/pianoVideo.mov">
+          </video>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONTACT : l'antenne, à la nuit tombée -->
+    <section class="stop stop--contact" id="contact" data-stop="antenna" data-label="Contact">
+      <div class="panel panel--contact" data-reveal>
+        <p class="kicker"><span class="kicker__icon" aria-hidden="true"></span>L’antenne, contact</p>
+        <!-- Statut : modifier le texte si besoin -->
+        <p class="status"><span class="status__dot" aria-hidden="true"></span>Ouvert aux opportunités</p>
+        <h2 class="contact__title">Écrivez-moi.</h2>
+        <p class="panel__lead">Pour un stage, un poste ou une question sur un projet.</p>
+        <div class="contact__mail">
+          <a class="contact__address" href="mailto:saadzebiri65@gmail.com">saadzebiri65@gmail.com</a>
+          <button class="btn btn--ghost btn--small" type="button" data-copy="saadzebiri65@gmail.com">Copier l’adresse</button>
+          <span class="visually-hidden" aria-live="polite" data-copy-status></span>
         </div>
-
-        <div class="hero-actions">
-          <a href="projet-pro.html" class="btn btn-primary">Découvrir le projet pro</a>
-          <a href="cv.html"         class="btn btn-cobalt"><i class="fa-solid fa-file-lines"></i> Voir le CV</a>
-        </div>
+        <ul class="contact__links">
+          <li><a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/SaadKzs" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="CV-Zebiri-Saad.pdf" download>CV en PDF</a></li>
+        </ul>
+        <p class="footer">Saad Zebiri, 2026. Île construite à la main en WebGL, hébergée sur GitHub Pages.</p>
       </div>
+    </section>
 
-      <div class="hero-photo reveal rd1">
-        <img src="img/pdpPortfolio.JPG" alt="Portrait de Saad Zebiri">
-      </div>
-    </div>
+  </main>
 
-    <div class="hero-foot">
-      <span class="hf-label">Cybersécurité · Réseaux · Infrastructure · IoT</span>
-      <span class="scroll-hint"><i class="fa-solid fa-arrow-down"></i> Défiler</span>
-    </div>
-  </section>
+  <!-- Visionneuse photos et vidéos -->
+  <dialog class="viewer" id="viewer" aria-label="Visionneuse" data-lenis-prevent>
+    <button class="viewer__close" type="button" data-viewer-close>Fermer</button>
+    <div class="viewer__body" data-viewer-body></div>
+    <p class="viewer__caption" data-viewer-caption></p>
+  </dialog>
 
-  <!-- ══ PORTFOLIO BLOCS ════════════════════════════════════ -->
-  <section class="section" id="portfolio">
-    <div class="container">
-      <p class="sec-label reveal">Portfolio académique</p>
-      <h2 class="sec-title reveal">Quatre <em>piliers</em></h2>
-      <p class="sec-sub reveal rd1">Ce portfolio répond aux exigences EPHEC du cursus Bachelier TI — Réseaux &amp; Sécurité.</p>
+  <noscript><p class="noscript">Activez JavaScript pour voir l’île et le contenu complet. Contact : saadzebiri65@gmail.com</p></noscript>
 
-      <div class="portfolio-grid">
-
-        <a href="projet-pro.html" class="portfolio-bloc reveal rd1">
-          <p class="pb-num">01 — Projet professionnel</p>
-          <h3 class="pb-title">Devenir analyste en cybersécurité défensive</h3>
-          <p class="pb-tagline">Cybersécurité défensive · Master SSIR · France</p>
-          <p class="pb-desc">Mon orientation, mon ambition à 5 ans, mon angle. Pourquoi la défense, pourquoi Toulouse, et ce qui m'attire dans le métier d'analyste SOC.</p>
-          <span class="pb-cta">Découvrir →</span>
-        </a>
-
-        <a href="bilan.html" class="portfolio-bloc reveal rd2">
-          <p class="pb-num">02 — Bilan personnel</p>
-          <h3 class="pb-title">Forces, faiblesses, leviers</h3>
-          <p class="pb-tagline">Auto-évaluation honnête · Lien projet pro</p>
-          <p class="pb-desc">Une lecture honnête de mes acquis et de ce qu'il me reste à construire pour atteindre mon projet en cybersécurité défensive.</p>
-          <span class="pb-cta">Lire le bilan →</span>
-        </a>
-
-        <a href="activites.html" class="portfolio-bloc reveal rd3">
-          <p class="pb-num">03 — Activités d'acquisition</p>
-          <h3 class="pb-title">9 activités · 7 thèmes · analyses réflexives</h3>
-          <p class="pb-tagline">53h documentées · 7 thèmes · stage en complément</p>
-          <p class="pb-desc">Les activités EPHEC que j'ai menées pour combler les écarts identifiés dans mon bilan — chacune analysée selon la grille Cadre / Faits / Créativité.</p>
-          <span class="pb-cta">Voir les thèmes →</span>
-        </a>
-
-        <a href="projets.html" class="portfolio-bloc reveal rd4">
-          <p class="pb-num">04 — Projets techniques</p>
-          <h3 class="pb-title">SIEM · Pentest Lab · Smart Mailbox</h3>
-          <p class="pb-tagline">Projets concrets · Compétences ancrées</p>
-          <p class="pb-desc">Une sélection de projets concrets qui ancrent mes compétences en sécurité, réseaux, automatisation et IoT.</p>
-          <span class="pb-cta">Parcourir →</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ BANDEAU ACCÈS ══════════════════════════════════════ -->
-  <div class="access-bandeau">
-    <p>Portfolio accessible du 12 mai 2026 au 30 septembre 2026 · Saad Zebiri · EPHEC Bac 3</p>
-  </div>
-
-  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <a href="index.html" class="footer-logo">SZ<em>.</em></a>
-      <span class="footer-copy">© 2025-2026 Saad Zebiri — Tous droits réservés</span>
-      <div class="footer-socials">
-        <a href="https://github.com/SaadKzs" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/saad-zebiri-72b790335" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="mailto:saadzebiri65@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      </div>
-    </div>
-  </footer>
-
+  <!-- Librairies (si un CDN ne répond pas, le contenu reste lisible) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js"></script>
+  <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/island.js"></script>
 </body>
 </html>
